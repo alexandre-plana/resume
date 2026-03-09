@@ -676,9 +676,9 @@
 
   .sidebar {
     page-break-inside: avoid;
-    width: 280px !important;
-    min-width: 280px !important;
-    max-width: 280px !important;
+    width: 170px !important;
+    min-width: 170px !important;
+    max-width: 170px !important;
     flex-shrink: 0;
   }
 
@@ -695,6 +695,15 @@
 
   .formationsSection {
     display: none !important;
+  }
+
+  .skillsSection {
+    display: none !important;
+  }
+
+  .sidebar .tags {
+    flex-wrap: wrap;
+    gap: 4px;
   }
 }
 

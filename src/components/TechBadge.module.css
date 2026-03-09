@@ -25,3 +25,16 @@
   border-radius: 50%;
   flex-shrink: 0;
 }
+
+@media print {
+  .tag {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    gap: 3px;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+}

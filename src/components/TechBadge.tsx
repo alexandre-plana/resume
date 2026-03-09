@@ -26,6 +26,11 @@ const TAG_COLORS: Record<string, { bg: string; text: string; border: string; dot
   agile: { bg: '#d1fae5', text: '#065f46', border: '#6ee7b7', dot: '#6ee7b7' },
   green: { bg: '#dcfce7', text: '#166534', border: '#86efac', dot: '#86efac' },
   jira: { bg: '#e0f0ff', text: '#0052cc', border: '#2684ff', dot: '#2684ff' },
+  jss: { bg: '#fff9e6', text: '#d4941e', border: '#ffe58f', dot: '#faad14' },
+  wpf: { bg: '#e8f4ff', text: '#0078d4', border: '#96d8ff', dot: '#0078d4' },
+  winform: { bg: '#e8f4ff', text: '#0078d4', border: '#96d8ff', dot: '#0078d4' },
+  solidworks: { bg: '#dfeef9', text: '#0055c8', border: '#99c0f0', dot: '#0055c8' },
+  '3dsmax': { bg: '#fde4e4', text: '#9b0000', border: '#f7a9a9', dot: '#ffa500' },
 }
 
 interface TechBadgeProps {
