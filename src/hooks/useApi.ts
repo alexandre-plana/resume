@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../store/appStore'
 import { getMockDataLocale } from '../api/mockDataLocales'
+import { getProjectsLocale } from '../api/projectsLocales'
 import { api } from '../api'
 
 export const useProfile = () => {
@@ -123,4 +124,25 @@ export const useContact = () => {
       return api.contactService.sendMessage(data)
     },
   }
+}
+
+export const useProjects = () => {
+  const { language } = useAppStore()
+  const projectsLocales = getProjectsLocale(language)
+
+  return useQuery({
+    queryKey: ['projects', language],
+    queryFn: async () => {
+      const projects = await api.projectService.getProjects()
+      return projects.map((project, idx) => {
+        const projectLocale = projectsLocales[idx]
+        return {
+          ...project,
+          desc: projectLocale?.desc || project.desc,
+          context: projectLocale?.context || project.context,
+          role: projectLocale?.role || project.role,
+        }
+      })
+    },
+  })
 }

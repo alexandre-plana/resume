@@ -77,3 +77,17 @@ export interface Activity {
   detail: string
   time: string
 }
+
+export interface Project {
+  id: number
+  name: string
+  company: string
+  role: string
+  period: string
+  desc: string
+  context: string
+  stack: string
+  tags: string[]
+  link?: string
+  highlights?: string[]
+}

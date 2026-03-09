@@ -72,14 +72,10 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         employer: 'Consultant R&D — Datacorp',
         missions: {
           '11': {
-            badge: 'Lead FE Développeur',
+            badge: 'Développeur front end',
             context: 'Industrial Automation IIoT 2.0 Edge (IECA)',
             desc: 'Développement d\'Edge compute apps industrielles sur la plateforme Goodenough (single-spa). Architecture micro-frontend IIoT 2.0, intégration de composants Vue 3 + TypeScript en équipe. Conception UI des tableaux de bord industriels en lien avec les équipes UX.',
-            metrics: [
-              { label: 'sites industriels\ndéployés' },
-              { label: 'réduction temps\nde chargement' },
-              { label: 'stack\nprincipale' },
-            ],
+            metrics: [],
           },
           '12': {
             badge: 'Développeur C# / Unity',
@@ -189,14 +185,10 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         employer: 'R&D Consultant — Datacorp',
         missions: {
           '11': {
-            badge: 'Lead Frontend Engineer',
+            badge: 'Frontend Developer',
             context: 'Industrial Automation IIoT 2.0 Edge (IECA)',
             desc: 'Developed Edge compute apps on Goodenough platform (single-spa). Built IIoT 2.0 micro-frontend architecture with Vue 3 + TypeScript in agile teams. Designed UI dashboards for industrial control systems in collaboration with UX teams.',
-            metrics: [
-              { label: 'industrial sites\ndeployed' },
-              { label: 'load time\nimprovement' },
-              { label: 'primary\nstack' },
-            ],
+            metrics: [],
           },
           '12': {
             badge: 'C# / Unity Developer',

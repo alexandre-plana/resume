@@ -1,5 +1,5 @@
-import { mockProfile, mockExperiences, mockSkills, mockFormation, mockActivity } from '../mockData'
-import { Profile, Experience, Skill, Formation, Activity } from '../../types'
+import { mockProfile, mockExperiences, mockSkills, mockFormation, mockActivity, mockProjects } from '../mockData'
+import { Profile, Experience, Skill, Formation, Activity, Project } from '../../types'
 
 export const mockProfileService = {
   getProfile: async (): Promise<Profile> => {
@@ -12,6 +12,13 @@ export const mockExperienceService = {
   getExperiences: async (): Promise<Experience[]> => {
     await new Promise(resolve => setTimeout(resolve, 400))
     return mockExperiences
+  },
+}
+
+export const mockProjectService = {
+  getProjects: async (): Promise<Project[]> => {
+    await new Promise(resolve => setTimeout(resolve, 350))
+    return mockProjects
   },
 }
 

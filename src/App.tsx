@@ -1,9 +1,8 @@
-import { useProfile, useExperiences, useSkills, useFormation, useActivity } from './hooks/useApi'
+import { useProfile, useExperiences, useSkills, useFormation, useActivity, useProjects } from './hooks/useApi'
 import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
 import { LanguageSwitch } from './components/LanguageSwitch'
 import { Tabs } from './components/Tabs'
-import { ContribGraph } from './components/ContribGraph'
 import { TechBadge } from './components/TechBadge'
 import { getTranslations } from './locales'
 import styles from './App.module.css'
@@ -11,13 +10,14 @@ import styles from './App.module.css'
 function App() {
   const { data: profile, isLoading: profileLoading } = useProfile()
   const { data: experiences, isLoading: expLoading } = useExperiences()
+  const { data: projects, isLoading: projLoading } = useProjects()
   const { data: skills, isLoading: skillsLoading } = useSkills()
   const { data: formation, isLoading: formationLoading } = useFormation()
   const { data: activity, isLoading: activityLoading } = useActivity()
-  const { language } = useAppStore()
+  const { language, activeTab } = useAppStore()
   const t = getTranslations(language)
 
-  const isLoading = profileLoading || expLoading || skillsLoading || formationLoading || activityLoading
+  const isLoading = profileLoading || expLoading || projLoading || skillsLoading || formationLoading || activityLoading
 
   if (!profile) return <div className={styles.loading}>Chargement...</div>
 
@@ -33,8 +33,6 @@ function App() {
           <div className={styles.profileHandle}>@{profile.handle}</div>
           <div className={styles.profileTitle}>{profile.title}</div>
           <div className={styles.profileSubtitle}>{profile.subtitle}</div>
-
-          <p className={styles.profileBio}>{profile.bio}</p>
 
           <div className={styles.btnRow}>
             <button className={styles.btnPrimary}>{t.common.contact}</button>
@@ -137,107 +135,133 @@ function App() {
         <main className={styles.main}>
           <Tabs />
 
-          <ContribGraph contributions={profile.contributions} />
+          {/* ABOUT */}
+          <div className={styles.sectionHeader}>👤 {language === 'fr' ? 'À propos' : 'About'}</div>
+          <div className={styles.aboutSection}>
+            <p className={styles.aboutText}>{profile.bio}</p>
+          </div>
 
-          {/* EXPÉRIENCES */}
-          <div className={styles.sectionHeader}>📌 {language === 'fr' ? 'Expériences professionnelles' : 'Professional Experience'}</div>
-          <div className={styles.timeline}>
-            {!isLoading &&
-              experiences?.map((exp) => (
-                <div key={exp.id}>
-                  <div className={styles.tlCompany}>
-                    <div className={styles.tlDot} />
-                    <div className={styles.tlInfo}>
-                      <div className={styles.tlName}>{exp.company}</div>
-                      <div className={styles.tlRole}>{exp.employer}</div>
-                      <span className={styles.tlPeriod}>{exp.period}</span>
-                    </div>
-                  </div>
-                  <div className={styles.tlMissions}>
-                    {exp.missions.map((mission) => (
-                      <div
-                        key={mission.id}
-                        className={mission.featured ? styles.missionFeatured : styles.mission}
-                      >
-                        <div className={styles.missionTop}>
-                          <span style={{ color: 'var(--text-3)' }}>📁</span>
-                          <span className={styles.missionName}>{mission.name}</span>
-                          <span className={styles.missionBadge}>{mission.badge}</span>
+          {/* TABS CONTENT */}
+          {activeTab === 'overview' && (
+            <>
+              {/* EXPÉRIENCES */}
+              <div className={styles.sectionHeader}>📌 {language === 'fr' ? 'Expériences professionnelles' : 'Professional Experience'}</div>
+              <div className={styles.timeline}>
+                {!isLoading &&
+                  experiences?.map((exp) => (
+                    <div key={exp.id}>
+                      <div className={styles.tlCompany}>
+                        <div className={styles.tlDot} />
+                        <div className={styles.tlInfo}>
+                          <div className={styles.tlName}>{exp.company}</div>
+                          <div className={styles.tlRole}>{exp.employer}</div>
+                          <span className={styles.tlPeriod}>{exp.period}</span>
                         </div>
-                        <div className={styles.missionContext}>{mission.context}</div>
-                        <div className={styles.missionDesc}>{mission.desc}</div>
-                        {mission.featured && (
-                          <div className={styles.metricsGrid}>
-                            {mission.metrics.map((metric, idx) => (
-                              <div key={idx} className={styles.metricItem}>
-                                <div className={styles.metricValue}>{metric.value}</div>
-                                <div className={styles.metricLabel}>{metric.label}</div>
+                      </div>
+                      <div className={styles.tlMissions}>
+                        {exp.missions.map((mission) => (
+                          <div
+                            key={mission.id}
+                            className={mission.featured ? styles.missionFeatured : styles.mission}
+                          >
+                            <div className={styles.missionTop}>
+                              <span style={{ color: 'var(--text-3)' }}>📁</span>
+                              <span className={styles.missionName}>{mission.name}</span>
+                              <span className={styles.missionBadge}>{mission.badge}</span>
+                            </div>
+                            <div className={styles.missionContext}>{mission.context}</div>
+                            <div className={styles.missionDesc}>{mission.desc}</div>
+                            {mission.featured && (
+                              <div className={styles.metricsGrid}>
+                                {mission.metrics.map((metric, idx) => (
+                                  <div key={idx} className={styles.metricItem}>
+                                    <div className={styles.metricValue}>{metric.value}</div>
+                                    <div className={styles.metricLabel}>{metric.label}</div>
+                                  </div>
+                                ))}
                               </div>
-                            ))}
+                            )}
+                            <div className={styles.missionStack}>{mission.stack}</div>
+                            <div className={styles.tags}>
+                              {mission.tags.map((tag) => (
+                                <TechBadge key={tag} label={tag} kind={tag} />
+                              ))}
+                            </div>
                           </div>
-                        )}
-                        <div className={styles.missionStack}>{mission.stack}</div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+
+              {/* COMPÉTENCES */}
+              <div className={styles.sectionHeader}>🏷 {language === 'fr' ? 'Compétences & Technologies' : 'Skills & Technologies'}</div>
+              <div className={styles.skillsBlock}>
+                {!isLoading &&
+                  skills?.map((skillCat, idx) => (
+                    <div key={idx} className={skillCat.featured ? styles.skCatFeatured : styles.skCat}>
+                      <div className={skillCat.featured ? styles.catLabelFeatured : styles.catLabel}>
+                        {skillCat.cat}
+                      </div>
+                      <div className={styles.tags}>
+                        {skillCat.tags.map((tag) => (
+                          <TechBadge key={tag.k} label={tag.l} kind={tag.k} />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </>
+          )}
+
+          {activeTab === 'projects' && (
+            <>
+              <div className={styles.sectionHeader}>📁 {language === 'fr' ? 'Projets' : 'Projects'}</div>
+              <div className={styles.timeline}>
+                {!isLoading &&
+                  projects?.map((project) => (
+                    <div key={project.id} className={styles.project}>
+                      <div className={styles.projectHeader}>
+                        <div className={styles.tlDot} />
+                        <div className={styles.tlInfo}>
+                          <div className={styles.tlName}>{project.name}</div>
+                          <div className={styles.tlRole}>{project.role}</div>
+                          <span className={styles.tlPeriod}>{project.period}</span>
+                        </div>
+                      </div>
+                      <div className={styles.projectContent}>
+                        <div className={styles.projectContext}>{project.context}</div>
+                        <div className={styles.projectDesc}>{project.desc}</div>
+                        <div className={styles.projectStack}>{project.stack}</div>
                         <div className={styles.tags}>
-                          {mission.tags.map((tag) => (
+                          {project.tags.map((tag) => (
                             <TechBadge key={tag} label={tag} kind={tag} />
                           ))}
                         </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-          </div>
+                    </div>
+                  ))}
+              </div>
+            </>
+          )}
 
-          {/* COMPÉTENCES */}
-          <div className={styles.sectionHeader}>🏷 {language === 'fr' ? 'Compétences & Technologies' : 'Skills & Technologies'}</div>
-          <div className={styles.skillsBlock}>
-            {!isLoading &&
-              skills?.map((skillCat, idx) => (
-                <div key={idx} className={skillCat.featured ? styles.skCatFeatured : styles.skCat}>
-                  <div className={skillCat.featured ? styles.catLabelFeatured : styles.catLabel}>
-                    {skillCat.cat}
-                  </div>
-                  <div className={styles.tags}>
-                    {skillCat.tags.map((tag) => (
-                      <TechBadge key={tag.k} label={tag.l} kind={tag.k} />
-                    ))}
-                  </div>
-                </div>
-              ))}
-          </div>
-
-          {/* FORMATION */}
-          <div className={styles.sectionHeader}>🎓 {language === 'fr' ? 'Formation' : 'Education'}</div>
-          <div className={styles.formationGrid}>
-            {!isLoading &&
-              formation?.map((form, idx) => (
-                <div key={idx} className={styles.formationCard}>
-                  <div className={styles.formLabel}>{form.label}</div>
-                  <div className={styles.formTitle}>{form.title}</div>
-                  <div className={styles.formSubtitle}>{form.sub}</div>
-                  <div className={styles.formMeta}>{form.meta}</div>
-                </div>
-              ))}
-          </div>
-
-          {/* ACTIVITY */}
-          <div className={styles.sectionHeader}>⚡ {language === 'fr' ? 'Activité Récente' : 'Recent Activity'}</div>
-          <div className={styles.activity}>
-            {!isLoading &&
-              activity?.map((act) => (
-                <div key={act.id} className={styles.activityItem}>
-                  <div className={`${styles.activityIcon} ${styles[act.type]}`}>{act.icon}</div>
-                  <div>
-                    <strong>
-                      {act.action} {act.repo}
-                    </strong>
-                    {act.detail && <div className={styles.activityTime}>{act.detail}</div>}
-                    <div className={styles.activityTime}>{act.time}</div>
-                  </div>
-                </div>
-              ))}
-          </div>
+          {activeTab === 'formations' && (
+            <>
+              {/* FORMATION */}
+              <div className={styles.sectionHeader}>🎓 {language === 'fr' ? 'Formation' : 'Education'}</div>
+              <div className={styles.formationGrid}>
+                {!isLoading &&
+                  formation?.map((form, idx) => (
+                    <div key={idx} className={styles.formationCard}>
+                      <div className={styles.formLabel}>{form.label}</div>
+                      <div className={styles.formTitle}>{form.title}</div>
+                      <div className={styles.formSubtitle}>{form.sub}</div>
+                      <div className={styles.formMeta}>{form.meta}</div>
+                    </div>
+                  ))}
+              </div>
+            </>
+          )}
         </main>
       </div>
 

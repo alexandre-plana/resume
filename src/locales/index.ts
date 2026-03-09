@@ -17,9 +17,8 @@ export interface Translations {
   }
   tabs: {
     overview: string
-    repositories: string
-    stars: string
-    packages: string
+    projects: string
+    formations: string
   }
   sections: {
     uiUxCulture: string
@@ -54,9 +53,8 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Aperçu',
-      repositories: 'Référentiels',
-      stars: 'Étoiles',
-      packages: 'Paquets',
+      projects: 'Projets',
+      formations: 'Formations',
     },
     sections: {
       uiUxCulture: '🎨 Culture UI/UX',
@@ -89,9 +87,8 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Overview',
-      repositories: 'Repositories',
-      stars: 'Stars',
-      packages: 'Packages',
+      projects: 'Projects',
+      formations: 'Trainings',
     },
     sections: {
       uiUxCulture: '🎨 UI/UX Culture',
