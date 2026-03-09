@@ -121,6 +121,10 @@
   margin-bottom: 20px;
 }
 
+.sidebarPrintQr {
+  display: none;
+}
+
 .seekingBox {
   background: var(--featured-bg);
   border: 1px solid var(--featured-border);
@@ -715,6 +719,15 @@
   .sidebar .tags {
     flex-wrap: wrap;
     gap: 4px;
+  }
+
+  .interestsLabel,
+  .interestsTags {
+    display: none !important;
+  }
+
+  .sidebarPrintQr {
+    display: block !important;
   }
 
   .timeline {
