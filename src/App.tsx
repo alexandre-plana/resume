@@ -1,10 +1,10 @@
 import { useProfile, useExperiences, useSkills, useFormation, useActivity, useProjects } from './hooks/useApi'
 import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
-import { LanguageSwitch } from './components/LanguageSwitch'
 import { Tabs } from './components/Tabs'
 import { TechBadge } from './components/TechBadge'
 import { ContactModal } from './components/ContactModal'
+import { Toolbar } from './components/Toolbar'
 import { getTranslations } from './locales'
 import styles from './App.module.css'
 
@@ -23,24 +23,18 @@ function App() {
   if (!profile) return <div className={styles.loading}>Chargement...</div>
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.layout}>
+    <>
+      <Toolbar language={language} onContact={() => setContactOpen(true)} />
+      <div className={styles.wrapper}>
+        <div className={styles.layout}>
         {/* SIDEBAR */}
         <aside className={styles.sidebar}>
           <Avatar name={profile.name} />
-          <LanguageSwitch />
 
           <div className={styles.profileName}>{profile.name}</div>
           <div className={styles.profileHandle}>@{profile.handle}</div>
           <div className={styles.profileTitle}>{profile.title}</div>
           <div className={styles.profileSubtitle}>{profile.subtitle}</div>
-
-          <div className={styles.btnRow}>
-            <button className={styles.btnPrimary} onClick={() => setContactOpen(true)}>
-              {t.common.contact}
-            </button>
-            <button className={styles.btnSecondary}>{t.common.follow}</button>
-          </div>
 
           <ul className={styles.meta}>
             <li>
@@ -136,13 +130,13 @@ function App() {
 
         {/* MAIN */}
         <main className={styles.main}>
-          <Tabs />
-
           {/* ABOUT */}
           <div className={styles.sectionHeader}>👤 {language === 'fr' ? 'À propos' : 'About'}</div>
           <div className={styles.aboutSection}>
             <p className={styles.aboutText}>{profile.bio}</p>
           </div>
+
+          <Tabs />
 
           {/* TABS CONTENT */}
           {activeTab === 'overview' && (
@@ -219,7 +213,7 @@ function App() {
 
           {activeTab === 'projects' && (
             <>
-              <div className={styles.sectionHeader}>📁 {language === 'fr' ? 'Projets' : 'Projects'}</div>
+              <div className={styles.sectionHeader}>📁 {language === 'fr' ? 'Projets professionnels' : 'Professional Projects'}</div>
               <div className={styles.timeline}>
                 {!isLoading &&
                   projects?.map((project) => (
@@ -267,13 +261,14 @@ function App() {
           )}
         </main>
       </div>
+      </div>
 
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} language={language} />
 
       <footer className={styles.footer}>
         {profile.handle} © 2026 · {profile.email} · {profile.phone}
       </footer>
-    </div>
+    </>
   )
 }
 
