@@ -1,0 +1,55 @@
+.wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: linear-gradient(135deg, #f78166 0%, #ff9a3c 40%, #3fb950 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 4rem;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -2px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px rgba(26, 127, 55, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(26, 127, 55, 0.08);
+  }
+}
