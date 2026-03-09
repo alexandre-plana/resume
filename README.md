@@ -1,13 +1,13 @@
-# CV Interactif - Alexandre Plana
+# Interactive Resume - Alexandre Plana
 
-Un CV interactif avec design GitHub-themed, construit avec React 18, TypeScript, Vite et CSS Modules.
+An interactive resume with a GitHub-themed design, built with React 18, TypeScript, Vite, and CSS Modules.
 
-## Stack Technique
+## Tech Stack
 
-- **Vite** - Build tool
+- **Vite** - Build tool & dev server
 - **React 18** - UI library
 - **TypeScript** - Type safety
-- **CSS Modules** - Component scoped styling
+- **CSS Modules** - Component-scoped styling
 - **Zustand** - State management
 - **TanStack Query v5** - Data fetching & caching
 
@@ -17,13 +17,13 @@ Un CV interactif avec design GitHub-themed, construit avec React 18, TypeScript,
 npm install
 ```
 
-## Développement
+## Development
 
 ```bash
 npm run dev
 ```
 
-Le serveur démarrera sur `http://localhost:5173`
+The dev server will start on `http://localhost:5173`
 
 ## Build
 
@@ -33,46 +33,47 @@ npm run build
 
 ## Architecture
 
-### Mode Mock-First
+### Mock-First Approach
 
-Par défaut, l'application utilise des données mockées. Pour basculer vers une API réelle, modifiez `src/api/config.ts` :
+By default, the application uses mock data. To switch to a real API, modify `src/api/config.ts`:
 
 ```typescript
 export const USE_MOCK = false // Change to true for mock data
 ```
 
-### Structure
+### Project Structure
 
 ```
 src/
-├── api/           # Services API & mock data
+├── api/           # API services & mock data
 ├── components/    # React components
-├── hooks/         # Custom hooks
+├── hooks/         # Custom React hooks
 ├── store/         # Zustand state management
-├── styles/        # Global styles & variables
-├── types/         # TypeScript types
-└── App.tsx        # Main app component
+├── styles/        # Global styles & CSS variables
+├── types/         # TypeScript type definitions
+└── App.tsx        # Main application component
 ```
 
-## Fonctionnalités
+## Features
 
-- ✅ Profil et bio personnalisés
-- ✅ Experiences professionnelles avec missions
-- ✅ Compétences technologiques avec badges colorés
-- ✅ Formation et diplômes
-- ✅ Graphique de contributions
-- ✅ Feed d'activité récente
-- ✅ Design responsive
-- ✅ Animations fluides
+- ✅ Personalized profile & bio
+- ✅ Professional experiences with detailed missions
+- ✅ Technical skills with color-coded badges
+- ✅ Education & certifications
+- ✅ Contribution graph visualization
+- ✅ Recent activity feed
+- ✅ Responsive design
+- ✅ Smooth animations
+- ✅ Bilingual support (FR/EN)
 
 ## Configuration
 
-Créez un fichier `.env` à la racine :
+Create a `.env` file at the project root:
 
 ```
 VITE_API_URL=http://localhost:3000/api
 ```
 
-## Licence
+## License
 
 MIT
