@@ -66,11 +66,6 @@ function App() {
             </div>
           </div>
 
-          <div className={styles.seekingBox}>
-            <strong>{t.sidebar.seekingLabel}</strong>
-            {profile.seeking}
-          </div>
-
           <div className={styles.section}>
             <div className={styles.label}>Top languages</div>
             <div className={styles.langBar}>
@@ -109,16 +104,7 @@ function App() {
           </div>
 
           <div className={styles.section}>
-            <div className={styles.label}>{t.sidebar.awards === '🏆 Awards' ? '🏆 Awards' : t.sidebar.awards}</div>
-            {profile.awards.map((award) => (
-              <div key={`${award.year}-${award.title}`} className={styles.awardItem}>
-                <strong>{award.title} {award.year}</strong>
-                {award.desc}
-              </div>
-            ))}
-          </div>
 
-          <div className={styles.section}>
             <div className={styles.label}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
             <div className={styles.tags}>
               {profile.interests.map((interest) => (
@@ -178,7 +164,6 @@ function App() {
                                 ))}
                               </div>
                             )}
-                            <div className={styles.missionStack}>{mission.stack}</div>
                             <div className={styles.tags}>
                               {mission.tags.map((tag) => (
                                 <TechBadge key={tag} label={tag} kind={tag} />
@@ -192,21 +177,23 @@ function App() {
               </div>
 
               {/* COMPÉTENCES */}
-              <div className={styles.sectionHeader}>🏷 {language === 'fr' ? 'Compétences & Technologies' : 'Skills & Technologies'}</div>
-              <div className={styles.skillsBlock}>
-                {!isLoading &&
-                  skills?.map((skillCat, idx) => (
-                    <div key={idx} className={skillCat.featured ? styles.skCatFeatured : styles.skCat}>
-                      <div className={skillCat.featured ? styles.catLabelFeatured : styles.catLabel}>
-                        {skillCat.cat}
+              <div className={styles.skillsSection}>
+                <div className={styles.sectionHeader}>🏷 {language === 'fr' ? 'Compétences & Technologies' : 'Skills & Technologies'}</div>
+                <div className={styles.skillsBlock}>
+                  {!isLoading &&
+                    skills?.map((skillCat, idx) => (
+                      <div key={idx} className={skillCat.featured ? styles.skCatFeatured : styles.skCat}>
+                        <div className={skillCat.featured ? styles.catLabelFeatured : styles.catLabel}>
+                          {skillCat.cat}
+                        </div>
+                        <div className={styles.tags}>
+                          {skillCat.tags.map((tag) => (
+                            <TechBadge key={tag.k} label={tag.l} kind={tag.k} />
+                          ))}
+                        </div>
                       </div>
-                      <div className={styles.tags}>
-                        {skillCat.tags.map((tag) => (
-                          <TechBadge key={tag.k} label={tag.l} kind={tag.k} />
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                </div>
               </div>
             </>
           )}
