@@ -1,15 +1,16 @@
 import React from 'react'
+import avatarImg from '../Avatar.png'
 import styles from './Avatar.module.css'
 
 interface AvatarProps {
   name: string
-  initials: string
+  initials?: string
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ name, initials }) => {
+export const Avatar: React.FC<AvatarProps> = ({ name }) => {
   return (
     <div className={styles.wrap}>
-      <div className={styles.avatar}>{initials}</div>
+      <img src={avatarImg} alt={name} className={styles.avatar} />
       <div className={styles.badge}>
         <span className={styles.dot}></span>
         Open to work

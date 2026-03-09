@@ -4,6 +4,7 @@ import { Avatar } from './components/Avatar'
 import { LanguageSwitch } from './components/LanguageSwitch'
 import { Tabs } from './components/Tabs'
 import { TechBadge } from './components/TechBadge'
+import { ContactModal } from './components/ContactModal'
 import { getTranslations } from './locales'
 import styles from './App.module.css'
 
@@ -14,7 +15,7 @@ function App() {
   const { data: skills, isLoading: skillsLoading } = useSkills()
   const { data: formation, isLoading: formationLoading } = useFormation()
   const { data: activity, isLoading: activityLoading } = useActivity()
-  const { language, activeTab } = useAppStore()
+  const { language, activeTab, contactOpen, setContactOpen } = useAppStore()
   const t = getTranslations(language)
 
   const isLoading = profileLoading || expLoading || projLoading || skillsLoading || formationLoading || activityLoading
@@ -26,7 +27,7 @@ function App() {
       <div className={styles.layout}>
         {/* SIDEBAR */}
         <aside className={styles.sidebar}>
-          <Avatar name={profile.name} initials="AP" />
+          <Avatar name={profile.name} />
           <LanguageSwitch />
 
           <div className={styles.profileName}>{profile.name}</div>
@@ -35,7 +36,9 @@ function App() {
           <div className={styles.profileSubtitle}>{profile.subtitle}</div>
 
           <div className={styles.btnRow}>
-            <button className={styles.btnPrimary}>{t.common.contact}</button>
+            <button className={styles.btnPrimary} onClick={() => setContactOpen(true)}>
+              {t.common.contact}
+            </button>
             <button className={styles.btnSecondary}>{t.common.follow}</button>
           </div>
 
@@ -264,6 +267,8 @@ function App() {
           )}
         </main>
       </div>
+
+      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} language={language} />
 
       <footer className={styles.footer}>
         {profile.handle} © 2026 · {profile.email} · {profile.phone}

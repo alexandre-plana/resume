@@ -19,12 +19,10 @@ export const mockProfile: Profile = {
     { label: 'Anglais', level: 'Technique' },
   ],
   languages: [
-    { name: 'TypeScript', pct: 26, color: '#3178c6' },
-    { name: 'Vue.js', pct: 22, color: '#41b883' },
-    { name: 'JavaScript', pct: 16, color: '#f1e05a' },
-    { name: 'C#', pct: 18, color: '#178600' },
+    { name: 'TypeScript', pct: 35, color: '#3178c6' },
+    { name: 'C#', pct: 35, color: '#178600' },
+    { name: 'HTML5/CSS', pct: 20, color: '#e34c26' },
     { name: 'Dart', pct: 10, color: '#00b4d8' },
-    { name: 'Unity/HLSL', pct: 8, color: '#a97bff' },
   ],
   awards: [
     { year: '2012', title: 'Laval Virtual', desc: 'Prix du jury — reconstitution virtuelle Abbaye d\'Evron' },
