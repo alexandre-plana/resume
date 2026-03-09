@@ -189,3 +189,9 @@
 .btnSend:hover {
   background: #0860ca;
 }
+
+@media print {
+  .overlay {
+    display: none !important;
+  }
+}

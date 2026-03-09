@@ -45,11 +45,16 @@
 
 @media print {
   .wrap {
-    display: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4px;
   }
 
   .avatar {
-    display: none !important;
+    width: 200px !important;
+    height: 200px !important;
   }
 
   .badge {
