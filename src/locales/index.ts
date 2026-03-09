@@ -53,7 +53,7 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Aperçu',
-      projects: 'Projets',
+      projects: 'Projets professionnels',
       formations: 'Formations',
     },
     sections: {
@@ -87,7 +87,7 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Overview',
-      projects: 'Projects',
+      projects: 'Professional Projects',
       formations: 'Trainings',
     },
     sections: {

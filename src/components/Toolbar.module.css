@@ -1,0 +1,103 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px 16px;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contactBtn {
+  padding: 6px 12px;
+  border: 1px solid var(--blue);
+  background-color: var(--blue);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.contactBtn:hover {
+  opacity: 0.9;
+}
+
+.contactBtn:active {
+  transform: scale(0.98);
+}
+
+.langControl {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.langBtn {
+  padding: 6px 10px;
+  border: none;
+  background-color: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.langBtn:hover {
+  background-color: var(--border);
+}
+
+.langBtn.active {
+  background-color: var(--blue);
+  color: white;
+}
+
+.printBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  background-color: var(--bg);
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.printBtn:hover {
+  background-color: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+.printBtn:active {
+  transform: scale(0.98);
+}
+
+.icon {
+  font-size: 16px;
+}
+
+@media print {
+  .toolbar {
+    display: none;
+  }
+}

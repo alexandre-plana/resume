@@ -56,7 +56,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     profile: {
       title: 'Développeur Front End Web',
       subtitle: 'Industrie · UI/UX · Multi Plateforme',
-      bio: 'Développeur Front End spécialisé industrie depuis 13 ans. D\'abord sur des interfaces 3D / VR pour EDF, RTE, AREVA et DCNS, puis sur une application AR mobile multi-plateforme, aujourd\'hui sur des architectures web micro-frontend pour l\'IIoT. La techno évolue, le domaine reste : des interfaces complexes pour des environnements industriels exigeants. Sensibilité UI/UX forgée par la pratique du design sur l\'ensemble du parcours.',
+      bio: 'Développeur Front-End Senior (13 ans d\'expérience) spécialisé dans les environnements industriels : IIoT, énergie, nucléaire et défense. J\'ai conçu et développé des interfaces utilisateurs pour Schneider Electric, EDF, RTE, AREVA et DCNS, développé une application AR mobile multi‑plateforme, et contribué à des architectures web micro‑frontend dédiées à l\'IIoT. Compétences clés : JavaScript/TypeScript, React, Vue, design system, performance, intégration UI/UX et industrialisation front-end. Je transforme des problématiques métiers exigeantes en interfaces fiables, intuitives et adaptées aux usages industriels.',
       company: 'Consultant R&D · Datacorp / Schneider Electric',
       seeking: 'Poste Front End web dans un contexte industriel · Vue.js ou React · TypeScript · micro-frontend · équipe orientée qualité & UX',
       interests: ['🎮 Jeux', '🚵 VTT', '🥾 Rando', '🍳 Cuisine'],
@@ -169,7 +169,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     profile: {
       title: 'Senior Frontend Engineer',
       subtitle: 'Industrial · UI/UX · Multi-Platform',
-      bio: '13+ years of frontend specialization in industrial UI/UX. Started with 3D/VR interfaces for EDF, RTE, AREVA, and DCNS, then built cross-platform AR mobile apps, now architecting micro-frontend web systems for IIoT. Technology evolves, domain stays constant: complex interfaces for demanding industrial environments. UI/UX sensibility forged through design practice across the entire journey.',
+      bio: 'Senior Frontend Developer (13 years of experience) specialized in industrial environments: IIoT, energy, nuclear and defense. I have designed and developed user interfaces for Schneider Electric, EDF, RTE, AREVA and DCNS, built a cross-platform mobile AR application, and contributed to micro-frontend web architectures dedicated to IIoT. Key skills: JavaScript/TypeScript, React, Vue, design systems, performance, UI/UX integration and frontend industrialization. I transform complex business challenges into reliable, intuitive interfaces tailored to industrial environments.',
       company: 'R&D Consultant · Datacorp / Schneider Electric',
       seeking: 'Frontend role in industrial context · Vue.js or React · TypeScript · micro-frontends · quality & UX-oriented team',
       interests: ['🎮 Gaming', '🚵 Mountain Biking', '🥾 Hiking', '🍳 Cooking'],
