@@ -54,7 +54,7 @@ export const translations: Record<Language, Translations> = {
     tabs: {
       overview: 'Aperçu',
       projects: 'Projets professionnels',
-      formations: 'Formations',
+      formations: 'Formations & projets persos',
     },
     sections: {
       uiUxCulture: '🎨 Culture UI/UX',
@@ -88,7 +88,7 @@ export const translations: Record<Language, Translations> = {
     tabs: {
       overview: 'Overview',
       projects: 'Professional Projects',
-      formations: 'Trainings',
+      formations: 'Trainings & Personal Projects',
     },
     sections: {
       uiUxCulture: '🎨 UI/UX Culture',
