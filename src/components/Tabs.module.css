@@ -37,3 +37,9 @@
   font-size: 0.72rem;
   color: var(--text-2);
 }
+
+@media print {
+  .tabs {
+    display: none !important;
+  }
+}

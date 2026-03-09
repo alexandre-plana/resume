@@ -212,7 +212,7 @@ function App() {
           )}
 
           {activeTab === 'projects' && (
-            <>
+            <div className={styles.projectsSection}>
               <div className={styles.sectionHeader}>📁 {language === 'fr' ? 'Projets professionnels' : 'Professional Projects'}</div>
               <div className={styles.timeline}>
                 {!isLoading &&
@@ -239,11 +239,11 @@ function App() {
                     </div>
                   ))}
               </div>
-            </>
+            </div>
           )}
 
           {activeTab === 'formations' && (
-            <>
+            <div className={styles.formationsSection}>
               {/* FORMATION */}
               <div className={styles.sectionHeader}>🎓 {language === 'fr' ? 'Formation' : 'Education'}</div>
               <div className={styles.formationGrid}>
@@ -257,7 +257,7 @@ function App() {
                     </div>
                   ))}
               </div>
-            </>
+            </div>
           )}
         </main>
       </div>
