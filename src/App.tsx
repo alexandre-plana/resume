@@ -5,6 +5,7 @@ import { Tabs } from './components/Tabs'
 import { TechBadge } from './components/TechBadge'
 import { ContactModal } from './components/ContactModal'
 import { Toolbar } from './components/Toolbar'
+import { QRCode } from './components/QRCode'
 import { getTranslations } from './locales'
 import styles from './App.module.css'
 
@@ -104,12 +105,14 @@ function App() {
           </div>
 
           <div className={styles.section}>
-
-            <div className={styles.label}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
-            <div className={styles.tags}>
+            <div className={`${styles.label} ${styles.interestsLabel}`}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
+            <div className={`${styles.tags} ${styles.interestsTags}`}>
               {profile.interests.map((interest) => (
                 <TechBadge key={interest} label={interest} kind="green" />
               ))}
+            </div>
+            <div className={styles.sidebarPrintQr}>
+              <QRCode url="https://alexandre-plana.github.io/resume/" language={language} />
             </div>
           </div>
         </aside>
@@ -246,6 +249,7 @@ function App() {
               </div>
             </div>
           )}
+
         </main>
       </div>
       </div>

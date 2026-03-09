@@ -1,0 +1,79 @@
+.qrCodeContainer {
+  display: none;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+@media print {
+  .qrCodeContainer {
+    display: block;
+    page-break-inside: avoid;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .qrCodeCard {
+    gap: 0.4rem;
+    padding: 0.4rem;
+    border-radius: 6px;
+    max-width: 100%;
+  }
+
+  .qrCodeImage {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .qrCodeText {
+    gap: 0.1rem;
+  }
+
+  .qrCodeLabel {
+    font-size: 0.58rem;
+    line-height: 1.1;
+  }
+
+  .qrCodeUrl {
+    display: none;
+  }
+}
+
+.qrCodeCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+.qrCodeImage {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.qrCodeText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.qrCodeLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.qrCodeUrl {
+  font-size: 0.875rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--text-primary);
+  word-break: break-all;
+}
