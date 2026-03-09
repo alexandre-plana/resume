@@ -1,0 +1,62 @@
+.contrib {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.header {
+  font-size: 0.83rem;
+  color: var(--text-2);
+  margin-bottom: 12px;
+}
+
+.header strong {
+  color: var(--text);
+}
+
+.grid {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.day {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  cursor: default;
+  transition: transform 0.1s;
+}
+
+.day:hover {
+  transform: scale(1.5);
+}
+
+.legend {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legendItems {
+  display: flex;
+  gap: 3px;
+}
+
+.legendItem {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+}
