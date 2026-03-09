@@ -298,7 +298,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: 4,
-    name: 'oreka-dosicase',
+    name: 'oreka/dosicase',
     company: 'Oreka Ingénierie',
     role: 'Conception & Design UI/UX',
     period: '2015 – 2017',
@@ -311,7 +311,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: 5,
-    name: 'areva-emem',
+    name: 'areva/emem',
     company: 'AREVA / Oreka Ingénierie',
     role: 'C# / 3D Developer',
     period: '2014 – 2016',
@@ -323,7 +323,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: 6,
-    name: 'suez-radioprotection',
+    name: 'suez/serious-game-radioprotection',
     company: 'SUEZ / Oreka Ingénierie',
     role: 'C# / 3D Developer',
     period: '2014 – 2015',

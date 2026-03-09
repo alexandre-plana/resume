@@ -48,7 +48,7 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
     },
     {
       id: 4,
-      name: 'oreka-dosicase',
+      name: 'oreka/dosicase',
       company: 'Oreka Ingénierie',
       role: 'Conception & Design UI/UX',
       period: '2015 – 2017',
@@ -73,7 +73,7 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
     },
     {
       id: 6,
-      name: 'suez-radioprotection',
+      name: 'suez/serious-game-radioprotection',
       company: 'SUEZ / Oreka Ingénierie',
       role: 'Développeur C# / 3D',
       period: '2014 – 2015',
@@ -137,7 +137,7 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
     },
     {
       id: 4,
-      name: 'oreka-dosicase',
+      name: 'oreka/dosicase',
       company: 'Oreka Engineering',
       role: 'Design & UX Conception',
       period: '2015 – 2017',
@@ -150,7 +150,7 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
     },
     {
       id: 5,
-      name: 'areva-emem',
+      name: 'areva/emem',
       company: 'AREVA / Oreka Ingénierie',
       role: 'C# / 3D Developer',
       period: '2014 – 2016',
@@ -162,7 +162,7 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
     },
     {
       id: 6,
-      name: 'suez-radioprotection',
+      name: 'suez/serious-game-radioprotection',
       company: 'SUEZ / Oreka Engineering',
       role: 'C# / 3D Developer',
       period: '2014 – 2015',
