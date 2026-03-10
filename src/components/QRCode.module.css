@@ -1,42 +1,56 @@
 .qrCodeContainer {
   display: none;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-color);
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }
 
 @media print {
   .qrCodeContainer {
     display: block;
-    page-break-inside: avoid;
     margin-top: 0;
     padding-top: 0;
     border-top: 0;
+    width: 100%;
   }
 
   .qrCodeCard {
-    gap: 0.4rem;
-    padding: 0.4rem;
-    border-radius: 6px;
+    gap: 0.45rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: var(--radius);
     max-width: 100%;
+    width: 100%;
+    border: 1px solid var(--border);
+    background: var(--bg-2);
   }
 
   .qrCodeImage {
-    width: 48px !important;
-    height: 48px !important;
+    width: 28px !important;
+    height: 28px !important;
   }
 
   .qrCodeText {
-    gap: 0.1rem;
+    gap: 0.35rem;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
   }
 
   .qrCodeLabel {
-    font-size: 0.58rem;
+    font-size: 0.62rem;
     line-height: 1.1;
+    white-space: nowrap;
   }
 
-  .qrCodeUrl {
-    display: none;
+  .qrCodeMessage {
+    display: block;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    color: var(--text-2);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -71,9 +85,8 @@
   letter-spacing: 0.05em;
 }
 
-.qrCodeUrl {
+.qrCodeMessage {
   font-size: 0.875rem;
-  font-family: "JetBrains Mono", monospace;
   color: var(--text-primary);
-  word-break: break-all;
+  line-height: 1.3;
 }

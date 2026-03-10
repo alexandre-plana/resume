@@ -121,7 +121,7 @@
   margin-bottom: 20px;
 }
 
-.sidebarPrintQr {
+.printQrBanner {
   display: none;
 }
 
@@ -662,27 +662,28 @@
     height: auto;
   }
 
+  :global(#root) {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
   .wrapper {
     padding-top: 0;
     max-width: 100%;
     margin: 0;
-    page-break-inside: avoid;
     width: 100%;
     height: auto;
-    padding: 16px !important;
+    padding: 10px !important;
   }
 
   .layout {
     display: flex !important;
     flex-direction: row !important;
     gap: 16px !important;
-    page-break-inside: avoid;
     width: 100%;
-    page-break-after: avoid;
   }
 
   .sidebar {
-    page-break-inside: avoid;
     width: 170px !important;
     min-width: 170px !important;
     max-width: 170px !important;
@@ -695,8 +696,6 @@
   }
 
   .main {
-    page-break-inside: avoid;
-    page-break-after: avoid;
     flex: 1 !important;
     overflow: hidden !important;
     min-width: 0;
@@ -721,13 +720,11 @@
     gap: 4px;
   }
 
-  .interestsLabel,
-  .interestsTags {
-    display: none !important;
-  }
-
-  .sidebarPrintQr {
+  .printQrBanner {
     display: block !important;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 12px;
   }
 
   .timeline {
@@ -792,10 +789,6 @@
     display: none !important;
   }
 
-  .main {
-    page-break-after: avoid !important;
-  }
-
   html {
     height: auto !important;
   }
@@ -807,10 +800,6 @@
     padding: 0 !important;
     min-height: auto !important;
     max-height: none !important;
-  }
-
-  * {
-    page-break-inside: avoid !important;
   }
 }
 
