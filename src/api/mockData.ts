@@ -52,7 +52,14 @@ export const mockExperiences: Experience[] = [
         period: '2023 – 2026',
         context: 'Industrial Automation Edge (IECA)',
         desc: 'Développement d\'applications Edge industrielles en architecture micro-frontend (single-spa) avec Vue 3 + TypeScript. Contribution active à la vie du projet en Scrum (refinement, sprint planning, daily, review, retrospective), avec un focus constant sur la qualité, la performance et l\'accessibilité.',
-        descLong: 'Développement d\'Edge compute apps industrielles en architecture micro-frontend (single-spa). Développement Vue 3 + TypeScript en équipe Scrum.\n\nCette première expérience web s\'est avérée très enrichissante. J\'ai pu me familiariser en profondeur avec l\'architecture micro-frontend, un paradigme puissant permettant le déploiement indépendant de plusieurs applications. J\'ai également maîtrisé l\'orchestration avec single-spa et mis en place les standards de qualité, performance et accessibilité attendus.\n\n• Concevoir et développer des composants front réutilisables par les différentes équipes du projet\n• Implémenter une architecture micro-frontend\n• Implémenter les tests unitaires en utilisant Jest\n• Surveiller les performances et le bon fonctionnement de l\'application, et améliorer la qualité du code via SonarQube\n• Amélioration continue de l\'architecture et de la scalabilité du projet',
+        tasks: [
+          'Concevoir et développer des composants front réutilisables par les différentes équipes du projet',
+          'Implémenter une architecture micro-frontend',
+          'Implémenter les tests unitaires en utilisant Jest',
+          'Surveiller les performances et le bon fonctionnement de l\'application, et améliorer la qualité du code via SonarQube',
+          'Amélioration continue de l\'architecture et de la scalabilité du projet',
+        ],
+        retrospective: 'Première expérience web très enrichissante dans un environnement industriel exigeant. Cette mission m\'a permis de structurer des pratiques frontend robustes, de monter en compétence sur l\'architecture micro-frontend.',
         isCurrent: true,
         metrics: [],
         stack: 'Vue 3 · TypeScript · single-spa · Docker · Jest · HTML5 · CSS3 · Git · Figma · Jira',
@@ -68,8 +75,7 @@ export const mockExperiences: Experience[] = [
         badge: 'Développeur C# / Unity',
         period: '2017 – 2023',
         context: 'Augmented Operator Advisor (AOA) — Application AR industrielle',
-        desc: 'Développement pendant 6 ans d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels Schneider Electric. Conception et implémentation des interfaces opérateur, gestion des états complexes de la couche AR.',
-        descLong: 'Développement complet d\'une application de réalité augmentée multi-plateforme pour les opérateurs et techniciens Schneider Electric. Équipe de 8-12 personnes en méthodologie Scrum. Gestion de la complexité des états AR en temps réel sur dispositifs mobiles et Windows. Gestion d\'une architecture robuste capable de gérer des milliers d\'assets industriels annotés. Optimisation des performances et batterie sur appareils mobiles. Maintien de la qualité à travers 6 ans d\'évolutions. Utilisation de ARKit, ARCore et intégrations custom avec capteurs industriels.',
+        desc: 'Développement pendant 6 ans d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels. Conception et implémentation des interfaces opérateur, gestion des états complexes de la couche AR.',
         metrics: [
           { value: '6 ans', label: 'développement\ncontinu' },
           { value: '3', label: 'plateformes\nsimultanées' },
@@ -98,7 +104,6 @@ export const mockExperiences: Experience[] = [
         period: '2013 – 2017',
         context: 'Projets VR/AR industriels — EDF · RTE · AREVA · DCNS · Énergies renouvelables',
         desc: 'Développement d\'interfaces 3D et de simulations VR/AR pour grands comptes de l\'industrie lourde et de l\'énergie. Projets livrés : EDF Aeroball, AREVA EMEM, DCNS simulateurs, RTE supervision, SUEZ radio protection.',
-        descLong: 'Développeur 3D et XR pour Oreka Ingénierie, éditeur de solutions de réalité virtuelle et augmentée pour l\'industrie. Contributeur principal sur 6+ projets majeurs pour des clients Fortune 500 : visualisation d\'installations EDF pour formation opérateurs, gestion des actifs AREVA, simulateurs DCNS pour la défense, outils de supervision RTE, applications de radioprotection SUEZ. Maîtrise complète de la chaîne de production : modélisation 3ds Max, rigging, optimisation temps réel, intégration de données complexes. Participation au design des solutions et présentations clients. Intégration WPF/WinForm pour interfaces de contrôle industriel.',
         metrics: [
           { value: '6+', label: 'projets\nindustriels' },
           { value: '5', label: 'clients grands\ncomptes' },
@@ -119,7 +124,7 @@ export const mockSkills: Skill[] = [
     cat: 'Frameworks',
     featured: false,
     tags: [
-      { l: 'Vue.js', k: 'vue' },
+      { l: 'Vue3', k: 'vue' },
       { l: 'React', k: 'react' },
       { l: 'single-spa', k: 'spa' },
       { l: 'Jest', k: 'jest' },
@@ -133,13 +138,9 @@ export const mockSkills: Skill[] = [
     tags: [
       { l: 'Docker', k: 'docker' },
       { l: 'Git', k: 'git' },
-      { l: 'CI/CD', k: 'green' },
       { l: 'Postman', k: 'green' },
       { l: 'Jira', k: 'jira' },
       { l: 'Figma', k: 'figma' },
-      { l: 'Adobe XD', k: 'figma' },
-      { l: '3ds Max', k: '3d' },
-      { l: 'SolidWorks', k: 'solidworks' },
     ],
   },
 ]
