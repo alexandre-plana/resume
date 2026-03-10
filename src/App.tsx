@@ -30,7 +30,7 @@ function App() {
   const { data: skills, isLoading: skillsLoading } = useSkills()
   const { data: formation, isLoading: formationLoading } = useFormation()
   const { data: activity, isLoading: activityLoading } = useActivity()
-  const { language, activeTab, contactOpen, setContactOpen } = useAppStore()
+  const { language, activeTab, contactOpen, setContactOpen, setActiveTab } = useAppStore()
   const t = getTranslations(language)
 
   const isLoading = profileLoading || expLoading || projLoading || skillsLoading || formationLoading || activityLoading
@@ -63,6 +63,12 @@ function App() {
   const closeMissionPopout = () => {
     setActiveMission(null)
   }
+
+  useEffect(() => {
+    if (activeTab === 'skills') {
+      setActiveTab('overview')
+    }
+  }, [activeTab, setActiveTab])
 
   useEffect(() => {
     if (!activeMission) return
@@ -132,7 +138,7 @@ function App() {
           </div>
 
           <div className={styles.section}>
-            <div className={styles.label}>Top languages</div>
+            <div className={styles.label}>{language === 'fr' ? 'Langages' : 'Languages'}</div>
             <div className={styles.langBar}>
               {profile.languages.map((lang, idx) => (
                 <div
@@ -159,12 +165,21 @@ function App() {
           </div>
 
           <div className={styles.section}>
-            <div className={styles.label}>{t.sections.uiUxCulture}</div>
-            <div className={styles.uiuxDesc}>{profile.uiuxHighlight.desc}</div>
-            <div className={styles.tags}>
-              {profile.uiuxHighlight.tools.map((tool, idx) => (
-                <TechBadge key={`${tool}-${idx}`} label={tool} kind={tool === 'Figma' || tool === 'Adobe XD' ? 'figma' : 'uiux'} />
-              ))}
+            <div className={styles.label}>{language === 'fr' ? 'Compétences clés' : 'Core Skills'}</div>
+            <div className={styles.sidebarSkillList}>
+              {!isLoading &&
+                skills?.map((skillCat, idx) => (
+                  <div key={idx} className={skillCat.featured ? styles.sidebarSkillGroupFeatured : styles.sidebarSkillGroup}>
+                    <div className={skillCat.featured ? styles.sidebarSkillTitleFeatured : styles.sidebarSkillTitle}>
+                      {skillCat.cat.replace(/^\/\/\s*/, '')}
+                    </div>
+                    <div className={styles.tags}>
+                      {skillCat.tags.map((tag, tagIdx) => (
+                        <TechBadge key={`sidebar-skill-${idx}-${tag.k}-${tagIdx}`} label={tag.l} kind={tag.k} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
 
@@ -172,7 +187,7 @@ function App() {
             <div className={styles.label}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
             <div className={styles.tags}>
               {profile.interests.map((interest, idx) => (
-                <TechBadge key={`${interest}-${idx}`} label={interest} kind="green" />
+                <TechBadge key={`${interest}-${idx}`} label={interest} kind="interest" />
               ))}
             </div>
           </div>
@@ -244,30 +259,6 @@ function App() {
 
               <div className={styles.printQrBanner}>
                 <QRCode url="https://alexandre-plana.github.io/resume/" language={language} />
-              </div>
-            </>
-          )}
-
-          {activeTab === 'skills' && (
-            <>
-              {/* COMPÉTENCES */}
-              <div className={styles.skillsSection}>
-                <div className={styles.sectionHeader}>🏷 {language === 'fr' ? 'Compétences & Technologies' : 'Skills & Technologies'}</div>
-                <div className={styles.skillsBlock}>
-                  {!isLoading &&
-                    skills?.map((skillCat, idx) => (
-                      <div key={idx} className={skillCat.featured ? styles.skCatFeatured : styles.skCat}>
-                        <div className={skillCat.featured ? styles.catLabelFeatured : styles.catLabel}>
-                          {skillCat.cat}
-                        </div>
-                        <div className={styles.tags}>
-                          {skillCat.tags.map((tag, tagIdx) => (
-                            <TechBadge key={`skill-${idx}-${tag.k}-${tagIdx}`} label={tag.l} kind={tag.k} />
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                </div>
               </div>
             </>
           )}

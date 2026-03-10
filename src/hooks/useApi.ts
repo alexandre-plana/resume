@@ -52,6 +52,7 @@ export const useExperiences = () => {
               badge: missionLocale?.badge || mission.badge,
               context: missionLocale?.context || mission.context,
               desc: missionLocale?.desc || mission.desc,
+              descLong: missionLocale?.descLong || mission.descLong,
               metrics: (missionLocale?.metrics || mission.metrics).map((m, idx) => ({
                 ...mission.metrics[idx],
                 label: m.label,
