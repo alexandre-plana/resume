@@ -105,14 +105,11 @@ function App() {
           </div>
 
           <div className={styles.section}>
-            <div className={`${styles.label} ${styles.interestsLabel}`}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
-            <div className={`${styles.tags} ${styles.interestsTags}`}>
+            <div className={styles.label}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
+            <div className={styles.tags}>
               {profile.interests.map((interest) => (
                 <TechBadge key={interest} label={interest} kind="green" />
               ))}
-            </div>
-            <div className={styles.sidebarPrintQr}>
-              <QRCode url="https://alexandre-plana.github.io/resume/" language={language} />
             </div>
           </div>
         </aside>
@@ -177,6 +174,10 @@ function App() {
                       </div>
                     </div>
                   ))}
+              </div>
+
+              <div className={styles.printQrBanner}>
+                <QRCode url="https://alexandre-plana.github.io/resume/" language={language} />
               </div>
 
               {/* COMPÉTENCES */}
