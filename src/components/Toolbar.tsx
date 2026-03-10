@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { useAppStore } from '../store/appStore'
 import styles from './Toolbar.module.css'
 import { getTranslations } from '../locales'
@@ -10,6 +11,34 @@ interface ToolbarProps {
 export function Toolbar({ language, onContact }: ToolbarProps) {
   const { setLanguage } = useAppStore()
   const t = getTranslations(language)
+  const [isHidden, setIsHidden] = useState(false)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      const isScrollingDown = currentScrollY > lastScrollY.current
+      const delta = Math.abs(currentScrollY - lastScrollY.current)
+
+      if (currentScrollY <= 8) {
+        setIsHidden(false)
+      } else if (delta > 4 && isScrollingDown) {
+        setIsHidden(true)
+      } else if (delta > 4 && !isScrollingDown) {
+        setIsHidden(false)
+      }
+
+      lastScrollY.current = currentScrollY
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const handlePrint = () => {
     window.print()
@@ -18,7 +47,7 @@ export function Toolbar({ language, onContact }: ToolbarProps) {
   const printLabel = language === 'fr' ? 'Imprimer' : 'Print'
 
   return (
-    <div className={styles.toolbar}>
+    <div className={`${styles.toolbar} ${isHidden ? styles.toolbarHidden : ''}`}>
       <div className={styles.actions}>
         {/* TODO: Réactiver le bouton Me contacter */}
         {/* <button className={styles.contactBtn} onClick={onContact}>

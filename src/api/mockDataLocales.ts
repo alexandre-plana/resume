@@ -56,7 +56,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     profile: {
       title: 'Développeur Front End Web',
       subtitle: 'Industrie · UI/UX · Multi Plateforme',
-      bio: 'Développeur Front-End Senior (13 ans d\'expérience) spécialisé dans les environnements industriels : IIoT, énergie, nucléaire et défense. J\'ai conçu et développé des interfaces utilisateurs pour Schneider Electric, EDF, RTE, AREVA et DCNS, développé une application AR mobile multi‑plateforme, et contribué à des architectures web micro‑frontend dédiées à l\'IIoT. Compétences clés : JavaScript/TypeScript, React, Vue, design system, performance, intégration UI/UX et industrialisation front-end. Je transforme des problématiques métiers exigeantes en interfaces fiables, intuitives et adaptées aux usages industriels.',
+      bio: 'Développeur Front-End Senior avec 13 ans d\'expérience, j\'ai passé ma carrière dans des secteurs où ce qu\'on construit a un impact concret : énergie, nucléaire, défense, IIoT. De Schneider Electric à AREVA en passant par EDF, j\'ai appris qu\'une bonne interface, c\'est avant tout une interface qu\'on comprend vite et sur laquelle on peut compter. Au fil des projets et des stacks, j\'ai développé la conviction que la technologie est un moyen, jamais une fin — et c\'est avec cet état d\'esprit que j\'aborde chaque nouveau défi.',
       company: 'Consultant R&D · Datacorp / Schneider Electric',
       seeking: 'Poste Front End web dans un contexte industriel · Vue.js ou React · TypeScript · micro-frontend · équipe orientée qualité & UX',
       interests: ['🎮 Jeux', '🚵 VTT', '🥾 Rando', '🍳 Cuisine'],
