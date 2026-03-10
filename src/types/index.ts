@@ -36,7 +36,8 @@ export interface Mission {
   period: string
   context: string
   desc: string
-  descLong: string
+  tasks?: string[]
+  retrospective?: string
   metrics: Metric[]
   stack: string
   tags: string[]

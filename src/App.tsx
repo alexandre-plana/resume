@@ -350,19 +350,45 @@ function App() {
               </button>
             </div>
 
-            <div className={styles.missionModalContext}>{activeMission.mission.context}</div>
-            <div className={styles.missionModalDesc}>{activeMission.mission.descLong}</div>
+            <div className={styles.missionModalCore}>
+              <div className={styles.missionModalContext}>{activeMission.mission.context}</div>
+              <div className={styles.missionModalDesc}>{activeMission.mission.desc}</div>
 
-            {activeMission.mission.featured && activeMission.mission.metrics.length > 0 && (
-              <div className={styles.metricsGrid}>
-                {activeMission.mission.metrics.map((metric, idx) => (
-                  <div key={idx} className={styles.metricItem}>
-                    <div className={styles.metricValue}>{metric.value}</div>
-                    <div className={styles.metricLabel}>{metric.label}</div>
+              {activeMission.mission.tasks && activeMission.mission.tasks.length > 0 && (
+                <div className={styles.missionTasksSection}>
+                  <div className={styles.missionTasksTitle}>
+                    {language === 'fr' ? 'exemple de taches effectués' : 'Tasks Performed On The Project'}
                   </div>
-                ))}
-              </div>
-            )}
+                  <ul className={styles.missionTasksList}>
+                    {activeMission.mission.tasks.map((task, idx) => (
+                      <li key={`mission-task-${activeMission.mission.id}-${idx}`} className={styles.missionTaskItem}>
+                        {task}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {activeMission.mission.featured && activeMission.mission.metrics.length > 0 && (
+                <div className={styles.metricsGrid}>
+                  {activeMission.mission.metrics.map((metric, idx) => (
+                    <div key={idx} className={styles.metricItem}>
+                      <div className={styles.metricValue}>{metric.value}</div>
+                      <div className={styles.metricLabel}>{metric.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {activeMission.mission.retrospective && (
+                <div className={styles.missionRetrospectiveSection}>
+                  <div className={styles.missionRetrospectiveTitle}>
+                    {language === 'fr' ? 'Retrospective' : 'Retrospective'}
+                  </div>
+                  <div className={styles.missionRetrospectiveText}>{activeMission.mission.retrospective}</div>
+                </div>
+              )}
+            </div>
 
             <div className={styles.missionMetaGrid}>
               <div className={styles.missionMetaTags}>
