@@ -1083,6 +1083,10 @@
     display: none !important;
   }
 
+  .interestsSection {
+    display: none !important;
+  }
+
   .sidebar .tags {
     flex-wrap: wrap;
     gap: 4px;

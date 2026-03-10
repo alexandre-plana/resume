@@ -183,7 +183,7 @@ function App() {
             </div>
           </div>
 
-          <div className={styles.section}>
+          <div className={`${styles.section} ${styles.interestsSection}`}>
             <div className={styles.label}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
             <div className={styles.tags}>
               {profile.interests.map((interest, idx) => (
