@@ -60,8 +60,8 @@ function App() {
           <div className={styles.section}>
             <div className={styles.label}>{t.common.languages}</div>
             <div className={styles.langRow}>
-              {profile.langs.map((lang) => (
-                <span key={lang.label} className={styles.langPill}>
+              {profile.langs.map((lang, idx) => (
+                <span key={`${lang.label}-${idx}`} className={styles.langPill}>
                   {lang.label} <span>{lang.level}</span>
                 </span>
               ))}
@@ -71,9 +71,9 @@ function App() {
           <div className={styles.section}>
             <div className={styles.label}>Top languages</div>
             <div className={styles.langBar}>
-              {profile.languages.map((lang) => (
+              {profile.languages.map((lang, idx) => (
                 <div
-                  key={lang.name}
+                  key={`langbar-${lang.name}-${idx}`}
                   className={styles.langSeg}
                   style={{
                     width: `${lang.pct}%`,
@@ -83,8 +83,8 @@ function App() {
               ))}
             </div>
             <div className={styles.langLegend}>
-              {profile.languages.map((lang) => (
-                <div key={lang.name} className={styles.legendItem}>
+              {profile.languages.map((lang, idx) => (
+                <div key={`legend-${lang.name}-${idx}`} className={styles.legendItem}>
                   <div
                     className={styles.legendDot}
                     style={{ background: lang.color }}
@@ -99,8 +99,8 @@ function App() {
             <div className={styles.label}>{t.sections.uiUxCulture}</div>
             <div className={styles.uiuxDesc}>{profile.uiuxHighlight.desc}</div>
             <div className={styles.tags}>
-              {profile.uiuxHighlight.tools.map((tool) => (
-                <TechBadge key={tool} label={tool} kind={tool === 'Figma' || tool === 'Adobe XD' ? 'figma' : 'uiux'} />
+              {profile.uiuxHighlight.tools.map((tool, idx) => (
+                <TechBadge key={`${tool}-${idx}`} label={tool} kind={tool === 'Figma' || tool === 'Adobe XD' ? 'figma' : 'uiux'} />
               ))}
             </div>
           </div>
@@ -108,8 +108,8 @@ function App() {
           <div className={styles.section}>
             <div className={styles.label}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
             <div className={styles.tags}>
-              {profile.interests.map((interest) => (
-                <TechBadge key={interest} label={interest} kind="green" />
+              {profile.interests.map((interest, idx) => (
+                <TechBadge key={`${interest}-${idx}`} label={interest} kind="green" />
               ))}
             </div>
           </div>
@@ -166,8 +166,8 @@ function App() {
                               </div>
                             )}
                             <div className={styles.tags}>
-                              {mission.tags.map((tag) => (
-                                <TechBadge key={tag} label={tag} kind={tag} />
+                              {mission.tags.map((tag, idx) => (
+                                <TechBadge key={`mission-${mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
                               ))}
                             </div>
                           </div>
@@ -192,8 +192,8 @@ function App() {
                           {skillCat.cat}
                         </div>
                         <div className={styles.tags}>
-                          {skillCat.tags.map((tag) => (
-                            <TechBadge key={tag.k} label={tag.l} kind={tag.k} />
+                          {skillCat.tags.map((tag, tagIdx) => (
+                            <TechBadge key={`skill-${idx}-${tag.k}-${tagIdx}`} label={tag.l} kind={tag.k} />
                           ))}
                         </div>
                       </div>
@@ -223,8 +223,8 @@ function App() {
                         <div className={styles.projectDesc}>{project.desc}</div>
                         <div className={styles.projectStack}>{project.stack}</div>
                         <div className={styles.tags}>
-                          {project.tags.map((tag) => (
-                            <TechBadge key={tag} label={tag} kind={tag} />
+                          {project.tags.map((tag, idx) => (
+                            <TechBadge key={`project-${project.id}-${tag}-${idx}`} label={tag} kind={tag} />
                           ))}
                         </div>
                       </div>
