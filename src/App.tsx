@@ -1,3 +1,4 @@
+import { useEffect, useState, type CSSProperties } from 'react'
 import { useProfile, useExperiences, useSkills, useFormation, useActivity, useProjects } from './hooks/useApi'
 import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
@@ -8,7 +9,19 @@ import { Toolbar } from './components/Toolbar'
 import { QRCode } from './components/QRCode'
 import { PhoneNumber } from './components/PhoneNumber'
 import { getTranslations } from './locales'
+import type { Mission } from './types'
 import styles from './App.module.css'
+
+type MissionPopout = {
+  company: string
+  employer: string
+  mission: Mission
+  animation: {
+    fromX: number
+    fromY: number
+    fromScale: number
+  }
+}
 
 function App() {
   const { data: profile, isLoading: profileLoading } = useProfile()
@@ -21,6 +34,56 @@ function App() {
   const t = getTranslations(language)
 
   const isLoading = profileLoading || expLoading || projLoading || skillsLoading || formationLoading || activityLoading
+  const [activeMission, setActiveMission] = useState<MissionPopout | null>(null)
+
+  const getMissionPopoutAnimation = (sourceEl: HTMLElement | null) => {
+    if (!sourceEl) {
+      return { fromX: 0, fromY: 8, fromScale: 0.96 }
+    }
+
+    const rect = sourceEl.getBoundingClientRect()
+    const viewportCenterX = window.innerWidth / 2
+    const viewportCenterY = window.innerHeight / 2
+    const sourceCenterX = rect.left + rect.width / 2
+    const sourceCenterY = rect.top + rect.height / 2
+    const targetModalWidth = Math.max(1, Math.min(840, window.innerWidth - 32))
+    const fromScale = Math.min(0.98, Math.max(0.42, rect.width / targetModalWidth))
+
+    return {
+      fromX: sourceCenterX - viewportCenterX,
+      fromY: sourceCenterY - viewportCenterY,
+      fromScale,
+    }
+  }
+
+  const openMissionPopout = (mission: Mission, company: string, employer: string, sourceEl: HTMLElement | null) => {
+    setActiveMission({ mission, company, employer, animation: getMissionPopoutAnimation(sourceEl) })
+  }
+
+  const closeMissionPopout = () => {
+    setActiveMission(null)
+  }
+
+  useEffect(() => {
+    if (!activeMission) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeMissionPopout()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [activeMission])
+
+  const missionModalStyle = activeMission
+    ? ({
+        '--mission-from-x': `${activeMission.animation.fromX}px`,
+        '--mission-from-y': `${activeMission.animation.fromY}px`,
+        '--mission-from-scale': `${activeMission.animation.fromScale}`,
+      } as CSSProperties)
+    : undefined
 
   if (!profile) return <div className={styles.loading}>Chargement...</div>
 
@@ -147,6 +210,17 @@ function App() {
                           <div
                             key={mission.id}
                             className={mission.featured ? styles.missionFeatured : styles.mission}
+                            role="button"
+                            tabIndex={0}
+                            aria-haspopup="dialog"
+                            aria-label={language === 'fr' ? 'Ouvrir le detail de la mission' : 'Open mission details'}
+                            onClick={(event) => openMissionPopout(mission, exp.company, exp.employer, event.currentTarget)}
+                            onKeyDown={(event) => {
+                              if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault()
+                                openMissionPopout(mission, exp.company, exp.employer, event.currentTarget)
+                              }
+                            }}
                           >
                             <div className={styles.missionTop}>
                               <span style={{ color: 'var(--text-3)' }}>📁</span>
@@ -154,22 +228,13 @@ function App() {
                               <span className={styles.missionBadge}>{mission.badge}</span>
                             </div>
                             <div className={styles.missionContext}>{mission.context}</div>
-                            <div className={styles.missionDesc}>{mission.desc}</div>
-                            {mission.featured && (
-                              <div className={styles.metricsGrid}>
-                                {mission.metrics.map((metric, idx) => (
-                                  <div key={idx} className={styles.metricItem}>
-                                    <div className={styles.metricValue}>{metric.value}</div>
-                                    <div className={styles.metricLabel}>{metric.label}</div>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
+                            <div className={`${styles.missionDesc} ${styles.missionDescCompact}`}>{mission.desc}</div>
                             <div className={styles.tags}>
                               {mission.tags.map((tag, idx) => (
                                 <TechBadge key={`mission-${mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
                               ))}
                             </div>
+                            <span className={styles.missionExpandIcon} aria-hidden="true" title={language === 'fr' ? 'Agrandir' : 'Expand'}>⤢</span>
                           </div>
                         ))}
                       </div>
@@ -261,6 +326,69 @@ function App() {
       </div>
 
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} language={language} />
+
+      {activeMission && (
+        <div className={styles.missionOverlay} onClick={closeMissionPopout}>
+          <div
+            className={styles.missionModal}
+            style={missionModalStyle}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="mission-popout-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className={styles.missionModalHeader}>
+              <div className={styles.missionModalTitleWrap}>
+                <div id="mission-popout-title" className={styles.missionModalTitle}>
+                  {activeMission.mission.name}
+                </div>
+                <div className={styles.missionModalCompany}>
+                  {activeMission.company} · {activeMission.employer}
+                </div>
+              </div>
+              <button className={styles.missionModalClose} onClick={closeMissionPopout} title={language === 'fr' ? 'Fermer' : 'Close'}>
+                ✕
+              </button>
+            </div>
+
+            <div className={styles.missionModalContext}>{activeMission.mission.context}</div>
+            <div className={styles.missionModalDesc}>{activeMission.mission.desc}</div>
+
+            <div className={styles.missionMetaGrid}>
+              <div className={styles.missionMetaLine}>
+                <span>⏱</span>
+                <span>{activeMission.mission.period}</span>
+              </div>
+              <div className={styles.missionMetaLine}>
+                <span>🛠</span>
+                <span>{activeMission.mission.stack}</span>
+              </div>
+              <div className={styles.missionMetaLine}>
+                <span>🔤</span>
+                <span>{activeMission.mission.lang}</span>
+                <span className={styles.missionStars}>{activeMission.mission.stars}</span>
+              </div>
+            </div>
+
+            {activeMission.mission.featured && activeMission.mission.metrics.length > 0 && (
+              <div className={styles.metricsGrid}>
+                {activeMission.mission.metrics.map((metric, idx) => (
+                  <div key={idx} className={styles.metricItem}>
+                    <div className={styles.metricValue}>{metric.value}</div>
+                    <div className={styles.metricLabel}>{metric.label}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className={styles.tags}>
+              {activeMission.mission.tags.map((tag, idx) => (
+                <TechBadge key={`mission-popout-${activeMission.mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className={styles.footer}>
         {profile.handle} © 2026 · {profile.email} · <PhoneNumber number={profile.phone} />
