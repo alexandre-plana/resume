@@ -348,7 +348,7 @@ function App() {
                   )}
                 </div>
                 <div className={styles.missionModalCompany}>
-                  {activeMission.mission.badge}
+                  ⏱ {activeMission.mission.period} - {activeMission.mission.badge}
                 </div>
                 <div className={styles.missionModalCompany} style={{ marginTop: '4px' }}>
                   {activeMission.company} · {activeMission.employer}
@@ -361,11 +361,6 @@ function App() {
 
             <div className={styles.missionModalContext}>{activeMission.mission.context}</div>
             <div className={styles.missionModalDesc}>{activeMission.mission.descLong}</div>
-
-            <div className={styles.missionMetaLine}>
-              <span>⏱</span>
-              <span className={styles.missionPeriod}>{activeMission.mission.period}</span>
-            </div>
 
             {activeMission.mission.featured && activeMission.mission.metrics.length > 0 && (
               <div className={styles.metricsGrid}>
