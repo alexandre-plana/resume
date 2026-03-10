@@ -26,6 +26,7 @@ const TAG_COLORS: Record<string, { bg: string; text: string; border: string; dot
   agile: { bg: '#d1fae5', text: '#065f46', border: '#6ee7b7', dot: '#6ee7b7' },
   green: { bg: '#dcfce7', text: '#166534', border: '#86efac', dot: '#86efac' },
   jira: { bg: '#e0f0ff', text: '#0052cc', border: '#2684ff', dot: '#2684ff' },
+  docker: { bg: '#e0f2fe', text: '#0c4a6e', border: '#7dd3fc', dot: '#2496ed' },
   jss: { bg: '#fff9e6', text: '#d4941e', border: '#ffe58f', dot: '#faad14' },
   wpf: { bg: '#e8f4ff', text: '#0078d4', border: '#96d8ff', dot: '#0078d4' },
   winform: { bg: '#e8f4ff', text: '#0078d4', border: '#96d8ff', dot: '#0078d4' },

@@ -73,8 +73,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         missions: {
           '11': {
             badge: 'Développeur front end',
-            context: 'Industrial Automation IIoT 2.0 Edge (IECA)',
-            desc: 'Développement d\'Edge compute apps industrielles sur la plateforme Goodenough (single-spa). Architecture micro-frontend IIoT 2.0, intégration de composants Vue 3 + TypeScript en équipe. Conception UI des tableaux de bord industriels en lien avec les équipes UX.',
+            context: 'Industrial Automation Edge (IECA)',
+            desc: 'Développement d\'Edge compute apps industrielles en architecture micro-frontend (single-spa). Intégration de composants Vue 3 + TypeScript en équipe Scrum.',
             metrics: [],
           },
           '12': {
@@ -186,8 +186,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         missions: {
           '11': {
             badge: 'Frontend Developer',
-            context: 'Industrial Automation IIoT 2.0 Edge (IECA)',
-            desc: 'Developed Edge compute apps on Goodenough platform (single-spa). Built IIoT 2.0 micro-frontend architecture with Vue 3 + TypeScript in agile teams. Designed UI dashboards for industrial control systems in collaboration with UX teams.',
+            context: 'Industrial Automation Edge (IECA)',
+            desc: 'Development of industrial Edge compute apps in micro-frontend architecture (single-spa). Integration of Vue 3 + TypeScript components in Scrum team.',
             metrics: [],
           },
           '12': {

@@ -17,6 +17,7 @@ export interface Translations {
   }
   tabs: {
     overview: string
+    skills: string
     projects: string
     formations: string
   }
@@ -53,6 +54,7 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Aperçu',
+      skills: 'Compétences',
       projects: 'Projets professionnels',
       formations: 'Formations & projets persos',
     },
@@ -87,6 +89,7 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Overview',
+      skills: 'Skills',
       projects: 'Professional Projects',
       formations: 'Trainings & Personal Projects',
     },
