@@ -339,10 +339,18 @@ function App() {
           >
             <div className={styles.missionModalHeader}>
               <div className={styles.missionModalTitleWrap}>
-                <div id="mission-popout-title" className={styles.missionModalTitle}>
-                  {activeMission.mission.name}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
+                  <div id="mission-popout-title" className={styles.missionModalTitle}>
+                    {activeMission.mission.name}
+                  </div>
+                  {activeMission.mission.isCurrent && (
+                    <span style={{ fontSize: '0.75rem', padding: '2px 6px', background: 'rgba(41, 128, 185, 0.2)', color: '#2980b9', borderRadius: '3px', fontWeight: 600 }}>actuel</span>
+                  )}
                 </div>
                 <div className={styles.missionModalCompany}>
+                  {activeMission.mission.badge}
+                </div>
+                <div className={styles.missionModalCompany} style={{ marginTop: '4px' }}>
                   {activeMission.company} · {activeMission.employer}
                 </div>
               </div>
@@ -352,22 +360,11 @@ function App() {
             </div>
 
             <div className={styles.missionModalContext}>{activeMission.mission.context}</div>
-            <div className={styles.missionModalDesc}>{activeMission.mission.desc}</div>
+            <div className={styles.missionModalDesc}>{activeMission.mission.descLong}</div>
 
-            <div className={styles.missionMetaGrid}>
-              <div className={styles.missionMetaLine}>
-                <span>⏱</span>
-                <span>{activeMission.mission.period}</span>
-              </div>
-              <div className={styles.missionMetaLine}>
-                <span>🛠</span>
-                <span>{activeMission.mission.stack}</span>
-              </div>
-              <div className={styles.missionMetaLine}>
-                <span>🔤</span>
-                <span>{activeMission.mission.lang}</span>
-                <span className={styles.missionStars}>{activeMission.mission.stars}</span>
-              </div>
+            <div className={styles.missionMetaLine}>
+              <span>⏱</span>
+              <span className={styles.missionPeriod}>{activeMission.mission.period}</span>
             </div>
 
             {activeMission.mission.featured && activeMission.mission.metrics.length > 0 && (
@@ -381,10 +378,12 @@ function App() {
               </div>
             )}
 
-            <div className={styles.tags}>
-              {activeMission.mission.tags.map((tag, idx) => (
-                <TechBadge key={`mission-popout-${activeMission.mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
-              ))}
+            <div className={styles.missionMetaGrid}>
+              <div className={styles.missionMetaTags}>
+                {activeMission.mission.tags.map((tag, idx) => (
+                  <TechBadge key={`mission-popout-${activeMission.mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

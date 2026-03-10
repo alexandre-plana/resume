@@ -420,6 +420,7 @@
 .missionMetaLine {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 6px;
   font-size: 0.72rem;
   color: var(--text-3);
@@ -428,8 +429,10 @@
 }
 
 .missionStars {
-  margin-left: auto;
-  letter-spacing: 0.4px;
+  display: none;
+}
+
+.missionPeriod {
 }
 
 .missionExpandIcon {
@@ -532,7 +535,7 @@
 }
 
 .missionModalTitle {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text);
   line-height: 1.3;
@@ -578,15 +581,26 @@
   font-size: 0.84rem;
   color: var(--text-2);
   line-height: 1.6;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
   margin-bottom: 12px;
 }
 
 .missionMetaGrid {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 10px;
-  margin-bottom: 12px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.missionMetaTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
 }
 
 .metricsGrid {
