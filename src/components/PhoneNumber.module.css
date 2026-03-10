@@ -1,0 +1,28 @@
+.phoneNumber {
+  display: inline;
+  user-select: none;
+}
+
+.normal {
+  display: inline;
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+.reversed {
+  display: inline;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.sep {
+  display: inline;
+  user-select: none;
+}
+
+/* En mode print, on applique les mêmes règles */
+@media print {
+  .phoneNumber {
+    user-select: none;
+  }
+}

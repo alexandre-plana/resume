@@ -6,9 +6,9 @@ interface QRCodeProps {
 }
 
 export function QRCode({ url, language }: QRCodeProps) {
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=64x64&data=${encodeURIComponent(url)}`
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`
   const qrMessage = language === 'fr'
-    ? 'QR code vers une version plus complete du DV en ligne.'
+    ? 'QR code vers une version plus complete du CV en ligne.'
     : 'QR code to a more complete online resume version.'
   const qrLabel = language === 'fr' ? 'Version complete du CV' : 'Extended Resume'
   
@@ -18,13 +18,14 @@ export function QRCode({ url, language }: QRCodeProps) {
         <img 
           src={qrCodeUrl} 
           alt="QR Code" 
-          width={64}
-          height={64}
+          width={150}
+          height={150}
           className={styles.qrCodeImage}
         />
         <div className={styles.qrCodeText}>
           <div className={styles.qrCodeLabel}>{qrLabel}</div>
           <div className={styles.qrCodeMessage}>{qrMessage}</div>
+          <div className={styles.qrCodeUrl}>{url}</div>
         </div>
       </div>
     </div>

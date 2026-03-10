@@ -8,7 +8,7 @@ export const mockProfile: Profile = {
   bio: 'Développeur Front End spécialisé industrie depuis 13 ans. D\'abord sur des interfaces 3D / VR pour EDF, RTE, AREVA et DCNS, puis sur une application AR mobile multi-plateforme, aujourd\'hui sur des architectures web micro-frontend pour l\'IIoT. La techno évolue, le domaine reste : des interfaces complexes pour des environnements industriels exigeants. Sensibilité UI/UX forgée par la pratique du design sur l\'ensemble du parcours.',
   company: 'Consultant R&D · Datacorp / Schneider Electric',
   location: 'France',
-  email: 'alexandre.plana@gmail.com',
+  email: 'alexandre.plana@gmail',
   phone: '06.71.03.97.84',
   followers: 142,
   following: 38,

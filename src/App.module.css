@@ -6,7 +6,7 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: 24px;
   align-items: start;
 }
@@ -20,40 +20,40 @@
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .profileHandle {
   font-family: var(--font-mono);
   font-size: 1rem;
   color: var(--text-2);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .profileTitle {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--blue);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .profileSubtitle {
   font-size: 0.78rem;
   color: var(--text-3);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .profileBio {
   font-size: 0.82rem;
   color: var(--text);
   line-height: 1.6;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .btnRow {
   display: flex;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .btnPrimary,
@@ -94,8 +94,8 @@
   color: var(--text-2);
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .meta li {
@@ -114,11 +114,11 @@
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .section {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .printQrBanner {
@@ -129,8 +129,8 @@
   background: var(--featured-bg);
   border: 1px solid var(--featured-border);
   border-radius: var(--radius);
-  padding: 10px 12px;
-  margin-bottom: 16px;
+  padding: 12px;
+  margin-bottom: 20px;
   font-size: 0.78rem;
   color: var(--blue);
   line-height: 1.55;
@@ -151,7 +151,7 @@
   overflow: hidden;
   display: flex;
   gap: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .langSeg {
