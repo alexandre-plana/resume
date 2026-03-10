@@ -75,7 +75,14 @@ export const mockExperiences: Experience[] = [
         badge: 'Développeur C# / Unity',
         period: '2017 – 2023',
         context: 'Augmented Operator Advisor (AOA) — Application AR industrielle',
-        desc: 'Développement pendant 6 ans d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels. Conception et implémentation des interfaces opérateur, gestion des états complexes de la couche AR.',
+        desc: 'Développement d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels. Conception et implémentation des interfaces opérateur. L\'application faisait partie d\'un projet comprenant un builder (construction des solutions), une application (interprétation des solutions et AR) et un serveur (hébergement des solutions, récupération des variables).',
+        tasks: [
+          'Conception et développement de l\'interface responsive (iOS / Android / Windows — portrait & paysage)',
+          'Builds et livraisons des applications sur les stores (Google Play, App Store, SESU)',
+          'Développement d\'un outil dédié aux tests unitaires sous Unity 3D (pré-build et post-build)',
+          'Développement d\'un système de styles externalisé permettant de livrer l\'application aux couleurs du client (utilisé notamment pour les OEM)',
+          'Développement d\'un système offline avec envoi automatique des données à la récupération de la connexion',
+        ],
         metrics: [
           { value: '6 ans', label: 'développement\ncontinu' },
           { value: '3', label: 'plateformes\nsimultanées' },
