@@ -180,7 +180,11 @@ function App() {
               <div className={styles.printQrBanner}>
                 <QRCode url="https://alexandre-plana.github.io/resume/" language={language} />
               </div>
+            </>
+          )}
 
+          {activeTab === 'skills' && (
+            <>
               {/* COMPÉTENCES */}
               <div className={styles.skillsSection}>
                 <div className={styles.sectionHeader}>🏷 {language === 'fr' ? 'Compétences & Technologies' : 'Skills & Technologies'}</div>
