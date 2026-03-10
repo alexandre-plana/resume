@@ -805,11 +805,48 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .wrapper {
+    max-width: 100%;
+    width: 100%;
+    padding-top: 24px;
+  }
+
   .layout {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sidebar,
+  .main {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .formationGrid {
     grid-template-columns: 1fr;
+  }
+
+  /* Fix cards overflow on mobile */
+  .mission,
+  .missionFeatured,
+  .project,
+  .aboutSection,
+  .skillsBlock,
+  .qrCodeCard {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .missionName,
+  .projectName,
+  .missionDesc,
+  .projectDesc {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .tlMissions {
+    margin-left: 12px;
   }
 }

@@ -15,14 +15,15 @@ export function Toolbar({ language, onContact }: ToolbarProps) {
     window.print()
   }
 
-  const printLabel = language === 'fr' ? 'Imprimer le CV' : 'Print CV'
+  const printLabel = language === 'fr' ? 'Imprimer' : 'Print'
 
   return (
     <div className={styles.toolbar}>
       <div className={styles.actions}>
-        <button className={styles.contactBtn} onClick={onContact}>
+        {/* TODO: Réactiver le bouton Me contacter */}
+        {/* <button className={styles.contactBtn} onClick={onContact}>
           {t.common.contact}
-        </button>
+        </button> */}
         <div className={styles.langControl}>
           <button
             className={`${styles.langBtn} ${language === 'fr' ? styles.active : ''}`}

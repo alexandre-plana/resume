@@ -9,12 +9,23 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-body);
   background: #f0f2f5;
   color: var(--text);
   min-height: 100vh;
   padding: 32px 16px 64px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 24px 20px 48px;
+    overflow-x: hidden;
+  }
 }
 
 a {
