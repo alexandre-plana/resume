@@ -6,6 +6,7 @@ import { TechBadge } from './components/TechBadge'
 import { ContactModal } from './components/ContactModal'
 import { Toolbar } from './components/Toolbar'
 import { QRCode } from './components/QRCode'
+import { PhoneNumber } from './components/PhoneNumber'
 import { getTranslations } from './locales'
 import styles from './App.module.css'
 
@@ -52,7 +53,7 @@ function App() {
             </li>
             <li>
               <span className={styles.icon}>📞</span>
-              {profile.phone}
+              <PhoneNumber number={profile.phone} />
             </li>
           </ul>
 
@@ -258,7 +259,7 @@ function App() {
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} language={language} />
 
       <footer className={styles.footer}>
-        {profile.handle} © 2026 · {profile.email} · {profile.phone}
+        {profile.handle} © 2026 · {profile.email} · <PhoneNumber number={profile.phone} />
       </footer>
     </>
   )
