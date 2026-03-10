@@ -9,7 +9,6 @@ export const Tabs = () => {
 
   const tabsData: { id: Tab; label: string; icon: string }[] = [
     { id: 'overview', label: t.tabs.overview, icon: '📋' },
-    { id: 'skills', label: t.tabs.skills, icon: '🏷' },
     { id: 'projects', label: t.tabs.projects, icon: '📁' },
     { id: 'formations', label: t.tabs.formations, icon: '🎓' },
   ]

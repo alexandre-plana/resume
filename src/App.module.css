@@ -121,6 +121,45 @@
   margin-bottom: 24px;
 }
 
+.sidebarSkillList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebarSkillGroup,
+.sidebarSkillGroupFeatured {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.sidebarSkillGroup + .sidebarSkillGroup,
+.sidebarSkillGroup + .sidebarSkillGroupFeatured,
+.sidebarSkillGroupFeatured + .sidebarSkillGroup,
+.sidebarSkillGroupFeatured + .sidebarSkillGroupFeatured {
+  padding-top: 10px;
+  border-top: 1px solid var(--border-2);
+}
+
+.sidebarSkillTitle,
+.sidebarSkillTitleFeatured {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-family: var(--font-mono);
+  margin-bottom: 6px;
+}
+
+.sidebarSkillTitle {
+  color: var(--text-3);
+}
+
+.sidebarSkillTitleFeatured {
+  color: var(--blue);
+}
+
 .printQrBanner {
   display: none;
 }
@@ -581,6 +620,7 @@
   font-size: 0.84rem;
   color: var(--text-2);
   line-height: 1.6;
+  white-space: pre-line;
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -688,46 +728,62 @@
 
 /* SKILLS */
 .skillsBlock {
-  border-radius: var(--radius);
   margin-bottom: 24px;
-  overflow: hidden;
+}
+
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skillsRow,
+.skillsRowFeatured {
+  padding: 14px;
+  border-radius: var(--radius);
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.skillsRowFeatured {
+  background: var(--featured-bg);
+  border: 1px solid var(--featured-border);
+}
+
+.skillsRow {
+  background: var(--bg-2);
   border: 1px solid var(--border);
 }
 
-.skCat {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border-2);
-  background: var(--bg);
-}
-
-.skCat:last-child {
-  border-bottom: none;
-}
-
-.skCatFeatured {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--featured-border);
-  background: var(--featured-bg);
-}
-
-.catLabel {
+.skillsRowTitle {
   font-size: 0.72rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   color: var(--text-3);
-  margin-bottom: 8px;
   font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.3;
+  white-space: nowrap;
 }
 
-.catLabelFeatured {
-  font-size: 0.78rem;
+.skillsRowTitleFeatured {
+  font-size: 0.72rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   color: var(--blue);
-  margin-bottom: 8px;
   font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.skillsRowTags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
 }
 
 /* FORMATION */
@@ -1046,6 +1102,13 @@
 
   .formationGrid {
     grid-template-columns: 1fr;
+  }
+
+  .skillsRow,
+  .skillsRowFeatured {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 8px;
   }
 
   /* Fix cards overflow on mobile */

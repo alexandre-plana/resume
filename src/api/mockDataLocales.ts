@@ -76,7 +76,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             badge: 'Développeur front end',
             context: 'Industrial Automation Edge (IECA)',
             desc: 'Développement d\'applications Edge industrielles en architecture micro-frontend (single-spa) avec Vue 3 + TypeScript. Contribution active à la vie du projet en Scrum (refinement, sprint planning, daily, review, retrospective), avec un focus constant sur la qualité, la performance et l\'accessibilité.',
-            descLong: 'Développement d\'Edge compute apps industrielles en architecture micro-frontend (single-spa). Développement Vue 3 + TypeScript en équipe Scrum.\n\nCette première expérience web s\'est avérée très enrichissante. J\'ai pu me familiariser en profondeur avec l\'architecture micro-frontend, un paradigme puissant permettant le déploiement indépendant de plusieurs applications. J\'ai également maîtrisé l\'orchestration avec single-spa et mis en place les standards de qualité, performance et accessibilité attendus.',
+            descLong: 'Développement d\'Edge compute apps industrielles en architecture micro-frontend (single-spa). Développement Vue 3 + TypeScript en équipe Scrum.\n\nCette première expérience web s\'est avérée très enrichissante. J\'ai pu me familiariser en profondeur avec l\'architecture micro-frontend, un paradigme puissant permettant le déploiement indépendant de plusieurs applications. J\'ai également maîtrisé l\'orchestration avec single-spa et mis en place les standards de qualité, performance et accessibilité attendus.\n\n• Concevoir et développer des composants front réutilisables par les différentes équipes du projet\n• Implémenter une architecture micro-frontend\n• Implémenter les tests unitaires en utilisant Jest\n• Surveiller les performances et le bon fonctionnement de l\'application, et améliorer la qualité du code via SonarQube\n• Amélioration continue de l\'architecture et de la scalabilité du projet',
             metrics: [],
           },
           '12': {
@@ -111,12 +111,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
     },
     skills: {
-      0: { cat: 'Frontend' },
-      1: { cat: 'Backend & Outils' },
-      2: { cat: 'Temps Réel & Immersif' },
-      3: { cat: 'Design & UX' },
-      4: { cat: 'Pratiques' },
-      5: { cat: 'Infrastructure' },
+      0: { cat: 'Frameworks' },
+      1: { cat: 'Outils' },
     },
     formation: {
       0: {
@@ -192,7 +188,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             badge: 'Frontend Developer',
             context: 'Industrial Automation Edge (IECA)',
             desc: 'Development of industrial Edge applications in a micro-frontend architecture (single-spa) with Vue 3 + TypeScript. Active contribution across the Scrum project lifecycle (refinement, sprint planning, daily, review, retrospective), with a constant focus on quality, performance and accessibility.',
-            descLong: 'Development of industrial Edge compute apps in micro-frontend architecture (single-spa). Development of Vue 3 + TypeScript components in Scrum team.\n\nThis first web experience proved to be very enriching. I was able to familiarize myself deeply with micro-frontend architecture, a powerful paradigm enabling independent deployment of multiple applications. I also mastered orchestration with single-spa and implemented the expected quality, performance and accessibility standards.',
+            descLong: 'Development of industrial Edge compute apps in micro-frontend architecture (single-spa). Development of Vue 3 + TypeScript components in Scrum team.\n\nThis first web experience proved to be very enriching. I was able to familiarize myself deeply with micro-frontend architecture, a powerful paradigm enabling independent deployment of multiple applications. I also mastered orchestration with single-spa and implemented the expected quality, performance and accessibility standards.\n\n• Design and develop reusable frontend components shared across the different project teams\n• Implement a micro-frontend architecture\n• Implement unit tests using Jest\n• Monitor application performance and reliability, and improve code quality with SonarQube\n• Continuously improve the project architecture and scalability',
             metrics: [],
           },
           '12': {
@@ -227,12 +223,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
     },
     skills: {
-      0: { cat: 'Frontend' },
-      1: { cat: 'Backend & Tools' },
-      2: { cat: 'Real-Time & Immersive' },
-      3: { cat: 'Design & UX' },
-      4: { cat: 'Practices' },
-      5: { cat: 'Infrastructure' },
+      0: { cat: 'Frameworks' },
+      1: { cat: 'Tools' },
     },
     formation: {
       0: {
