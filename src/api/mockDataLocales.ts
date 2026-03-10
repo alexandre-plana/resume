@@ -23,6 +23,7 @@ export interface LocalizedMockData {
           badge: string
           context: string
           desc: string
+          descLong: string
           metrics: { label: string }[]
         }
       }
@@ -74,13 +75,15 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
           '11': {
             badge: 'Développeur front end',
             context: 'Industrial Automation Edge (IECA)',
-            desc: 'Développement d\'Edge compute apps industrielles en architecture micro-frontend (single-spa). Intégration de composants Vue 3 + TypeScript en équipe Scrum.',
+            desc: 'Développement d\'applications Edge industrielles en architecture micro-frontend (single-spa) avec Vue 3 + TypeScript. Contribution active à la vie du projet en Scrum (refinement, sprint planning, daily, review, retrospective), avec un focus constant sur la qualité, la performance et l\'accessibilité.',
+            descLong: 'Développement d\'Edge compute apps industrielles en architecture micro-frontend (single-spa). Développement Vue 3 + TypeScript en équipe Scrum.\n\nCette première expérience web s\'est avérée très enrichissante. J\'ai pu me familiariser en profondeur avec l\'architecture micro-frontend, un paradigme puissant permettant le déploiement indépendant de plusieurs applications. J\'ai également maîtrisé l\'orchestration avec single-spa et mis en place les standards de qualité, performance et accessibilité attendus.',
             metrics: [],
           },
           '12': {
             badge: 'Développeur C# / Unity',
             context: 'Augmented Operator Advisor (AOA) — Application AR industrielle',
             desc: 'Développement pendant 6 ans d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels Schneider Electric. Conception et implémentation des interfaces opérateur, gestion des états complexes de la couche AR.',
+            descLong: 'Développement complet d\'une application de réalité augmentée multi-plateforme pour les opérateurs et techniciens Schneider Electric. Équipe de 8-12 personnes en méthodologie Scrum. Gestion de la complexité des états AR en temps réel sur dispositifs mobiles et Windows. Gestion d\'une architecture robuste capable de gérer des milliers d\'assets industriels annotés. Optimisation des performances et batterie sur appareils mobiles. Maintien de la qualité à travers 6 ans d\'évolutions. Utilisation de ARKit, ARCore et intégrations custom avec capteurs industriels.',
             metrics: [
               { label: 'développement\ncontinu' },
               { label: 'plateformes\nsimultanées' },
@@ -97,6 +100,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             badge: 'Développeur C# / Unity 3D',
             context: 'Projets VR/AR — Industrie & Patrimoine',
             desc: 'Développement et direction artistique de projets VR/AR pour le patrimoine (sites historiques, musées) et industrie manufacturière. Intégration 3D, optimisation de la performance, UI/UX pour environnements immersifs.',
+            descLong: 'Développeur 3D et XR pour Oreka Ingénierie, éditeur de solutions de réalité virtuelle et augmentée pour l\'industrie. Contributeur principal sur 6+ projets majeurs pour des clients Fortune 500 : visualisation d\'installations EDF pour formation opérateurs, gestion des actifs AREVA, simulateurs DCNS pour la défense, outils de supervision RTE, applications de radioprotection SUEZ. Maîtrise complète de la chaîne de production : modélisation 3ds Max, rigging, optimisation temps réel, intégration de données complexes. Participation au design des solutions et présentations clients. Intégration WPF/WinForm pour interfaces de contrôle industriel.',
             metrics: [
               { label: 'ans de\nspecialisation' },
               { label: 'projets VR/AR\ndeliverés' },
@@ -187,13 +191,15 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
           '11': {
             badge: 'Frontend Developer',
             context: 'Industrial Automation Edge (IECA)',
-            desc: 'Development of industrial Edge compute apps in micro-frontend architecture (single-spa). Integration of Vue 3 + TypeScript components in Scrum team.',
+            desc: 'Development of industrial Edge applications in a micro-frontend architecture (single-spa) with Vue 3 + TypeScript. Active contribution across the Scrum project lifecycle (refinement, sprint planning, daily, review, retrospective), with a constant focus on quality, performance and accessibility.',
+            descLong: 'Development of industrial Edge compute apps in micro-frontend architecture (single-spa). Development of Vue 3 + TypeScript components in Scrum team.\n\nThis first web experience proved to be very enriching. I was able to familiarize myself deeply with micro-frontend architecture, a powerful paradigm enabling independent deployment of multiple applications. I also mastered orchestration with single-spa and implemented the expected quality, performance and accessibility standards.',
             metrics: [],
           },
           '12': {
             badge: 'C# / Unity Developer',
             context: 'Augmented Operator Advisor (AOA) — Industrial AR Application',
             desc: 'Built cross-platform AR app (Android, iOS, Windows) for industrial operators over 6 years. Designed and implemented operator interfaces, managed complex AR layer state management.',
+            descLong: 'Complete development of a cross-platform augmented reality application for Schneider Electric operators and technicians. Managed a team of 8-12 people using Scrum methodology. Addressed real-time AR complexity on mobile devices and Windows. Built a robust architecture handling thousands of industrial annotated assets. Optimized performance and battery consumption on mobile devices. Maintained quality across 6 years of continuous evolution. Leveraged ARKit, ARCore, and custom integrations with industrial sensors.',
             metrics: [
               { label: 'years of\ncontinuous dev' },
               { label: 'simultaneous\nplatforms' },
@@ -210,6 +216,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             badge: 'C# / Unity 3D Developer',
             context: 'VR/AR Projects — Heritage & Industry',
             desc: 'Developed and directed VR/AR projects for heritage sites (historical monuments, museums) and manufacturing industry. Integrated 3D assets, optimized performance, designed UX for immersive environments.',
+            descLong: '3D and XR Developer at Oreka Engineering, a vendor of VR/AR solutions for industrial clients. Key contributor on 6+ major projects for Fortune 500 clients: visualization of EDF industrial facilities for operator training, AREVA asset management, DCNS defense simulators, RTE supervision tools, SUEZ radiation protection apps. Full mastery of production pipeline: 3ds Max modeling, rigging, real-time optimization, complex data integration. Participated in solution design and client presentations. Integrated WPF/WinForm for industrial control interfaces.',
             metrics: [
               { label: 'years of\nspecialization' },
               { label: 'VR/AR projects\ndelivered' },

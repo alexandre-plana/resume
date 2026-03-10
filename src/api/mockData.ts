@@ -51,7 +51,9 @@ export const mockExperiences: Experience[] = [
         badge: 'Lead FE Développeur',
         period: '2023 – 2026',
         context: 'Industrial Automation Edge (IECA)',
-        desc: 'Développement d\'Edge compute apps industrielles en architecture micro-frontend (single-spa). Développement Vue 3 + TypeScript en équipe Scrum.',
+        desc: 'Développement d\'applications Edge industrielles en architecture micro-frontend (single-spa) avec Vue 3 + TypeScript. Contribution active à la vie du projet en Scrum (refinement, sprint planning, daily, review, retrospective), avec un focus constant sur la qualité, la performance et l\'accessibilité.',
+        descLong: 'Développement d\'Edge compute apps industrielles en architecture micro-frontend (single-spa). Développement Vue 3 + TypeScript en équipe Scrum.\n\nCette première expérience web s\'est avérée très enrichissante. J\'ai pu me familiariser en profondeur avec l\'architecture micro-frontend, un paradigme puissant permettant le déploiement indépendant de plusieurs applications. J\'ai également maîtrisé l\'orchestration avec single-spa et mis en place les standards de qualité, performance et accessibilité attendus.',
+        isCurrent: true,
         metrics: [],
         stack: 'Vue 3 · TypeScript · single-spa · Docker · Jest · HTML5 · CSS3 · Git · Figma · Jira',
         tags: ['vue3', 'ts', 'single-spa', 'docker', 'jest', 'html', 'css', 'git', 'figma', 'jira'],
@@ -67,6 +69,7 @@ export const mockExperiences: Experience[] = [
         period: '2017 – 2023',
         context: 'Augmented Operator Advisor (AOA) — Application AR industrielle',
         desc: 'Développement pendant 6 ans d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels Schneider Electric. Conception et implémentation des interfaces opérateur, gestion des états complexes de la couche AR.',
+        descLong: 'Développement complet d\'une application de réalité augmentée multi-plateforme pour les opérateurs et techniciens Schneider Electric. Équipe de 8-12 personnes en méthodologie Scrum. Gestion de la complexité des états AR en temps réel sur dispositifs mobiles et Windows. Gestion d\'une architecture robuste capable de gérer des milliers d\'assets industriels annotés. Optimisation des performances et batterie sur appareils mobiles. Maintien de la qualité à travers 6 ans d\'évolutions. Utilisation de ARKit, ARCore et intégrations custom avec capteurs industriels.',
         metrics: [
           { value: '6 ans', label: 'développement\ncontinu' },
           { value: '3', label: 'plateformes\nsimultanées' },
@@ -95,6 +98,7 @@ export const mockExperiences: Experience[] = [
         period: '2013 – 2017',
         context: 'Projets VR/AR industriels — EDF · RTE · AREVA · DCNS · Énergies renouvelables',
         desc: 'Développement d\'interfaces 3D et de simulations VR/AR pour grands comptes de l\'industrie lourde et de l\'énergie. Projets livrés : EDF Aeroball, AREVA EMEM, DCNS simulateurs, RTE supervision, SUEZ radio protection.',
+        descLong: 'Développeur 3D et XR pour Oreka Ingénierie, éditeur de solutions de réalité virtuelle et augmentée pour l\'industrie. Contributeur principal sur 6+ projets majeurs pour des clients Fortune 500 : visualisation d\'installations EDF pour formation opérateurs, gestion des actifs AREVA, simulateurs DCNS pour la défense, outils de supervision RTE, applications de radioprotection SUEZ. Maîtrise complète de la chaîne de production : modélisation 3ds Max, rigging, optimisation temps réel, intégration de données complexes. Participation au design des solutions et présentations clients. Intégration WPF/WinForm pour interfaces de contrôle industriel.',
         metrics: [
           { value: '6+', label: 'projets\nindustriels' },
           { value: '5', label: 'clients grands\ncomptes' },

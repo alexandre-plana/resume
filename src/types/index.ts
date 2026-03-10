@@ -36,12 +36,14 @@ export interface Mission {
   period: string
   context: string
   desc: string
+  descLong: string
   metrics: Metric[]
   stack: string
   tags: string[]
   lang: string
   langColor: string
   stars: string
+  isCurrent?: boolean
 }
 
 export interface Experience {
