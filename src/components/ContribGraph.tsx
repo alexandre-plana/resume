@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import styles from './ContribGraph.module.css'
 
 const COLORS = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
 const BORDERS = ['1px solid #d0d7de', 'none', 'none', 'none', 'none']
 const LEVELS = [0, 0, 0, 0, 1, 1, 2, 2, 3, 4]
 
-export const ContribGraph: React.FC<{ contributions: number }> = ({ contributions }) => {
+const ContribGraphComponent: React.FC<{ contributions: number }> = ({ contributions }) => {
   const [weeks, setWeeks] = useState<number[][]>([])
 
   useEffect(() => {
@@ -62,3 +62,5 @@ export const ContribGraph: React.FC<{ contributions: number }> = ({ contribution
     </div>
   )
 }
+
+export const ContribGraph = memo(ContribGraphComponent)

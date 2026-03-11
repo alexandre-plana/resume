@@ -5,7 +5,7 @@ import { getProjectsLocale } from '../api/projectsLocales'
 import { api } from '../api'
 
 export const useProfile = () => {
-  const { language } = useAppStore()
+  const language = useAppStore((state) => state.language)
   const dataLocales = getMockDataLocale(language)
 
   return useQuery({
@@ -18,21 +18,14 @@ export const useProfile = () => {
         subtitle: dataLocales.profile.subtitle,
         bio: dataLocales.profile.bio,
         company: dataLocales.profile.company,
-        seeking: dataLocales.profile.seeking,
         interests: dataLocales.profile.interests,
-        uiuxHighlight: {
-          ...profile.uiuxHighlight,
-          label: dataLocales.profile.uiuxHighlight.label,
-          desc: dataLocales.profile.uiuxHighlight.desc,
-          tools: dataLocales.profile.uiuxHighlight.tools,
-        },
       }
     },
   })
 }
 
 export const useExperiences = () => {
-  const { language } = useAppStore()
+  const language = useAppStore((state) => state.language)
   const dataLocales = getMockDataLocale(language)
 
   return useQuery({
@@ -67,7 +60,7 @@ export const useExperiences = () => {
 }
 
 export const useSkills = () => {
-  const { language } = useAppStore()
+  const language = useAppStore((state) => state.language)
   const dataLocales = getMockDataLocale(language)
 
   return useQuery({
@@ -83,7 +76,7 @@ export const useSkills = () => {
 }
 
 export const useFormation = () => {
-  const { language } = useAppStore()
+  const language = useAppStore((state) => state.language)
   const dataLocales = getMockDataLocale(language)
 
   return useQuery({
@@ -102,7 +95,7 @@ export const useFormation = () => {
 }
 
 export const useActivity = () => {
-  const { language } = useAppStore()
+  const language = useAppStore((state) => state.language)
   const dataLocales = getMockDataLocale(language)
 
   return useQuery({
@@ -129,7 +122,7 @@ export const useContact = () => {
 }
 
 export const useProjects = () => {
-  const { language } = useAppStore()
+  const language = useAppStore((state) => state.language)
   const projectsLocales = getProjectsLocale(language)
 
   return useQuery({

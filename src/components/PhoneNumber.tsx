@@ -1,10 +1,11 @@
+import { memo } from 'react'
 import styles from './PhoneNumber.module.css'
 
 interface PhoneNumberProps {
   number: string
 }
 
-export function PhoneNumber({ number }: PhoneNumberProps) {
+function PhoneNumberComponent({ number }: PhoneNumberProps) {
   // Fonction pour ajouter des espaces zero-width entre chaque caractère
   const addZeroWidthSpaces = (str: string) => {
     return str.split('').join('\u200B')
@@ -29,3 +30,5 @@ export function PhoneNumber({ number }: PhoneNumberProps) {
     </span>
   )
 }
+
+export const PhoneNumber = memo(PhoneNumberComponent)
