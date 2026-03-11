@@ -56,7 +56,7 @@ export interface LocalizedMockData {
 export const mockDataLocales: Record<Language, LocalizedMockData> = {
   fr: {
     profile: {
-      title: 'Développeur Front End Web',
+      title: 'Développeur Front End',
       subtitle: 'Industrie · UI/UX · Multi Plateforme',
       bio: 'Développeur Front-End Senior avec 13 ans d\'expérience, j\'ai passé ma carrière dans des secteurs où ce qu\'on construit a un impact concret : énergie, nucléaire, défense, IIoT. De Schneider Electric à AREVA en passant par EDF, j\'ai appris qu\'une bonne interface, c\'est avant tout une interface qu\'on comprend vite et sur laquelle on peut compter. Au fil des projets et des stacks, j\'ai développé la conviction que la technologie est un moyen, jamais une fin — et c\'est avec cet état d\'esprit que j\'aborde chaque nouveau défi.',
       company: 'Consultant R&D · Datacorp / Schneider Electric',
@@ -152,12 +152,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         meta: '3D temps réel · Réalité virtuelle · Unity 3D',
       },
       3: {
-        label: '📌 Projets persos',
-        title: 'CV interactif React',
-        sub: '2026',
-        meta: 'React · TypeScript · Design UI/UX',
-      },
-      4: {
         label: '📌 Diplome',
         title: 'BTS Communication Visuelle opt. Multimédia',
         sub: '3DI Laval · 2010–2012',
@@ -226,6 +220,16 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             badge: 'C# / Unity Developer',
             context: 'Augmented Operator Advisor (AOA) — Industrial AR Application',
             desc: 'Built cross-platform AR app (Android, iOS, Windows) for industrial operators over 6 years. Designed and implemented operator interfaces, managed complex AR layer state management.',
+            tasks: [
+              'Design and development of a fully responsive interface (iOS, Android, Windows — portrait and landscape modes)',
+              'Build packaging, preparation and deployment to the relevant stores (Google Play, App Store, SESU)',
+              'Creation of a dedicated unit testing tool for Unity 3D, integrated into the pre-build and post-build pipeline',
+              'Implementation of an externalized style system enabling white-label delivery for OEM clients',
+              'Offline mode development with automatic data synchronization on connection restoration',
+              'Deserialization and backward compatibility management across project versions: legacy format parsing and silent on-the-fly migration',
+              'Implementation of the communication layer with the project server: HTTP requests, network error handling and reconnection logic',
+              'Application data lifecycle management: cache invalidation, refresh strategy and stale data cleanup',
+            ],
             metrics: [
               { label: 'years of\ncontinuous dev' },
               { label: 'simultaneous\nplatforms' },
@@ -287,12 +291,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         meta: 'Real-time 3D · Virtual Reality · Unity 3D',
       },
       3: {
-        label: '📌 Personal Projects',
-        title: 'Interactive React CV',
-        sub: '3DI Laval · 2012–2013',
-        meta: 'React · TypeScript · UI/UX Design',
-      },
-      4: {
         label: '📌 Degree',
         title: 'BTS Visual Communication (Multimedia)',
         sub: '3DI Laval · 2010–2012',

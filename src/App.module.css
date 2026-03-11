@@ -380,8 +380,10 @@
   background: var(--featured-bg);
   border: 1px solid var(--featured-border);
   border-radius: var(--radius);
-  padding: 16px 16px 30px;
+  padding: 16px;
   position: relative;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   transition:
     border-color 0.15s,
@@ -397,13 +399,35 @@
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 14px 14px 28px;
+  padding: 14px;
   position: relative;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   transition:
     border-color 0.15s,
     box-shadow 0.2s,
     transform 0.2s;
+}
+
+.missionFooterRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 0;
+  margin-top: auto;
+}
+
+.missionTagsRow {
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: wrap;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.missionTagsRow > * {
+  flex: 0 0 auto;
 }
 
 .mission:hover {
@@ -454,14 +478,54 @@
   font-size: 0.78rem;
   color: var(--text-2);
   line-height: 1.55;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .missionDescCompact {
   display: -webkit-box;
   overflow: hidden;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+
+.missionFeatured .missionDescCompact {
+  -webkit-line-clamp: 5;
+}
+
+.missionTaskPreview {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0 0 0 10px;
+  display: grid;
+  gap: 5px;
+}
+
+.missionTaskPreviewItem,
+.missionTaskPreviewMore {
+  position: relative;
+  padding-left: 12px;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-2);
+  overflow-wrap: break-word;
+}
+
+.missionTaskPreviewItem::before,
+.missionTaskPreviewMore::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.78;
+}
+
+.missionTaskPreviewMore {
+  color: var(--blue);
+  font-family: var(--font-mono);
 }
 
 .missionMetaLine {
@@ -483,11 +547,9 @@
 }
 
 .missionExpandIcon {
-  position: absolute;
-  right: 10px;
-  bottom: 8px;
   width: 20px;
   height: 20px;
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -532,7 +594,9 @@
 .missionModal {
   width: min(840px, 100%);
   max-height: calc(100vh - 32px);
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -572,6 +636,7 @@
 }
 
 .missionModalHeader {
+  flex: 0 0 auto;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -584,6 +649,12 @@
 }
 
 .missionModalCore {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   margin-bottom: 12px;
   padding: 12px;
   border: 1px solid var(--border);
@@ -742,6 +813,7 @@
 }
 
 .missionMetaGrid {
+  flex: 0 0 auto;
   margin-top: 12px;
   padding: 10px 12px;
   border: none;
@@ -808,6 +880,40 @@
   align-items: flex-start;
   gap: 16px;
   position: relative;
+}
+
+.projectTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.projectTypeBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 0.67rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.projectTypeBadgeProfessional {
+  color: #065f46;
+  background: #d1fae5;
+  border-color: #6ee7b7;
+}
+
+.projectTypeBadgePersonal {
+  color: #9d174d;
+  background: #fce7f3;
+  border-color: #f9a8d4;
 }
 
 .projectContent {
@@ -1189,6 +1295,11 @@
     margin-bottom: 12px;
   }
 
+  .projectTypeBadge {
+    font-size: 0.58rem;
+    padding: 1px 6px;
+  }
+
   .tlCompany {
     margin-bottom: 12px;
     gap: 12px;
@@ -1335,7 +1446,9 @@
   .missionName,
   .projectName,
   .missionDesc,
-  .projectDesc {
+  .projectDesc,
+  .missionTaskPreviewItem,
+  .missionTaskPreviewMore {
     word-wrap: break-word;
     overflow-wrap: break-word;
   }

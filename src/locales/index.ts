@@ -116,8 +116,8 @@ export const translations: Record<Language, Translations> = {
     tabs: {
       overview: 'Aperçu',
       skills: 'Compétences',
-      projects: 'Projets professionnels',
-      formations: 'Formations & projets persos',
+      projects: 'Projets',
+      formations: 'Formations',
     },
     sections: {
       uiUxCulture: '🎨 Culture UI/UX',
@@ -128,7 +128,7 @@ export const translations: Record<Language, Translations> = {
       contributions: 'Contribution',
       about: 'A propos',
       professionalExperience: 'Experiences professionnelles',
-      professionalProjects: 'Projets professionnels',
+      professionalProjects: 'Projets',
     },
     activity: {
       follower: 'a commencé à suivre',
@@ -208,8 +208,8 @@ export const translations: Record<Language, Translations> = {
     tabs: {
       overview: 'Overview',
       skills: 'Skills',
-      projects: 'Professional Projects',
-      formations: 'Trainings & Personal Projects',
+      projects: 'Projects',
+      formations: 'Trainings',
     },
     sections: {
       uiUxCulture: '🎨 UI/UX Culture',
@@ -220,7 +220,7 @@ export const translations: Record<Language, Translations> = {
       contributions: 'Contributions',
       about: 'About',
       professionalExperience: 'Professional Experience',
-      professionalProjects: 'Professional Projects',
+      professionalProjects: 'Projects',
     },
     activity: {
       follower: 'started following',

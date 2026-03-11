@@ -3,7 +3,7 @@ import { Profile, Experience, Skill, Formation, Activity, Project } from '../typ
 export const mockProfile: Profile = {
   name: 'Alexandre Plana',
   handle: 'alexandre-plana',
-  title: 'Développeur Front End Web',
+  title: 'Développeur Front End',
   subtitle: 'Industrie · UI/UX · Multi Plateforme',
   bio: 'Développeur Front End spécialisé industrie depuis 13 ans. D\'abord sur des interfaces 3D / VR pour EDF, RTE, AREVA et DCNS, puis sur une application AR mobile multi-plateforme, aujourd\'hui sur des architectures web micro-frontend pour l\'IIoT. La techno évolue, le domaine reste : des interfaces complexes pour des environnements industriels exigeants. Sensibilité UI/UX forgée par la pratique du design sur l\'ensemble du parcours.',
   company: 'Consultant R&D · Datacorp / Schneider Electric',
@@ -63,8 +63,9 @@ export const mockExperiences: Experience[] = [
           'Compilation, préparation et déploiement des applications sur les différents stores (Google Play, App Store, SESU)',
           'Création d\'un outil dédié aux tests unitaires sous Unity 3D, intégré aux phases de pre-build et post-build',
           'Mise en place d\'un système de styles externalisé permettant de livrer des versions personnalisées aux couleurs des clients (notamment pour les OEM)',
-          'Développement d\'un système offline avec synchronisation automatique des données dès le rétablissement de la connexion',
-        ],
+          'Développement d\'un système offline avec synchronisation automatique des données dès le rétablissement de la connexion',          'Désérialisation et gestion de la rétrocompatibilité entre les versions de projets : lecture des anciens formats, migration silencieuse à la volée',
+          'Implémentation de la couche de communication avec le serveur de projets : requêtes HTTP, gestion des erreurs réseau et logique de reconnexion',
+          'Gestion du cycle de vie des données applicatives : invalidation du cache local, stratégie de rafraîchissement et purge des données obsolètes',        ],
         retrospective: 'Ce projet m\'a énormément apporté, autant sur le plan technique que personnel. Il m\'a permis de travailler sur un environnement véritablement structuré, avec des processus propres aux grandes entreprises, des standards de qualité bien plus élevés que ceux de mes expériences précédentes, et une vraie prise de conscience de l\'importance des tests unitaires et de l\'architecture pour assurer la maintenabilité d\'un projet dans la durée.',
         metrics: [
           { value: '6 ans', label: 'développement\ncontinu' },
@@ -158,13 +159,6 @@ export const mockFormation: Formation[] = [
     title: 'Licence 3D Temps Réel',
     sub: '3DI Laval · 2012–2013',
     meta: '3D temps réel · Réalité virtuelle · Unity 3D',
-
-  },
-  {
-    label: '📌 Projets persos',
-    title: 'Cv interactif React',
-    sub: '3DI Laval · 2012–2013',
-    meta: 'React · TypeScript · Design UI/UX',
 
   },
   {
@@ -314,5 +308,16 @@ export const mockProjects: Project[] = [
     desc: 'Simulation 3D pour la formation des équipes chirurgicales. Dosimétrie en temps réel, visualisation des zones sensibles aux radiations, protocole de radioprotection opérateur.',
     stack: 'Unity 3D · C# · Medical 3D · Dosimetry · Healthcare',
     tags: ['unity', 'c#', '3d-temps-réel', 'medical', 'healthcare'],
+  },
+  {
+    id: 10,
+    name: 'alexandre-plana/cv-react',
+    company: 'Projet personnel',
+    role: 'Développeur Front End',
+    period: '2026',
+    context: 'CV interactif React',
+    desc: 'Application CV interactive construite avec React et TypeScript. Travail sur l\'UX, la structure des données et l\'export de contenu.',
+    stack: 'React · TypeScript · Vite · UI/UX Design',
+    tags: ['react', 'ts', 'vite', 'uiux', 'design'],
   },
 ]
