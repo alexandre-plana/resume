@@ -64,6 +64,12 @@ export interface Translations {
     personalProject: string
     empty: string
   }
+  projectControls: {
+    types: string
+    professional: string
+    personal: string
+    empty: string
+  }
   mission: {
     current: string
     openDetails: string
@@ -158,6 +164,12 @@ export const translations: Record<Language, Translations> = {
       personalProject: 'projet perso',
       empty: 'Aucun element a afficher avec les filtres actuels.',
     },
+    projectControls: {
+      types: 'Types',
+      professional: 'professionnel',
+      personal: 'personnel',
+      empty: 'Aucun element a afficher avec les filtres actuels.',
+    },
     mission: {
       current: 'actuel',
       openDetails: 'Ouvrir le detail de la mission',
@@ -248,6 +260,12 @@ export const translations: Record<Language, Translations> = {
       training: 'training',
       degree: 'degree',
       personalProject: 'personal project',
+      empty: 'No item to display with the current filters.',
+    },
+    projectControls: {
+      types: 'Types',
+      professional: 'professional',
+      personal: 'personal',
       empty: 'No item to display with the current filters.',
     },
     mission: {
