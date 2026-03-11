@@ -94,9 +94,13 @@ const PALETTE = {
   text3: '9198A1',
   blue: '0969DA',
   blueSoft: 'DCEBFF',
+  blueBorder: 'B6D4FE',
+  neutralSoft: 'F3F4F6',
   featuredBg: 'F0F9FF',
   featuredBorder: 'BAE6FD',
   green: '1A7F37',
+  greenSoft: 'E9FBEA',
+  greenBorder: 'A7E3AF',
 }
 
 const FONTS = {
@@ -106,6 +110,7 @@ const FONTS = {
 
 type DocChild = Paragraph | Table
 type RunOverrides = Omit<Partial<IRunOptions>, 'text' | 'children'>
+type BadgeVariant = 'blue' | 'neutral' | 'success'
 
 const borderLine = (color: string, size = 6) => ({
   style: BorderStyle.SINGLE,
@@ -139,20 +144,70 @@ const monoRun = (text: string, options: RunOverrides = {}): TextRun =>
 
 const spacer = (after = 120): Paragraph => new Paragraph({ text: '', spacing: { after } })
 
+const badgeTheme: Record<BadgeVariant, { fill: string; border: string; color: string }> = {
+  blue: { fill: PALETTE.blueSoft, border: PALETTE.blueBorder, color: PALETTE.blue },
+  neutral: { fill: PALETTE.neutralSoft, border: PALETTE.border, color: PALETTE.text2 },
+  success: { fill: PALETTE.greenSoft, border: PALETTE.greenBorder, color: PALETTE.green },
+}
+
+const badgeRun = (text: string, variant: BadgeVariant, allCaps = false): TextRun => {
+  const theme = badgeTheme[variant]
+  return new TextRun({
+    text: ` ${text} `,
+    font: FONTS.mono,
+    size: 15,
+    bold: true,
+    allCaps,
+    color: theme.color,
+    characterSpacing: 4,
+    shading: { type: ShadingType.CLEAR, fill: theme.fill, color: 'auto' },
+    border: borderLine(theme.border, 4),
+  })
+}
+
+const badgeRuns = (
+  values: string[],
+  variant: BadgeVariant,
+  format: (value: string) => string = (value) => value,
+): TextRun[] => {
+  const runs: TextRun[] = []
+  values.forEach((value, index) => {
+    runs.push(badgeRun(format(value), variant))
+    if (index < values.length - 1) {
+      runs.push(new TextRun({ text: ' ' }))
+    }
+  })
+  return runs
+}
+
 const sectionHeading = (label: string): Paragraph =>
   new Paragraph({
     children: [
+      monoRun('◆ ', {
+        bold: true,
+        size: 16,
+        color: PALETTE.blue,
+        characterSpacing: 10,
+      }),
       monoRun(label.toUpperCase(), {
         bold: true,
         allCaps: true,
         color: PALETTE.blue,
-        characterSpacing: 18,
+        characterSpacing: 22,
       }),
     ],
+    shading: {
+      type: ShadingType.CLEAR,
+      fill: PALETTE.blueSoft,
+      color: 'auto',
+    },
     border: {
+      top: borderLine(PALETTE.borderSoft, 6),
+      left: borderLine(PALETTE.blue, 16),
       bottom: borderLine(PALETTE.borderSoft, 6),
     },
-    spacing: { before: 100, after: 160 },
+    indent: { left: 80 },
+    spacing: { before: 120, after: 180 },
   })
 
 const buildHeaderCard = (profile: Profile): Table =>
@@ -269,7 +324,69 @@ const buildAboutCard = (text: string): Table =>
     ],
   })
 
-const buildLanguagesTable = (profile: Profile, t: ReturnType<typeof getTranslations>): Table =>
+const buildTechLanguageNarrative = (language: Language, techLanguages: Profile['languages']): Paragraph[] => {
+  const veryExperienced = techLanguages.filter((lang) => lang.pct >= 20).map((lang) => lang.name)
+  const notions = techLanguages.filter((lang) => lang.pct > 0 && lang.pct < 20).map((lang) => lang.name)
+
+  const lines: Paragraph[] = []
+
+  if (veryExperienced.length > 0) {
+    lines.push(
+      new Paragraph({
+        children: [
+          bodyRun(language === 'fr' ? 'Très expérimenté en ' : 'Highly experienced with ', {
+            size: 20,
+            color: PALETTE.text2,
+          }),
+          bodyRun(veryExperienced.join(', '), {
+            size: 20,
+            bold: true,
+            color: PALETTE.text,
+          }),
+        ],
+        spacing: { after: 80, line: 230 },
+      }),
+    )
+  }
+
+  if (notions.length > 0) {
+    lines.push(
+      new Paragraph({
+        children: [
+          bodyRun(language === 'fr' ? 'Quelques notions de ' : 'Working knowledge of ', {
+            size: 20,
+            color: PALETTE.text2,
+          }),
+          bodyRun(notions.join(', '), {
+            size: 20,
+            bold: true,
+            color: PALETTE.text,
+          }),
+        ],
+        spacing: { after: 50, line: 230 },
+      }),
+    )
+  }
+
+  if (lines.length === 0) {
+    lines.push(
+      ...techLanguages.map((lang) =>
+        new Paragraph({
+          children: [bodyRun(lang.name, { bold: true, size: 20 }), bodyRun(` - ${lang.pct}%`, { size: 20, color: PALETTE.text2 })],
+          spacing: { after: 50, line: 220 },
+        }),
+      ),
+    )
+  }
+
+  return lines
+}
+
+const buildLanguagesTable = (
+  profile: Profile,
+  t: ReturnType<typeof getTranslations>,
+  language: Language,
+): Table =>
   new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
     borders: {
@@ -307,12 +424,7 @@ const buildLanguagesTable = (profile: Profile, t: ReturnType<typeof getTranslati
                 children: [monoRun(t.common.languageStack.toUpperCase(), { bold: true, allCaps: true, color: PALETTE.text2, size: 16 })],
                 spacing: { after: 80 },
               }),
-              ...profile.languages.map((lang) =>
-                new Paragraph({
-                  children: [bodyRun(lang.name, { bold: true, size: 20 }), bodyRun(` - ${lang.pct}%`, { size: 20, color: PALETTE.text2 })],
-                  spacing: { after: 50, line: 220 },
-                }),
-              ),
+              ...buildTechLanguageNarrative(language, profile.languages),
             ],
           }),
         ],
@@ -324,42 +436,54 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
   const borderColor = mission.featured ? PALETTE.featuredBorder : PALETTE.border
   const fillColor = mission.featured ? PALETTE.featuredBg : PALETTE.bgAlt
   const missionTasks = mission.tasks ?? []
+  const missionHeaderBadges: TextRun[] = [badgeRun(mission.badge, 'blue', true)]
+
+  if (mission.isCurrent) {
+    missionHeaderBadges.push(new TextRun({ text: ' ' }), badgeRun(t.mission.current, 'success', true))
+  }
 
   const children: Paragraph[] = [
     new Paragraph({
       children: [
         monoRun(mission.name, { bold: true, color: PALETTE.blue, size: 18 }),
-        monoRun(` [${mission.badge}]`, { size: 16, color: PALETTE.text3 }),
+        new TextRun({ text: '  ' }),
+        ...missionHeaderBadges,
       ],
-      spacing: { after: 50 },
+      spacing: { after: 70 },
     }),
     new Paragraph({
-      children: [monoRun(`${mission.period}${mission.isCurrent ? ` - ${t.mission.current}` : ''}`, { size: 16, color: PALETTE.text3 })],
-      spacing: { after: 70, line: 200 },
+      children: [monoRun(mission.period, { size: 16, color: PALETTE.text3 })],
+      spacing: { after: 110, line: 200 },
     }),
   ]
+
+  const pushMissionGap = (after = 70): void => {
+    children.push(new Paragraph({ text: '', spacing: { after } }))
+  }
 
   if (mission.context) {
     children.push(
       new Paragraph({
         children: [bodyRun(mission.context, { italics: true, size: 19, color: PALETTE.text3 })],
-        spacing: { after: 70, line: 220 },
+        spacing: { after: 40, line: 230 },
       }),
     )
+    pushMissionGap(70)
   }
 
   children.push(
     new Paragraph({
       children: [bodyRun(mission.desc, { size: 20, color: PALETTE.text2 })],
-      spacing: { after: 80, line: 260 },
+      spacing: { after: 40, line: 270 },
     }),
   )
+  pushMissionGap(80)
 
   if (missionTasks.length > 0) {
     children.push(
       new Paragraph({
         children: [monoRun(t.mission.tasksTitle.toUpperCase(), { bold: true, allCaps: true, size: 16, color: PALETTE.blue, characterSpacing: 8 })],
-        spacing: { after: 60 },
+        spacing: { after: 90 },
       }),
     )
 
@@ -369,10 +493,11 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
           children: [bodyRun(task, { size: 20, color: PALETTE.text2 })],
           bullet: { level: 0 },
           indent: { left: 340 },
-          spacing: { line: 230, after: 40 },
+          spacing: { line: 240, after: 70 },
         }),
       )
     })
+    pushMissionGap(70)
   }
 
   if (mission.metrics.length > 0) {
@@ -380,25 +505,27 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
     children.push(
       new Paragraph({
         children: [bodyRun(metrics, { bold: true, color: PALETTE.blue, size: 19 })],
-        spacing: { before: 40, after: 60, line: 220 },
+        spacing: { before: 20, after: 40, line: 230 },
       }),
     )
+    pushMissionGap(70)
   }
 
   if (mission.retrospective?.trim()) {
     children.push(
       new Paragraph({
         children: [bodyRun(`${t.mission.retrospective}: ${mission.retrospective}`, { italics: true, color: PALETTE.green, size: 19 })],
-        spacing: { after: 60, line: 230 },
+        spacing: { after: 40, line: 240 },
       }),
     )
+    pushMissionGap(70)
   }
 
   if (mission.tags.length > 0) {
     children.push(
       new Paragraph({
-        children: [monoRun(mission.tags.map((tag) => `#${tag}`).join('  '), { size: 16, color: PALETTE.text3 })],
-        spacing: { before: 20 },
+        children: badgeRuns(mission.tags, 'neutral', (tag) => `#${tag}`),
+        spacing: { before: 20, after: 20 },
       }),
     )
   }
@@ -447,7 +574,8 @@ const buildProjectCard = (project: Project): Table =>
               new Paragraph({
                 children: [
                   monoRun(project.name, { bold: true, size: 18, color: PALETTE.blue }),
-                  monoRun(` [${project.role}]`, { size: 16, color: PALETTE.text3 }),
+                  new TextRun({ text: '  ' }),
+                  badgeRun(project.role, 'blue', true),
                 ],
                 spacing: { after: 50 },
               }),
@@ -468,7 +596,7 @@ const buildProjectCard = (project: Project): Table =>
                 spacing: { after: 70 },
               }),
               new Paragraph({
-                children: [monoRun(project.tags.map((tag) => `#${tag}`).join('  '), { size: 16, color: PALETTE.text3 })],
+                children: badgeRuns(project.tags, 'neutral', (tag) => `#${tag}`),
               }),
             ],
           }),
@@ -502,7 +630,7 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
   children.push(spacer(180))
 
   children.push(sectionHeading(`${t.common.languages} & ${t.common.languageStack}`))
-  children.push(buildLanguagesTable(profile, t))
+  children.push(buildLanguagesTable(profile, t, language))
   children.push(spacer(180))
 
   children.push(sectionHeading(t.common.coreSkills))
@@ -590,7 +718,8 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
       new Paragraph({
         children: [
           bodyRun(entry.action, { size: 20 }),
-          monoRun(` ${entry.repo}`, { size: 16, color: PALETTE.blue, bold: true }),
+          new TextRun({ text: ' ' }),
+          badgeRun(entry.repo, 'blue'),
           bodyRun(`${detail} (${entry.time})`, { size: 19, color: PALETTE.text2 }),
         ],
         bullet: { level: 0 },
@@ -604,7 +733,7 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
   children.push(sectionHeading(t.sidebar.interests))
   children.push(
     new Paragraph({
-      children: [monoRun(profile.interests.map((interest) => `#${interest}`).join('  '), { size: 16, color: PALETTE.text2 })],
+      children: badgeRuns(profile.interests, 'neutral', (interest) => `#${interest}`),
       spacing: { line: 220, after: 280 },
     }),
   )
