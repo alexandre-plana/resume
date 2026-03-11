@@ -135,23 +135,29 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     formation: {
       0: {
         label: '📌 Formations',
+        title: 'React · TypeScript',
+        sub: 'Datacorp · 2026',
+        meta: 'In-depth training on React and modern front-end best practices',
+      },
+      1: {
+        label: '📌 Formations',
         title: 'TypeScript · Docker · Vue.js',
         sub: 'Datacorp · 2023',
         meta: 'Formations professionnelles sur les technologies web modernes utilisées dans mes missions actuelles',
       },
-      1: {
+      2: {
         label: '📌 Formations',
         title: 'Stage Polymorph',
         sub: 'Stage fin de license · 2013',
         meta: '3D temps réel · Réalité virtuelle · Unity 3D',
       },
-      2: {
+      3: {
         label: '📌 Diplome',
         title: 'Licence 3D Temps Réel',
         sub: '3DI Laval · 2012–2013',
         meta: '3D temps réel · Réalité virtuelle · Unity 3D',
       },
-      3: {
+      4: {
         label: '📌 Diplome',
         title: 'BTS Communication Visuelle opt. Multimédia',
         sub: '3DI Laval · 2010–2012',
@@ -275,23 +281,29 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     formation: {
       0: {
         label: '📌 Training',
+        title: 'React · TypeScript',
+        sub: 'Datacorp · 2026',
+        meta: 'In-depth training on React and modern front-end best practices',
+      },
+      1: {
+        label: '📌 Training',
         title: 'TypeScript · Docker · Vue.js',
         sub: 'Datacorp · 2023',
         meta: 'Professional training on modern web technologies used in my current missions',
       },
-      1: {
+      2: {
         label: '📌 Training',
         title: 'Polymorph Internship',
         sub: 'End-of-degree internship · 2013',
         meta: 'Graphic design · Visual communication',
       },
-      2: {
+      3: {
         label: '📌 Degree',
         title: 'Bachelor in Real-Time 3D',
         sub: '3DI Laval · 2012–2013',
         meta: 'Real-time 3D · Virtual Reality · Unity 3D',
       },
-      3: {
+      4: {
         label: '📌 Degree',
         title: 'BTS Visual Communication (Multimedia)',
         sub: '3DI Laval · 2010–2012',

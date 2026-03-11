@@ -145,6 +145,13 @@ export const mockSkills: Skill[] = [
 export const mockFormation: Formation[] = [
   {
     label: '📌 Formations',
+    title: 'React · TypeScript',
+    sub: 'Datacorp · 2026',
+    meta: 'Formation approfondie sur React et les bonnes pratiques front-end modernes',
+
+  },
+  {
+    label: '📌 Formations',
     title: 'TypeScript · Docker · Vue.js',
     sub: 'Datacorp · 2023',
     meta: 'Formations professionnelles sur les technologies web modernes utilisées dans mes missions actuelles',
