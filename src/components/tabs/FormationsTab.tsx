@@ -3,7 +3,7 @@ import type { Formation } from '../../types'
 import type { Language, Translations } from '../../locales'
 import styles from '../../App.module.css'
 
-type FormationKind = 'formation' | 'diplome' | 'projetPerso'
+type FormationKind = 'formation' | 'diplome'
 type FormationSort = 'date' | 'name'
 
 interface FormationsTabProps {
@@ -20,10 +20,6 @@ const cleanFormationLabel = (rawLabel: string): string => rawLabel.replace(/^�
 const getFormationKind = (rawLabel: string): FormationKind => {
   const normalized = cleanFormationLabel(rawLabel).toLowerCase()
 
-  if (normalized.includes('projet') || normalized.includes('personal')) {
-    return 'projetPerso'
-  }
-
   if (normalized.includes('dipl') || normalized.includes('degree') || normalized.includes('bachelor')) {
     return 'diplome'
   }
@@ -34,10 +30,6 @@ const getFormationKind = (rawLabel: string): FormationKind => {
 const getFormationLabelMeta = (rawLabel: string): { icon: string; text: string } => {
   const text = cleanFormationLabel(rawLabel)
   const kind = getFormationKind(rawLabel)
-
-  if (kind === 'projetPerso') {
-    return { icon: '🧩', text }
-  }
 
   if (kind === 'diplome') {
     return { icon: '🎓', text }
@@ -60,7 +52,6 @@ function FormationsTabComponent({ formation, isLoading, isError, errorMessage, l
   const [formationTypeFilters, setFormationTypeFilters] = useState<Record<FormationKind, boolean>>({
     formation: true,
     diplome: true,
-    projetPerso: true,
   })
 
   const toggleFormationType = (kind: FormationKind) => {
@@ -134,14 +125,6 @@ function FormationsTabComponent({ formation, isLoading, isError, errorMessage, l
               onChange={() => toggleFormationType('diplome')}
             />
             {t.formationControls.degree}
-          </label>
-          <label className={styles.formationFilterItem}>
-            <input
-              type="checkbox"
-              checked={formationTypeFilters.projetPerso}
-              onChange={() => toggleFormationType('projetPerso')}
-            />
-            {t.formationControls.personalProject}
           </label>
         </div>
       </div>

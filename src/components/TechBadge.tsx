@@ -55,7 +55,7 @@ const TechBadgeComponent: React.FC<TechBadgeProps> = ({ label, kind }) => {
         className={styles.dot}
         style={{ background: colors.dot }}
       />
-      {label}
+      {label.toLowerCase()}
     </span>
   )
 }

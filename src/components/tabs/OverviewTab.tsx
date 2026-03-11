@@ -5,6 +5,37 @@ import { QRCode } from '../QRCode'
 import { TechBadge } from '../TechBadge'
 import styles from '../../App.module.css'
 
+const MISSION_TASK_PREVIEW_LIMIT = 3
+const TASK_PREVIEW_MAX_LENGTH = 92
+
+const summarizeTaskPreview = (task: string) => {
+  const normalized = task.replace(/\s+/g, ' ').trim().replace(/[.?!;:]+$/, '')
+  const lowerCased = normalized.toLowerCase()
+
+  for (const separator of [':', ';', ',']) {
+    const separatorIndex = normalized.indexOf(separator)
+    if (separatorIndex > 36) {
+      return normalized.slice(0, separatorIndex).trim()
+    }
+  }
+
+  for (const separator of [' pour ', ' avec ', ' via ', ' afin de ']) {
+    const separatorIndex = lowerCased.indexOf(separator)
+    if (separatorIndex > 44) {
+      return normalized.slice(0, separatorIndex).trim()
+    }
+  }
+
+  if (normalized.length <= TASK_PREVIEW_MAX_LENGTH) {
+    return normalized
+  }
+
+  const shortened = normalized.slice(0, TASK_PREVIEW_MAX_LENGTH)
+  const lastWordBoundary = shortened.lastIndexOf(' ')
+
+  return `${shortened.slice(0, lastWordBoundary > 52 ? lastWordBoundary : TASK_PREVIEW_MAX_LENGTH).trim()}…`
+}
+
 interface OverviewTabProps {
   experiences: Experience[] | undefined
   isLoading: boolean
@@ -51,39 +82,63 @@ function OverviewTabComponent({
               </div>
             </div>
             <div className={styles.tlMissions}>
-              {exp.missions.map((mission) => (
-                <div
-                  key={mission.id}
-                  className={mission.featured ? styles.missionFeatured : styles.mission}
-                  role="button"
-                  tabIndex={0}
-                  aria-haspopup="dialog"
-                  aria-label={t.mission.openDetails}
-                  onClick={(event) => onOpenMission(mission, exp.company, exp.employer, event.currentTarget)}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                      event.preventDefault()
-                      onOpenMission(mission, exp.company, exp.employer, event.currentTarget)
-                    }
-                  }}
-                >
-                  <div className={styles.missionTop}>
-                    <span style={{ color: 'var(--text-3)' }}>📁</span>
-                    <span className={styles.missionName}>{mission.name}</span>
-                    <span className={styles.missionBadge}>{mission.badge}</span>
+              {exp.missions.map((mission) => {
+                const missionTasks = mission.tasks ?? []
+                const previewTasks = missionTasks.slice(0, MISSION_TASK_PREVIEW_LIMIT)
+                const remainingTaskCount = Math.max(0, missionTasks.length - previewTasks.length)
+
+                return (
+                  <div
+                    key={mission.id}
+                    className={mission.featured ? styles.missionFeatured : styles.mission}
+                    role="button"
+                    tabIndex={0}
+                    aria-haspopup="dialog"
+                    aria-label={t.mission.openDetails}
+                    onClick={(event) => onOpenMission(mission, exp.company, exp.employer, event.currentTarget)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault()
+                        onOpenMission(mission, exp.company, exp.employer, event.currentTarget)
+                      }
+                    }}
+                  >
+                    <div className={styles.missionTop}>
+                      <span style={{ color: 'var(--text-3)' }}>📁</span>
+                      <span className={styles.missionName}>{mission.name}</span>
+                      <span className={styles.missionBadge}>{mission.badge}</span>
+                    </div>
+                    <div className={styles.missionContext}>{mission.context}</div>
+                    <div className={`${styles.missionDesc} ${styles.missionDescCompact}`}>{mission.desc}</div>
+                    {previewTasks.length > 0 && (
+                      <ul className={styles.missionTaskPreview} aria-label={t.mission.tasksTitle}>
+                        {previewTasks.map((task, idx) => (
+                          <li
+                            key={`mission-preview-${mission.id}-${idx}`}
+                            className={styles.missionTaskPreviewItem}
+                            title={task}
+                          >
+                            {summarizeTaskPreview(task)}
+                          </li>
+                        ))}
+                        {remainingTaskCount > 0 && (
+                          <li className={styles.missionTaskPreviewMore}>+{remainingTaskCount}</li>
+                        )}
+                      </ul>
+                    )}
+                    <div className={styles.missionFooterRow}>
+                      <div className={`${styles.tags} ${styles.missionTagsRow}`}>
+                        {mission.tags.map((tag, idx) => (
+                          <TechBadge key={`mission-${mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
+                        ))}
+                      </div>
+                      <span className={styles.missionExpandIcon} aria-hidden="true" title={t.mission.expand}>
+                        ⤢
+                      </span>
+                    </div>
                   </div>
-                  <div className={styles.missionContext}>{mission.context}</div>
-                  <div className={`${styles.missionDesc} ${styles.missionDescCompact}`}>{mission.desc}</div>
-                  <div className={styles.tags}>
-                    {mission.tags.map((tag, idx) => (
-                      <TechBadge key={`mission-${mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
-                    ))}
-                  </div>
-                  <span className={styles.missionExpandIcon} aria-hidden="true" title={t.mission.expand}>
-                    ⤢
-                  </span>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         ))}

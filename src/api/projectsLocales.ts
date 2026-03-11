@@ -107,6 +107,17 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       stack: 'Unity 3D · C# · 3D Médical · Dosimétrie · Santé',
       tags: ['unity', 'c#', '3d-temps-réel', 'medical', 'healthcare'],
     },
+    {
+      id: 10,
+      name: 'alexandre-plana/cv-react',
+      company: 'Projet personnel',
+      role: 'Développeur Front End',
+      period: '2026',
+      context: 'CV interactif React',
+      desc: 'CV interactif développé avec React et TypeScript, avec un focus sur l\'UX, la présentation des expériences et l\'export Word.',
+      stack: 'React · TypeScript · Vite · UI/UX Design',
+      tags: ['react', 'ts', 'vite', 'uiux', 'design'],
+    },
   ],
   en: [
     {
@@ -207,6 +218,17 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: '3D simulation for surgical team training. Real-time dosimetry, visualization of radiation-sensitive areas, operator radioprotection protocol.',
       stack: 'Unity 3D · C# · Medical 3D · Dosimetry · Healthcare',
       tags: ['unity', 'c#', '3d-temps-réel', 'medical', 'healthcare'],
+    },
+    {
+      id: 10,
+      name: 'alexandre-plana/cv-react',
+      company: 'Personal Project',
+      role: 'Front End Developer',
+      period: '2026',
+      context: 'Interactive React CV',
+      desc: 'Interactive CV built with React and TypeScript, focused on UX, mission storytelling, and Word export.',
+      stack: 'React · TypeScript · Vite · UI/UX Design',
+      tags: ['react', 'ts', 'vite', 'uiux', 'design'],
     },
   ],
 }
