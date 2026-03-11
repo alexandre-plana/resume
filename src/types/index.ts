@@ -8,19 +8,9 @@ export interface Profile {
   location: string
   email: string
   phone: string
-  followers: number
-  following: number
-  contributions: number
-  seeking: string
   langs: { label: string; level: string }[]
   languages: { name: string; pct: number; color: string }[]
-  awards: { year: string; title: string; desc: string }[]
   interests: string[]
-  uiuxHighlight: {
-    label: string
-    desc: string
-    tools: string[]
-  }
 }
 
 export interface Metric {
@@ -39,11 +29,7 @@ export interface Mission {
   tasks?: string[]
   retrospective?: string
   metrics: Metric[]
-  stack: string
   tags: string[]
-  lang: string
-  langColor: string
-  stars: string
   isCurrent?: boolean
 }
 
@@ -52,7 +38,6 @@ export interface Experience {
   company: string
   employer: string
   period: string
-  type: 'consulting' | 'employee'
   missions: Mission[]
 }
 
@@ -67,8 +52,6 @@ export interface Formation {
   title: string
   sub: string
   meta: string
-  bg: string
-  color: string
 }
 
 export interface Activity {
@@ -91,6 +74,4 @@ export interface Project {
   context: string
   stack: string
   tags: string[]
-  link?: string
-  highlights?: string[]
 }

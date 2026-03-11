@@ -18,8 +18,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Architecture micro-frontend avec Vue 3 + TypeScript. Développement d\'applications Edge compute industrielles en équipe Scrum.',
       stack: 'Vue 3.4 · TypeScript 5.x · single-spa 6 · Docker · Jest · HTML5 · CSS3 · Figma · Jira',
       tags: ['vue3', 'ts', 'single-spa', 'docker', 'jest', 'html', 'css', 'git', 'figma'],
-      link: 'https://github.com/schneider-electric/iiot-edge',
-      highlights: ['Déploiement multi-sites', 'Monitoring temps réel', 'Architecture micro-frontend'],
     },
     {
       id: 2,
@@ -31,8 +29,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Application AR multiplateforme pour opérateurs industriels Schneider Electric. Interfaces opérateur en RA, overlay des données machines en temps réel, gestion complexe de la couche AR.',
       stack: 'Unity 3D · C# · ARKit · ARCore · Figma · iOS · Android · Windows',
       tags: ['unity', 'c#', 'ar', 'mobile', 'uiux', 'figma', 'agile'],
-      link: 'https://github.com/schneider-electric/aoa',
-      highlights: ['Déploiement multiplateforme', '6 ans de développement continu', '3 plateformes simultanées'],
     },
     {
       id: 3,
@@ -44,7 +40,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Simulateur ergonomique 3D pour la prévention des TMS en milieu industriel. Analyse posturale temps réel, feedback visuel des risques, interface opérateur intuitive.',
       stack: 'Unity 3D · C# · 3ds Max · Ergonomie · Biomécanique',
       tags: ['unity', 'c#', '3d-temps-réel', 'vr', 'ergonomics'],
-      highlights: ['Analyse ergonomique', 'Feedback biomécanique temps réel', 'Déploiement industriel'],
     },
     {
       id: 4,
@@ -56,8 +51,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Outil de simulation de radioactivité destiné aux chantiers école pour la formation en radioprotection. Conception de l\'interface utilisateur et design UX pour rendre accessible la compréhension des risques radiologiques. Focus sur la pédagogie et l\'apprentissage pratique.',
       stack: 'UX/UI Design · Simulation · Radioprotection · Web Interface',
       tags: ['uiux', 'design', 'web', 'radioprotection', 'dosimetry', 'figma'],
-      link: 'https://www.dosicase.com/#NS',
-      highlights: ['Design interface utilisateur', 'Optimisation ergonomique', 'Conformité radioprotection'],
     },
     {
       id: 5,
@@ -69,7 +62,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Simulation 3D interactive d\'une enceinte mobile nucléaire. Visualisation 3D des flux, gestion des matériaux radioactifs, interfaces de contrôle temps réel pour opérateurs.',
       stack: 'Unity 3D · C# · SolidWorks · Nuclear simulation · WPF',
       tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'desktop'],
-      highlights: ['Conformité sécurité nucléaire', 'Intégration CAO 3D', 'Formation opérateur'],
     },
     {
       id: 6,
@@ -81,7 +73,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Serious game de formation pour l\'utilisation du poste de contrôle Aeroball en milieu nucléaire. Simulation 3D interactive, développement C# et modélisation 3D pour reproduire fidèlement les procédures opérationnelles.',
       stack: 'Unity 3D · C# · Modélisation 3D · Formation Nucléaire · Simulation',
       tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'training', 'desktop'],
-      highlights: ['Simulation poste de contrôle', 'Modélisation 3D', 'Formation opérateurs'],
     },
     {
       id: 7,
@@ -93,7 +84,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Module de formation interactive 3D sur la radioprotection et les procédures de sécurité nucléaire. Simulations de scénarios d\'accident, gestion des équipes de secours.',
       stack: 'Unity 3D · C# · Modélisation 3D · Design pédagogique',
       tags: ['unity', 'c#', '3d-temps-réel', 'training', 'education'],
-      highlights: ['Apprentissage interactif', 'Simulation de scénarios', 'Formation conformité sécurité'],
     },
     {
       id: 8,
@@ -105,7 +95,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Serious game destiné à préparer les interventions durant les arrêts de tranche pour la maintenance des générateurs de vapeurs. Simulation 3D temps réel et développement C# pour reproduire les procédures de maintenance en environnement nucléaire.',
       stack: 'Unity 3D · C# · 3D Temps Réel · Maintenance Nucléaire · Simulation',
       tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'training', 'desktop'],
-      highlights: ['Simulation maintenance', 'Préparation arrêts de tranche', 'Formation 3D temps réel'],
     },
     {
       id: 9,
@@ -117,7 +106,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Simulation 3D pour la formation des équipes chirurgicales. Dosimétrie en temps réel, visualisation des zones sensibles aux radiations, protocole de radioprotection opérateur.',
       stack: 'Unity 3D · C# · 3D Médical · Dosimétrie · Santé',
       tags: ['unity', 'c#', '3d-temps-réel', 'medical', 'healthcare'],
-      highlights: ['Précision médicale', 'Dosimétrie temps réel', 'Formation chirurgicale'],
     },
   ],
   en: [
@@ -131,8 +119,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Micro-frontend architecture with Vue 3 + TypeScript. Development of industrial Edge compute applications in Scrum team.',
       stack: 'Vue 3.4 · TypeScript 5.x · single-spa 6 · Docker · Jest · HTML5 · CSS3 · Figma · Jira',
       tags: ['vue3', 'ts', 'single-spa', 'docker', 'jest', 'html', 'css', 'git', 'figma'],
-      link: 'https://github.com/schneider-electric/iiot-edge',
-      highlights: ['Multi-site deployment', 'Real-time monitoring', 'Micro-frontend architecture'],
     },
     {
       id: 2,
@@ -144,8 +130,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Cross-platform AR app for Schneider Electric industrial operators. AR operator interfaces, real-time machine data overlay, complex AR layer state management.',
       stack: 'Unity 3D · C# · ARKit · ARCore · Figma · iOS · Android · Windows',
       tags: ['unity', 'c#', 'ar', 'mobile', 'uiux', 'figma', 'agile'],
-      link: 'https://github.com/schneider-electric/aoa',
-      highlights: ['Cross-platform deployment', '6 years continuous development', '3 simultaneous platforms'],
     },
     {
       id: 3,
@@ -157,7 +141,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: '3D ergonomic simulator for TMS prevention in industrial environments. Real-time posture analysis, visual risk feedback, intuitive operator interface.',
       stack: 'Unity 3D · C# · 3ds Max · Ergonomics · Biomechanics',
       tags: ['unity', 'c#', '3d-temps-réel', 'vr', 'ergonomics'],
-      highlights: ['Ergonomic analysis', 'Real-time biomechanical feedback', 'Industrial deployment'],
     },
     {
       id: 4,
@@ -169,8 +152,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Radioactivity simulation tool designed for training sites and educational purposes in radiation protection. User interface design and UX conception to make radiological risks accessible and understandable. Focus on pedagogy and practical learning.',
       stack: 'UX/UI Design · Simulation · Radiation Protection · Web Interface',
       tags: ['uiux', 'design', 'web', 'radioprotection', 'dosimetry', 'figma'],
-      link: 'https://www.dosicase.com/#NS',
-      highlights: ['User interface design', 'Ergonomic optimization', 'Radiation protection compliance'],
     },
     {
       id: 5,
@@ -182,7 +163,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Interactive 3D simulation of a mobile nuclear containment unit. 3D flow visualization, radioactive material management, real-time control interfaces for operators.',
       stack: 'Unity 3D · C# · SolidWorks · Nuclear simulation · WPF',
       tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'desktop'],
-      highlights: ['Nuclear safety compliance', '3D CAD integration', 'Operator training'],
     },
     {
       id: 6,
@@ -194,7 +174,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Training serious game for using the Aeroball control station in nuclear environments. Interactive 3D simulation, C# development and 3D modeling to faithfully reproduce operational procedures.',
       stack: 'Unity 3D · C# · 3D Modeling · Nuclear Training · Simulation',
       tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'training', 'desktop'],
-      highlights: ['Control station simulation', '3D modeling', 'Operator training'],
     },
     {
       id: 7,
@@ -206,7 +185,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Interactive 3D training module on radiation protection and nuclear safety procedures. Accident scenario simulations, rescue team management.',
       stack: 'Unity 3D · C# · 3D Modeling · Educational Design',
       tags: ['unity', 'c#', '3d-temps-réel', 'training', 'education'],
-      highlights: ['Interactive learning', 'Scenario simulation', 'Safety compliance training'],
     },
     {
       id: 8,
@@ -218,7 +196,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: 'Training serious game designed to prepare interventions during outage periods for steam generator maintenance. Real-time 3D simulation and C# development to reproduce maintenance procedures in nuclear environments.',
       stack: 'Unity 3D · C# · Real-time 3D · Nuclear Maintenance · Simulation',
       tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'training', 'desktop'],
-      highlights: ['Maintenance simulation', 'Outage preparation', 'Real-time 3D training'],
     },
     {
       id: 9,
@@ -230,7 +207,6 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
       desc: '3D simulation for surgical team training. Real-time dosimetry, visualization of radiation-sensitive areas, operator radioprotection protocol.',
       stack: 'Unity 3D · C# · Medical 3D · Dosimetry · Healthcare',
       tags: ['unity', 'c#', '3d-temps-réel', 'medical', 'healthcare'],
-      highlights: ['Medical accuracy', 'Real-time dosimetry', 'Surgical training'],
     },
   ],
 }

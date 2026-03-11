@@ -10,10 +10,6 @@ export const mockProfile: Profile = {
   location: 'France',
   email: 'alexandre.plana@gmail',
   phone: '06.71.03.97.84',
-  followers: 142,
-  following: 38,
-  contributions: 1842,
-  seeking: 'Poste Front End web dans un contexte industriel · Vue.js ou React · TypeScript · micro-frontend · équipe orientée qualité & UX',
   langs: [
     { label: 'Français', level: 'Natif' },
     { label: 'Anglais', level: 'Technique' },
@@ -24,16 +20,7 @@ export const mockProfile: Profile = {
     { name: 'HTML5/CSS', pct: 20, color: '#e34c26' },
     { name: 'Dart', pct: 10, color: '#00b4d8' },
   ],
-  awards: [
-    { year: '2012', title: 'Laval Virtual', desc: 'Prix du jury — reconstitution virtuelle Abbaye d\'Evron' },
-    { year: '2011', title: 'Laval Virtual', desc: '1ère place — Hackaton réalité augmentée' },
-  ],
   interests: ['🎮 Jeux', '🚵 VTT', '🥾 Rando', '🍳 Cuisine'],
-  uiuxHighlight: {
-    label: '🎨 Culture UI/UX',
-    desc: 'Pratique du design sur l\'ensemble du parcours — de la maquette Figma au composant en production.',
-    tools: ['Figma', 'Adobe XD', 'Design System', 'Prototypage'],
-  },
 }
 
 export const mockExperiences: Experience[] = [
@@ -42,7 +29,6 @@ export const mockExperiences: Experience[] = [
     company: 'Schneider Electric',
     employer: 'Consultant R&D — Datacorp',
     period: '2017 – 2026',
-    type: 'consulting',
     missions: [
       {
         id: 11,
@@ -62,11 +48,7 @@ export const mockExperiences: Experience[] = [
         retrospective: 'Première expérience web particulièrement enrichissante dans un environnement industriel exigeant. Cette mission m\'a permis de consolider des pratiques frontend solides et de monter en compétence sur l\'architecture micro-frontend.',
         isCurrent: true,
         metrics: [],
-        stack: 'Vue 3 · TypeScript · single-spa · Docker · Jest · HTML5 · CSS3 · Git · Figma · Jira',
         tags: ['vue3', 'ts', 'single-spa', 'docker', 'jest', 'html', 'css', 'git', 'figma', 'jira'],
-        lang: 'Vue.js',
-        langColor: '#41b883',
-        stars: '1.2k',
       },
       {
         id: 12,
@@ -89,11 +71,7 @@ export const mockExperiences: Experience[] = [
           { value: '3', label: 'plateformes\nsimultanées' },
           { value: 'AR', label: 'temps réel\nterrain' },
         ],
-        stack: 'Unity 3D · C# · ARKit · ARCore · Figma · UI/UX · Scrum · Jira',
         tags: ['unity', 'c#', 'ar', 'mobile', 'uiux', 'figma', 'agile', 'jira'],
-        lang: 'C#',
-        langColor: '#178600',
-        stars: '980',
       },
     ],
   },
@@ -102,7 +80,6 @@ export const mockExperiences: Experience[] = [
     company: 'Oreka Ingénierie',
     employer: 'Développeur C# / Unity 3D',
     period: '2013 – 2017',
-    type: 'employee',
     missions: [
       {
         id: 21,
@@ -129,11 +106,7 @@ export const mockExperiences: Experience[] = [
           { value: '5', label: 'clients grands\ncomptes' },
           { value: 'VR/AR', label: 'temps réel\nUnity 3D' },
         ],
-        stack: 'Unity 3D · C# · WPF · WinForm · SolidWorks · 3ds Max · Figma',
         tags: ['unity', 'c#', 'wpf', 'winform', 'solidworks', '3dsmax', 'vr', 'uiux', 'figma', 'desktop'],
-        lang: 'C#',
-        langColor: '#178600',
-        stars: '543',
       },
     ],
   },
@@ -171,40 +144,35 @@ export const mockFormation: Formation[] = [
     title: 'TypeScript · Docker · Vue.js',
     sub: 'Datacorp · 2023',
     meta: 'Formations professionnelles sur les technologies web modernes utilisées dans mes missions actuelles',
-    bg: '#dbeafe',
-    color: '#1e40af',
+
   },
   {
     label: '📌 Formations',
     title: 'Stage Polymorph',
     sub: 'Stage fin de license · 2013',
     meta: 'Design graphique · Communication visuelle',
-    bg: '#dcfce7',
-    color: '#166534',
+
   },
   {
     label: '📌 Diplome',
     title: 'Licence 3D Temps Réel',
     sub: '3DI Laval · 2012–2013',
     meta: '3D temps réel · Réalité virtuelle · Unity 3D',
-    bg: '#dcfce7',
-    color: '#166534',
+
   },
   {
     label: '📌 Projets persos',
     title: 'Cv interactif React',
     sub: '3DI Laval · 2012–2013',
     meta: 'React · TypeScript · Design UI/UX',
-    bg: '#dcfce7',
-    color: '#166534',
+
   },
   {
     label: '📌 Diplome',
     title: 'BTS Communication Visuelle opt. Multimédia',
     sub: '3DI Laval · 2010–2012',
     meta: 'Multimédia · Web · Vidéo',
-    bg: '#dcfce7',
-    color: '#166534',
+
   },
 ]
 
@@ -258,8 +226,6 @@ export const mockProjects: Project[] = [
     desc: 'Plateforme Cloud IIoT pour l\'automatisation industrielle. Tablespaces de contrôle d\'usines, monitoring en temps réel des machines, architecture micro-frontend.',
     stack: 'Vue 3.4 · TypeScript 5.x · single-spa 6 · Docker · Jest · HTML5 · CSS3 · Figma · Jira',
     tags: ['vue3', 'ts', 'single-spa', 'docker', 'jest', 'html', 'css', 'git', 'figma'],
-    link: 'https://github.com/schneider-electric/iiot-edge',
-    highlights: ['Multi-site deployment', 'Real-time monitoring', 'Micro-frontend architecture'],
   },
   {
     id: 2,
@@ -271,8 +237,6 @@ export const mockProjects: Project[] = [
     desc: 'Application AR multiplateforme pour opérateurs industriels Schneider Electric. Interfaces opérateur en AR, overlay des données machines en temps réel, gestion complexe de la couche AR.',
     stack: 'Unity 3D · C# · ARKit · ARCore · Figma · iOS · Android · Windows',
     tags: ['unity', 'c#', 'ar', 'mobile', 'uiux', 'figma', 'agile'],
-    link: 'https://github.com/schneider-electric/aoa',
-    highlights: ['Cross-platform deployment', '6 years continuous development', '3 simultaneous platforms'],
   },
   {
     id: 3,
@@ -284,7 +248,6 @@ export const mockProjects: Project[] = [
     desc: 'Simulateur ergonomique 3D pour la prévention des TMS en milieu industriel. Analyse posturale temps réel, feedback visuel des risques, interface opérateur intuitive.',
     stack: 'Unity 3D · C# · 3ds Max · Ergonomie · Biomécanique',
     tags: ['unity', 'c#', '3d-temps-réel', 'vr', 'ergonomics'],
-    highlights: ['Ergonomic analysis', 'Real-time biomechanical feedback', 'Industrial deployment'],
   },
   {
     id: 4,
@@ -296,8 +259,6 @@ export const mockProjects: Project[] = [
     desc: 'Outil de simulation de radioactivité destiné aux chantiers école pour la formation en radioprotection. Conception de l\'interface utilisateur et design UX pour rendre accessible la compréhension des risques radiologiques. Focus sur la pédagogie et l\'apprentissage pratique.',
     stack: 'UX/UI Design · Simulation · Radioprotection · Web Interface',
     tags: ['uiux', 'design', 'web', 'radioprotection', 'dosimetry', 'figma'],
-    link: 'https://www.dosicase.com/#NS',
-    highlights: ['Design interface utilisateur', 'Optimisation ergonomique', 'Conformité radioprotection'],
   },
   {
     id: 5,
@@ -309,7 +270,6 @@ export const mockProjects: Project[] = [
     desc: 'Simulation 3D interactive d\'une enceinte mobile nucléaire. Visualisation 3D des flux, gestion des matériaux radioactifs, interfaces de contrôle temps réel pour opérateurs.',
     stack: 'Unity 3D · C# · SolidWorks · Nuclear simulation · WPF',
     tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'desktop'],
-    highlights: ['Nuclear safety compliance', '3D CAD integration', 'Operator training'],
   },
   {
     id: 6,
@@ -321,7 +281,6 @@ export const mockProjects: Project[] = [
     desc: 'Serious game de formation pour l\'utilisation du poste de contrôle Aeroball en milieu nucléaire. Simulation 3D interactive, développement C# et modélisation 3D pour reproduire fidèlement les procédures opérationnelles.',
     stack: 'Unity 3D · C# · Modélisation 3D · Nuclear Training · Simulation',
     tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'training', 'desktop'],
-    highlights: ['Nuclear control station simulation', '3D modeling', 'Operator training'],
   },
   {
     id: 7,
@@ -333,7 +292,6 @@ export const mockProjects: Project[] = [
     desc: 'Module de formation interactive 3D sur la radioprotection et les procédures de sécurité nucléaire. Simulations de scénarios d\'accident, gestion des équipes de secours.',
     stack: 'Unity 3D · C# · 3D Modeling · Educational Design',
     tags: ['unity', 'c#', '3d-temps-réel', 'training', 'education'],
-    highlights: ['Interactive learning', 'Scenario simulation', 'Safety compliance training'],
   },
   {
     id: 8,
@@ -345,7 +303,6 @@ export const mockProjects: Project[] = [
     desc: 'Serious game destiné à préparer les interventions durant les arrêts de tranche pour la maintenance des générateurs de vapeurs. Simulation 3D temps réel, développement C# pour reproduire les procédures complexes de maintenance en environnement nucléaire.',
     stack: 'Unity 3D · C# · 3D Temps Réel · Nuclear Maintenance · Simulation',
     tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'training', 'desktop'],
-    highlights: ['Steam generator maintenance simulation', 'Outage preparation', 'Real-time 3D training'],
   },
   {
     id: 9,
@@ -357,6 +314,5 @@ export const mockProjects: Project[] = [
     desc: 'Simulation 3D pour la formation des équipes chirurgicales. Dosimétrie en temps réel, visualisation des zones sensibles aux radiations, protocole de radioprotection opérateur.',
     stack: 'Unity 3D · C# · Medical 3D · Dosimetry · Healthcare',
     tags: ['unity', 'c#', '3d-temps-réel', 'medical', 'healthcare'],
-    highlights: ['Medical accuracy', 'Real-time dosimetry', 'Surgical training'],
   },
 ]

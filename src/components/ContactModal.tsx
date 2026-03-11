@@ -1,41 +1,11 @@
 import React, { useState } from 'react'
+import { getTranslations } from '../locales'
 import styles from './ContactModal.module.css'
 
 interface ContactModalProps {
   isOpen: boolean
   onClose: () => void
   language: 'fr' | 'en'
-}
-
-const translations = {
-  fr: {
-    title: 'Me contacter',
-    wip: '🚧 Fonctionnalité en développement',
-    name: 'Nom',
-    email: 'Email',
-    subject: 'Sujet',
-    message: 'Message',
-    send: 'Envoyer',
-    cancel: 'Annuler',
-    namePlaceholder: 'Votre nom',
-    emailPlaceholder: 'votre@email.com',
-    subjectPlaceholder: 'Sujet du message',
-    messagePlaceholder: 'Votre message...',
-  },
-  en: {
-    title: 'Contact me',
-    wip: '🚧 Feature in development',
-    name: 'Name',
-    email: 'Email',
-    subject: 'Subject',
-    message: 'Message',
-    send: 'Send',
-    cancel: 'Cancel',
-    namePlaceholder: 'Your name',
-    emailPlaceholder: 'your@email.com',
-    subjectPlaceholder: 'Message subject',
-    messagePlaceholder: 'Your message...',
-  },
 }
 
 export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, language }) => {
@@ -46,7 +16,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, lan
     message: '',
   })
 
-  const t = translations[language]
+  const t = getTranslations(language).contactModal
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target

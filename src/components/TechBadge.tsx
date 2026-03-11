@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './TechBadge.module.css'
 
 const TAG_COLORS: Record<string, { bg: string; text: string; border: string; dot: string }> = {
@@ -41,7 +41,7 @@ interface TechBadgeProps {
   kind: string
 }
 
-export const TechBadge: React.FC<TechBadgeProps> = ({ label, kind }) => {
+const TechBadgeComponent: React.FC<TechBadgeProps> = ({ label, kind }) => {
   const colors = TAG_COLORS[kind] || TAG_COLORS.green
   const style = {
     background: colors.bg,
@@ -59,3 +59,5 @@ export const TechBadge: React.FC<TechBadgeProps> = ({ label, kind }) => {
     </span>
   )
 }
+
+export const TechBadge = memo(TechBadgeComponent)

@@ -1,15 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { useAppStore } from '../store/appStore'
 import styles from './Toolbar.module.css'
 import { getTranslations } from '../locales'
 
 interface ToolbarProps {
   language: 'fr' | 'en'
-  onContact: () => void
 }
 
-export function Toolbar({ language, onContact }: ToolbarProps) {
-  const { setLanguage } = useAppStore()
+function ToolbarComponent({ language }: ToolbarProps) {
+  const setLanguage = useAppStore((state) => state.setLanguage)
   const t = getTranslations(language)
   const [isHidden, setIsHidden] = useState(false)
   const lastScrollY = useRef(0)
@@ -44,7 +43,7 @@ export function Toolbar({ language, onContact }: ToolbarProps) {
     window.print()
   }
 
-  const printLabel = language === 'fr' ? 'Imprimer' : 'Print'
+  const printLabel = t.toolbar.print
 
   return (
     <div className={`${styles.toolbar} ${isHidden ? styles.toolbarHidden : ''}`}>
@@ -77,3 +76,5 @@ export function Toolbar({ language, onContact }: ToolbarProps) {
     </div>
   )
 }
+
+export const Toolbar = memo(ToolbarComponent)

@@ -1,10 +1,13 @@
+import { memo } from 'react'
 import { useAppStore } from '../store/appStore'
 import type { Tab } from '../store/appStore'
 import { getTranslations } from '../locales'
 import styles from './Tabs.module.css'
 
-export const Tabs = () => {
-  const { activeTab, setActiveTab, language } = useAppStore()
+function TabsComponent() {
+  const activeTab = useAppStore((state) => state.activeTab)
+  const setActiveTab = useAppStore((state) => state.setActiveTab)
+  const language = useAppStore((state) => state.language)
   const t = getTranslations(language)
 
   const tabsData: { id: Tab; label: string; icon: string }[] = [
@@ -28,3 +31,5 @@ export const Tabs = () => {
     </nav>
   )
 }
+
+export const Tabs = memo(TabsComponent)

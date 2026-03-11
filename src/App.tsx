@@ -1,15 +1,17 @@
-import { useEffect, useMemo, useState, type CSSProperties } from 'react'
-import { useProfile, useExperiences, useSkills, useFormation, useActivity, useProjects } from './hooks/useApi'
+import { useEffect, useState, type CSSProperties } from 'react'
+import { useActivity, useExperiences, useFormation, useProfile, useProjects, useSkills } from './hooks/useApi'
 import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
 import { Tabs } from './components/Tabs'
 import { TechBadge } from './components/TechBadge'
 import { ContactModal } from './components/ContactModal'
 import { Toolbar } from './components/Toolbar'
-import { QRCode } from './components/QRCode'
 import { PhoneNumber } from './components/PhoneNumber'
 import { getTranslations } from './locales'
 import type { Mission } from './types'
+import { FormationsTab } from './components/tabs/FormationsTab'
+import { OverviewTab } from './components/tabs/OverviewTab'
+import { ProjectsTab } from './components/tabs/ProjectsTab'
 import styles from './App.module.css'
 
 type MissionPopout = {
@@ -23,27 +25,31 @@ type MissionPopout = {
   }
 }
 
-type FormationKind = 'formation' | 'diplome' | 'projetPerso'
-type FormationSort = 'date' | 'name'
-
 function App() {
-  const { data: profile, isLoading: profileLoading } = useProfile()
-  const { data: experiences, isLoading: expLoading } = useExperiences()
-  const { data: projects, isLoading: projLoading } = useProjects()
-  const { data: skills, isLoading: skillsLoading } = useSkills()
-  const { data: formation, isLoading: formationLoading } = useFormation()
-  const { data: activity, isLoading: activityLoading } = useActivity()
-  const { language, activeTab, contactOpen, setContactOpen, setActiveTab } = useAppStore()
+  const profileQuery = useProfile()
+  const experiencesQuery = useExperiences()
+  const projectsQuery = useProjects()
+  const skillsQuery = useSkills()
+  const formationQuery = useFormation()
+  const activityQuery = useActivity()
+
+  const language = useAppStore((state) => state.language)
+  const activeTab = useAppStore((state) => state.activeTab)
+  const contactOpen = useAppStore((state) => state.contactOpen)
+  const setContactOpen = useAppStore((state) => state.setContactOpen)
+  const setActiveTab = useAppStore((state) => state.setActiveTab)
   const t = getTranslations(language)
 
-  const isLoading = profileLoading || expLoading || projLoading || skillsLoading || formationLoading || activityLoading
+  const profile = profileQuery.data
+  const skills = skillsQuery.data
+  const hasAnyQueryError =
+    experiencesQuery.isError ||
+    projectsQuery.isError ||
+    skillsQuery.isError ||
+    formationQuery.isError ||
+    activityQuery.isError
+
   const [activeMission, setActiveMission] = useState<MissionPopout | null>(null)
-  const [formationSort, setFormationSort] = useState<FormationSort>('date')
-  const [formationTypeFilters, setFormationTypeFilters] = useState<Record<FormationKind, boolean>>({
-    formation: true,
-    diplome: true,
-    projetPerso: true,
-  })
 
   const getMissionPopoutAnimation = (sourceEl: HTMLElement | null) => {
     if (!sourceEl) {
@@ -73,74 +79,6 @@ function App() {
     setActiveMission(null)
   }
 
-  const cleanFormationLabel = (rawLabel: string): string => rawLabel.replace(/^📌\s*/, '').trim()
-
-  const getFormationKind = (rawLabel: string): FormationKind => {
-    const normalized = cleanFormationLabel(rawLabel).toLowerCase()
-
-    if (normalized.includes('projet') || normalized.includes('personal')) {
-      return 'projetPerso'
-    }
-
-    if (normalized.includes('dipl') || normalized.includes('degree') || normalized.includes('bachelor')) {
-      return 'diplome'
-    }
-
-    return 'formation'
-  }
-
-  const getFormationLabelMeta = (rawLabel: string): { icon: string; text: string } => {
-    const text = cleanFormationLabel(rawLabel)
-    const kind = getFormationKind(rawLabel)
-
-    if (kind === 'projetPerso') {
-      return { icon: '🧩', text }
-    }
-
-    if (kind === 'diplome') {
-      return { icon: '🎓', text }
-    }
-
-    return { icon: '📚', text }
-  }
-
-  const getFormationSortYear = (sub: string): number => {
-    const yearMatches = sub.match(/\b(?:19|20)\d{2}\b/g)
-    if (!yearMatches || yearMatches.length === 0) {
-      return 0
-    }
-
-    return Math.max(...yearMatches.map((year) => Number(year)))
-  }
-
-  const toggleFormationType = (kind: FormationKind) => {
-    setFormationTypeFilters((prev) => ({ ...prev, [kind]: !prev[kind] }))
-  }
-
-  const visibleFormation = useMemo(() => {
-    if (!formation) {
-      return []
-    }
-
-    const collator = new Intl.Collator(language === 'fr' ? 'fr' : 'en', { sensitivity: 'base' })
-
-    return formation
-      .filter((form) => formationTypeFilters[getFormationKind(form.label)])
-      .slice()
-      .sort((a, b) => {
-        if (formationSort === 'name') {
-          return collator.compare(a.title, b.title)
-        }
-
-        const yearDiff = getFormationSortYear(b.sub) - getFormationSortYear(a.sub)
-        if (yearDiff !== 0) {
-          return yearDiff
-        }
-
-        return collator.compare(a.title, b.title)
-      })
-  }, [formation, formationSort, formationTypeFilters, language])
-
   useEffect(() => {
     if (activeTab === 'skills') {
       setActiveTab('overview')
@@ -168,285 +106,156 @@ function App() {
       } as CSSProperties)
     : undefined
 
-  if (!profile) return <div className={styles.loading}>Chargement...</div>
+  if (profileQuery.isLoading) {
+    return <div className={styles.loading}>{t.common.loading}</div>
+  }
+
+  if (profileQuery.isError || !profile) {
+    return <div className={styles.loading}>{t.queryErrors.profile}</div>
+  }
 
   return (
     <>
-      <Toolbar language={language} onContact={() => setContactOpen(true)} />
+      <Toolbar language={language} />
       <div className={styles.wrapper}>
         <div className={styles.layout}>
-        {/* SIDEBAR */}
-        <aside className={styles.sidebar}>
-          <Avatar name={profile.name} />
+          <aside className={styles.sidebar}>
+            <Avatar name={profile.name} language={language} />
 
-          <div className={styles.profileName}>{profile.name}</div>
-          <div className={styles.profileHandle}>@{profile.handle}</div>
-          <div className={styles.profileTitle}>{profile.title}</div>
-          <div className={styles.profileSubtitle}>{profile.subtitle}</div>
+            <div className={styles.profileName}>{profile.name}</div>
+            <div className={styles.profileHandle}>@{profile.handle}</div>
+            <div className={styles.profileTitle}>{profile.title}</div>
+            <div className={styles.profileSubtitle}>{profile.subtitle}</div>
 
-          <ul className={styles.meta}>
-            <li>
-              <span className={styles.icon}>🏢</span>
-              {profile.company}
-            </li>
-            <li>
-              <span className={styles.icon}>📍</span>
-              {profile.location}
-            </li>
-            <li>
-              <span className={styles.icon}>✉</span>
-              {profile.email}
-            </li>
-            <li>
-              <span className={styles.icon}>📞</span>
-              <PhoneNumber number={profile.phone} />
-            </li>
-          </ul>
+            <ul className={styles.meta}>
+              <li>
+                <span className={styles.icon}>🏢</span>
+                {profile.company}
+              </li>
+              <li>
+                <span className={styles.icon}>📍</span>
+                {profile.location}
+              </li>
+              <li>
+                <span className={styles.icon}>✉</span>
+                {profile.email}
+              </li>
+              <li>
+                <span className={styles.icon}>📞</span>
+                <PhoneNumber number={profile.phone} />
+              </li>
+            </ul>
 
-          <div className={styles.section}>
-            <div className={styles.label}>{t.common.languages}</div>
-            <div className={styles.langRow}>
-              {profile.langs.map((lang, idx) => (
-                <span key={`${lang.label}-${idx}`} className={styles.langPill}>
-                  {lang.label} <span>{lang.level}</span>
-                </span>
-              ))}
+            <div className={styles.section}>
+              <div className={styles.label}>{t.common.languages}</div>
+              <div className={styles.langRow}>
+                {profile.langs.map((lang, idx) => (
+                  <span key={`${lang.label}-${idx}`} className={styles.langPill}>
+                    {lang.label} <span>{lang.level}</span>
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div className={styles.section}>
-            <div className={styles.label}>{language === 'fr' ? 'Langages' : 'Languages'}</div>
-            <div className={styles.langBar}>
-              {profile.languages.map((lang, idx) => (
-                <div
-                  key={`langbar-${lang.name}-${idx}`}
-                  className={styles.langSeg}
-                  style={{
-                    width: `${lang.pct}%`,
-                    background: lang.color,
-                  }}
-                />
-              ))}
-            </div>
-            <div className={styles.langLegend}>
-              {profile.languages.map((lang, idx) => (
-                <div key={`legend-${lang.name}-${idx}`} className={styles.legendItem}>
+            <div className={styles.section}>
+              <div className={styles.label}>{t.common.languageStack}</div>
+              <div className={styles.langBar}>
+                {profile.languages.map((lang, idx) => (
                   <div
-                    className={styles.legendDot}
-                    style={{ background: lang.color }}
+                    key={`langbar-${lang.name}-${idx}`}
+                    className={styles.langSeg}
+                    style={{
+                      width: `${lang.pct}%`,
+                      background: lang.color,
+                    }}
                   />
-                  {lang.name}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className={styles.section}>
-            <div className={styles.label}>{language === 'fr' ? 'Compétences clés' : 'Core Skills'}</div>
-            <div className={styles.sidebarSkillList}>
-              {!isLoading &&
-                skills?.map((skillCat, idx) => (
-                  <div key={idx} className={skillCat.featured ? styles.sidebarSkillGroupFeatured : styles.sidebarSkillGroup}>
-                    <div className={skillCat.featured ? styles.sidebarSkillTitleFeatured : styles.sidebarSkillTitle}>
-                      {skillCat.cat.replace(/^\/\/\s*/, '')}
-                    </div>
-                    <div className={styles.tags}>
-                      {skillCat.tags.map((tag, tagIdx) => (
-                        <TechBadge key={`sidebar-skill-${idx}-${tag.k}-${tagIdx}`} label={tag.l} kind={tag.k} />
-                      ))}
-                    </div>
+                ))}
+              </div>
+              <div className={styles.langLegend}>
+                {profile.languages.map((lang, idx) => (
+                  <div key={`legend-${lang.name}-${idx}`} className={styles.legendItem}>
+                    <div className={styles.legendDot} style={{ background: lang.color }} />
+                    {lang.name}
                   </div>
                 ))}
+              </div>
             </div>
-          </div>
 
-          <div className={`${styles.section} ${styles.interestsSection}`}>
-            <div className={styles.label}>{t.sidebar.interests === 'Intérêts' ? 'Intérêts' : t.sidebar.interests}</div>
-            <div className={styles.tags}>
-              {profile.interests.map((interest, idx) => (
-                <TechBadge key={`${interest}-${idx}`} label={interest} kind="interest" />
-              ))}
-            </div>
-          </div>
-        </aside>
-
-        {/* MAIN */}
-        <main className={styles.main}>
-          {/* ABOUT */}
-          <div className={styles.sectionHeader}>👤 {language === 'fr' ? 'À propos' : 'About'}</div>
-          <div className={styles.aboutSection}>
-            <p className={styles.aboutText}>{profile.bio}</p>
-          </div>
-
-          <Tabs />
-
-          {/* TABS CONTENT */}
-          {activeTab === 'overview' && (
-            <>
-              {/* EXPÉRIENCES */}
-              <div className={styles.sectionHeader}>📌 {language === 'fr' ? 'Expériences professionnelles' : 'Professional Experience'}</div>
-              <div className={styles.timeline}>
-                {!isLoading &&
-                  experiences?.map((exp) => (
-                    <div key={exp.id}>
-                      <div className={styles.tlCompany}>
-                        <div className={styles.tlDot} />
-                        <div className={styles.tlInfo}>
-                          <div className={styles.tlName}>{exp.company}</div>
-                          <div className={styles.tlRole}>{exp.employer}</div>
-                          <span className={styles.tlPeriod}>{exp.period}</span>
-                        </div>
+            <div className={styles.section}>
+              <div className={styles.label}>{t.common.coreSkills}</div>
+              <div className={styles.sidebarSkillList}>
+                {skillsQuery.isLoading && <div className={styles.formationEmpty}>{t.common.loading}</div>}
+                {skillsQuery.isError && <div className={styles.formationEmpty}>{t.queryErrors.skills}</div>}
+                {!skillsQuery.isLoading && !skillsQuery.isError &&
+                  skills?.map((skillCat, idx) => (
+                    <div key={idx} className={skillCat.featured ? styles.sidebarSkillGroupFeatured : styles.sidebarSkillGroup}>
+                      <div className={skillCat.featured ? styles.sidebarSkillTitleFeatured : styles.sidebarSkillTitle}>
+                        {skillCat.cat.replace(/^\/\/\s*/, '')}
                       </div>
-                      <div className={styles.tlMissions}>
-                        {exp.missions.map((mission) => (
-                          <div
-                            key={mission.id}
-                            className={mission.featured ? styles.missionFeatured : styles.mission}
-                            role="button"
-                            tabIndex={0}
-                            aria-haspopup="dialog"
-                            aria-label={language === 'fr' ? 'Ouvrir le detail de la mission' : 'Open mission details'}
-                            onClick={(event) => openMissionPopout(mission, exp.company, exp.employer, event.currentTarget)}
-                            onKeyDown={(event) => {
-                              if (event.key === 'Enter' || event.key === ' ') {
-                                event.preventDefault()
-                                openMissionPopout(mission, exp.company, exp.employer, event.currentTarget)
-                              }
-                            }}
-                          >
-                            <div className={styles.missionTop}>
-                              <span style={{ color: 'var(--text-3)' }}>📁</span>
-                              <span className={styles.missionName}>{mission.name}</span>
-                              <span className={styles.missionBadge}>{mission.badge}</span>
-                            </div>
-                            <div className={styles.missionContext}>{mission.context}</div>
-                            <div className={`${styles.missionDesc} ${styles.missionDescCompact}`}>{mission.desc}</div>
-                            <div className={styles.tags}>
-                              {mission.tags.map((tag, idx) => (
-                                <TechBadge key={`mission-${mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
-                              ))}
-                            </div>
-                            <span className={styles.missionExpandIcon} aria-hidden="true" title={language === 'fr' ? 'Agrandir' : 'Expand'}>⤢</span>
-                          </div>
+                      <div className={styles.tags}>
+                        {skillCat.tags.map((tag, tagIdx) => (
+                          <TechBadge key={`sidebar-skill-${idx}-${tag.k}-${tagIdx}`} label={tag.l} kind={tag.k} />
                         ))}
                       </div>
                     </div>
                   ))}
               </div>
+            </div>
 
-              <div className={styles.printQrBanner}>
-                <QRCode url="https://alexandre-plana.github.io/resume/" language={language} />
-              </div>
-            </>
-          )}
-
-          {activeTab === 'projects' && (
-            <div className={styles.projectsSection}>
-              <div className={styles.sectionHeader}>📁 {language === 'fr' ? 'Projets professionnels' : 'Professional Projects'}</div>
-              <div className={styles.timeline}>
-                {!isLoading &&
-                  projects?.map((project) => (
-                    <div key={project.id} className={styles.project}>
-                      <div className={styles.projectHeader}>
-                        <div className={styles.tlDot} />
-                        <div className={styles.tlInfo}>
-                          <div className={styles.tlName}>{project.name}</div>
-                          <div className={styles.tlRole}>{project.role}</div>
-                          <span className={styles.tlPeriod}>{project.period}</span>
-                        </div>
-                      </div>
-                      <div className={styles.projectContent}>
-                        <div className={styles.projectContext}>{project.context}</div>
-                        <div className={styles.projectDesc}>{project.desc}</div>
-                        <div className={styles.projectStack}>{project.stack}</div>
-                        <div className={styles.tags}>
-                          {project.tags.map((tag, idx) => (
-                            <TechBadge key={`project-${project.id}-${tag}-${idx}`} label={tag} kind={tag} />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+            <div className={`${styles.section} ${styles.interestsSection}`}>
+              <div className={styles.label}>{t.sidebar.interests}</div>
+              <div className={styles.tags}>
+                {profile.interests.map((interest, idx) => (
+                  <TechBadge key={`${interest}-${idx}`} label={interest} kind="interest" />
+                ))}
               </div>
             </div>
-          )}
+          </aside>
 
-          {activeTab === 'formations' && (
-            <div className={styles.formationsSection}>
-              <div className={styles.formationControls}>
-                <div className={styles.formationSortGroup}>
-                  <label className={styles.formationControlLabel} htmlFor="formation-sort">
-                    {language === 'fr' ? 'Trier par' : 'Sort by'}
-                  </label>
-                  <select
-                    id="formation-sort"
-                    className={styles.formationSortSelect}
-                    value={formationSort}
-                    onChange={(event) => setFormationSort(event.target.value as FormationSort)}
-                  >
-                    <option value="date">{language === 'fr' ? 'Date (plus récent)' : 'Date (newest)'}</option>
-                    <option value="name">{language === 'fr' ? 'Nom (A-Z)' : 'Name (A-Z)'}</option>
-                  </select>
-                </div>
-
-                <div className={styles.formationFilters}>
-                  <span className={styles.formationControlLabel}>{language === 'fr' ? 'Types' : 'Types'}</span>
-                  <label className={styles.formationFilterItem}>
-                    <input
-                      type="checkbox"
-                      checked={formationTypeFilters.formation}
-                      onChange={() => toggleFormationType('formation')}
-                    />
-                    {language === 'fr' ? 'formation' : 'training'}
-                  </label>
-                  <label className={styles.formationFilterItem}>
-                    <input
-                      type="checkbox"
-                      checked={formationTypeFilters.diplome}
-                      onChange={() => toggleFormationType('diplome')}
-                    />
-                    {language === 'fr' ? 'diplome' : 'degree'}
-                  </label>
-                  <label className={styles.formationFilterItem}>
-                    <input
-                      type="checkbox"
-                      checked={formationTypeFilters.projetPerso}
-                      onChange={() => toggleFormationType('projetPerso')}
-                    />
-                    {language === 'fr' ? 'projet perso' : 'personal project'}
-                  </label>
-                </div>
-              </div>
-              <div className={styles.formationGrid}>
-                {!isLoading &&
-                  visibleFormation.map((form, idx) => {
-                    const formLabelMeta = getFormationLabelMeta(form.label)
-
-                    return (
-                      <div key={idx} className={styles.formationCard}>
-                        <div className={styles.formLabel}>
-                          <span className={styles.formLabelIcon} aria-hidden="true">{formLabelMeta.icon}</span>
-                          {formLabelMeta.text}
-                        </div>
-                        <div className={styles.formTitle}>{form.title}</div>
-                        <div className={styles.formSubtitle}>{form.sub}</div>
-                        <div className={styles.formMeta}>{form.meta}</div>
-                      </div>
-                    )
-                  })}
-                {!isLoading && visibleFormation.length === 0 && (
-                  <div className={styles.formationEmpty}>
-                    {language === 'fr'
-                      ? 'Aucun element a afficher avec les filtres actuels.'
-                      : 'No item to display with the current filters.'}
-                  </div>
-                )}
-              </div>
+          <main className={styles.main}>
+            <div className={styles.sectionHeader}>👤 {t.sections.about}</div>
+            <div className={styles.aboutSection}>
+              <p className={styles.aboutText}>{profile.bio}</p>
             </div>
-          )}
 
-        </main>
-      </div>
+            <Tabs />
+
+            {hasAnyQueryError && <div className={styles.formationEmpty}>{t.queryErrors.partialData}</div>}
+
+            {activeTab === 'overview' && (
+              <OverviewTab
+                experiences={experiencesQuery.data}
+                isLoading={experiencesQuery.isLoading}
+                isError={experiencesQuery.isError}
+                errorMessage={t.queryErrors.experiences}
+                language={language}
+                t={t}
+                onOpenMission={openMissionPopout}
+              />
+            )}
+
+            {activeTab === 'projects' && (
+              <ProjectsTab
+                projects={projectsQuery.data}
+                isLoading={projectsQuery.isLoading}
+                isError={projectsQuery.isError}
+                errorMessage={t.queryErrors.projects}
+                t={t}
+              />
+            )}
+
+            {activeTab === 'formations' && (
+              <FormationsTab
+                formation={formationQuery.data}
+                isLoading={formationQuery.isLoading}
+                isError={formationQuery.isError}
+                errorMessage={t.queryErrors.formation}
+                language={language}
+                t={t}
+              />
+            )}
+          </main>
+        </div>
       </div>
 
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} language={language} />
@@ -468,7 +277,9 @@ function App() {
                     {activeMission.mission.name}
                   </div>
                   {activeMission.mission.isCurrent && (
-                    <span style={{ fontSize: '0.75rem', padding: '2px 6px', background: 'rgba(41, 128, 185, 0.2)', color: '#2980b9', borderRadius: '3px', fontWeight: 600 }}>actuel</span>
+                    <span style={{ fontSize: '0.75rem', padding: '2px 6px', background: 'rgba(41, 128, 185, 0.2)', color: '#2980b9', borderRadius: '3px', fontWeight: 600 }}>
+                      {t.mission.current}
+                    </span>
                   )}
                 </div>
                 <div className={styles.missionModalCompany}>
@@ -478,7 +289,7 @@ function App() {
                   {activeMission.company} · {activeMission.employer}
                 </div>
               </div>
-              <button className={styles.missionModalClose} onClick={closeMissionPopout} title={language === 'fr' ? 'Fermer' : 'Close'}>
+              <button className={styles.missionModalClose} onClick={closeMissionPopout} title={t.mission.close}>
                 ✕
               </button>
             </div>
@@ -489,9 +300,7 @@ function App() {
 
               {activeMission.mission.tasks && activeMission.mission.tasks.length > 0 && (
                 <div className={styles.missionTasksSection}>
-                  <div className={styles.missionTasksTitle}>
-                    {language === 'fr' ? 'exemple de taches effectués' : 'Tasks Performed On The Project'}
-                  </div>
+                  <div className={styles.missionTasksTitle}>{t.mission.tasksTitle}</div>
                   <ul className={styles.missionTasksList}>
                     {activeMission.mission.tasks.map((task, idx) => (
                       <li key={`mission-task-${activeMission.mission.id}-${idx}`} className={styles.missionTaskItem}>
@@ -515,9 +324,7 @@ function App() {
 
               {activeMission.mission.retrospective && (
                 <div className={styles.missionRetrospectiveSection}>
-                  <div className={styles.missionRetrospectiveTitle}>
-                    {language === 'fr' ? 'Retrospective' : 'Retrospective'}
-                  </div>
+                  <div className={styles.missionRetrospectiveTitle}>{t.mission.retrospective}</div>
                   <div className={styles.missionRetrospectiveText}>{activeMission.mission.retrospective}</div>
                 </div>
               )}
