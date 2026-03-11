@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { useProfile, useExperiences, useSkills, useFormation, useActivity, useProjects } from './hooks/useApi'
 import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
@@ -23,6 +23,9 @@ type MissionPopout = {
   }
 }
 
+type FormationKind = 'formation' | 'diplome' | 'projetPerso'
+type FormationSort = 'date' | 'name'
+
 function App() {
   const { data: profile, isLoading: profileLoading } = useProfile()
   const { data: experiences, isLoading: expLoading } = useExperiences()
@@ -35,6 +38,12 @@ function App() {
 
   const isLoading = profileLoading || expLoading || projLoading || skillsLoading || formationLoading || activityLoading
   const [activeMission, setActiveMission] = useState<MissionPopout | null>(null)
+  const [formationSort, setFormationSort] = useState<FormationSort>('date')
+  const [formationTypeFilters, setFormationTypeFilters] = useState<Record<FormationKind, boolean>>({
+    formation: true,
+    diplome: true,
+    projetPerso: true,
+  })
 
   const getMissionPopoutAnimation = (sourceEl: HTMLElement | null) => {
     if (!sourceEl) {
@@ -63,6 +72,74 @@ function App() {
   const closeMissionPopout = () => {
     setActiveMission(null)
   }
+
+  const cleanFormationLabel = (rawLabel: string): string => rawLabel.replace(/^📌\s*/, '').trim()
+
+  const getFormationKind = (rawLabel: string): FormationKind => {
+    const normalized = cleanFormationLabel(rawLabel).toLowerCase()
+
+    if (normalized.includes('projet') || normalized.includes('personal')) {
+      return 'projetPerso'
+    }
+
+    if (normalized.includes('dipl') || normalized.includes('degree') || normalized.includes('bachelor')) {
+      return 'diplome'
+    }
+
+    return 'formation'
+  }
+
+  const getFormationLabelMeta = (rawLabel: string): { icon: string; text: string } => {
+    const text = cleanFormationLabel(rawLabel)
+    const kind = getFormationKind(rawLabel)
+
+    if (kind === 'projetPerso') {
+      return { icon: '🧩', text }
+    }
+
+    if (kind === 'diplome') {
+      return { icon: '🎓', text }
+    }
+
+    return { icon: '📚', text }
+  }
+
+  const getFormationSortYear = (sub: string): number => {
+    const yearMatches = sub.match(/\b(?:19|20)\d{2}\b/g)
+    if (!yearMatches || yearMatches.length === 0) {
+      return 0
+    }
+
+    return Math.max(...yearMatches.map((year) => Number(year)))
+  }
+
+  const toggleFormationType = (kind: FormationKind) => {
+    setFormationTypeFilters((prev) => ({ ...prev, [kind]: !prev[kind] }))
+  }
+
+  const visibleFormation = useMemo(() => {
+    if (!formation) {
+      return []
+    }
+
+    const collator = new Intl.Collator(language === 'fr' ? 'fr' : 'en', { sensitivity: 'base' })
+
+    return formation
+      .filter((form) => formationTypeFilters[getFormationKind(form.label)])
+      .slice()
+      .sort((a, b) => {
+        if (formationSort === 'name') {
+          return collator.compare(a.title, b.title)
+        }
+
+        const yearDiff = getFormationSortYear(b.sub) - getFormationSortYear(a.sub)
+        if (yearDiff !== 0) {
+          return yearDiff
+        }
+
+        return collator.compare(a.title, b.title)
+      })
+  }, [formation, formationSort, formationTypeFilters, language])
 
   useEffect(() => {
     if (activeTab === 'skills') {
@@ -296,18 +373,74 @@ function App() {
 
           {activeTab === 'formations' && (
             <div className={styles.formationsSection}>
-              {/* FORMATION */}
-              <div className={styles.sectionHeader}>🎓 {language === 'fr' ? 'Formation' : 'Education'}</div>
+              <div className={styles.formationControls}>
+                <div className={styles.formationSortGroup}>
+                  <label className={styles.formationControlLabel} htmlFor="formation-sort">
+                    {language === 'fr' ? 'Trier par' : 'Sort by'}
+                  </label>
+                  <select
+                    id="formation-sort"
+                    className={styles.formationSortSelect}
+                    value={formationSort}
+                    onChange={(event) => setFormationSort(event.target.value as FormationSort)}
+                  >
+                    <option value="date">{language === 'fr' ? 'Date (plus récent)' : 'Date (newest)'}</option>
+                    <option value="name">{language === 'fr' ? 'Nom (A-Z)' : 'Name (A-Z)'}</option>
+                  </select>
+                </div>
+
+                <div className={styles.formationFilters}>
+                  <span className={styles.formationControlLabel}>{language === 'fr' ? 'Types' : 'Types'}</span>
+                  <label className={styles.formationFilterItem}>
+                    <input
+                      type="checkbox"
+                      checked={formationTypeFilters.formation}
+                      onChange={() => toggleFormationType('formation')}
+                    />
+                    {language === 'fr' ? 'formation' : 'training'}
+                  </label>
+                  <label className={styles.formationFilterItem}>
+                    <input
+                      type="checkbox"
+                      checked={formationTypeFilters.diplome}
+                      onChange={() => toggleFormationType('diplome')}
+                    />
+                    {language === 'fr' ? 'diplome' : 'degree'}
+                  </label>
+                  <label className={styles.formationFilterItem}>
+                    <input
+                      type="checkbox"
+                      checked={formationTypeFilters.projetPerso}
+                      onChange={() => toggleFormationType('projetPerso')}
+                    />
+                    {language === 'fr' ? 'projet perso' : 'personal project'}
+                  </label>
+                </div>
+              </div>
               <div className={styles.formationGrid}>
                 {!isLoading &&
-                  formation?.map((form, idx) => (
-                    <div key={idx} className={styles.formationCard}>
-                      <div className={styles.formLabel}>{form.label}</div>
-                      <div className={styles.formTitle}>{form.title}</div>
-                      <div className={styles.formSubtitle}>{form.sub}</div>
-                      <div className={styles.formMeta}>{form.meta}</div>
-                    </div>
-                  ))}
+                  visibleFormation.map((form, idx) => {
+                    const formLabelMeta = getFormationLabelMeta(form.label)
+
+                    return (
+                      <div key={idx} className={styles.formationCard}>
+                        <div className={styles.formLabel}>
+                          <span className={styles.formLabelIcon} aria-hidden="true">{formLabelMeta.icon}</span>
+                          {formLabelMeta.text}
+                        </div>
+                        <div className={styles.formTitle}>{form.title}</div>
+                        <div className={styles.formSubtitle}>{form.sub}</div>
+                        <div className={styles.formMeta}>{form.meta}</div>
+                      </div>
+                    )
+                  })}
+                {!isLoading && visibleFormation.length === 0 && (
+                  <div className={styles.formationEmpty}>
+                    {language === 'fr'
+                      ? 'Aucun element a afficher avec les filtres actuels.'
+                      : 'No item to display with the current filters.'}
+                  </div>
+                )}
               </div>
             </div>
           )}
