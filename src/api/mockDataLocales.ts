@@ -225,6 +225,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Build packaging, preparation and deployment to the relevant stores (Google Play, App Store, SESU)',
               'Creation of a dedicated unit testing tool for Unity 3D, integrated into the pre-build and post-build pipeline',
               'Implementation of an externalized style system enabling white-label delivery for OEM clients',
+              'Design of the application frontend architecture: modular split, coding conventions and clear responsibility boundaries',
               'Offline mode development with automatic data synchronization on connection restoration',
               'Deserialization and backward compatibility management across project versions: legacy format parsing and silent on-the-fly migration',
               'Implementation of the communication layer with the project server: HTTP requests, network error handling and reconnection logic',
