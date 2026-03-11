@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useMemo, useState } from 'react'
 import type { Project } from '../../types'
 import type { Translations } from '../../locales'
 import { TechBadge } from '../TechBadge'
@@ -12,9 +12,30 @@ interface ProjectsTabProps {
   t: Translations
 }
 
+type ProjectType = 'professional' | 'personal'
+
 const isPersonalProject = (project: Project): boolean => project.name.toLowerCase() === 'alexandre-plana/cv-react'
 
+const getProjectType = (project: Project): ProjectType => isPersonalProject(project) ? 'personal' : 'professional'
+
 function ProjectsTabComponent({ projects, isLoading, isError, errorMessage, t }: ProjectsTabProps) {
+  const [projectTypeFilters, setProjectTypeFilters] = useState<Record<ProjectType, boolean>>({
+    professional: true,
+    personal: true,
+  })
+
+  const toggleProjectType = (kind: ProjectType) => {
+    setProjectTypeFilters((prev) => ({ ...prev, [kind]: !prev[kind] }))
+  }
+
+  const visibleProjects = useMemo(() => {
+    if (!projects) {
+      return []
+    }
+
+    return projects.filter((project) => projectTypeFilters[getProjectType(project)])
+  }, [projects, projectTypeFilters])
+
   if (isLoading) {
     return <div className={styles.formationEmpty}>{t.common.loading}</div>
   }
@@ -29,9 +50,30 @@ function ProjectsTabComponent({ projects, isLoading, isError, errorMessage, t }:
 
   return (
     <div className={styles.projectsSection}>
-      <div className={styles.sectionHeader}>📁 {t.sections.professionalProjects}</div>
+      <div className={styles.formationControls}>
+        <div className={styles.formationFilters}>
+          <span className={styles.formationControlLabel}>{t.projectControls.types}</span>
+          <label className={styles.formationFilterItem}>
+            <input
+              type="checkbox"
+              checked={projectTypeFilters.professional}
+              onChange={() => toggleProjectType('professional')}
+            />
+            {t.projectControls.professional}
+          </label>
+          <label className={styles.formationFilterItem}>
+            <input
+              type="checkbox"
+              checked={projectTypeFilters.personal}
+              onChange={() => toggleProjectType('personal')}
+            />
+            {t.projectControls.personal}
+          </label>
+        </div>
+      </div>
+
       <div className={styles.timeline}>
-        {projects.map((project) => (
+        {visibleProjects.map((project) => (
           <div key={project.id} className={styles.project}>
             <div className={styles.projectHeader}>
               <div className={styles.tlDot} />
@@ -59,6 +101,7 @@ function ProjectsTabComponent({ projects, isLoading, isError, errorMessage, t }:
             </div>
           </div>
         ))}
+        {visibleProjects.length === 0 && <div className={styles.formationEmpty}>{t.projectControls.empty}</div>}
       </div>
     </div>
   )
