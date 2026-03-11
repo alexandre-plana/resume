@@ -77,7 +77,8 @@
   color: white;
 }
 
-.printBtn {
+.printBtn,
+.exportBtn {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -92,13 +93,15 @@
   font-family: inherit;
 }
 
-.printBtn:hover {
+.printBtn:hover,
+.exportBtn:hover {
   background-color: var(--blue);
   color: white;
   border-color: var(--blue);
 }
 
-.printBtn:active {
+.printBtn:active,
+.exportBtn:active {
   transform: scale(0.98);
 }
 
