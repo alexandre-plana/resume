@@ -299,6 +299,14 @@
   margin: 0;
 }
 
+.aboutDesktop {
+  display: block;
+}
+
+.aboutMobileAfterContact {
+  display: none;
+}
+
 .timeline {
   position: relative;
   margin-bottom: 28px;
@@ -1141,6 +1149,14 @@
     padding: 0 !important;
   }
 
+  .aboutMobileAfterContact {
+    display: none !important;
+  }
+
+  .aboutDesktop {
+    display: block !important;
+  }
+
   .projectsSection {
     display: none !important;
   }
@@ -1326,5 +1342,15 @@
 
   .tlMissions {
     margin-left: 12px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  .aboutMobileAfterContact {
+    display: block;
+  }
+
+  .aboutDesktop {
+    display: none;
   }
 }

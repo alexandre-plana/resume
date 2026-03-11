@@ -146,6 +146,13 @@ function App() {
               </li>
             </ul>
 
+            <div className={styles.aboutMobileAfterContact}>
+              <div className={styles.sectionHeader}>👤 {t.sections.about}</div>
+              <div className={styles.aboutSection}>
+                <p className={styles.aboutText}>{profile.bio}</p>
+              </div>
+            </div>
+
             <div className={styles.section}>
               <div className={styles.label}>{t.common.languages}</div>
               <div className={styles.langRow}>
@@ -213,9 +220,11 @@ function App() {
           </aside>
 
           <main className={styles.main}>
-            <div className={styles.sectionHeader}>👤 {t.sections.about}</div>
-            <div className={styles.aboutSection}>
-              <p className={styles.aboutText}>{profile.bio}</p>
+            <div className={styles.aboutDesktop}>
+              <div className={styles.sectionHeader}>👤 {t.sections.about}</div>
+              <div className={styles.aboutSection}>
+                <p className={styles.aboutText}>{profile.bio}</p>
+              </div>
             </div>
 
             <Tabs />
