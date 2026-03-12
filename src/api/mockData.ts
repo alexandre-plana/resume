@@ -45,6 +45,7 @@ export const mockExperiences: Experience[] = [
           'Surveiller les performances et la stabilité de l\'application, et améliorer la qualité du code à l\'aide de SonarQube.',
           'Contribuer à l\'amélioration continue de l\'architecture et de la scalabilité du projet.',
         ],
+        priorityActionIndexes: [0, 1],
         retrospective: 'Première expérience web particulièrement enrichissante dans un environnement industriel exigeant. Cette mission m\'a permis de consolider des pratiques frontend solides et de monter en compétence sur l\'architecture micro-frontend.',
         isCurrent: true,
         metrics: [],
@@ -69,6 +70,7 @@ export const mockExperiences: Experience[] = [
           'Implémentation de la couche de communication avec le serveur de projets : requêtes HTTP, gestion des erreurs réseau et logique de reconnexion',
           'Gestion du cycle de vie des données applicatives : invalidation du cache local, stratégie de rafraîchissement et purge des données obsolètes',
         ],
+        priorityActionIndexes: [4, 7],
         retrospective: 'Ce projet m\'a énormément apporté, autant sur le plan technique que personnel. Il m\'a permis de travailler sur un environnement véritablement structuré, avec des processus propres aux grandes entreprises, des standards de qualité bien plus élevés que ceux de mes expériences précédentes, et une vraie prise de conscience de l\'importance des tests unitaires et de l\'architecture pour assurer la maintenabilité d\'un projet dans la durée.',
         metrics: [
           { value: '6 ans', label: 'développement\ncontinu' },
@@ -104,6 +106,7 @@ export const mockExperiences: Experience[] = [
           'Contribution à la qualité visuelle et technique : direction artistique, cohérence des assets, refinements UI/UX.',
           'Préparation et livraison de versions internes et clients : automatisation partielle des builds, debug, support des démonstrations.',
         ],
+        priorityActionIndexes: [2, 6],
         retrospective: 'Cette expérience m\'a appris à aborder des enjeux techniques exigeants avec méthode, à structurer ma réflexion autour du besoin réel des utilisateurs et des métiers, et à trouver l\'équilibre juste entre performance, ergonomie et faisabilité. Elle a également renforcé ma polyvalence de l\'analyse du besoin client jusqu\'à la réalisation finale tout en développant ma capacité à collaborer efficacement dans des environnements projet variés. Au fil des années, elle m\'a donné des bases solides en communication, en adaptabilité et en travail interdisciplinaire, qui continuent aujourd\'hui d\'orienter ma manière de concevoir, de prioriser et de travailler en équipe.',
         metrics: [
           { value: '6+', label: 'projets\nindustriels' },
@@ -180,44 +183,7 @@ export const mockFormation: Formation[] = [
   },
 ]
 
-export const mockActivity: Activity[] = [
-  {
-    id: 1,
-    icon: '🔀',
-    type: 'blue',
-    action: 'Merged a PR in',
-    repo: 'schneider/iiot-edge-ieca',
-    detail: 'feat: new Edge dashboard widget',
-    time: '3 days ago',
-  },
-  {
-    id: 2,
-    icon: '⭐',
-    type: 'green',
-    action: 'Starred',
-    repo: 'vuejs/core and vitejs/vite',
-    detail: '',
-    time: '1 week ago',
-  },
-  {
-    id: 3,
-    icon: '💬',
-    type: 'orange',
-    action: 'Commented on issue #88 in',
-    repo: 'schneider/iiot-edge-ieca',
-    detail: 'single-spa routing fix',
-    time: '2 weeks ago',
-  },
-  {
-    id: 4,
-    icon: '🎉',
-    type: 'green',
-    action: 'Released v3.1.0 in',
-    repo: 'schneider/aoa-ar-app',
-    detail: 'Multi-platform AR build',
-    time: '1 month ago',
-  },
-]
+export const mockActivity: Activity[] = []
 
 export const mockProjects: Project[] = [
   {

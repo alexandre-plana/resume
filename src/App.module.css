@@ -492,40 +492,74 @@
   -webkit-line-clamp: 5;
 }
 
+.missionTaskPreviewBlock {
+  margin: 0 0 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.missionTaskPreviewTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+
+.missionTaskPreviewTitle::before {
+  content: none;
+}
+
 .missionTaskPreview {
   list-style: none;
-  margin: 0 0 10px;
-  padding: 0 0 0 10px;
+  margin: 0;
+  padding: 0 0 0 6px;
   display: grid;
-  gap: 5px;
+  gap: 4px;
 }
 
 .missionTaskPreviewItem,
 .missionTaskPreviewMore {
   position: relative;
-  padding-left: 12px;
+  padding: 0 0 0 10px;
   font-size: 0.72rem;
-  line-height: 1.45;
+  line-height: 1.4;
   color: var(--text-2);
   overflow-wrap: break-word;
+  border-radius: 0;
 }
 
-.missionTaskPreviewItem::before,
-.missionTaskPreviewMore::before {
+.missionTaskPreviewItem::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.42rem;
-  width: 5px;
-  height: 5px;
+  top: 0.48em;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--blue);
-  opacity: 0.78;
+  opacity: 0.6;
 }
 
 .missionTaskPreviewMore {
-  color: var(--blue);
+  color: var(--text-3);
   font-family: var(--font-mono);
+  justify-self: start;
+  background: transparent;
+  border: 0;
+  padding-left: 0;
+  font-size: 0.68rem;
+}
+
+.missionTaskPreviewMore::before {
+  content: none;
 }
 
 .missionMetaLine {
@@ -569,13 +603,15 @@
 }
 
 .missionOverlay {
+  --mission-toolbar-offset: 56px;
   position: fixed;
   inset: 0;
   background: rgba(10, 17, 30, 0.52);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: calc(var(--mission-toolbar-offset) + 12px) 16px 16px;
+  box-sizing: border-box;
   z-index: 1200;
   backdrop-filter: blur(1.5px);
   animation: missionOverlayFadeIn 0.2s ease-out;
@@ -593,7 +629,7 @@
 
 .missionModal {
   width: min(840px, 100%);
-  max-height: calc(100vh - 32px);
+  max-height: calc(100vh - var(--mission-toolbar-offset) - 28px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1455,6 +1491,15 @@
 
   .tlMissions {
     margin-left: 12px;
+  }
+
+  .missionOverlay {
+    --mission-toolbar-offset: 52px;
+    padding: calc(var(--mission-toolbar-offset) + 8px) 10px 10px;
+  }
+
+  .missionModal {
+    max-height: calc(100vh - var(--mission-toolbar-offset) - 18px);
   }
 }
 
