@@ -273,7 +273,7 @@ const buildHeaderCard = (profile: Profile): Table =>
                 spacing: { after: 100 },
               }),
               new Paragraph({
-                children: [monoRun('Company: ', { bold: true, color: PALETTE.text2 }), bodyRun(profile.company, { size: 19, color: PALETTE.text2 })],
+                children: [monoRun('Company: ', { bold: true, color: PALETTE.text2 }), bodyRun('Consultant R&D · Datacorp', { size: 19, color: PALETTE.text2 })],
                 spacing: { line: 220, after: 40 },
               }),
               new Paragraph({
@@ -629,11 +629,25 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
   children.push(buildAboutCard(profile.bio))
   children.push(spacer(180))
 
-  children.push(sectionHeading(`${t.common.languages} & ${t.common.languageStack}`))
-  children.push(buildLanguagesTable(profile, t, language))
-  children.push(spacer(180))
+  // Suppression de la section Langues & languageStack
 
   children.push(sectionHeading(t.common.coreSkills))
+  // Ajout de la ligne LANGAGES
+  children.push(
+    new Paragraph({
+      children: [
+        monoRun('LANGAGES', {
+          bold: true,
+          allCaps: true,
+          size: 16,
+          color: PALETTE.blue,
+          characterSpacing: 8,
+        }),
+        bodyRun(`  ${profile.languages.map((lang) => lang.name).join(' · ')}`, { size: 20, color: PALETTE.text2 }),
+      ],
+      spacing: { after: 80, line: 230 },
+    }),
+  )
   skills.forEach((skill) => {
     children.push(
       new Paragraph({

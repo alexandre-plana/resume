@@ -26,6 +26,7 @@ export interface Mission {
   period: string
   context: string
   desc: string
+  cardSummary?: string
   tasks?: string[]
   priorityActionIndexes?: number[]
   retrospective?: string

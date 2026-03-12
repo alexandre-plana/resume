@@ -45,6 +45,7 @@ export const useExperiences = () => {
               badge: missionLocale?.badge || mission.badge,
               context: missionLocale?.context || mission.context,
               desc: missionLocale?.desc || mission.desc,
+              cardSummary: missionLocale?.cardSummary || mission.cardSummary,
               tasks: missionLocale?.tasks || mission.tasks,
               retrospective: missionLocale?.retrospective || mission.retrospective,
               metrics: (missionLocale?.metrics || mission.metrics).map((m, idx) => ({

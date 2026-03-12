@@ -10,7 +10,7 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
   fr: [
     {
       id: 1,
-      name: 'schneider/iiot-edge-ieca',
+      name: 'schneider-electric/iiot-edge-ieca',
       company: 'Schneider Electric',
       role: 'Développeur front end',
       period: '2023 – 2026',
@@ -122,7 +122,7 @@ export const projectsLocales: Record<Language, LocalizedProject[]> = {
   en: [
     {
       id: 1,
-      name: 'schneider/iiot-edge-ieca',
+      name: 'schneider-electric/iiot-edge-ieca',
       company: 'Schneider Electric',
       role: 'Frontend Developer',
       period: '2023 – 2026',
