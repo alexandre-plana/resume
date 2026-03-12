@@ -5,26 +5,49 @@ import { QRCode } from '../QRCode'
 import { TechBadge } from '../TechBadge'
 import styles from '../../App.module.css'
 
-const MISSION_TASK_PREVIEW_LIMIT = 3
-const TASK_PREVIEW_MAX_LENGTH = 92
+const MISSION_TASK_PREVIEW_LIMIT = 2
+const TASK_PREVIEW_MAX_LENGTH = 160
+
+const getPrioritizedTaskPreview = (
+  missionTasks: string[],
+  priorityActionIndexes: number[] | undefined,
+  limit: number,
+): string[] => {
+  if (missionTasks.length <= limit) {
+    return missionTasks
+  }
+
+  const prioritizedTasks: string[] = []
+  const usedIndexes = new Set<number>()
+
+  for (const idx of priorityActionIndexes ?? []) {
+    if (Number.isInteger(idx) && idx >= 0 && idx < missionTasks.length && !usedIndexes.has(idx)) {
+      prioritizedTasks.push(missionTasks[idx])
+      usedIndexes.add(idx)
+    }
+
+    if (prioritizedTasks.length >= limit) {
+      return prioritizedTasks
+    }
+  }
+
+  for (let idx = 0; idx < missionTasks.length; idx += 1) {
+    if (usedIndexes.has(idx)) {
+      continue
+    }
+
+    prioritizedTasks.push(missionTasks[idx])
+
+    if (prioritizedTasks.length >= limit) {
+      break
+    }
+  }
+
+  return prioritizedTasks
+}
 
 const summarizeTaskPreview = (task: string) => {
   const normalized = task.replace(/\s+/g, ' ').trim().replace(/[.?!;:]+$/, '')
-  const lowerCased = normalized.toLowerCase()
-
-  for (const separator of [':', ';', ',']) {
-    const separatorIndex = normalized.indexOf(separator)
-    if (separatorIndex > 36) {
-      return normalized.slice(0, separatorIndex).trim()
-    }
-  }
-
-  for (const separator of [' pour ', ' avec ', ' via ', ' afin de ']) {
-    const separatorIndex = lowerCased.indexOf(separator)
-    if (separatorIndex > 44) {
-      return normalized.slice(0, separatorIndex).trim()
-    }
-  }
 
   if (normalized.length <= TASK_PREVIEW_MAX_LENGTH) {
     return normalized
@@ -33,7 +56,7 @@ const summarizeTaskPreview = (task: string) => {
   const shortened = normalized.slice(0, TASK_PREVIEW_MAX_LENGTH)
   const lastWordBoundary = shortened.lastIndexOf(' ')
 
-  return `${shortened.slice(0, lastWordBoundary > 52 ? lastWordBoundary : TASK_PREVIEW_MAX_LENGTH).trim()}…`
+  return `${shortened.slice(0, lastWordBoundary > 96 ? lastWordBoundary : TASK_PREVIEW_MAX_LENGTH).trim()}…`
 }
 
 interface OverviewTabProps {
@@ -84,7 +107,11 @@ function OverviewTabComponent({
             <div className={styles.tlMissions}>
               {exp.missions.map((mission) => {
                 const missionTasks = mission.tasks ?? []
-                const previewTasks = missionTasks.slice(0, MISSION_TASK_PREVIEW_LIMIT)
+                const previewTasks = getPrioritizedTaskPreview(
+                  missionTasks,
+                  mission.priorityActionIndexes,
+                  MISSION_TASK_PREVIEW_LIMIT,
+                )
                 const remainingTaskCount = Math.max(0, missionTasks.length - previewTasks.length)
 
                 return (
@@ -111,20 +138,23 @@ function OverviewTabComponent({
                     <div className={styles.missionContext}>{mission.context}</div>
                     <div className={`${styles.missionDesc} ${styles.missionDescCompact}`}>{mission.desc}</div>
                     {previewTasks.length > 0 && (
-                      <ul className={styles.missionTaskPreview} aria-label={t.mission.tasksTitle}>
-                        {previewTasks.map((task, idx) => (
-                          <li
-                            key={`mission-preview-${mission.id}-${idx}`}
-                            className={styles.missionTaskPreviewItem}
-                            title={task}
-                          >
-                            {summarizeTaskPreview(task)}
-                          </li>
-                        ))}
-                        {remainingTaskCount > 0 && (
-                          <li className={styles.missionTaskPreviewMore}>+{remainingTaskCount}</li>
-                        )}
-                      </ul>
+                      <div className={styles.missionTaskPreviewBlock}>
+                        <div className={styles.missionTaskPreviewTitle}>{t.mission.tasksPreviewTitle}</div>
+                        <ul className={styles.missionTaskPreview} aria-label={t.mission.tasksTitle}>
+                          {previewTasks.map((task, idx) => (
+                            <li
+                              key={`mission-preview-${mission.id}-${idx}`}
+                              className={styles.missionTaskPreviewItem}
+                              title={task}
+                            >
+                              {summarizeTaskPreview(task)}
+                            </li>
+                          ))}
+                          {remainingTaskCount > 0 && (
+                            <li className={styles.missionTaskPreviewMore}>+{remainingTaskCount}</li>
+                          )}
+                        </ul>
+                      </div>
                     )}
                     <div className={styles.missionFooterRow}>
                       <div className={`${styles.tags} ${styles.missionTagsRow}`}>

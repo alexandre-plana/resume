@@ -27,6 +27,7 @@ export interface Mission {
   context: string
   desc: string
   tasks?: string[]
+  priorityActionIndexes?: number[]
   retrospective?: string
   metrics: Metric[]
   tags: string[]

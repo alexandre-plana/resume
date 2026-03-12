@@ -75,6 +75,7 @@ export interface Translations {
     openDetails: string
     expand: string
     close: string
+    tasksPreviewTitle: string
     tasksTitle: string
     retrospective: string
   }
@@ -175,6 +176,7 @@ export const translations: Record<Language, Translations> = {
       openDetails: 'Ouvrir le detail de la mission',
       expand: 'Agrandir',
       close: 'Fermer',
+      tasksPreviewTitle: 'Actions cles',
       tasksTitle: 'Exemple de taches effectuees',
       retrospective: 'Retrospective',
     },
@@ -273,6 +275,7 @@ export const translations: Record<Language, Translations> = {
       openDetails: 'Open mission details',
       expand: 'Expand',
       close: 'Close',
+      tasksPreviewTitle: 'Key actions',
       tasksTitle: 'Tasks Performed On The Project',
       retrospective: 'Retrospective',
     },

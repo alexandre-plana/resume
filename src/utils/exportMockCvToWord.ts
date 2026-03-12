@@ -711,24 +711,26 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
   })
   children.push(spacer(160))
 
-  children.push(sectionHeading(t.sections.activity))
-  activity.forEach((entry) => {
-    const detail = entry.detail ? ` - ${entry.detail}` : ''
-    children.push(
-      new Paragraph({
-        children: [
-          bodyRun(entry.action, { size: 20 }),
-          new TextRun({ text: ' ' }),
-          badgeRun(entry.repo, 'blue'),
-          bodyRun(`${detail} (${entry.time})`, { size: 19, color: PALETTE.text2 }),
-        ],
-        bullet: { level: 0 },
-        indent: { left: 300 },
-        spacing: { line: 220, after: 50 },
-      }),
-    )
-  })
-  children.push(spacer(160))
+  if (activity.length > 0) {
+    children.push(sectionHeading(t.sections.activity))
+    activity.forEach((entry) => {
+      const detail = entry.detail ? ` - ${entry.detail}` : ''
+      children.push(
+        new Paragraph({
+          children: [
+            bodyRun(entry.action, { size: 20 }),
+            new TextRun({ text: ' ' }),
+            badgeRun(entry.repo, 'blue'),
+            bodyRun(`${detail} (${entry.time})`, { size: 19, color: PALETTE.text2 }),
+          ],
+          bullet: { level: 0 },
+          indent: { left: 300 },
+          spacing: { line: 220, after: 50 },
+        }),
+      )
+    })
+    children.push(spacer(160))
+  }
 
   children.push(sectionHeading(t.sidebar.interests))
   children.push(

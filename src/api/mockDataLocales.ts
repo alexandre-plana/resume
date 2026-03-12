@@ -164,30 +164,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         meta: 'Multimédia · Web · Vidéo',
       },
     },
-    activity: {
-      0: {
-        action: 'a commencé à suivre',
-        repo: 'microsoft/TypeScript',
-        detail: 'Type safety + performance',
-        time: 'Il y a 2 semaines',
-      },
-      1: {
-        action: 'a mis en étoile',
-        repo: 'vuejs/core',
-        detail: 'Compositor API & performance',
-        time: 'Il y a 1 mois',
-      },
-      2: {
-        action: 'a suivi',
-        repo: 'single-spa/single-spa',
-        time: 'Il y a 3 mois',
-      },
-      3: {
-        action: 'a mis en étoile',
-        repo: 'evanw/esbuild',
-        time: 'Il y a 4 mois',
-      },
-    },
+    activity: {},
   },
   en: {
     profile: {
@@ -310,30 +287,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         meta: 'Multimedia · Web · Video',
       },
     },
-    activity: {
-      0: {
-        action: 'started following',
-        repo: 'microsoft/TypeScript',
-        detail: 'Type safety + performance',
-        time: '2 weeks ago',
-      },
-      1: {
-        action: 'starred',
-        repo: 'vuejs/core',
-        detail: 'Compositor API & performance',
-        time: '1 month ago',
-      },
-      2: {
-        action: 'followed',
-        repo: 'single-spa/single-spa',
-        time: '3 months ago',
-      },
-      3: {
-        action: 'starred',
-        repo: 'evanw/esbuild',
-        time: '4 months ago',
-      },
-    },
+    activity: {},
   },
 }
 
