@@ -2,7 +2,6 @@ import { memo } from 'react'
 import type { Experience, Mission } from '../../types'
 import type { Language, Translations } from '../../locales'
 import { QRCode } from '../QRCode'
-import { TechBadge } from '../TechBadge'
 import styles from '../../App.module.css'
 
 const MISSION_TASK_PREVIEW_LIMIT = 2
@@ -59,6 +58,48 @@ const summarizeTaskPreview = (task: string) => {
   return `${shortened.slice(0, lastWordBoundary > 96 ? lastWordBoundary : TASK_PREVIEW_MAX_LENGTH).trim()}…`
 }
 
+// Inline tag color logic (matches TechBadge)
+const TAG_COLORS: { [key: string]: { bg: string; text: string; border: string } } = {
+  vue3: { bg: '#dcfce7', text: '#166534', border: '#86efac' },
+  typescript: { bg: '#dbeafe', text: '#1e40af', border: '#93c5fd' },
+  singlespa: { bg: '#ddd6fe', text: '#5b21b6', border: '#d8b4fe' },
+  microfrontend: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd' },
+  jest: { bg: '#f3e8ff', text: '#7e22ce', border: '#d8b4fe' },
+  sonarqube: { bg: '#f3e8ff', text: '#7e22ce', border: '#d8b4fe' },
+  scrum: { bg: '#d1fae5', text: '#065f46', border: '#6ee7b7' },
+  unity: { bg: '#f1f5f9', text: '#334155', border: '#cbd5e1' },
+  csharp: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd' },
+  ar: { bg: '#fce7f3', text: '#9d174d', border: '#f9a8d4' },
+  mobile: { bg: '#d1fae5', text: '#065f46', border: '#6ee7b7' },
+  desktop: { bg: '#e0f2fe', text: '#075985', border: '#7dd3fc' },
+  offline: { bg: '#f6f8fa', text: '#6e7781', border: '#d8dee4' },
+  api: { bg: '#e0f2fe', text: '#0c4a6e', border: '#7dd3fc' },
+  performance: { bg: '#fee2e2', text: '#991b1b', border: '#fca5a5' },
+  maintenabilite: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd' },
+  // Add more as needed
+}
+
+const renderSummaryWithInlineTags = (summary: string) => {
+  const parts = summary.split(/(#[a-zA-Z0-9-]+)/g).filter((part) => part.length > 0)
+
+  return parts.map((part, idx) => {
+    if (part.startsWith('#')) {
+      const tagName = part.slice(1).toLowerCase().replace(/[^a-z0-9]/g, '')
+      const color = TAG_COLORS[tagName] || { bg: 'rgba(9,105,218,0.08)', text: 'var(--blue)', border: 'rgba(9,105,218,0.2)' }
+      return (
+        <span
+          key={`mission-summary-tag-${idx}`}
+          className={styles.missionInlineTag}
+          style={{ background: color.bg, color: color.text, borderColor: color.border }}
+        >
+          {part}
+        </span>
+      )
+    }
+    return <span key={`mission-summary-text-${idx}`}>{part}</span>
+  })
+}
+
 interface OverviewTabProps {
   experiences: Experience[] | undefined
   isLoading: boolean
@@ -107,6 +148,8 @@ function OverviewTabComponent({
             <div className={styles.tlMissions}>
               {exp.missions.map((mission) => {
                 const missionTasks = mission.tasks ?? []
+                const cardSummary = mission.cardSummary?.trim()
+                const hasCardSummary = Boolean(cardSummary)
                 const previewTasks = getPrioritizedTaskPreview(
                   missionTasks,
                   mission.priorityActionIndexes,
@@ -134,10 +177,15 @@ function OverviewTabComponent({
                       <span style={{ color: 'var(--text-3)' }}>📁</span>
                       <span className={styles.missionName}>{mission.name}</span>
                       <span className={styles.missionBadge}>{mission.badge}</span>
+                      <span className={styles.missionExpandIcon} aria-hidden="true" title={t.mission.expand}>
+                        ⤢
+                      </span>
                     </div>
                     <div className={styles.missionContext}>{mission.context}</div>
-                    <div className={`${styles.missionDesc} ${styles.missionDescCompact}`}>{mission.desc}</div>
-                    {previewTasks.length > 0 && (
+                    <div className={`${styles.missionDesc} ${hasCardSummary ? styles.missionDescTagged : styles.missionDescCompact}`}>
+                      {hasCardSummary ? renderSummaryWithInlineTags(cardSummary ?? '') : mission.desc}
+                    </div>
+                    {!hasCardSummary && previewTasks.length > 0 && (
                       <div className={styles.missionTaskPreviewBlock}>
                         <div className={styles.missionTaskPreviewTitle}>{t.mission.tasksPreviewTitle}</div>
                         <ul className={styles.missionTaskPreview} aria-label={t.mission.tasksTitle}>
@@ -156,16 +204,6 @@ function OverviewTabComponent({
                         </ul>
                       </div>
                     )}
-                    <div className={styles.missionFooterRow}>
-                      <div className={`${styles.tags} ${styles.missionTagsRow}`}>
-                        {mission.tags.map((tag, idx) => (
-                          <TechBadge key={`mission-${mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
-                        ))}
-                      </div>
-                      <span className={styles.missionExpandIcon} aria-hidden="true" title={t.mission.expand}>
-                        ⤢
-                      </span>
-                    </div>
                   </div>
                 )
               })}

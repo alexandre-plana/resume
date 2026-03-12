@@ -26,15 +26,15 @@ export const mockProfile: Profile = {
 export const mockExperiences: Experience[] = [
   {
     id: 1,
-    company: 'Schneider Electric',
-    employer: 'Consultant R&D — Datacorp',
+    company: 'Datacorp',
+    employer: 'Consultant R&D — Schneider Electric',
     period: '2017 – 2026',
     missions: [
       {
         id: 11,
         featured: true,
-        name: 'schneider/iiot-edge-ieca',
-        badge: 'Lead FE Développeur',
+        name: 'schneider-electric/iiot-edge-ieca',
+        badge: 'Front end developer',
         period: '2023 – 2026',
         context: 'Industrial Automation Edge (IECA)',
         desc: 'Développement d\'applications Edge industrielles en architecture micro-frontend (single-spa), basées sur Vue 3 et TypeScript. Participation active à l\'ensemble des cérémonies Scrum (refinement, sprint planning, daily, review, rétrospective), avec un engagement constant envers la qualité, la performance et l\'accessibilité.',
@@ -54,7 +54,7 @@ export const mockExperiences: Experience[] = [
       {
         id: 12,
         featured: false,
-        name: 'schneider/aoa-ar-app',
+        name: 'schneider-electric/aoa-ar-app',
         badge: 'Développeur C# / Unity',
         period: '2017 – 2023',
         context: 'Augmented Operator Advisor (AOA) — Application AR industrielle',
@@ -188,7 +188,7 @@ export const mockActivity: Activity[] = []
 export const mockProjects: Project[] = [
   {
     id: 1,
-    name: 'schneider/iiot-edge-ieca',
+    name: 'schneider-electric/iiot-edge-ieca',
     company: 'Schneider Electric',
     role: 'Frontend Developer',
     period: '2023 – 2026',

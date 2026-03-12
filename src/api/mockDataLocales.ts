@@ -23,6 +23,7 @@ export interface LocalizedMockData {
           badge: string
           context: string
           desc: string
+          cardSummary?: string
           tasks?: string[]
           retrospective?: string
           metrics: { label: string }[]
@@ -58,8 +59,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     profile: {
       title: 'Développeur Front End',
       subtitle: 'Industrie · UI/UX · Multi Plateforme',
-      bio: 'Développeur Front-End Senior avec 13 ans d\'expérience, j\'ai passé ma carrière dans des secteurs où ce qu\'on construit a un impact concret : énergie, nucléaire, défense, IIoT. De Schneider Electric à AREVA en passant par EDF, j\'ai appris qu\'une bonne interface, c\'est avant tout une interface qu\'on comprend vite et sur laquelle on peut compter. Au fil des projets et des stacks, j\'ai développé la conviction que la technologie est un moyen, jamais une fin — et c\'est avec cet état d\'esprit que j\'aborde chaque nouveau défi.',
-      company: 'Consultant R&D · Datacorp / Schneider Electric',
+          bio: 'Développeur Front-End Senior avec 13 ans d’expérience, j’ai évolué dans des secteurs industriels exigeants (énergie, nucléaire, défense, IIoT). J’ai appris à concevoir des interfaces intuitives et fiables, en collaborant avec des équipes pluridisciplinaires et en adaptant les solutions aux besoins métier. Curieux, rigoureux et orienté qualité, je maîtrise les architectures modernes (micro-frontend, Vue, React, TypeScript) et je place l’expérience utilisateur au cœur de chaque projet.',
+      company: 'Consultant R&D · Datacorp',
       seeking: 'Poste Front End web dans un contexte industriel · Vue.js ou React · TypeScript · micro-frontend · équipe orientée qualité & UX',
       interests: ['🎮 Jeux', '🚵 VTT', '🥾 Rando', '🍳 Cuisine'],
       uiuxHighlight: {
@@ -70,13 +71,14 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     },
     experiences: {
       '1': {
-        company: 'Schneider Electric',
-        employer: 'Consultant R&D — Datacorp',
+        company: 'Datacorp',
+        employer: 'Consultant R&D — Schneider Electric',
         missions: {
           '11': {
             badge: 'Développeur front end',
             context: 'Industrial Automation Edge (IECA)',
-            desc: 'Développement d\'applications Edge industrielles en architecture micro-frontend (single-spa) avec Vue 3 + TypeScript. Contribution active à la vie du projet en Scrum (refinement, sprint planning, daily, review, retrospective), avec un focus constant sur la qualité, la performance et l\'accessibilité.',
+            desc: 'Développement d\'applications Edge industrielles en architecture micro-frontend (single-spa) avec Vue 3 + TypeScript. Contribution active à la vie du projet en Scrum, avec un focus constant sur la qualité, la performance et l\'accessibilité.',
+            cardSummary: 'Développeur frontend sur la plateforme IIoT Edge de Schneider : conception de composants mutualisés #vue3 #typescript pour plusieurs équipes projet, structuration de l\'architecture #single-spa #microfrontend, industrialisation de la qualité avec #jest et #sonarqube, contribution active au delivery #scrum orienté performance et maintenabilité. Exemples de tâches : création de composants graphiques, intégration d\'un module de gestion des alertes, optimisation du chargement des données, mise en place de tests unitaires, refactoring, amélioration de l\'accessibilité.',
             tasks: [
               'Concevoir et développer des composants front réutilisables par les différentes équipes du projet',
               'Implémenter une architecture micro-frontend',
@@ -84,13 +86,14 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Surveiller les performances et le bon fonctionnement de l\'application, et améliorer la qualité du code via SonarQube',
               'Amélioration continue de l\'architecture et de la scalabilité du projet',
             ],
-            retrospective: 'Première expérience web très enrichissante dans un environnement industriel exigeant. Cette mission m\'a permis de structurer des pratiques frontend robustes, de monter en compétence sur l\'architecture micro-frontend.',
+            retrospective: 'Expérience web très enrichissante dans un environnement industriel exigeant. Cette mission m\'a permis de structurer des pratiques frontend robustes, de monter en compétence sur l\'architecture micro-frontend, et surtout d\'acquérir une rigueur technique et méthodologique indispensable pour des projets à fort enjeu qualité.',
             metrics: [],
           },
           '12': {
             badge: 'Développeur C# / Unity',
             context: 'Augmented Operator Advisor (AOA) — Application AR industrielle',
-            desc: 'Développement pendant 6 ans d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels Schneider Electric. Conception et implémentation des interfaces opérateur, gestion des états complexes de la couche AR.',
+            desc: 'Développement pendant 6 ans d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels Schneider Electric. Conception et implémentation des interfaces opérateur (tableaux de bord, navigation, interactions tactiles et manettes), gestion des états complexes de la couche AR, mise en place du mode offline avec synchronisation automatique, création d\'outils de tests unitaires pour Unity, gestion de la compatibilité multi-version, intégration d\'un système de styles externalisé pour clients OEM, optimisation des performances et fiabilisation continue des versions en production.',
+            cardSummary: 'Développeur #csharp sur une application #ar industrielle multi-plateforme : conception d\'interfaces opérateur #mobile et desktop, structuration de l\'architecture front, gestion du mode #offline, de la communication #api avec le serveur de projets, et fiabilisation continue des versions en production.',
             metrics: [
               { label: 'développement\ncontinu' },
               { label: 'plateformes\nsimultanées' },
@@ -106,7 +109,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
           '21': {
             badge: 'Développeur C# / Unity 3D',
             context: 'Projets XR industriels — EDF · RTE · AREVA · DCNS · SUEZ',
-            desc: 'Pendant quatre années au sein d\'Oreka Ingénierie, j\'ai occupé le poste de développeur C# / Unity 3D sur des projets VR/AR à forte dimension industrielle. Mon rôle était particulièrement polyvalent : analyse approfondie des besoins clients, participation aux propositions commerciales, modélisation et intégration 3D, conception UI/UX pour environnements immersifs, et développement d\'applications interactives haute performance. J\'ai collaboré avec de grands comptes du secteur industriel (EDF, Suez, DCNS, RTE, MBDA), en répondant à des exigences techniques élevées, notamment dans des contextes sensibles tels que le nucléaire ou l\'armement. Cette expérience m\'a permis d\'acquérir une expertise solide en Unity, C#, VR/AR, UI/UX immersif ainsi qu\'en outils de production 3D (SolidWorks, 3ds Max), tout en renforçant ma capacité à comprendre les besoins métier et à proposer des solutions techniques adaptées, cohérentes et efficaces.',
+            desc: 'Pendant quatre années au sein d\'Oreka Ingénierie, j\'ai occupé le poste de développeur C# / Unity 3D sur des projets VR/AR à forte dimension industrielle. Analyse approfondie des besoins clients, participation aux propositions commerciales, modélisation et intégration 3D (optimisation mesh, lightmaps, shaders), conception UI/UX pour environnements immersifs (VR/AR), développement d\'applications interactives haute performance (systèmes d\'état, scénarios métier, interactions contrôleur/manette), optimisation des performances (profiling Unity, pooling, pipelines d\'import), préparation et livraison de versions clients (builds automatisés, debug, support démo). Collaboration avec grands comptes (EDF, Suez, DCNS, RTE, MBDA) sur des contextes sensibles (nucléaire, armement), avec des exigences techniques élevées. Expertise Unity, C#, VR/AR, UI/UX immersif, outils 3D (SolidWorks, 3ds Max), capacité à proposer des solutions techniques adaptées et efficaces.',
+            cardSummary: 'Développeur #csharp sur des projets #vr #ar industriels pour grands comptes : analyse approfondie des besoins clients, modélisation et intégration 3D #3dsmax #unity3D, développement d\'interfaces et de systèmes interactifs 2D/3D, conception UI/UX immersif, optimisation #performance, implémentation de scénarios métier, préparation et livraison de versions clients (debug, support démo), contribution à la qualité visuelle et technique, collaboration sur des contextes sensibles (nucléaire, armement).',
             tasks: [
               'Développement d\'interfaces et de systèmes interactifs 2D/3D sous Unity (C#) : architecture des scènes, scripting gameplay, gestion des événements, systèmes d\'interaction VR/AR.',
               'Intégration et traitement de modèles issus de la CAO (SolidWorks) : optimisation mesh, baking, LOD, lightmaps, réglages matériaux/shaders.',
@@ -170,8 +174,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     profile: {
       title: 'Senior Frontend Engineer',
       subtitle: 'Industrial · UI/UX · Multi-Platform',
-      bio: 'Senior Frontend Developer (13 years of experience) specialized in industrial environments: IIoT, energy, nuclear and defense. I have designed and developed user interfaces for Schneider Electric, EDF, RTE, AREVA and DCNS, built a cross-platform mobile AR application, and contributed to micro-frontend web architectures dedicated to IIoT. Key skills: JavaScript/TypeScript, React, Vue, design systems, performance, UI/UX integration and frontend industrialization. I transform complex business challenges into reliable, intuitive interfaces tailored to industrial environments.',
-      company: 'R&D Consultant · Datacorp / Schneider Electric',
+        bio: 'Senior Front-End Developer with 13 years of experience in demanding industrial sectors (energy, nuclear, defense, IIoT). I have learned to design intuitive and reliable interfaces, collaborating with multidisciplinary teams and adapting solutions to business needs. Curious, rigorous, and quality-oriented, I master modern architectures (micro-frontend, Vue, React, TypeScript) and put user experience at the heart of every project.',
+      company: 'Consultant R&D · Datacorp',
       seeking: 'Frontend role in industrial context · Vue.js or React · TypeScript · micro-frontends · quality & UX-oriented team',
       interests: ['🎮 Gaming', '🚵 Mountain Biking', '🥾 Hiking', '🍳 Cooking'],
       uiuxHighlight: {
@@ -189,6 +193,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             badge: 'Frontend Developer',
             context: 'Industrial Automation Edge (IECA)',
             desc: 'Development of industrial Edge applications in a micro-frontend architecture (single-spa) with Vue 3 + TypeScript. Active contribution across the Scrum project lifecycle (refinement, sprint planning, daily, review, retrospective), with a constant focus on quality, performance and accessibility.',
+            cardSummary: 'Frontend developer on Schneider\'s IIoT Edge platform: designed shared #vue3 #typescript components across teams, structured a #single-spa #microfrontend architecture, industrialized quality with #jest and #sonarqube, and contributed to #scrum delivery focused on performance and maintainability.',
             tasks: [
               'Design and develop reusable frontend components shared across the different project teams',
               'Implement a micro-frontend architecture',
@@ -196,13 +201,14 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Monitor application performance and reliability, and improve code quality with SonarQube',
               'Continuously improve the project architecture and scalability',
             ],
-            retrospective: 'A highly enriching first large-scale web experience in a demanding industrial context. This mission helped me solidify frontend engineering practices, deepen my micro-frontend architecture skills, and sustainably improve overall project scalability.',
+            retrospective: 'A highly enriching first large-scale web experience in a demanding industrial context. This mission helped me solidify frontend engineering practices, deepen my micro-frontend architecture skills, and above all, develop a strong technical and methodological rigor essential for high-quality, high-stakes projects.',
             metrics: [],
           },
           '12': {
             badge: 'C# / Unity Developer',
             context: 'Augmented Operator Advisor (AOA) — Industrial AR Application',
             desc: 'Built cross-platform AR app (Android, iOS, Windows) for industrial operators over 6 years. Designed and implemented operator interfaces, managed complex AR layer state management.',
+            cardSummary: 'C# / #unity developer on a cross-platform industrial #ar product: built operator-facing interfaces across #mobile and desktop, structured frontend architecture, implemented resilient #offline behavior, handled server-side #api communication, and improved production reliability across releases.',
             tasks: [
               'Design and development of a fully responsive interface (iOS, Android, Windows — portrait and landscape modes)',
               'Build packaging, preparation and deployment to the relevant stores (Google Play, App Store, SESU)',
@@ -230,6 +236,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             badge: 'C# / Unity 3D Developer',
             context: 'Industrial XR Projects — EDF · RTE · AREVA · DCNS · SUEZ',
             desc: 'Over four years at Oreka Engineering, I role was C# / Unity 3D Developer on VR/AR projects with a strong industrial focus. My responsibilities were highly versatile: in-depth client needs analysis, participation in commercial proposals, 3D modeling and integration, UI/UX design for immersive environments, and development of high-performance interactive applications. I collaborated with major industrial sector clients (EDF, Suez, DCNS, RTE, MBDA), meeting high technical requirements, particularly in sensitive contexts such as nuclear or defense. This experience gave me solid expertise in Unity, C#, VR/AR, immersive UI/UX, and 3D production tools (SolidWorks, 3ds Max), while strengthening my ability to understand business needs and propose adapted, coherent and effective technical solutions.',
+            cardSummary: '#csharp on industrial #vr #ar programs for enterprise clients: in-depth client needs analysis, 3D modeling and integration #3dsmax #unity3D, development of 2D/3D interactive systems, immersive UI/UX design, performance optimization, implementation of business scenarios, delivery (debug, demo support), contribution to visual and technical quality, collaboration in sensitive contexts (nuclear, defense).',
             tasks: [
               'Development of 2D/3D interfaces and interactive systems in Unity (C#): scene architecture, gameplay scripting, event management, and VR/AR interaction systems.',
               'Integration and processing of CAD models (SolidWorks): mesh optimization, baking, LODs, lightmaps, and material/shader tuning.',
