@@ -137,7 +137,7 @@ function OverviewTabComponent({
       <div className={styles.timeline}>
         {experiences.map((exp) => {
           const missions = exp.missions.filter((m) => m.type !== 'projet');
-          const projets = exp.missions.filter((m) => m.type === 'projet');
+          const projets = exp.missions.filter((m) => m.type !== 'projet' && m.type === 'mission');
           return (
             <div key={exp.id}>
               <div className={styles.tlCompany}>
