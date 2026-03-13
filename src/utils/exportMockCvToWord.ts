@@ -442,7 +442,9 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
     missionHeaderBadges.push(new TextRun({ text: ' ' }), badgeRun(t.mission.current, 'success', true))
   }
 
-  const children: Paragraph[] = [
+  const children: Paragraph[] = []
+  // Header block (title, badge, period)
+  const headerBlock: Paragraph[] = [
     new Paragraph({
       children: [
         monoRun(mission.name, { bold: true, color: PALETTE.blue, size: 18 }),
@@ -456,6 +458,24 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
       spacing: { after: 110, line: 200 },
     }),
   ]
+  // Add header block as a single TableRow with cantSplit
+  children.push(
+    new Table({
+      width: { size: 100, type: WidthType.PERCENTAGE },
+      borders: { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder, insideHorizontal: noBorder, insideVertical: noBorder },
+      rows: [
+        new TableRow({
+          cantSplit: true,
+          children: [
+            new TableCell({
+              children: headerBlock,
+              margins: { top: 0, bottom: 0, left: 0, right: 0 },
+            }),
+          ],
+        }),
+      ],
+    })
+  )
 
   const pushMissionGap = (after = 70): void => {
     children.push(new Paragraph({ text: '', spacing: { after } }))
@@ -542,6 +562,7 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
     },
     rows: [
       new TableRow({
+        cantSplit: true,
         children: [
           new TableCell({
             shading: { type: ShadingType.CLEAR, fill: fillColor, color: 'auto' },
