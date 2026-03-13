@@ -60,20 +60,14 @@ src/
 - ✅ Professional experiences with detailed missions
 - ✅ Technical skills with color-coded badges
 - ✅ Education & certifications
-- ✅ Contribution graph visualization
-- ✅ Recent activity feed
 - ✅ Responsive design
-- ✅ Smooth animations
 - ✅ Bilingual support (FR/EN)
-
-## Configuration
-
-Create a `.env` file at the project root:
-
-```
-VITE_API_URL=http://localhost:3000/api
 ```
 
 ## License
 
 MIT
+
+## AI-Assisted Generation
+
+This repository was largely generated with the help of GitHub Copilot.
