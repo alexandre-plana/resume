@@ -11,7 +11,6 @@ import { getTranslations } from './locales'
 import type { Mission } from './types'
 import { FormationsTab } from './components/tabs/FormationsTab'
 import { OverviewTab } from './components/tabs/OverviewTab'
-import { ProjectsTab } from './components/tabs/ProjectsTab'
 import styles from './App.module.css'
 
 type MissionPopout = {
@@ -252,7 +251,6 @@ function App() {
                 t={t}
               />
             )}
-
             {activeTab === 'formations' && (
               <FormationsTab
                 formation={formationQuery.data}
