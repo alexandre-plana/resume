@@ -11,9 +11,8 @@ function TabsComponent() {
   const t = getTranslations(language)
 
   const tabsData: { id: Tab; label: string; icon: string }[] = [
-    { id: 'overview', label: t.tabs.overview, icon: '📋' },
-    { id: 'projects', label: t.tabs.projects, icon: '📁' },
-    { id: 'formations', label: t.tabs.formations, icon: '🎓' },
+     { id: 'overview', label: t.tabs.overview, icon: '📋' },
+     { id: 'formations', label: t.tabs.formations, icon: '🎓' },
   ]
 
   return (
