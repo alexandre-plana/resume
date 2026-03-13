@@ -49,6 +49,7 @@ export const mockExperiences: Experience[] = [
         retrospective: 'Première expérience web particulièrement enrichissante dans un environnement industriel exigeant. Cette mission m\'a permis de consolider des pratiques frontend solides et de monter en compétence sur l\'architecture micro-frontend.',
         isCurrent: true,
         tags: ['vue3', 'ts', 'single-spa', 'docker', 'jest', 'html', 'css', 'git', 'figma', 'jira'],
+        type: 'mission',
       },
       {
         id: 12,
@@ -72,6 +73,7 @@ export const mockExperiences: Experience[] = [
         priorityActionIndexes: [4, 7],
         retrospective: 'Ce projet m\'a énormément apporté, autant sur le plan technique que personnel. Il m\'a permis de travailler sur un environnement véritablement structuré, avec des processus propres aux grandes entreprises, des standards de qualité bien plus élevés que ceux de mes expériences précédentes, et une vraie prise de conscience de l\'importance des tests unitaires et de l\'architecture pour assurer la maintenabilité d\'un projet dans la durée.',
         tags: ['unity', 'c#', 'ar', 'mobile', 'uiux', 'figma', 'agile', 'jira'],
+        type: 'mission',
       },
     ],
   },
@@ -103,6 +105,7 @@ export const mockExperiences: Experience[] = [
           priorityActionIndexes: [2, 6],
           retrospective: 'Cette expérience m\'a appris à aborder des enjeux techniques exigeants avec méthode, à structurer ma réflexion autour du besoin réel des utilisateurs et des métiers, et à trouver l\'équilibre juste entre performance, ergonomie et faisabilité. Elle a également renforcé ma polyvalence de l\'analyse du besoin client jusqu\'à la réalisation finale tout en développant ma capacité à collaborer efficacement dans des environnements projet variés. Au fil des années, elle m\'a donné des bases solides en communication, en adaptabilité et en travail interdisciplinaire, qui continuent aujourd\'hui d\'orienter ma manière de concevoir, de prioriser et de travailler en équipe.',
           tags: ['unity', 'c#', 'wpf', 'winform', 'solidworks', '3dsmax', 'vr', 'uiux', 'figma', 'desktop'],
+          type: 'mission',
         },
         {
           id: 22,
