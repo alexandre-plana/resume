@@ -274,6 +274,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Manage the application data lifecycle: local cache invalidation, refresh strategy, and stale data cleanup',
             ],
             retrospective: "Six years on a flagship project in a high-quality industrial environment. This experience forged my rigor in testing, architecture, and maintainability—skills I now apply to every project.",
+            metrics: [],
           },
         },
       },
