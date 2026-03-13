@@ -74,10 +74,12 @@ function ToolbarComponent({ language }: ToolbarProps) {
             EN
           </button>
         </div>
-        <button className={styles.exportBtn} onClick={handleExportWord} title={exportWordLabel}>
-          <span className={styles.icon}>📝</span>
-          {exportWordLabel}
-        </button>
+        {process.env.NODE_ENV === 'development' && (
+          <button className={styles.exportBtn} onClick={handleExportWord} title={exportWordLabel}>
+            <span className={styles.icon}>📝</span>
+            {exportWordLabel}
+          </button>
+        )}
         <button className={styles.printBtn} onClick={handlePrint} title={printLabel}>
           <span className={styles.icon}>🖨️</span>
           {printLabel}
