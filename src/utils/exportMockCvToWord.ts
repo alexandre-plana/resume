@@ -51,10 +51,6 @@ const mergeLocalizedExperiences = (language: Language): Experience[] => {
           desc: localizedMission?.desc ?? mission.desc,
           tasks: localizedMission?.tasks ?? mission.tasks,
           retrospective: localizedMission?.retrospective ?? mission.retrospective,
-          metrics: mission.metrics.map((metric, index) => ({
-            ...metric,
-            label: localizedMission?.metrics?.[index]?.label ?? metric.label,
-          })),
         }
       }),
     }
@@ -459,23 +455,8 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
     }),
   ]
   // Add header block as a single TableRow with cantSplit
-  children.push(
-    new Table({
-      width: { size: 100, type: WidthType.PERCENTAGE },
-      borders: { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder, insideHorizontal: noBorder, insideVertical: noBorder },
-      rows: [
-        new TableRow({
-          cantSplit: true,
-          children: [
-            new TableCell({
-              children: headerBlock,
-              margins: { top: 0, bottom: 0, left: 0, right: 0 },
-            }),
-          ],
-        }),
-      ],
-    })
-  )
+  // Instead of pushing a Table into a Paragraph array, push headerBlock directly
+  children.push(...headerBlock)
 
   const pushMissionGap = (after = 70): void => {
     children.push(new Paragraph({ text: '', spacing: { after } }))
@@ -520,16 +501,7 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
     pushMissionGap(70)
   }
 
-  if (mission.metrics.length > 0) {
-    const metrics = mission.metrics.map((metric) => `${metric.value} ${metric.label}`).join(' · ')
-    children.push(
-      new Paragraph({
-        children: [bodyRun(metrics, { bold: true, color: PALETTE.blue, size: 19 })],
-        spacing: { before: 20, after: 40, line: 230 },
-      }),
-    )
-    pushMissionGap(70)
-  }
+  // metrics removed: no longer in Mission interface
 
   if (mission.retrospective?.trim()) {
     children.push(

@@ -30,9 +30,9 @@ export interface Mission {
   tasks?: string[]
   priorityActionIndexes?: number[]
   retrospective?: string
-  metrics: Metric[]
   tags: string[]
   isCurrent?: boolean
+  type?: string // e.g., 'projet', 'mission', etc.
 }
 
 export interface Experience {
