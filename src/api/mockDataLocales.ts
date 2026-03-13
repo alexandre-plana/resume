@@ -88,7 +88,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             ],
             retrospective: 'Expérience web très enrichissante dans un environnement industriel exigeant. Cette mission m\'a permis de structurer des pratiques frontend robustes, de monter en compétence sur l\'architecture micro-frontend, et surtout d\'acquérir une rigueur technique et méthodologique indispensable pour des projets à fort enjeu qualité.',
             metrics: [],
-               type: 'mission',
+               
           },
           '12': {
             badge: 'Développeur C# / Unity',
@@ -96,11 +96,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             desc: 'Développement pendant 6 ans d\'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels Schneider Electric. Conception et implémentation des interfaces opérateur (tableaux de bord, navigation, interactions tactiles et manettes), gestion des états complexes de la couche AR, mise en place du mode offline avec synchronisation automatique, création d\'outils de tests unitaires pour Unity, gestion de la compatibilité multi-version, intégration d\'un système de styles externalisé pour clients OEM, optimisation des performances et fiabilisation continue des versions en production.',
             cardSummary: 'Développeur #csharp sur une application #ar industrielle multi-plateforme : conception d\'interfaces opérateur #mobile et desktop, structuration de l\'architecture front, gestion du mode #offline, de la communication #api avec le serveur de projets, et fiabilisation continue des versions en production.',
             metrics: [
-              { label: 'développement\ncontinu' },
-              { label: 'plateformes\nsimultanées' },
-              { label: 'temps réel\nterrain' },
             ],
-               type: 'mission',
+               
           },
         },
       },
@@ -126,11 +123,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
             ],
             retrospective: 'Cette expérience m\'a appris à aborder des enjeux techniques exigeants avec méthode, à structurer ma réflexion autour du besoin réel des utilisateurs et des métiers, et à trouver l\'équilibre juste entre performance, ergonomie et faisabilité. Elle a également renforcé ma polyvalence de l\'analyse du besoin client jusqu\'à la réalisation finale tout en développant ma capacité à collaborer efficacement dans des environnements projet variés. Au fil des années, elle m\'a donné des bases solides en communication, en adaptabilité et en travail interdisciplinaire, qui continuent aujourd\'hui d\'orienter ma manière de concevoir, de prioriser et de travailler en équipe.',
             metrics: [
-              { label: 'projets\nindustriels' },
-              { label: 'clients grands\ncomptes' },
-              { label: 'temps réel\nUnity 3D' },
             ],
-               type: 'mission',
+               
           },
             '22': {
               badge: 'Conception générale & UX/UI',
@@ -139,7 +133,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                tasks: ['Conception générale du produit', 'Collaboration avec des ergonomes', 'Conception et réalisation UX/UI', 'Développement Unity 3D'],
               metrics: [],
               cardSummary: 'Conception générale et UX/UI du simulateur ergonomique 3D #vr #csharp #Unity3D pour la prévention des TMS en milieu industriel. Collaboration avec des ergonomes, analyse posturale temps réel, feedback visuel des risques, interface opérateur intuitive.',
-               type: 'projet',
             },
             '23': {
               badge: 'Conception & Design UI/UX',
@@ -147,9 +140,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 desc: 'Outil de simulation de radioactivité destiné aux chantiers école pour la formation en radioprotection. #csharp #unity3D #simulation #ux #ui #radioprotection. Conception de l\'interface utilisateur et design UX pour rendre accessible la compréhension des risques radiologiques. Focus sur la pédagogie et l\'apprentissage pratique.',
               tasks: ['Conception UI/UX', 'Simulation radioprotection', 'Design pédagogique'],
               metrics: [],
-                tags: ['csharp', 'unity3D', 'simulation', 'ux', 'ui', 'radioprotection'],
                 cardSummary: 'Conception et design UX/UI du simulateur Dosicase pour la radioprotection. #csharp #unity3D #simulation #ux #ui #radioprotection',
-                type: 'projet',
             },
             '24': {
               badge: 'C# / 3D Developer',
@@ -157,9 +148,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 desc: 'Simulation 3D interactive d\'une enceinte mobile nucléaire. #csharp #unity3D #simulation #nuclear #3d #wpf. Visualisation 3D des flux, gestion des matériaux radioactifs, interfaces de contrôle temps réel pour opérateurs.',
               tasks: ['Simulation 3D', 'Gestion matériaux radioactifs', 'Interfaces temps réel'],
               metrics: [],
-                tags: ['csharp', 'unity3D', 'simulation', 'nuclear', '3d', 'wpf'],
                 cardSummary: 'Simulation 3D interactive d\'une enceinte mobile nucléaire. #csharp #unity3D #simulation #nuclear #3d #wpf',
-                type: 'projet',
             },
             '25': {
               badge: 'C# / 3D Developer',
@@ -167,9 +156,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 desc: 'Serious game de formation pour l\'utilisation du poste de contrôle Aeroball en milieu nucléaire. #csharp #unity3D #seriousgame #simulation #nuclear #3d. Simulation 3D interactive, développement C# et modélisation 3D pour reproduire fidèlement les procédures opérationnelles.',
               tasks: ['Serious game', 'Simulation 3D', 'Modélisation procédurale'],
               metrics: [],
-                tags: ['csharp', 'unity3D', 'seriousgame', 'simulation', 'nuclear', '3d'],
                 cardSummary: 'Serious game de formation Aeroball pour le nucléaire. #csharp #unity3D #seriousgame #simulation #nuclear #3d',
-                type: 'projet',
             },
             '26': {
               badge: 'C# / 3D Developer',
@@ -177,9 +164,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 desc: 'Module de formation interactive 3D sur la radioprotection et les procédures de sécurité nucléaire. #csharp #unity3D #simulation #radioprotection #training #3d. Simulations de scénarios d\'accident, gestion des équipes de secours.',
               tasks: ['Formation radioprotection', 'Simulation scénarios', 'Gestion équipes'],
               metrics: [],
-                tags: ['csharp', 'unity3D', 'simulation', 'radioprotection', 'training', '3d'],
                 cardSummary: 'Module de formation interactive 3D sur la radioprotection et la sécurité nucléaire. #csharp #unity3D #simulation #radioprotection #training #3d',
-                type: 'projet',
             },
             '27': {
               badge: 'C# / 3D Developer',
@@ -187,9 +172,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 desc: 'Serious game destiné à préparer les interventions durant les arrêts de tranche pour la maintenance des générateurs de vapeurs. #csharp #unity3D #seriousgame #simulation #maintenance #nuclear #3d. Simulation 3D temps réel, développement C# pour reproduire les procédures complexes de maintenance en environnement nucléaire.',
               tasks: ['Maintenance nucléaire', 'Simulation 3D', 'Développement C#'],
               metrics: [],
-                tags: ['csharp', 'unity3D', 'seriousgame', 'simulation', 'maintenance', 'nuclear', '3d'],
                 cardSummary: 'Serious game pour la maintenance nucléaire des générateurs de vapeurs. #csharp #unity3D #seriousgame #simulation #maintenance #nuclear #3d',
-                type: 'projet',
             },
             '28': {
               badge: 'C# / 3D Developer',
@@ -197,9 +180,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 desc: 'Simulation 3D pour la formation des équipes chirurgicales. #csharp #unity3D #simulation #medical #dosimetry #healthcare #3d. Dosimétrie en temps réel, visualisation des zones sensibles aux radiations, protocole de radioprotection opérateur.',
               tasks: ['Simulation médicale', 'Dosimétrie temps réel', 'Radioprotection opérateur'],
               metrics: [],
-                tags: ['csharp', 'unity3D', 'simulation', 'medical', 'dosimetry', 'healthcare', '3d'],
                 cardSummary: 'Simulation 3D pour la formation chirurgicale et la radioprotection. #csharp #unity3D #simulation #medical #dosimetry #healthcare #3d',
-                type: 'projet',
             },
         },
       },

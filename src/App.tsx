@@ -11,6 +11,7 @@ import { getTranslations } from './locales'
 import type { Mission } from './types'
 import { FormationsTab } from './components/tabs/FormationsTab'
 import { OverviewTab } from './components/tabs/OverviewTab'
+import { ProjectsTab } from './components/tabs/ProjectsTab'
 import styles from './App.module.css'
 
 type MissionPopout = {
@@ -315,17 +316,6 @@ function App() {
                       </li>
                     ))}
                   </ul>
-                </div>
-              )}
-
-              {activeMission.mission.featured && activeMission.mission.metrics.length > 0 && (
-                <div className={styles.metricsGrid}>
-                  {activeMission.mission.metrics.map((metric, idx) => (
-                    <div key={idx} className={styles.metricItem}>
-                      <div className={styles.metricValue}>{metric.value}</div>
-                      <div className={styles.metricLabel}>{metric.label}</div>
-                    </div>
-                  ))}
                 </div>
               )}
 

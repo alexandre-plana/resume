@@ -908,6 +908,11 @@
   gap: 8px;
   margin-bottom: 20px;
   position: relative;
+  /* Ligne verticale à gauche, comme les missions */
+  border-left: 2px solid var(--blue);
+  padding-left: 18px;
+  background: var(--bg-2);
+  border-radius: var(--radius);
 }
 
 .projectHeader {
@@ -915,6 +920,8 @@
   align-items: flex-start;
   gap: 16px;
   position: relative;
+  /* Décale le dot pour l'aligner avec la ligne */
+  margin-left: -11px;
 }
 
 .projectTitleRow {

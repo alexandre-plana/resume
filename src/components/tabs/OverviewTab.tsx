@@ -135,81 +135,159 @@ function OverviewTabComponent({
     <>
       <div className={styles.sectionHeader}>📌 {t.sections.professionalExperience}</div>
       <div className={styles.timeline}>
-        {experiences.map((exp) => (
-          <div key={exp.id}>
-            <div className={styles.tlCompany}>
-              <div className={styles.tlDot} />
-              <div className={styles.tlInfo}>
-                <div className={styles.tlName}>{exp.company}</div>
-                <div className={styles.tlRole}>{exp.employer}</div>
-                <span className={styles.tlPeriod}>{exp.period}</span>
+        {experiences.map((exp) => {
+          const missions = exp.missions.filter((m) => m.type !== 'projet');
+          const projets = exp.missions.filter((m) => m.type === 'projet');
+          return (
+            <div key={exp.id}>
+              <div className={styles.tlCompany}>
+                <div className={styles.tlDot} />
+                <div className={styles.tlInfo}>
+                  <div className={styles.tlName}>{exp.company}</div>
+                  <div className={styles.tlRole}>{exp.employer}</div>
+                  <span className={styles.tlPeriod}>{exp.period}</span>
+                </div>
               </div>
-            </div>
-            <div className={styles.tlMissions}>
-              {exp.missions.map((mission) => {
-                const missionTasks = mission.tasks ?? []
-                const cardSummary = mission.cardSummary?.trim()
-                const hasCardSummary = Boolean(cardSummary)
-                const previewTasks = getPrioritizedTaskPreview(
-                  missionTasks,
-                  mission.priorityActionIndexes,
-                  MISSION_TASK_PREVIEW_LIMIT,
-                )
-                const remainingTaskCount = Math.max(0, missionTasks.length - previewTasks.length)
-
-                return (
-                  <div
-                    key={mission.id}
-                    className={mission.featured ? styles.missionFeatured : styles.mission}
-                    role="button"
-                    tabIndex={0}
-                    aria-haspopup="dialog"
-                    aria-label={t.mission.openDetails}
-                    onClick={(event) => onOpenMission(mission, exp.company, exp.employer, event.currentTarget)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault()
-                        onOpenMission(mission, exp.company, exp.employer, event.currentTarget)
-                      }
-                    }}
-                  >
-                    <div className={styles.missionTop}>
-                      <span style={{ color: 'var(--text-3)' }}>📁</span>
-                      <span className={styles.missionName}>{mission.name}</span>
-                      <span className={styles.missionBadge}>{mission.badge}</span>
-                      <span className={styles.missionExpandIcon} aria-hidden="true" title={t.mission.expand}>
-                        ⤢
-                      </span>
-                    </div>
-                    <div className={styles.missionContext}>{mission.context}</div>
-                    <div className={`${styles.missionDesc} ${hasCardSummary ? styles.missionDescTagged : styles.missionDescCompact}`}>
-                      {hasCardSummary ? renderSummaryWithInlineTags(cardSummary ?? '') : mission.desc}
-                    </div>
-                    {!hasCardSummary && previewTasks.length > 0 && (
-                      <div className={styles.missionTaskPreviewBlock}>
-                        <div className={styles.missionTaskPreviewTitle}>{t.mission.tasksPreviewTitle}</div>
-                        <ul className={styles.missionTaskPreview} aria-label={t.mission.tasksTitle}>
-                          {previewTasks.map((task, idx) => (
-                            <li
-                              key={`mission-preview-${mission.id}-${idx}`}
-                              className={styles.missionTaskPreviewItem}
-                              title={task}
-                            >
-                              {summarizeTaskPreview(task)}
-                            </li>
-                          ))}
-                          {remainingTaskCount > 0 && (
-                            <li className={styles.missionTaskPreviewMore}>+{remainingTaskCount}</li>
-                          )}
-                        </ul>
+              {/* Missions (une par ligne) */}
+              {missions.length > 0 && (
+                <div className={styles.tlMissions}>
+                  {missions.map((mission) => {
+                    const missionTasks = mission.tasks ?? [];
+                    const cardSummary = mission.cardSummary?.trim();
+                    const hasCardSummary = Boolean(cardSummary);
+                    const previewTasks = getPrioritizedTaskPreview(
+                      missionTasks,
+                      mission.priorityActionIndexes,
+                      MISSION_TASK_PREVIEW_LIMIT,
+                    );
+                    const remainingTaskCount = Math.max(0, missionTasks.length - previewTasks.length);
+                    const cardClass = mission.featured ? styles.missionFeatured : styles.mission;
+                    return (
+                      <div
+                        key={mission.id}
+                        className={cardClass}
+                        role="button"
+                        tabIndex={0}
+                        aria-haspopup="dialog"
+                        aria-label={t.mission.openDetails}
+                        onClick={(event) => onOpenMission(mission, exp.company, exp.employer, event.currentTarget)}
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            onOpenMission(mission, exp.company, exp.employer, event.currentTarget);
+                          }
+                        }}
+                      >
+                        <div className={styles.missionTop}>
+                          <span style={{ color: 'var(--text-3)' }}>📁</span>
+                          <span className={styles.missionName}>{mission.name}</span>
+                          <span className={styles.missionBadge}>{mission.badge}</span>
+                          <span className={styles.missionExpandIcon} aria-hidden="true" title={t.mission.expand}>
+                            ⤢
+                          </span>
+                        </div>
+                        <div className={styles.missionContext}>{mission.context}</div>
+                        <div className={`${styles.missionDesc} ${hasCardSummary ? styles.missionDescTagged : styles.missionDescCompact}`}>
+                          {hasCardSummary ? renderSummaryWithInlineTags(cardSummary ?? '') : mission.desc}
+                        </div>
+                        {!hasCardSummary && previewTasks.length > 0 && (
+                          <div className={styles.missionTaskPreviewBlock}>
+                            <div className={styles.missionTaskPreviewTitle}>{t.mission.tasksPreviewTitle}</div>
+                            <ul className={styles.missionTaskPreview} aria-label={t.mission.tasksTitle}>
+                              {previewTasks.map((task, idx) => (
+                                <li
+                                  key={`mission-preview-${mission.id}-${idx}`}
+                                  className={styles.missionTaskPreviewItem}
+                                  title={task}
+                                >
+                                  {summarizeTaskPreview(task)}
+                                </li>
+                              ))}
+                              {remainingTaskCount > 0 && (
+                                <li className={styles.missionTaskPreviewMore}>+{remainingTaskCount}</li>
+                              )}
+                            </ul>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                )
-              })}
+                    );
+                  })}
+                </div>
+              )}
+              {/* Projets (2 par ligne) */}
+              {projets.length > 0 && (
+                <div className={styles.tlProjectsGrid}>
+                  {Array.from({ length: Math.ceil(projets.length / 2) }).map((_, rowIdx) => (
+                    <div key={`project-row-${rowIdx}`} style={{ display: 'flex', gap: '16px', marginBottom: '8px', width: '100%' }}>
+                      {projets.slice(rowIdx * 2, rowIdx * 2 + 2).map((mission) => {
+                        const missionTasks = mission.tasks ?? [];
+                        const cardSummary = mission.cardSummary?.trim();
+                        const hasCardSummary = Boolean(cardSummary);
+                        const previewTasks = getPrioritizedTaskPreview(
+                          missionTasks,
+                          mission.priorityActionIndexes,
+                          MISSION_TASK_PREVIEW_LIMIT,
+                        );
+                        const remainingTaskCount = Math.max(0, missionTasks.length - previewTasks.length);
+                        const cardClass = `${styles.mission} ${styles.projectCard}`;
+                        return (
+                          <div
+                            key={mission.id}
+                            className={cardClass}
+                            style={{ width: '48%', minWidth: '220px', boxSizing: 'border-box' }}
+                            role="button"
+                            tabIndex={0}
+                            aria-haspopup="dialog"
+                            aria-label={t.mission.openDetails}
+                            onClick={(event) => onOpenMission(mission, exp.company, exp.employer, event.currentTarget)}
+                            onKeyDown={(event) => {
+                              if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault();
+                                onOpenMission(mission, exp.company, exp.employer, event.currentTarget);
+                              }
+                            }}
+                          >
+                            <div className={styles.missionTop}>
+                              <span style={{ color: 'var(--text-3)' }}>📁</span>
+                              <span className={styles.missionName}>{mission.name}</span>
+                              <span className={styles.missionBadge}>{mission.badge}</span>
+                              <span className={styles.missionExpandIcon} aria-hidden="true" title={t.mission.expand}>
+                                ⤢
+                              </span>
+                            </div>
+                            <div className={styles.missionContext}>{mission.context}</div>
+                            <div className={`${styles.missionDesc} ${hasCardSummary ? styles.missionDescTagged : styles.missionDescCompact}`}>
+                              {hasCardSummary ? renderSummaryWithInlineTags(cardSummary ?? '') : mission.desc}
+                            </div>
+                            {!hasCardSummary && previewTasks.length > 0 && (
+                              <div className={styles.missionTaskPreviewBlock}>
+                                <div className={styles.missionTaskPreviewTitle}>{t.mission.tasksPreviewTitle}</div>
+                                <ul className={styles.missionTaskPreview} aria-label={t.mission.tasksTitle}>
+                                  {previewTasks.map((task, idx) => (
+                                    <li
+                                      key={`mission-preview-${mission.id}-${idx}`}
+                                      className={styles.missionTaskPreviewItem}
+                                      title={task}
+                                    >
+                                      {summarizeTaskPreview(task)}
+                                    </li>
+                                  ))}
+                                  {remainingTaskCount > 0 && (
+                                    <li className={styles.missionTaskPreviewMore}>+{remainingTaskCount}</li>
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className={styles.printQrBanner}>
