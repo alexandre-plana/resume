@@ -137,7 +137,7 @@ function OverviewTabComponent({
       <div className={styles.timeline}>
         {experiences.map((exp) => {
           const missions = exp.missions.filter((m) => m.type !== 'projet');
-          const projets = exp.missions.filter((m) => m.type !== 'projet' && m.type === 'mission');
+          // const projets = exp.missions.filter((m) => m.type !== 'projet' && m.type === 'mission');
           return (
             <div key={exp.id}>
               <div className={styles.tlCompany}>
@@ -212,77 +212,6 @@ function OverviewTabComponent({
                       </div>
                     );
                   })}
-                </div>
-              )}
-              {/* Projets (2 par ligne) */}
-              {projets.length > 0 && (
-                <div className={styles.tlProjectsGrid}>
-                  {Array.from({ length: Math.ceil(projets.length / 2) }).map((_, rowIdx) => (
-                    <div key={`project-row-${rowIdx}`} style={{ display: 'flex', gap: '16px', marginBottom: '8px', width: '100%' }}>
-                      {projets.slice(rowIdx * 2, rowIdx * 2 + 2).map((mission) => {
-                        const missionTasks = mission.tasks ?? [];
-                        const cardSummary = mission.cardSummary?.trim();
-                        const hasCardSummary = Boolean(cardSummary);
-                        const previewTasks = getPrioritizedTaskPreview(
-                          missionTasks,
-                          mission.priorityActionIndexes,
-                          MISSION_TASK_PREVIEW_LIMIT,
-                        );
-                        const remainingTaskCount = Math.max(0, missionTasks.length - previewTasks.length);
-                        const cardClass = `${styles.mission} ${styles.projectCard}`;
-                        return (
-                          <div
-                            key={mission.id}
-                            className={cardClass}
-                            style={{ width: '48%', minWidth: '220px', boxSizing: 'border-box' }}
-                            role="button"
-                            tabIndex={0}
-                            aria-haspopup="dialog"
-                            aria-label={t.mission.openDetails}
-                            onClick={(event) => onOpenMission(mission, exp.company, exp.employer, event.currentTarget)}
-                            onKeyDown={(event) => {
-                              if (event.key === 'Enter' || event.key === ' ') {
-                                event.preventDefault();
-                                onOpenMission(mission, exp.company, exp.employer, event.currentTarget);
-                              }
-                            }}
-                          >
-                            <div className={styles.missionTop}>
-                              <span style={{ color: 'var(--text-3)' }}>📁</span>
-                              <span className={styles.missionName}>{mission.name}</span>
-                              <span className={styles.missionBadge}>{mission.badge}</span>
-                              <span className={styles.missionExpandIcon} aria-hidden="true" title={t.mission.expand}>
-                                ⤢
-                              </span>
-                            </div>
-                            <div className={styles.missionContext}>{mission.context}</div>
-                            <div className={`${styles.missionDesc} ${hasCardSummary ? styles.missionDescTagged : styles.missionDescCompact}`}>
-                              {hasCardSummary ? renderSummaryWithInlineTags(cardSummary ?? '') : mission.desc}
-                            </div>
-                            {!hasCardSummary && previewTasks.length > 0 && (
-                              <div className={styles.missionTaskPreviewBlock}>
-                                <div className={styles.missionTaskPreviewTitle}>{t.mission.tasksPreviewTitle}</div>
-                                <ul className={styles.missionTaskPreview} aria-label={t.mission.tasksTitle}>
-                                  {previewTasks.map((task, idx) => (
-                                    <li
-                                      key={`mission-preview-${mission.id}-${idx}`}
-                                      className={styles.missionTaskPreviewItem}
-                                      title={task}
-                                    >
-                                      {summarizeTaskPreview(task)}
-                                    </li>
-                                  ))}
-                                  {remainingTaskCount > 0 && (
-                                    <li className={styles.missionTaskPreviewMore}>+{remainingTaskCount}</li>
-                                  )}
-                                </ul>
-                              </div>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ))}
                 </div>
               )}
             </div>
