@@ -749,35 +749,6 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
   )
 
 
-  // Ajout du QR code à la fin
-  // URL cible du QR code (à adapter si besoin)
-  const qrUrl = `https://alexandre-plana.fr/cv`;
-  const qrCodeApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrUrl)}`;
-  // Téléchargement de l'image QR code
-  const qrImageResponse = await fetch(qrCodeApiUrl);
-  const qrImageBlob = await qrImageResponse.blob();
-  const qrImageArrayBuffer = await qrImageBlob.arrayBuffer();
-  const qrImageBuffer = new Uint8Array(qrImageArrayBuffer);
-
-  children.push(
-    new Paragraph({
-      children: [
-        new ImageRun({
-          data: qrImageBuffer,
-          transformation: { width: 120, height: 120 },
-        }),
-        new TextRun({
-          text: `\nQR code vers la version complète du CV : ${qrUrl}`,
-          break: 1,
-          size: 18,
-          color: PALETTE.text3,
-        }),
-      ],
-      alignment: AlignmentType.CENTER,
-      spacing: { before: 120, after: 60 },
-    })
-  );
-
   children.push(
     new Paragraph({
       children: [
