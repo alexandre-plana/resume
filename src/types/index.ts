@@ -33,6 +33,7 @@ export interface Mission {
   tags: string[]
   isCurrent?: boolean
   type?: string // e.g., 'projet', 'mission', etc.
+  metrics?: { label: string }[]
 }
 
 export interface Experience {
