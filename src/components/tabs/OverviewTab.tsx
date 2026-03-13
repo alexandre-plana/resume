@@ -202,15 +202,28 @@ function OverviewTabComponent({
                                       <div
                                         key={projet.id}
                                         className={styles.mission}
-                                        role="presentation"
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-haspopup="dialog"
+                                        aria-label={t.mission.openDetails}
                                         style={{ flex: 1 }}
+                                        onClick={(event) => {
+                                          event.stopPropagation();
+                                          onOpenMission(projet, exp.company, exp.employer, event.currentTarget);
+                                        }}
+                                        onKeyDown={(event) => {
+                                          if (event.key === 'Enter' || event.key === ' ') {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                            onOpenMission(projet, exp.company, exp.employer, event.currentTarget);
+                                          }
+                                        }}
                                       >
                                         <div className={styles.missionTop}>
                                           <span style={{ color: 'var(--text-3)' }}>🗂️</span>
                                           <span className={styles.missionName}>{projet.name}</span>
                                         </div>
                                         <div className={styles.missionContext}>{projet.context}</div>
-
                                       </div>
                                     ))}
                                   </div>
