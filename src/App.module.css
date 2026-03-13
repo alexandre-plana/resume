@@ -1,3 +1,13 @@
+.tlProjects {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.projectRow {
+  display: flex;
+  gap: 1rem;
+}
+
 .wrapper {
   max-width: 980px;
   margin: 0 auto;
