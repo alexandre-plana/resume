@@ -137,7 +137,6 @@ function OverviewTabComponent({
       <div className={styles.timeline}>
         {experiences.map((exp) => {
           const missions = exp.missions.filter((m) => m.type !== 'projet');
-          // const projets = exp.missions.filter((m) => m.type !== 'projet' && m.type === 'mission');
           return (
             <div key={exp.id}>
               <div className={styles.tlCompany}>
@@ -190,6 +189,37 @@ function OverviewTabComponent({
                         <div className={`${styles.missionDesc} ${hasCardSummary ? styles.missionDescTagged : styles.missionDescCompact}`}>
                           {hasCardSummary ? renderSummaryWithInlineTags(cardSummary ?? '') : mission.desc}
                         </div>
+                        {/* Affichage des missions de type 'projet' */}
+                        {exp.missions.filter((m) => m.type === 'projet').length > 0 && (
+                          <div className={styles.tlProjects}>
+                            {(() => {
+                              const projets = exp.missions.filter((m) => m.type === 'projet');
+                              const rows = [];
+                              for (let i = 0; i < projets.length; i += 2) {
+                                rows.push(
+                                  <div key={`projet-row-${i}`} className={styles.projectRow}>
+                                    {projets.slice(i, i + 2).map((projet) => (
+                                      <div
+                                        key={projet.id}
+                                        className={styles.mission}
+                                        role="presentation"
+                                        style={{ flex: 1 }}
+                                      >
+                                        <div className={styles.missionTop}>
+                                          <span style={{ color: 'var(--text-3)' }}>🗂️</span>
+                                          <span className={styles.missionName}>{projet.name}</span>
+                                        </div>
+                                        <div className={styles.missionContext}>{projet.context}</div>
+
+                                      </div>
+                                    ))}
+                                  </div>
+                                );
+                              }
+                              return rows;
+                            })()}
+                          </div>
+                        )}
                         {!hasCardSummary && previewTasks.length > 0 && (
                           <div className={styles.missionTaskPreviewBlock}>
                             <div className={styles.missionTaskPreviewTitle}>{t.mission.tasksPreviewTitle}</div>
