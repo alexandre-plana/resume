@@ -59,7 +59,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     profile: {
       title: 'Développeur Front End',
       subtitle: 'Industrie · UI/UX · Multi Plateforme',
-          bio: 'Développeur Front-End Senior avec 13 ans d’expérience, j’ai évolué dans des secteurs industriels exigeants (énergie, nucléaire, défense, IIoT). J’ai appris à concevoir des interfaces intuitives et fiables, en collaborant avec des équipes pluridisciplinaires et en adaptant les solutions aux besoins métier. Curieux, rigoureux et orienté qualité, je maîtrise les architectures modernes (micro-frontend, Vue, React, TypeScript) et je place l’expérience utilisateur au cœur de chaque projet.',
+          bio: 'Développeur Front-End avec 13 ans d’expérience, j’ai évolué dans des secteurs industriels exigeants (énergie, nucléaire, défense, IIoT). J’ai appris à concevoir des interfaces intuitives et fiables, en collaborant avec des équipes pluridisciplinaires et en adaptant les solutions aux besoins métier. Curieux, rigoureux et orienté qualité, je maîtrise les architectures modernes (micro-frontend, Vue, React, TypeScript) et je place l’expérience utilisateur au cœur de chaque projet.',
       company: 'Consultant R&D · Datacorp',
       seeking: 'Poste Front End web dans un contexte industriel · Vue.js ou React · TypeScript · micro-frontend · équipe orientée qualité & UX',
       interests: ['🎮 Jeux', '🚵 VTT', '🥾 Rando', '🍳 Cuisine'],
@@ -225,9 +225,9 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
   },
   en: {
     profile: {
-      title: 'Senior Frontend Engineer',
+      title: 'Frontend Engineer',
       subtitle: 'Industrial · UI/UX · Multi-Platform',
-        bio: 'Senior Front-End Developer with 13 years of experience in demanding industrial sectors (energy, nuclear, defense, IIoT). I have learned to design intuitive and reliable interfaces, collaborating with multidisciplinary teams and adapting solutions to business needs. Curious, rigorous, and quality-oriented, I master modern architectures (micro-frontend, Vue, React, TypeScript) and put user experience at the heart of every project.',
+        bio: 'Front-End Developer with 13 years of experience in demanding industrial sectors (energy, nuclear, defense, IIoT). I have learned to design intuitive and reliable interfaces, collaborating with multidisciplinary teams and adapting solutions to business needs. Curious, rigorous, and quality-oriented, I master modern architectures (micro-frontend, Vue, React, TypeScript) and put user experience at the heart of every project.',
       company: 'Consultant R&D · Datacorp',
       seeking: 'Frontend role in industrial context · Vue.js or React · TypeScript · micro-frontends · quality & UX-oriented team',
       interests: ['🎮 Gaming', '🚵 Mountain Biking', '🥾 Hiking', '🍳 Cooking'],
