@@ -34,6 +34,21 @@ const TAG_COLORS: Record<string, { bg: string; text: string; border: string; dot
   winform: { bg: '#e8f4ff', text: '#0078d4', border: '#96d8ff', dot: '#0078d4' },
   solidworks: { bg: '#dfeef9', text: '#0055c8', border: '#99c0f0', dot: '#0055c8' },
   '3dsmax': { bg: '#fde4e4', text: '#9b0000', border: '#f7a9a9', dot: '#ffa500' },
+  'three.js': { bg: '#f1f5f9', text: '#334155', border: '#cbd5e1', dot: '#049ef4' },
+  webgpu: { bg: '#ccfbf1', text: '#115e59', border: '#5eead4', dot: '#14b8a6' },
+  webgl2: { bg: '#fee2e2', text: '#991b1b', border: '#fca5a5', dot: '#990000' },
+  glsl: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd', dot: '#8b5cf6' },
+  'web workers': { bg: '#f1f5f9', text: '#334155', border: '#cbd5e1', dot: '#64748b' },
+  node: { bg: '#dcfce7', text: '#14532d', border: '#86efac', dot: '#339933' },
+  android: { bg: '#dcfce7', text: '#166534', border: '#86efac', dot: '#3ddc84' },
+  pixijs: { bg: '#fce7f3', text: '#9d174d', border: '#f9a8d4', dot: '#e91e63' },
+  vite: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd', dot: '#646cff' },
+  vitest: { bg: '#ecfccb', text: '#3f6212', border: '#bef264', dot: '#729b1b' },
+  tailwind: { bg: '#cffafe', text: '#155e75', border: '#67e8f9', dot: '#06b6d4' },
+  maplibre: { bg: '#e0f2fe', text: '#075985', border: '#7dd3fc', dot: '#396cb2' },
+  'deck.gl': { bg: '#ccfbf1', text: '#115e59', border: '#5eead4', dot: '#14b8a6' },
+  mqtt: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd', dot: '#660066' },
+  'socket.io': { bg: '#f1f5f9', text: '#334155', border: '#cbd5e1', dot: '#010101' },
 }
 
 interface TechBadgeProps {

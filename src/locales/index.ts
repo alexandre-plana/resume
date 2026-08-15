@@ -24,6 +24,7 @@ export interface Translations {
     skills: string
     projects: string
     formations: string
+    personalProjects: string
   }
   sections: {
     uiUxCulture: string
@@ -53,6 +54,7 @@ export interface Translations {
     skills: string
     formation: string
     activity: string
+    personalProjects: string
   }
   formationControls: {
     sortBy: string
@@ -78,6 +80,10 @@ export interface Translations {
     tasksPreviewTitle: string
     tasksTitle: string
     retrospective: string
+  }
+  personalModal: {
+    openDetails: string
+    highlightsTitle: string
   }
   contactModal: {
     title: string
@@ -125,6 +131,7 @@ export const translations: Record<Language, Translations> = {
       skills: 'Compétences',
       projects: 'Projets',
       formations: 'Formations',
+      personalProjects: 'Projets persos',
     },
     sections: {
       uiUxCulture: '🎨 Culture UI/UX',
@@ -154,6 +161,7 @@ export const translations: Record<Language, Translations> = {
       skills: 'Impossible de charger les competences.',
       formation: 'Impossible de charger les formations.',
       activity: 'Impossible de charger l\'activite.',
+      personalProjects: 'Impossible de charger les projets personnels.',
     },
     formationControls: {
       sortBy: 'Trier par',
@@ -179,6 +187,10 @@ export const translations: Record<Language, Translations> = {
       tasksPreviewTitle: 'Actions cles',
       tasksTitle: 'Exemple de taches effectuees',
       retrospective: 'Retrospective',
+    },
+    personalModal: {
+      openDetails: 'Ouvrir le detail du projet',
+      highlightsTitle: 'Points cles',
     },
     contactModal: {
       title: 'Me contacter',
@@ -224,6 +236,7 @@ export const translations: Record<Language, Translations> = {
       skills: 'Skills',
       projects: 'Projects',
       formations: 'Trainings',
+      personalProjects: 'Side Projects',
     },
     sections: {
       uiUxCulture: '🎨 UI/UX Culture',
@@ -253,6 +266,7 @@ export const translations: Record<Language, Translations> = {
       skills: 'Unable to load skills.',
       formation: 'Unable to load education entries.',
       activity: 'Unable to load activity.',
+      personalProjects: 'Unable to load personal projects.',
     },
     formationControls: {
       sortBy: 'Sort by',
@@ -278,6 +292,10 @@ export const translations: Record<Language, Translations> = {
       tasksPreviewTitle: 'Key actions',
       tasksTitle: 'Tasks Performed On The Project',
       retrospective: 'Retrospective',
+    },
+    personalModal: {
+      openDetails: 'Open project details',
+      highlightsTitle: 'Highlights',
     },
     contactModal: {
       title: 'Contact me',

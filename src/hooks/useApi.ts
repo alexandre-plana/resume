@@ -116,6 +116,28 @@ export const useActivity = () => {
   })
 }
 
+export const usePersonalProjects = () => {
+  const language = useAppStore((state) => state.language)
+  const dataLocales = getMockDataLocale(language)
+
+  return useQuery({
+    queryKey: ['personalProjects', language],
+    queryFn: async () => {
+      const personalProjects = await api.personalProjectService.getPersonalProjects()
+      return personalProjects.map((project, idx) => ({
+        ...project,
+        kind: dataLocales.personalProjects[idx]?.kind || project.kind,
+        role: dataLocales.personalProjects[idx]?.role || project.role,
+        desc: dataLocales.personalProjects[idx]?.desc || project.desc,
+        details: dataLocales.personalProjects[idx]?.details || project.details,
+        highlights: dataLocales.personalProjects[idx]?.highlights || project.highlights,
+        period: dataLocales.personalProjects[idx]?.period || project.period,
+        status: dataLocales.personalProjects[idx]?.status || project.status,
+      }))
+    },
+  })
+}
+
 export const useContact = () => {
   return {
     sendMessage: async (data: { name: string; email: string; message: string }) => {
