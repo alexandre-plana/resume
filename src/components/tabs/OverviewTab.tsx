@@ -76,6 +76,13 @@ const TAG_COLORS: { [key: string]: { bg: string; text: string; border: string } 
   api: { bg: '#e0f2fe', text: '#0c4a6e', border: '#7dd3fc' },
   performance: { bg: '#fee2e2', text: '#991b1b', border: '#fca5a5' },
   maintenabilite: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd' },
+  maplibre: { bg: '#e0f2fe', text: '#075985', border: '#7dd3fc' },
+  deckgl: { bg: '#ccfbf1', text: '#115e59', border: '#5eead4' },
+  mqtt: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd' },
+  socketio: { bg: '#f1f5f9', text: '#334155', border: '#cbd5e1' },
+  treeshaking: { bg: '#dcfce7', text: '#166534', border: '#86efac' },
+  vitest: { bg: '#ecfccb', text: '#3f6212', border: '#bef264' },
+  gitlabci: { bg: '#ffedd5', text: '#9a3412', border: '#fdba74' },
   // Add more as needed
 }
 

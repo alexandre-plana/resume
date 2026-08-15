@@ -1185,6 +1185,54 @@
   background: var(--bg-2);
 }
 
+/* PERSONAL PROJECTS */
+.personalGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.personalStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.personalStatus {
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: rgba(41, 128, 185, 0.15);
+  color: #2980b9;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: none;
+}
+
+.personalCardClickable {
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.personalCardClickable:hover,
+.personalCardClickable:focus-visible {
+  border-color: var(--link);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.personalCardClickable .formLabel {
+  display: flex;
+}
+
+.personalExpandIcon {
+  margin-left: auto;
+  color: var(--text-3);
+  font-size: 0.8rem;
+}
+
 /* ACTIVITY */
 .activity {
   background: var(--bg-2);

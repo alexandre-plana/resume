@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties } from 'react'
-import { useActivity, useExperiences, useFormation, useProfile, useProjects, useSkills } from './hooks/useApi'
+import { useActivity, useExperiences, useFormation, usePersonalProjects, useProfile, useProjects, useSkills } from './hooks/useApi'
 import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
 import { Tabs } from './components/Tabs'
@@ -11,6 +11,7 @@ import { getTranslations } from './locales'
 import type { Mission } from './types'
 import { FormationsTab } from './components/tabs/FormationsTab'
 import { OverviewTab } from './components/tabs/OverviewTab'
+import { PersonalProjectsTab } from './components/tabs/PersonalProjectsTab'
 import { ProjectsTab } from './components/tabs/ProjectsTab'
 import styles from './App.module.css'
 
@@ -31,6 +32,7 @@ function App() {
   const projectsQuery = useProjects()
   const skillsQuery = useSkills()
   const formationQuery = useFormation()
+  const personalProjectsQuery = usePersonalProjects()
   const activityQuery = useActivity()
 
   const language = useAppStore((state) => state.language)
@@ -47,6 +49,7 @@ function App() {
     projectsQuery.isError ||
     skillsQuery.isError ||
     formationQuery.isError ||
+    personalProjectsQuery.isError ||
     activityQuery.isError
 
   const [activeMission, setActiveMission] = useState<MissionPopout | null>(null)
@@ -259,6 +262,15 @@ function App() {
                 isError={formationQuery.isError}
                 errorMessage={t.queryErrors.formation}
                 language={language}
+                t={t}
+              />
+            )}
+            {activeTab === 'personal' && (
+              <PersonalProjectsTab
+                projects={personalProjectsQuery.data}
+                isLoading={personalProjectsQuery.isLoading}
+                isError={personalProjectsQuery.isError}
+                errorMessage={t.queryErrors.personalProjects}
                 t={t}
               />
             )}

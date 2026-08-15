@@ -13,6 +13,7 @@ function TabsComponent() {
   const tabsData: { id: Tab; label: string; icon: string }[] = [
      { id: 'overview', label: t.tabs.overview, icon: '📋' },
      { id: 'formations', label: t.tabs.formations, icon: '🎓' },
+     { id: 'personal', label: t.tabs.personalProjects, icon: '🛠️' },
   ]
 
   return (

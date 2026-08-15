@@ -52,6 +52,17 @@ export interface LocalizedMockData {
       time: string
     }
   }
+  personalProjects: {
+    [key: number]: {
+      kind?: string
+      role?: string
+      desc?: string
+      details?: string
+      highlights?: string[]
+      period?: string
+      status?: string
+    }
+  }
 }
 
 export const mockDataLocales: Record<Language, LocalizedMockData> = {
@@ -222,6 +233,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
     },
     activity: {},
+    personalProjects: {},
   },
   en: {
     profile: {
@@ -238,6 +250,45 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
     },
     experiences: {
+      '3': {
+        company: 'X-PERT',
+        employer: 'R&D Consultant — Datacorp',
+        missions: {
+          '31': {
+            badge: 'Full stack developer',
+            context: 'Xistar — Marine Command Center',
+            desc: "Development of Xistar, a browser-based maritime tactical command center: a single product covering the full sensor → operator → decision → action → analysis loop. Real-time tactical picture (MapLibre + deck.gl, NATO APP-6D symbology, MGRS grid, bathymetry), mission and drone control with automated chains and a human in the loop, synchronized screen wall with remote view push, and full operation replay. Bridge architecture: adapters isolated at the boundaries (AIS, NMEA, CoT, MAVLink) feeding a canonical model broadcast over MQTT and Socket.io. A single codebase ships three products (defense, port supervision, demo) through a per-profile feature registry with lazy loading and tree-shaking.",
+            cardSummary: "Full-stack developer on Xistar, a browser-based maritime tactical command center: real-time tactical picture #maplibre #deckgl with NATO APP-6D symbology, mission and drone control, synchronized screen wall and full operation replay. End-to-end real time #mqtt #socketio, one codebase → three products (defense, port, demo) through a feature registry #treeshaking, tooling-enforced quality #vitest #gitlabci.",
+            tasks: [
+              'Build the operator interface: tactical picture, mission panels, BAM/CAM alert console with escalation and human-in-the-loop control',
+              'Implement the MapLibre + deck.gl map rendering: APP-6D symbology, trails, course vectors, MGRS grid, bathymetry',
+              'Design the per-profile feature registry: manifests, lazy loading, tree-shaken builds — three products without a functional fork',
+              'Wire end-to-end real time: sensor feeds (AIS, NMEA, CoT, MAVLink) adapted at the boundary and broadcast through MQTT and Socket.io to the UI',
+              'Set up synchronized multi-screen replay and the screen wall with remote view push',
+              'Industrialize quality: front and back Vitest suites, lint, 5-stage GitLab CI pipeline with tagged deployments and smoke tests',
+            ],
+            metrics: [],
+          },
+          '32': {
+            badge: 'Full stack developer',
+            context: 'Drone & naval fleet simulator',
+            desc: "Node.js simulator for drones and naval fleets feeding Xistar with realistic streams (positions, states, detections) for demos and development — in line with the platform's zero-mock-data principle.",
+            metrics: [],
+          },
+          '33': {
+            badge: 'Full stack developer',
+            context: 'Mobile app — alerts & orders',
+            desc: 'Mobile app for receiving BAM/CAM alerts and issuing orders (escalation, return order): the operator stays in the loop from the field.',
+            metrics: [],
+          },
+          '34': {
+            badge: 'Full stack developer',
+            context: 'Screen wall emulator',
+            desc: 'Screen wall emulator to build and demo multi-view operations without a physical room: screen sets, mission board, remote view push. React / Vite stack.',
+            metrics: [],
+          },
+        },
+      },
       '1': {
         company: 'Schneider Electric',
         employer: 'R&D Consultant — Datacorp',
@@ -344,6 +395,91 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
     },
     activity: {},
+    personalProjects: {
+      0: {
+        kind: 'Educational platform',
+        role: 'Full stack developer',
+        desc: 'Educational platform for ages 6-11: the water cycle, volcanoes or wildfires explained through voxel dioramas children manipulate block by block. Deterministic zero-dependency simulation engine, triple rendering of a single model — 3D, 2D cross-section, accessible DOM — and an offline mode designed for schools.',
+        details: "Voxels aren't an aesthetic choice: they exist to show the inside of things — you cut a volcano open like a cake to see the magma chamber. The architecture is locked by 26 documented decisions, and the tooling-driven backlog counts 95 tasks across 17 batches, checked in CI.",
+        highlights: [
+          'Deterministic zero-dependency voxel engine — Math.random and imports forbidden, mechanically enforced by lint in CI',
+          'Triple rendering of one model: 3D (three.js/TSL, WebGL + WebGPU), 2D cross-section fallback and accessibility DOM tree',
+          'Versioned manifest-driven educational content with a CLI validator',
+          'xAPI learning tracking minimized by design: no ranking between children, no gesture or camera data',
+          'pnpm monorepo in 6 packages: engine, render-3d, render-2d, a11y, player, shell',
+        ],
+        status: 'active',
+      },
+      1: {
+        kind: 'Self-hosted app',
+        role: 'Full stack developer',
+        desc: 'Self-hosted family digital memory: photos, videos and documents reliably stored at home, browsable through an Android gallery and a strictly local admin. Design phase completed: vision, architecture decisions and a full 13-milestone roadmap.',
+        details: 'A family server designed as a digital memory: memories arrive, are stored reliably and stay browsable by the family — no third-party cloud. Framing is complete: 17 decision documents, 13 feature sheets and a milestone roadmap (L0 → L12) steered through iasit.',
+        highlights: [
+          'Reliable upload and storage: sync state machine, checksums, local backup/restore',
+          'Android gallery + strictly local web admin (documented local-only enforcement)',
+          'Device pairing, groups, audiences and memory visibility',
+          'Network access planned through Cloudflare Tunnel, Node/TypeScript monorepo with shared packages',
+        ],
+        status: 'design phase',
+      },
+      2: {
+        kind: 'Scientific simulation',
+        role: 'Full stack developer',
+        desc: 'Emergent evolution observatory: a population of organisms is born, mutates, recombines and speciates on a hex grid — nothing is scripted, everything emerges. Deterministic headless engine (seeded RNG, state hashing), Web Worker simulation and live tracking of 12 genetic traits.',
+        details: "The goal isn't to program evolution but to create the conditions where it emerges: some gene pools grow more frequent, species form, and the observatory makes that data beautiful and manipulable. The project was deliberately rebooted mid-course to refocus its core — the previous version stays archived.",
+        highlights: [
+          'Full genetics: genome, phenotype, mutation, recombination, automatically classified speciation',
+          'Deterministic headless engine: seeded RNG, state hashing, runs without UI for measurement',
+          'Deterministic world generation (biomes, hydrology, terrain) with a local library of reloadable terrains',
+          '160×90 PixiJS atlas with overlays, pan/zoom camera and 12 average traits tracked live',
+          'Offline analysis tooling: benchmarks, speciation probes, endurance runs, data export',
+        ],
+        status: 'on hold',
+      },
+      3: {
+        kind: 'Dev tooling',
+        role: 'Full stack developer',
+        desc: 'Steering tool for AI-agent-assisted development: traceable tasks, executions and findings, canonical prompt generation (run / verify / fix) and full batch orchestration. It drives the backlog of my other side projects — 580 commits in two months.',
+        details: "Born from AI-agent-assisted development: the tool traces everything that matters (tasks, executions, findings) and generates canonical prompts executed by an external agent — the app itself runs no AI, its scope is deliberately bounded. It's the meta-tool of the batch: kin and vorrery embed its steering data.",
+        highlights: [
+          'Canonical Task / TaskExecution / VerificationFinding formats, status as the single source of truth',
+          'run / verify / fix / next prompts in dual rendering: fullPrompt + compactInstruction',
+          'Batch mode: orchestrating a whole task range (run → verify → fix → re-verify) with CLI/runtime parity',
+          'Agent registry and documented handoff chain (analyst → … → release-operator)',
+          'Sigma.js context graph with focus mode, repo file index, artifact reconciliation',
+        ],
+        status: 'in service',
+      },
+      4: {
+        kind: 'Real-time simulator',
+        role: 'Full stack developer',
+        desc: "Physically-based watercolor simulator in the browser: water flows, pigment granulates and darkens as it dries, just like on real paper. Shallow-water fluid solver (SIGGRAPH '97 model) implemented from scratch in WebGL2 shaders, Kubelka-Munk optical rendering and 52 hand-calibrated pigments.",
+        details: 'A from-scratch reimplementation of the shallow-water model from Curtis et al. (Computer-Generated Watercolor, SIGGRAPH 1997): water flows along paper slope and grain, pigment is advected, granulates into hollows and darkens at drying edges. Rendering composes layers optically through Kubelka-Munk — no naive RGB blending.',
+        highlights: [
+          'Fluid solver 100% in WebGL2 shaders: splat, semi-Lagrangian advection, 20× Jacobi, capillarity, edge darkening',
+          '52 hand-calibrated pigments (masstone/undertone, granulation, staining), 12 concurrent through dynamic slots',
+          'Procedural paper with deterministic seed: height map + absorption map, 3 presets',
+          "Pressure-aware brush with pointer/coalesced events, X-ray mode over the solver's internal state",
+          'Headless verification with Playwright + SwiftShader and replayable scenarios',
+        ],
+        status: 'active',
+      },
+      5: {
+        kind: '3D web app',
+        role: 'Full stack developer',
+        desc: "3D orbital forge: deterministic procedural planets build up layer by layer before the user's eyes, then join a living system model. 32-body gravity lab, black holes with gravitational lensing, Web Worker generation and a fully unit-tested math layer.",
+        details: 'The stance: make generation visible. Each planet walks a timeline of layers (orbit, proto-sphere, geology, relief, hydrosphere, climate, biomes, atmosphere, moons…) where every step changes the on-screen scene. Simplified physical constraints (mass, gravity, albedo, pressure) drive the archetype and habitability warnings.',
+        highlights: [
+          'Deterministic procedural forge with visible layers, generation in Web Workers off the main thread',
+          'Gravity lab: 32 bodies, mass/position/velocity gizmos, trajectory predictions, Hill spheres, undo/redo',
+          'Compact objects: black holes (Doppler accretion disk, gravitational lensing), pulsars, neutron stars',
+          'Kids scene with orbital sonification and audio narration',
+          'Fully tested math layer: every *.ts module has its *.test.ts',
+        ],
+        status: 'active',
+      },
+    },
   },
 }
 

@@ -67,6 +67,19 @@ export interface Activity {
   time: string
 }
 
+export interface PersonalProject {
+  id: number
+  name: string
+  kind: string
+  role: string
+  desc: string
+  details?: string
+  highlights?: string[]
+  stack: string[]
+  period: string
+  status?: string
+}
+
 export interface Project {
   id: number
   name: string
