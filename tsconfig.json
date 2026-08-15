@@ -15,11 +15,7 @@
     "resolveJsonModule": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "types": ["react", "react-dom", "vite/client"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "types": ["react", "react-dom", "vite/client"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -13,6 +13,8 @@ An interactive resume with a GitHub-themed design, built with React 18, TypeScri
 
 ## Installation
 
+Requires Node.js 20.19+ (or 22.12+).
+
 ```bash
 npm install
 ```

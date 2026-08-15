@@ -11,7 +11,6 @@
   TextRun,
   VerticalAlignTable,
   WidthType,
-  ImageRun,
 } from 'docx'
 import type { IRunOptions } from 'docx'
 import type { Language } from '../locales'
@@ -314,114 +313,6 @@ const buildAboutCard = (text: string): Table =>
                 children: [bodyRun(text, { size: 21, color: PALETTE.text2 })],
                 spacing: { line: 280 },
               }),
-            ],
-          }),
-        ],
-      }),
-    ],
-  })
-
-const buildTechLanguageNarrative = (language: Language, techLanguages: Profile['languages']): Paragraph[] => {
-  const veryExperienced = techLanguages.filter((lang) => lang.pct >= 20).map((lang) => lang.name)
-  const notions = techLanguages.filter((lang) => lang.pct > 0 && lang.pct < 20).map((lang) => lang.name)
-
-  const lines: Paragraph[] = []
-
-  if (veryExperienced.length > 0) {
-    lines.push(
-      new Paragraph({
-        children: [
-          bodyRun(language === 'fr' ? 'Très expérimenté en ' : 'Highly experienced with ', {
-            size: 20,
-            color: PALETTE.text2,
-          }),
-          bodyRun(veryExperienced.join(', '), {
-            size: 20,
-            bold: true,
-            color: PALETTE.text,
-          }),
-        ],
-        spacing: { after: 80, line: 230 },
-      }),
-    )
-  }
-
-  if (notions.length > 0) {
-    lines.push(
-      new Paragraph({
-        children: [
-          bodyRun(language === 'fr' ? 'Quelques notions de ' : 'Working knowledge of ', {
-            size: 20,
-            color: PALETTE.text2,
-          }),
-          bodyRun(notions.join(', '), {
-            size: 20,
-            bold: true,
-            color: PALETTE.text,
-          }),
-        ],
-        spacing: { after: 50, line: 230 },
-      }),
-    )
-  }
-
-  if (lines.length === 0) {
-    lines.push(
-      ...techLanguages.map((lang) =>
-        new Paragraph({
-          children: [bodyRun(lang.name, { bold: true, size: 20 }), bodyRun(` - ${lang.pct}%`, { size: 20, color: PALETTE.text2 })],
-          spacing: { after: 50, line: 220 },
-        }),
-      ),
-    )
-  }
-
-  return lines
-}
-
-const buildLanguagesTable = (
-  profile: Profile,
-  t: ReturnType<typeof getTranslations>,
-  language: Language,
-): Table =>
-  new Table({
-    width: { size: 100, type: WidthType.PERCENTAGE },
-    borders: {
-      top: borderLine(PALETTE.borderSoft, 6),
-      bottom: borderLine(PALETTE.borderSoft, 6),
-      left: borderLine(PALETTE.borderSoft, 6),
-      right: borderLine(PALETTE.borderSoft, 6),
-      insideHorizontal: noBorder,
-      insideVertical: borderLine(PALETTE.borderSoft, 6),
-    },
-    rows: [
-      new TableRow({
-        children: [
-          new TableCell({
-            width: { size: 50, type: WidthType.PERCENTAGE },
-            margins: { top: 120, bottom: 120, left: 120, right: 120 },
-            children: [
-              new Paragraph({
-                children: [monoRun(t.common.languages.toUpperCase(), { bold: true, allCaps: true, color: PALETTE.text2, size: 16 })],
-                spacing: { after: 80 },
-              }),
-              ...profile.langs.map((lang) =>
-                new Paragraph({
-                  children: [bodyRun(lang.label, { bold: true, size: 20 }), bodyRun(` - ${lang.level}`, { size: 20, color: PALETTE.text2 })],
-                  spacing: { after: 50, line: 220 },
-                }),
-              ),
-            ],
-          }),
-          new TableCell({
-            width: { size: 50, type: WidthType.PERCENTAGE },
-            margins: { top: 120, bottom: 120, left: 120, right: 120 },
-            children: [
-              new Paragraph({
-                children: [monoRun(t.common.languageStack.toUpperCase(), { bold: true, allCaps: true, color: PALETTE.text2, size: 16 })],
-                spacing: { after: 80 },
-              }),
-              ...buildTechLanguageNarrative(language, profile.languages),
             ],
           }),
         ],
