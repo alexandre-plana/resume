@@ -1,25 +1,25 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useState } from 'react'
 import styles from './ContribGraph.module.css'
 
 const COLORS = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
 const BORDERS = ['1px solid #d0d7de', 'none', 'none', 'none', 'none']
 const LEVELS = [0, 0, 0, 0, 1, 1, 2, 2, 3, 4]
 
-const ContribGraphComponent: React.FC<{ contributions: number }> = ({ contributions }) => {
-  const [weeks, setWeeks] = useState<number[][]>([])
-
-  useEffect(() => {
-    const weeksData: number[][] = []
-    for (let w = 0; w < 52; w++) {
-      const week: number[] = []
-      for (let d = 0; d < 7; d++) {
-        const level = LEVELS[Math.floor(Math.random() * LEVELS.length)]
-        week.push(level)
-      }
-      weeksData.push(week)
+const generateWeeks = (): number[][] => {
+  const weeksData: number[][] = []
+  for (let w = 0; w < 52; w++) {
+    const week: number[] = []
+    for (let d = 0; d < 7; d++) {
+      const level = LEVELS[Math.floor(Math.random() * LEVELS.length)]
+      week.push(level)
     }
-    setWeeks(weeksData)
-  }, [])
+    weeksData.push(week)
+  }
+  return weeksData
+}
+
+const ContribGraphComponent: React.FC<{ contributions: number }> = ({ contributions }) => {
+  const [weeks] = useState<number[][]>(generateWeeks)
 
   return (
     <div className={styles.contrib}>
