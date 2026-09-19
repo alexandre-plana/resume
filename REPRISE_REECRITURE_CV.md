@@ -32,6 +32,7 @@ Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale
 Décisions importantes prises pour Xistar :
 
 - faire apparaître le périmètre full-stack sans réduire la mission à des micro-frontends ;
+- faire apparaître la participation à la conception fonctionnelle à partir des besoins opérationnels, en lien avec les parcours opérateur, les interactions et le comportement des fonctionnalités ;
 - intégrer la stack confirmée de Xistar : TypeScript et React pour l'interface, Go pour les services ;
 - distinguer Dockview et l'organisation de l'interface du système d'alertes ;
 - préciser que l'escalade des alertes passe par une API dédiée ainsi que par des notifications par e-mail ;
@@ -44,19 +45,19 @@ Décisions importantes prises pour Xistar :
 
 **Carte**
 
-> Développeur full-stack sur Xistar, un poste de commandement tactique maritime accessible depuis le navigateur. J'interviens sur l'interface opérateur en #typescript et #react, les services en #go, la cartographie #maplibre #deckgl en symbologie OTAN #app-6d et l'interopérabilité via #mqtt et #api-rest. L'application pilote un mur d'écrans depuis un poste maître et propose un rejeu temporel pour les rapports de situation et les débriefings.
+> Développeur full-stack sur Xistar, un poste de commandement tactique maritime accessible depuis le navigateur. Je participe à la conception fonctionnelle des parcours opérateur et à leur réalisation en #typescript et #react, ainsi qu'au développement des services en #go. Le produit combine une cartographie tactique #maplibre #deckgl en symbologie OTAN #app-6d, l'interopérabilité #mqtt #api-rest, le pilotage multi-écran et le rejeu temporel.
 
 **Description détaillée**
 
-> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. L'interface opérateur repose sur #typescript, #react et #dockview ; la cartographie utilise #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Les services #go ingèrent des flux partenaires #ais, #nmea, #cot et #mavlink, transmettent des ordres et publient des informations via #mqtt et #api-rest. Les profils de déploiement et la communication entre instances permettent d'adapter le produit aux contextes défense, portuaire et démonstration.
+> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. Je participe à la conception fonctionnelle à partir des besoins opérationnels, en définissant les parcours opérateur, les interactions et le comportement attendu des fonctionnalités. L'interface repose sur #typescript, #react et #dockview ; la cartographie utilise #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Les services #go ingèrent des flux partenaires #ais, #nmea, #cot et #mavlink, transmettent des ordres et publient des informations via #mqtt et #api-rest. Les profils de déploiement et la communication entre instances permettent d'adapter le produit aux contextes défense, portuaire et démonstration.
 
 **Contributions validées**
 
+- Participer à la conception fonctionnelle de Xistar à partir des besoins opérationnels : définir les parcours opérateur, les interactions et le comportement attendu des fonctionnalités.
 - Concevoir en #typescript et #react l'espace de travail opérateur sous forme de panneaux #dockview, puis intégrer la cartographie #maplibre #deckgl en symbologie OTAN #app-6d.
 - Développer le système d'alertes et ses mécanismes d'escalade, avec une #api dédiée et l'envoi de notifications par e-mail.
 - Assurer dans les services #go l'interopérabilité avec les systèmes partenaires : ingestion des flux #ais, #nmea, #cot et #mavlink, transmission des ordres et publication via #mqtt et #api-rest.
-- Développer l'application multi-écran et sa gestion centralisée depuis un poste maître, avec partage distant et synchronisation des vues.
-- Mettre en place un rejeu temporel des opérations destiné à l'analyse, aux rapports de situation et aux débriefings.
+- Développer l'application multi-écran et sa gestion centralisée depuis un poste maître, puis mettre en place le rejeu temporel destiné à l'analyse, aux rapports de situation et aux débriefings.
 
 ## Expérience IECA — validée
 
@@ -147,30 +148,38 @@ La version validée met en avant la conception fonctionnelle et la création de 
 - `src/api/mockData.ts` : expérience `2`, mission `21`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `21`.
 
-## Révision de Xistar — conception fonctionnelle
+## Étape suivante : Simulhom
 
-Les textes ci-dessous remplaceraient la version Xistar précédemment validée. Cette révision n'est pas encore validée.
+Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
-**Carte révisée**
+**Intitulé proposé**
 
-> Développeur full-stack sur Xistar, un poste de commandement tactique maritime accessible depuis le navigateur. Je participe à la conception fonctionnelle des parcours opérateur et à leur réalisation en #typescript et #react, ainsi qu'au développement des services en #go. Le produit combine une cartographie tactique #maplibre #deckgl en symbologie OTAN #app-6d, l'interopérabilité #mqtt #api-rest, le pilotage multi-écran et le rejeu temporel.
+> Conception fonctionnelle & UX/UI
 
-**Description détaillée révisée**
+**Carte**
 
-> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. Je participe à la conception fonctionnelle à partir des besoins opérationnels, en définissant les parcours opérateur, les interactions et le comportement attendu des fonctionnalités. L'interface repose sur #typescript, #react et #dockview ; la cartographie utilise #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Les services #go ingèrent des flux partenaires #ais, #nmea, #cot et #mavlink, transmettent des ordres et publient des informations via #mqtt et #api-rest. Les profils de déploiement et la communication entre instances permettent d'adapter le produit aux contextes défense, portuaire et démonstration.
+> Conception fonctionnelle et UX/UI de Simulhom, un simulateur ergonomique 3D destiné à prévenir les troubles musculosquelettiques en milieu industriel. En collaboration avec des ergonomes, j'ai traduit les méthodes d'analyse posturale en parcours, visualisations et retours compréhensibles pour l'utilisateur, puis participé à leur réalisation en #csharp sous #unity.
 
-**Contributions révisées**
+**Description détaillée**
 
-- Participer à la conception fonctionnelle de Xistar à partir des besoins opérationnels : définir les parcours opérateur, les interactions et le comportement attendu des fonctionnalités.
-- Concevoir en #typescript et #react l'espace de travail opérateur sous forme de panneaux #dockview, puis intégrer la cartographie #maplibre #deckgl en symbologie OTAN #app-6d.
-- Développer le système d'alertes et ses mécanismes d'escalade, avec une #api dédiée et l'envoi de notifications par e-mail.
-- Assurer dans les services #go l'interopérabilité avec les systèmes partenaires : ingestion des flux #ais, #nmea, #cot et #mavlink, transmission des ordres et publication via #mqtt et #api-rest.
-- Développer l'application multi-écran et sa gestion centralisée depuis un poste maître, puis mettre en place le rejeu temporel destiné à l'analyse, aux rapports de situation et aux débriefings.
+> Simulhom est un simulateur ergonomique 3D conçu pour analyser les postures de travail et visualiser les risques de TMS. J'ai participé à la conception fonctionnelle du produit avec des ergonomes, puis conçu les parcours et l'interface #uiux afin de rendre les indicateurs posturaux lisibles et exploitables. J'ai également contribué au développement de l'application en #csharp sous #unity et à l'intégration des retours visuels dans la scène 3D.
+
+**Contributions proposées**
+
+- Participer à la conception fonctionnelle du produit avec des ergonomes, en formalisant les usages et les scénarios d'analyse.
+- Concevoir les parcours, l'interface #uiux et les retours visuels associés aux risques posturaux.
+- Développer en #csharp sous #unity les interactions et les composants du simulateur 3D.
+- Intégrer l'analyse posturale et restituer les indicateurs de risque au fil de la simulation.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `2`, mission `22`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `22`.
 
 ## Point de reprise recommandé
 
-1. Faire valider la révision Xistar consacrée à la conception fonctionnelle, puis remplacer la version validée dans `SUIVI_REECRITURE_CV.md`.
-2. Continuer avec les projets détaillés d'Oreka selon le même processus.
+1. Faire valider la proposition Simulhom, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+2. Continuer avec les autres projets détaillés d'Oreka selon le même processus.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
