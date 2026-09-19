@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, l'objectif professionnel, les compétences principales, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, l'objectif professionnel, les compétences principales, les formations, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -390,9 +390,9 @@ La nouvelle organisation reflète le périmètre full-stack, l'interopérabilit�
 - `src/api/mockDataLocales.ts` : `fr.skills` et `en.skills`.
 - Vérifier la hauteur de la barre latérale après passage de deux à quatre groupes.
 
-## Étape suivante : formations et diplômes
+## Formations et diplômes — validés
 
-La proposition suivante harmonise les libellés, corrige « licence » et distingue les formations, le stage et les diplômes. Elle n'est pas encore validée.
+La version validée harmonise les libellés, corrige « licence » et distingue les formations, le stage et les diplômes.
 
 **Formation React · TypeScript**
 
@@ -429,15 +429,44 @@ La proposition suivante harmonise les libellés, corrige « licence » et distin
 - Établissement et date : `3DI Laval · 2010–2012`
 - Description : `Multimédia · Web · Vidéo`
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : `mockFormation`.
 - `src/api/mockDataLocales.ts` : `fr.formation` et `en.formation`.
 
+## Étape suivante : simulateur de drones et de flotte navale
+
+Les textes ci-dessous concernent le projet Xistar `32` et ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur TypeScript / Simulation
+
+**Carte**
+
+> Développement d'un simulateur de drones et de flotte navale destiné à alimenter Xistar avec des flux représentatifs des conditions d'exploitation. Réalisé en #typescript sous #nodejs, il génère positions, états et détections, puis les publie via #mqtt pour les démonstrations et la mise au point des fonctionnalités, sans recourir à des mocks statiques.
+
+**Description détaillée**
+
+> Le simulateur génère des données de position, d'état et de détection pour des drones et des navires, puis les transmet à Xistar via #mqtt. Je l'ai développé en #typescript sous #nodejs afin de disposer de flux contrôlables pour les démonstrations et le développement. Il remplace les jeux de données statiques par des entités simulées dont l'état évolue pendant l'exécution.
+
+**Contributions proposées**
+
+- Modéliser les drones, les navires et les états nécessaires aux scénarios de simulation.
+- Générer des flux de positions, d'états et de détections pendant l'exécution.
+- Publier les données du simulateur vers Xistar via #mqtt.
+- Développer l'outil en #typescript sous #nodejs pour les démonstrations et la mise au point des fonctionnalités.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `3`, mission `32`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `32`.
+
 ## Point de reprise recommandé
 
-1. Faire valider la section formations et diplômes, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-2. Auditer ensuite les derniers champs de profil et les contenus dupliqués avant l'application globale aux sources.
+1. Faire valider le simulateur de drones et de flotte navale, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+2. Continuer avec l'application mobile et l'émulateur de mur d'écrans liés à Xistar.
+3. Auditer ensuite les derniers champs de profil, les projets personnels et les contenus dupliqués avant l'application globale aux sources.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 

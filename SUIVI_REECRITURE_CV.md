@@ -612,3 +612,39 @@ Le nouvel objectif ne limite plus la recherche à un domaine, une technologie ou
 #### Motif de la réécriture
 
 La nouvelle organisation reflète le périmètre full-stack et les compétences documentées dans les expériences validées. Elle distingue les langages, les interfaces et la visualisation, les échanges système et l’outillage. Flutter est retiré faute d’expérience actuellement documentée dans le CV. La hauteur de la barre latérale devra être contrôlée lors de l’application.
+
+### Formations et diplômes
+
+**Statut :** validés, non appliqués
+**Champs principaux :** `src/api/mockData.ts` → `mockFormation`
+**Traductions à synchroniser :** `src/api/mockDataLocales.ts` → `fr.formation` et `en.formation`
+
+#### Avant
+
+1. `📌 Formations` — **React · TypeScript** — Datacorp · 2026
+   Formation approfondie sur React et les bonnes pratiques front-end modernes.
+2. `📌 Formations` — **TypeScript · Docker · Vue.js** — Datacorp · 2023
+   Formations professionnelles sur les technologies web modernes utilisées dans mes missions actuelles.
+3. `📌 Formations` — **Stage Polymorph** — Stage fin de license · 2013
+   Design graphique · Communication visuelle.
+4. `📌 Diplome` — **Licence 3D Temps Réel** — 3DI Laval · 2012–2013
+   3D temps réel · Réalité virtuelle · Unity 3D.
+5. `📌 Diplome` — **BTS Communication Visuelle opt. Multimédia** — 3DI Laval · 2010–2012
+   Multimédia · Web · Vidéo.
+
+#### Après — textes validés
+
+1. `📌 Formation` — **React · TypeScript** — Datacorp · 2026
+   Formation approfondie à React et TypeScript, centrée sur les pratiques modernes du développement front-end.
+2. `📌 Formation` — **TypeScript · Docker · Vue.js** — Datacorp · 2023
+   Formations professionnelles à TypeScript, Docker et Vue.js, appliquées au développement d’applications web.
+3. `📌 Stage` — **Polymorph** — Stage de fin de licence · 2013
+   Design graphique · Communication visuelle.
+4. `📌 Diplôme` — **Licence 3D temps réel** — 3DI Laval · 2012–2013
+   Unity 3D · Réalité virtuelle · 3D temps réel.
+5. `📌 Diplôme` — **BTS Communication visuelle — option Multimédia** — 3DI Laval · 2010–2012
+   Multimédia · Web · Vidéo.
+
+#### Motif de la réécriture
+
+La nouvelle version distingue les formations professionnelles, le stage et les diplômes. Elle corrige les libellés et l’orthographe, homogénéise les intitulés et remplace la description anglaise présente dans la version française de la formation React.
