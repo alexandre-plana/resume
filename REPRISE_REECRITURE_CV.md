@@ -462,11 +462,11 @@ Les textes validés concernent le projet Xistar `32`.
 - `src/api/mockData.ts` : expérience `3`, mission `32`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `32`.
 
-## Étape suivante : application mobile Xistar
+## Application mobile Xistar — validée
 
-Les textes ci-dessous concernent le projet Xistar `33` et ne sont pas encore validés.
+Les textes validés concernent le projet Xistar `33`.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Développeur TypeScript / Application mobile
 
@@ -478,23 +478,50 @@ Les textes ci-dessous concernent le projet Xistar `33` et ne sont pas encore val
 
 > L'application mobile prolonge Xistar sur le terrain : elle reçoit les alertes BAM/CAM et permet à l'opérateur d'agir sans passer par le poste principal. J'ai développé l'interface en #typescript avec #react ainsi que les échanges #socketio nécessaires à l'escalade des alertes et à l'émission d'ordres de retour.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Concevoir les parcours mobiles liés à la réception des alertes et à l'émission d'ordres.
 - Afficher les alertes BAM/CAM et les informations nécessaires à leur traitement.
 - Implémenter l'escalade des alertes et l'envoi des ordres de retour.
 - Développer l'interface en #typescript avec #react et intégrer les échanges via #socketio.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `3`, mission `33`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `33`.
 
+## Étape suivante : émulateur de mur d'écrans
+
+Les textes ci-dessous concernent le projet Xistar `34` et ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur TypeScript / Émulateur multi-écran
+
+**Carte**
+
+> Développement d'un émulateur de mur d'écrans permettant de concevoir et démontrer les usages multi-vues de Xistar sans disposer d'une salle équipée. Réalisé en #typescript avec #react et #vite, il reproduit des ensembles d'écrans, un tableau de mission et l'envoi distant de vues depuis le poste maître.
+
+**Description détaillée**
+
+> L'émulateur reproduit la configuration d'un mur d'écrans physique : ensembles d'écrans, tableau de mission et envoi distant de vues. Je l'ai développé en #typescript avec #react et #vite afin de travailler sur la gestion centralisée des affichages et de préparer les démonstrations sans mobiliser une salle équipée.
+
+**Contributions proposées**
+
+- Modéliser les ensembles d'écrans et leurs configurations d'affichage.
+- Reproduire le tableau de mission utilisé dans la conduite multi-vues.
+- Implémenter l'envoi distant de vues depuis le poste maître vers les écrans émulés.
+- Développer l'outil en #typescript avec #react et #vite pour le développement et les démonstrations.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `3`, mission `34`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `34`.
+
 ## Point de reprise recommandé
 
-1. Faire valider l'application mobile Xistar, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-2. Continuer avec l'émulateur de mur d'écrans lié à Xistar.
-3. Auditer ensuite les derniers champs de profil, les projets personnels et les contenus dupliqués avant l'application globale aux sources.
+1. Faire valider l'émulateur de mur d'écrans, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+2. Auditer ensuite les derniers champs de profil, les projets personnels et les contenus dupliqués avant l'application globale aux sources.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
