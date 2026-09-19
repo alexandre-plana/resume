@@ -346,7 +346,7 @@ La version validée décrit la dosimétrie au cours des scénarios, les zones ex
 
 ## Étape suivante : objectif professionnel
 
-Le champ actuel réduit encore le positionnement à un poste front-end et associe les micro-frontends à l'ensemble du profil. La proposition suivante n'est pas encore validée.
+Le champ actuel réduit encore le positionnement à un poste front-end et associe les micro-frontends à l'ensemble du profil. La proposition suivante reste volontairement généraliste : elle ne cible ni domaine ni technologie particuliers.
 
 **Avant**
 
@@ -354,7 +354,7 @@ Le champ actuel réduit encore le positionnement à un poste front-end et associ
 
 **Après proposé**
 
-> Développement full-stack d'applications industrielles · Forte composante front-end et UI/UX · React ou Vue.js · TypeScript · Équipe attentive à la qualité
+> Développement full-stack · Expertise front-end et UI/UX · Conception fonctionnelle · Équipe attentive à la qualité produit
 
 **Cibles à synchroniser après validation**
 
