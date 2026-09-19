@@ -128,18 +128,18 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 **Carte**
 
-> Développeur C# / Unity 3D chez Oreka Ingénierie sur des applications industrielles de simulation, de formation et de visualisation pour EDF, RTE, AREVA, DCNS et SUEZ. J'intervenais de l'analyse du besoin à la livraison : développement #csharp sous #unity, intégration de modèles issus de la #cao et conception d'interfaces 2D/3D, notamment pour des dispositifs #vr et #ar.
+> Développeur C# / Unity 3D chez Oreka Ingénierie sur des serious games #seriousgame, des simulateurs et des outils de visualisation pour EDF, RTE, AREVA, DCNS et SUEZ. J'intervenais dès la conception fonctionnelle pour traduire les besoins et les procédures métier en scénarios interactifs, puis sur leur réalisation en #csharp sous #unity, l'intégration de modèles issus de la #cao et la livraison des applications.
 
 **Description détaillée**
 
-> Pendant quatre ans, j'ai développé des applications interactives pour des contextes industriels, nucléaires et de défense. Mon rôle couvrait l'analyse des besoins et la faisabilité, le développement en #csharp sous #unity, la préparation des modèles issus de #solidworks et #3dsmax, ainsi que la conception des interfaces et des scénarios métier. J'assurais également l'optimisation CPU/GPU, la préparation des builds et le support des démonstrations client.
+> Pendant quatre ans, j'ai participé à la conception fonctionnelle et au développement d'applications interactives pour l'industrie, le nucléaire et la défense. À partir des besoins clients et des procédures métier, je contribuais à définir les parcours, les scénarios, les interactions et les maquettes fonctionnelles des serious games #seriousgame et des simulateurs. J'assurais ensuite leur réalisation en #csharp sous #unity, l'intégration des modèles issus de #solidworks et #3dsmax, l'optimisation CPU/GPU et la préparation des livraisons.
 
 **Contributions proposées**
 
-- Analyser les besoins clients, étudier leur faisabilité technique et participer aux spécifications ainsi qu'aux maquettes fonctionnelles.
-- Développer en #csharp sous #unity des interfaces et des systèmes interactifs 2D/3D, dont les interactions propres aux dispositifs #vr et #ar.
+- Participer à la conception fonctionnelle : analyser les besoins clients, étudier leur faisabilité technique et formaliser les parcours, les interactions et les maquettes.
+- Concevoir des serious games #seriousgame et des simulateurs à partir des procédures métier, puis structurer les scénarios à l'aide de graphes d'états, de conditions et de déclencheurs.
+- Développer en #csharp sous #unity les interfaces et les systèmes interactifs 2D/3D, dont les interactions propres aux dispositifs #vr et #ar.
 - Intégrer et optimiser des modèles issus de la #cao avec #solidworks et #3dsmax : maillages, niveaux de détail, lightmaps, matériaux et shaders.
-- Implémenter les scénarios issus des procédures métier à l'aide de graphes d'états, de conditions et de déclencheurs, ainsi que des modules d'entrées-sorties et de chargement dynamique.
 - Optimiser les performances CPU/GPU avec les outils de profiling de #unity, puis préparer les builds, corriger les anomalies et accompagner les démonstrations client.
 
 **Cibles à synchroniser après validation**
@@ -149,7 +149,7 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 ## Point de reprise recommandé
 
-1. Reprendre avec la proposition générale Oreka Ingénierie, en gardant la simulation industrielle et la chaîne de réalisation au premier plan.
+1. Reprendre avec la proposition générale Oreka Ingénierie, en mettant en avant la conception fonctionnelle et les serious games sans masquer la réalisation technique.
 2. Faire valider cette expérience, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
 3. Continuer avec les projets détaillés d'Oreka selon le même processus.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
