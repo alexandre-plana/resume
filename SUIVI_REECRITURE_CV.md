@@ -590,3 +590,25 @@ La nouvelle version replace la dosimétrie et les protocoles de radioprotection 
 #### Motif de la réécriture
 
 Le nouvel objectif ne limite plus la recherche à un domaine, une technologie ou une architecture particulière. Il exprime le type de rôle recherché, les axes d’expertise et l’attention portée à la qualité produit.
+
+### Compétences principales
+
+**Statut :** validées, non appliquées
+**Champ principal :** `src/api/mockData.ts` → `mockSkills`
+**Libellés à synchroniser :** `src/api/mockDataLocales.ts` → `fr.skills` et `en.skills`
+
+#### Avant
+
+- **Frameworks :** Vue3, React, single-spa, Jest, Flutter, Unity 3D.
+- **Outils :** Docker, Git, Postman, Jira, Figma.
+
+#### Après — organisation validée
+
+- **Langages :** TypeScript, Go, C#, Python.
+- **Front-end & visualisation :** React, Vue 3, single-spa, Dockview, MapLibre, deck.gl, Unity 3D.
+- **Services & interopérabilité :** API REST, MQTT, AIS, NMEA, CoT, MAVLink.
+- **Qualité & outils :** Jest, Vitest, SonarQube, GitLab CI, Docker, Git, Postman, Jira, Figma.
+
+#### Motif de la réécriture
+
+La nouvelle organisation reflète le périmètre full-stack et les compétences documentées dans les expériences validées. Elle distingue les langages, les interfaces et la visualisation, les échanges système et l’outillage. Flutter est retiré faute d’expérience actuellement documentée dans le CV. La hauteur de la barre latérale devra être contrôlée lors de l’application.
