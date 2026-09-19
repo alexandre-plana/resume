@@ -192,3 +192,53 @@ La nouvelle version restitue l’étendue de la mission au-delà des composants 
 #### Motif de la réécriture
 
 La nouvelle version décrit le périmètre multiplateforme et les responsabilités techniques sans faire de l’AR le centre du profil. Elle distingue l’architecture front-end, le fonctionnement hors connexion, la compatibilité des projets, la personnalisation OEM et la contribution ciblée au serveur de projets en Python. Les technologies et le protocole sont rattachés aux réalisations concernées sous forme de chips.
+
+### Expérience générale Oreka Ingénierie
+
+**Statut :** validée, non appliquée
+**Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `21` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.21`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.21`
+
+#### Intitulé conservé
+
+> Développeur C# / Unity 3D
+
+#### Avant — carte
+
+> Développeur #csharp sur des projets #vr #ar industriels pour grands comptes : analyse approfondie des besoins clients, modélisation et intégration 3D #3dsmax #unity3D, développement d'interfaces et de systèmes interactifs 2D/3D, conception UI/UX immersif, optimisation #performance, implémentation de scénarios métier, préparation et livraison de versions clients (debug, support démo), contribution à la qualité visuelle et technique, collaboration sur des contextes sensibles (nucléaire, armement).
+
+#### Après — carte validée
+
+> Développeur C# / Unity 3D chez Oreka Ingénierie sur des serious games #seriousgame, des simulateurs et des outils de visualisation pour EDF, RTE, AREVA, DCNS et SUEZ. J’intervenais dès la conception fonctionnelle pour traduire les besoins et les procédures métier en scénarios interactifs, puis sur leur réalisation en #csharp sous #unity, l’intégration de modèles issus de la #cao et la livraison des applications.
+
+#### Avant — description détaillée
+
+> Pendant quatre années au sein d'Oreka Ingénierie, j'ai occupé le poste de développeur C# / Unity 3D sur des projets VR/AR à forte dimension industrielle. Analyse approfondie des besoins clients, participation aux propositions commerciales, modélisation et intégration 3D (optimisation mesh, lightmaps, shaders), conception UI/UX pour environnements immersifs (VR/AR), développement d'applications interactives haute performance (systèmes d'état, scénarios métier, interactions contrôleur/manette), optimisation des performances (profiling Unity, pooling, pipelines d'import), préparation et livraison de versions clients (builds automatisés, debug, support démo). Collaboration avec grands comptes (EDF, Suez, DCNS, RTE, MBDA) sur des contextes sensibles (nucléaire, armement), avec des exigences techniques élevées. Expertise Unity, C#, VR/AR, UI/UX immersif, outils 3D (SolidWorks, 3ds Max), capacité à proposer des solutions techniques adaptées et efficaces.
+
+#### Après — description détaillée validée
+
+> Pendant quatre ans, j’ai participé à la conception fonctionnelle et au développement d’applications interactives pour l’industrie, le nucléaire et la défense. À partir des besoins clients et des procédures métier, je contribuais à définir les parcours, les scénarios, les interactions et les maquettes fonctionnelles des serious games #seriousgame et des simulateurs. J’assurais ensuite leur réalisation en #csharp sous #unity, l’intégration des modèles issus de #solidworks et #3dsmax, l’optimisation CPU/GPU et la préparation des livraisons.
+
+#### Avant — contributions détaillées
+
+- Développement d'interfaces et de systèmes interactifs 2D/3D sous Unity (C#) : architecture des scènes, scripting gameplay, gestion des événements, systèmes d'interaction VR/AR.
+- Intégration et traitement de modèles issus de la CAO (SolidWorks) : optimisation mesh, baking, LOD, lightmaps, réglages matériaux/shaders.
+- Optimisation des performances en environnements industriels : profiling Unity, réduction du coût CPU/GPU, pooling d'objets, optimisation des assets et des pipelines d'import.
+- Développement de modules techniques spécifiques : gestion d'I/O, logique métier, systèmes d'état, chargement dynamique de contenu.
+- Implémentation de scénarios interactifs basés sur les procédures métier : graphes d'états, logiques conditionnelles, triggers.
+- Conception d'interfaces immersives adaptées aux usages VR/AR : ergonomie, spatialisation, interactions contrôleur/manette.
+- Participation à la définition technique des besoins client : spécifications, faisabilité, choix technologiques, maquettes fonctionnelles.
+- Contribution à la qualité visuelle et technique : direction artistique, cohérence des assets, refinements UI/UX.
+- Préparation et livraison de versions internes et clients : automatisation partielle des builds, debug, support des démonstrations.
+
+#### Après — contributions détaillées validées
+
+- Participer à la conception fonctionnelle : analyser les besoins clients, étudier leur faisabilité technique et formaliser les parcours, les interactions et les maquettes.
+- Concevoir des serious games #seriousgame et des simulateurs à partir des procédures métier, puis structurer les scénarios à l’aide de graphes d’états, de conditions et de déclencheurs.
+- Développer en #csharp sous #unity les interfaces et les systèmes interactifs 2D/3D, dont les interactions propres aux dispositifs #vr et #ar.
+- Intégrer et optimiser des modèles issus de la #cao avec #solidworks et #3dsmax : maillages, niveaux de détail, lightmaps, matériaux et shaders.
+- Optimiser les performances CPU/GPU avec les outils de profiling de #unity, puis préparer les builds, corriger les anomalies et accompagner les démonstrations client.
+
+#### Motif de la réécriture
+
+La nouvelle version place la conception fonctionnelle et les serious games au premier plan : analyse des besoins, formalisation des parcours et transformation des procédures métier en scénarios interactifs. Le développement Unity, l’intégration 3D, l’optimisation et la livraison restent visibles comme mise en œuvre de cette conception. La VR et l’AR sont conservées dans le contexte des dispositifs concernés sans devenir le positionnement général du profil.

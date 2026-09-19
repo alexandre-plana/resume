@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA et AOA sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA et l'expérience générale Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -118,11 +118,11 @@ La version validée conserve une dominante front-end tout en faisant apparaître
 - `src/api/mockData.ts` : expérience `1`, mission `12`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `1`, mission `12`.
 
-## Étape suivante : expérience générale Oreka Ingénierie
+## Expérience générale Oreka Ingénierie — validée
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée met en avant la conception fonctionnelle et la création de serious games et de simulateurs, sans masquer leur réalisation technique.
 
-**Intitulé proposé**
+**Intitulé conservé**
 
 > Développeur C# / Unity 3D
 
@@ -134,7 +134,7 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > Pendant quatre ans, j'ai participé à la conception fonctionnelle et au développement d'applications interactives pour l'industrie, le nucléaire et la défense. À partir des besoins clients et des procédures métier, je contribuais à définir les parcours, les scénarios, les interactions et les maquettes fonctionnelles des serious games #seriousgame et des simulateurs. J'assurais ensuite leur réalisation en #csharp sous #unity, l'intégration des modèles issus de #solidworks et #3dsmax, l'optimisation CPU/GPU et la préparation des livraisons.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Participer à la conception fonctionnelle : analyser les besoins clients, étudier leur faisabilité technique et formaliser les parcours, les interactions et les maquettes.
 - Concevoir des serious games #seriousgame et des simulateurs à partir des procédures métier, puis structurer les scénarios à l'aide de graphes d'états, de conditions et de déclencheurs.
@@ -142,16 +142,36 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 - Intégrer et optimiser des modèles issus de la #cao avec #solidworks et #3dsmax : maillages, niveaux de détail, lightmaps, matériaux et shaders.
 - Optimiser les performances CPU/GPU avec les outils de profiling de #unity, puis préparer les builds, corriger les anomalies et accompagner les démonstrations client.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `2`, mission `21`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `21`.
 
+## Révision de Xistar — conception fonctionnelle
+
+Les textes ci-dessous remplaceraient la version Xistar précédemment validée. Cette révision n'est pas encore validée.
+
+**Carte révisée**
+
+> Développeur full-stack sur Xistar, un poste de commandement tactique maritime accessible depuis le navigateur. Je participe à la conception fonctionnelle des parcours opérateur et à leur réalisation en #typescript et #react, ainsi qu'au développement des services en #go. Le produit combine une cartographie tactique #maplibre #deckgl en symbologie OTAN #app-6d, l'interopérabilité #mqtt #api-rest, le pilotage multi-écran et le rejeu temporel.
+
+**Description détaillée révisée**
+
+> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. Je participe à la conception fonctionnelle à partir des besoins opérationnels, en définissant les parcours opérateur, les interactions et le comportement attendu des fonctionnalités. L'interface repose sur #typescript, #react et #dockview ; la cartographie utilise #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Les services #go ingèrent des flux partenaires #ais, #nmea, #cot et #mavlink, transmettent des ordres et publient des informations via #mqtt et #api-rest. Les profils de déploiement et la communication entre instances permettent d'adapter le produit aux contextes défense, portuaire et démonstration.
+
+**Contributions révisées**
+
+- Participer à la conception fonctionnelle de Xistar à partir des besoins opérationnels : définir les parcours opérateur, les interactions et le comportement attendu des fonctionnalités.
+- Concevoir en #typescript et #react l'espace de travail opérateur sous forme de panneaux #dockview, puis intégrer la cartographie #maplibre #deckgl en symbologie OTAN #app-6d.
+- Développer le système d'alertes et ses mécanismes d'escalade, avec une #api dédiée et l'envoi de notifications par e-mail.
+- Assurer dans les services #go l'interopérabilité avec les systèmes partenaires : ingestion des flux #ais, #nmea, #cot et #mavlink, transmission des ordres et publication via #mqtt et #api-rest.
+- Développer l'application multi-écran et sa gestion centralisée depuis un poste maître, puis mettre en place le rejeu temporel destiné à l'analyse, aux rapports de situation et aux débriefings.
+
 ## Point de reprise recommandé
 
-1. Reprendre avec la proposition générale Oreka Ingénierie, en mettant en avant la conception fonctionnelle et les serious games sans masquer la réalisation technique.
-2. Faire valider cette expérience, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-3. Continuer avec les projets détaillés d'Oreka selon le même processus.
+1. Faire valider la révision Xistar consacrée à la conception fonctionnelle, puis remplacer la version validée dans `SUIVI_REECRITURE_CV.md`.
+2. Continuer avec les projets détaillés d'Oreka selon le même processus.
+3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
