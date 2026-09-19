@@ -2,8 +2,6 @@
 
 Ce document consigne les versions avant/après, leur statut de validation et les révisions demandées avant leur application dans le CV.
 
-> **Révision en cours :** les technologies, normes et protocoles doivent être réintégrés sous forme de chips dans les expériences déjà retravaillées. Le titre, le sous-titre et la présentation globale restent validés sans chips ; les textes détaillés de Xistar doivent être revalidés après cet enrichissement.
-
 ## Version française
 
 ### Titre et sous-titre
@@ -46,7 +44,7 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 
 ### Expérience Xistar
 
-**Statut :** validée sur le fond, généralisation des chips à revalider, non appliquée
+**Statut :** validée, non appliquée
 **Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `31` (`badge`, `cardSummary`, `desc`, `tasks`)  
 **Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.31`
 
@@ -62,7 +60,7 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 
 > Développeur full stack sur Xistar, poste de commandement tactique maritime dans le navigateur : image tactique temps réel #maplibre #deckgl en symbologie OTAN APP-6D, conduite de missions et de drones, mur d'écrans synchronisé et rejeu complet des opérations. Temps réel bout-en-bout #mqtt #socketio, une base de code → trois produits (défense, portuaire, démo) via un registre de features #treeshaking, qualité outillée #vitest #gitlabci.
 
-#### Après — carte enrichie en chips à valider
+#### Après — carte validée
 
 > Développeur full-stack sur Xistar, un poste de commandement tactique maritime accessible depuis le navigateur. J’interviens sur l’interface opérateur en #typescript et #react, les services en #go, la cartographie #maplibre #deckgl en symbologie OTAN #app-6d et l’interopérabilité via #mqtt et #api-rest. L’application pilote un mur d’écrans depuis un poste maître et propose un rejeu temporel pour les rapports de situation et les débriefings.
 
@@ -70,7 +68,7 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 
 > Développement de Xistar, poste de commandement tactique maritime dans le navigateur : un produit unique couvrant la boucle capteur → opérateur → décision → action → analyse. Image tactique temps réel (MapLibre + deck.gl, symbologie OTAN APP-6D, grille MGRS, bathymétrie), conduite de missions et de drones avec enchaînements automatiques et humain dans la boucle, mur d'écrans synchronisé avec push distant, rejeu complet des opérations. Architecture « pont » : adaptateurs isolés aux frontières (AIS, NMEA, CoT, MAVLink) vers un modèle canonique diffusé via MQTT et Socket.io. Une seule base de code produit trois déclinaisons (défense, portuaire, démo) grâce à un registre de features par profil avec lazy loading et tree-shaking.
 
-#### Après — description enrichie en chips à valider
+#### Après — description détaillée validée
 
 > Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. L’interface opérateur repose sur #typescript, #react et #dockview ; la cartographie utilise #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Les services #go ingèrent des flux partenaires #ais, #nmea, #cot et #mavlink, transmettent des ordres et publient des informations via #mqtt et #api-rest. Les profils de déploiement et la communication entre instances permettent d’adapter le produit aux contextes défense, portuaire et démonstration.
 
@@ -83,7 +81,7 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 - Mettre en place le rejeu synchronisé multi-écrans et le mur d'écrans avec push distant de vues
 - Outiller la qualité : Vitest front et back, lint, pipeline GitLab CI en 5 étapes avec déploiement taggé et smoke tests
 
-#### Après — contributions enrichies en chips à valider
+#### Après — contributions détaillées validées
 
 - Concevoir en #typescript et #react l’espace de travail opérateur sous forme de panneaux #dockview, puis intégrer la cartographie #maplibre #deckgl en symbologie OTAN #app-6d.
 - Développer le système d’alertes et ses mécanismes d’escalade, avec une #api dédiée et l’envoi de notifications par e-mail.

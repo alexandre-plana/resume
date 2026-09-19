@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre et la présentation globale restent validés. L'expérience Xistar est validée sur le fond, mais doit être revalidée après généralisation des chips à ses contenus détaillés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale et l'expérience Xistar sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -40,7 +40,7 @@ Décisions importantes prises pour Xistar :
 - présenter le rejeu temporel comme un support à l'analyse, aux rapports de situation et aux débriefings ;
 - insister sur la capacité d'adaptation aux différents profils de déploiement plutôt que sur la modularité technique.
 
-### Généralisation des chips dans Xistar — à valider
+### Généralisation des chips dans Xistar — validée
 
 **Carte**
 
@@ -50,7 +50,7 @@ Décisions importantes prises pour Xistar :
 
 > Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. L'interface opérateur repose sur #typescript, #react et #dockview ; la cartographie utilise #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Les services #go ingèrent des flux partenaires #ais, #nmea, #cot et #mavlink, transmettent des ordres et publient des informations via #mqtt et #api-rest. Les profils de déploiement et la communication entre instances permettent d'adapter le produit aux contextes défense, portuaire et démonstration.
 
-**Contributions enrichies à valider**
+**Contributions validées**
 
 - Concevoir en #typescript et #react l'espace de travail opérateur sous forme de panneaux #dockview, puis intégrer la cartographie #maplibre #deckgl en symbologie OTAN #app-6d.
 - Développer le système d'alertes et ses mécanismes d'escalade, avec une #api dédiée et l'envoi de notifications par e-mail.
@@ -120,12 +120,11 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 ## Point de reprise recommandé
 
-1. Faire valider Xistar après généralisation des chips à ses descriptions et contributions ; la présentation globale reste inchangée et validée.
-2. Reprendre avec la proposition IECA enrichie de chips dans la carte, la description et les contributions.
-3. Faire valider IECA, en particulier la formulation du sujet d'IP Sprint, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-4. Reprendre ensuite la proposition AOA enrichie de chips, sans survaloriser l'AR/VR dans le positionnement général.
-5. Continuer avec les expériences suivantes selon le même processus.
-6. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
+1. Reprendre avec la proposition IECA enrichie de chips dans la carte, la description et les contributions.
+2. Faire valider IECA, en particulier la formulation du sujet d'IP Sprint, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+3. Reprendre ensuite la proposition AOA enrichie de chips, sans survaloriser l'AR/VR dans le positionnement général.
+4. Continuer avec les expériences suivantes selon le même processus.
+5. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
 
