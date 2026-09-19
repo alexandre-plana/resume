@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie et Simulhom sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom et Dosicase sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -176,11 +176,11 @@ La version validée met en avant la conception fonctionnelle menée avec des erg
 - `src/api/mockData.ts` : expérience `2`, mission `22`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `22`.
 
-## Étape suivante : Dosicase
+## Projet Dosicase — validé
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée relie la conception UX/UI aux objectifs pédagogiques de la formation en radioprotection et à l'intégration du simulateur.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Conception UX/UI
 
@@ -192,21 +192,49 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > Dosicase met la simulation au service de la formation pratique en radioprotection. J'ai conçu l'expérience et l'interface #uiux pour présenter les situations et les risques radiologiques de manière pédagogique, puis contribué à leur intégration dans le simulateur en #csharp sous #unity. Le travail portait autant sur l'organisation des informations que sur les interactions nécessaires à l'apprentissage en chantier-école.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Structurer le parcours pédagogique à partir des objectifs de formation en radioprotection.
 - Concevoir l'interface #uiux et organiser les informations liées aux situations et aux risques radiologiques.
 - Définir les interactions du simulateur nécessaires à l'apprentissage pratique en chantier-école.
 - Participer à l'intégration de l'expérience dans l'application en #csharp sous #unity.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `2`, mission `23`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `23`.
 
+## Étape suivante : EMEM
+
+Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur C# / Simulation 3D
+
+**Carte**
+
+> Développement d'une simulation 3D interactive de l'EMEM, une enceinte mobile destinée à l'évacuation de matériel en environnement nucléaire. J'ai contribué à la représentation des flux et des matériaux radioactifs ainsi qu'à la conception des interfaces de contrôle pour les opérateurs, en #csharp avec #unity et #wpf.
+
+**Description détaillée**
+
+> L'application représentait le fonctionnement de l'enceinte mobile et les opérations liées à l'évacuation de matériel en contexte nucléaire. Mon travail portait sur le développement #csharp de la simulation sous #unity, la visualisation des flux et la gestion des matériaux radioactifs. J'ai également développé les interfaces opérateur en #wpf pour piloter et suivre la simulation.
+
+**Contributions proposées**
+
+- Développer en #csharp sous #unity la simulation 3D interactive de l'enceinte mobile.
+- Représenter en 3D les flux associés aux opérations d'évacuation de matériel.
+- Implémenter la gestion et la représentation des matériaux radioactifs dans la simulation.
+- Concevoir en #wpf les interfaces de contrôle destinées aux opérateurs.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `2`, mission `24`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `24`.
+
 ## Point de reprise recommandé
 
-1. Faire valider la proposition Dosicase, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+1. Faire valider la proposition EMEM, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
 2. Continuer avec les autres projets détaillés d'Oreka selon le même processus.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.

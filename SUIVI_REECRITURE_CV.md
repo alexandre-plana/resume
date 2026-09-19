@@ -290,3 +290,50 @@ La nouvelle version place la conception fonctionnelle et les serious games au pr
 #### Motif de la réécriture
 
 La nouvelle version présente Simulhom comme un travail de conception fonctionnelle et UX/UI mené avec des ergonomes. Elle relie l’analyse posturale aux parcours, aux visualisations et aux retours proposés à l’utilisateur, tout en conservant la contribution au développement Unity et C#.
+
+### Projet Dosicase
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `23` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.23`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.23`
+
+#### Avant — intitulé
+
+> Conception & Design UI/UX
+
+#### Après — intitulé validé
+
+> Conception UX/UI
+
+#### Avant — carte
+
+> Conception et design UX/UI du simulateur Dosicase pour la radioprotection. #csharp #unity3D #simulation #ux #ui #radioprotection
+
+#### Après — carte validée
+
+> Conception UX/UI de Dosicase, un simulateur destiné à la formation en radioprotection sur chantier-école. J’ai structuré les parcours et conçu les interfaces pour rendre les risques radiologiques et les scénarios de formation compréhensibles pour les apprenants, puis participé à leur intégration dans l’application en #csharp sous #unity.
+
+#### Avant — description détaillée
+
+> Outil de simulation de radioactivité destiné aux chantiers école pour la formation en radioprotection. #csharp #unity3D #simulation #ux #ui #radioprotection. Conception de l'interface utilisateur et design UX pour rendre accessible la compréhension des risques radiologiques. Focus sur la pédagogie et l'apprentissage pratique.
+
+#### Après — description détaillée validée
+
+> Dosicase met la simulation au service de la formation pratique en radioprotection. J’ai conçu l’expérience et l’interface #uiux pour présenter les situations et les risques radiologiques de manière pédagogique, puis contribué à leur intégration dans le simulateur en #csharp sous #unity. Le travail portait autant sur l’organisation des informations que sur les interactions nécessaires à l’apprentissage en chantier-école.
+
+#### Avant — contributions détaillées
+
+- Conception UI/UX.
+- Simulation radioprotection.
+- Design pédagogique.
+
+#### Après — contributions détaillées validées
+
+- Structurer le parcours pédagogique à partir des objectifs de formation en radioprotection.
+- Concevoir l’interface #uiux et organiser les informations liées aux situations et aux risques radiologiques.
+- Définir les interactions du simulateur nécessaires à l’apprentissage pratique en chantier-école.
+- Participer à l’intégration de l’expérience dans l’application en #csharp sous #unity.
+
+#### Motif de la réécriture
+
+La nouvelle version précise la finalité de Dosicase et relie le travail UX/UI aux besoins pédagogiques de la formation en radioprotection. Elle distingue la structuration du parcours, l’organisation des informations, la conception des interactions et la contribution à l’intégration technique.
