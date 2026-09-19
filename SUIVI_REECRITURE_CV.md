@@ -648,3 +648,40 @@ La nouvelle organisation reflète le périmètre full-stack et les compétences 
 #### Motif de la réécriture
 
 La nouvelle version distingue les formations professionnelles, le stage et les diplômes. Elle corrige les libellés et l’orthographe, homogénéise les intitulés et remplace la description anglaise présente dans la version française de la formation React.
+
+### Projet Xistar — simulateur de drones et de flotte navale
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `32`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.32`
+
+#### Avant — intitulé
+
+> Développeur full stack
+
+#### Après — intitulé validé
+
+> Développeur TypeScript / Simulation
+
+#### Avant — description
+
+> Simulateur Node.js de drones et de flotte navale alimentant Xistar en flux réalistes (positions, états, détections) pour les démos et le développement — conforme au principe « zéro donnée mock » de la plateforme.
+
+#### Après — carte validée
+
+> Développement d’un simulateur de drones et de flotte navale destiné à alimenter Xistar avec des flux représentatifs des conditions d’exploitation. Réalisé en #typescript sous #nodejs, il génère positions, états et détections, puis les publie via #mqtt pour les démonstrations et la mise au point des fonctionnalités, sans recourir à des mocks statiques.
+
+#### Après — description détaillée validée
+
+> Le simulateur génère des données de position, d’état et de détection pour des drones et des navires, puis les transmet à Xistar via #mqtt. Je l’ai développé en #typescript sous #nodejs afin de disposer de flux contrôlables pour les démonstrations et le développement. Il remplace les jeux de données statiques par des entités simulées dont l’état évolue pendant l’exécution.
+
+#### Après — contributions détaillées validées
+
+- Modéliser les drones, les navires et les états nécessaires aux scénarios de simulation.
+- Générer des flux de positions, d’états et de détections pendant l’exécution.
+- Publier les données du simulateur vers Xistar via #mqtt.
+- Développer l’outil en #typescript sous #nodejs pour les démonstrations et la mise au point des fonctionnalités.
+
+#### Motif de la réécriture
+
+La nouvelle version explicite les données produites, leur publication vers Xistar et l’usage du simulateur pour le développement et les démonstrations. Elle reformule le principe « zéro donnée mock » en distinguant les entités simulées des jeux de données statiques.

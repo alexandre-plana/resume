@@ -434,11 +434,11 @@ La version validée harmonise les libellés, corrige « licence » et distingue 
 - `src/api/mockData.ts` : `mockFormation`.
 - `src/api/mockDataLocales.ts` : `fr.formation` et `en.formation`.
 
-## Étape suivante : simulateur de drones et de flotte navale
+## Simulateur de drones et de flotte navale — validé
 
-Les textes ci-dessous concernent le projet Xistar `32` et ne sont pas encore validés.
+Les textes validés concernent le projet Xistar `32`.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Développeur TypeScript / Simulation
 
@@ -450,22 +450,50 @@ Les textes ci-dessous concernent le projet Xistar `32` et ne sont pas encore val
 
 > Le simulateur génère des données de position, d'état et de détection pour des drones et des navires, puis les transmet à Xistar via #mqtt. Je l'ai développé en #typescript sous #nodejs afin de disposer de flux contrôlables pour les démonstrations et le développement. Il remplace les jeux de données statiques par des entités simulées dont l'état évolue pendant l'exécution.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Modéliser les drones, les navires et les états nécessaires aux scénarios de simulation.
 - Générer des flux de positions, d'états et de détections pendant l'exécution.
 - Publier les données du simulateur vers Xistar via #mqtt.
 - Développer l'outil en #typescript sous #nodejs pour les démonstrations et la mise au point des fonctionnalités.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `3`, mission `32`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `32`.
 
+## Étape suivante : application mobile Xistar
+
+Les textes ci-dessous concernent le projet Xistar `33` et ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur TypeScript / Application mobile
+
+**Carte**
+
+> Développement d'une application mobile permettant aux opérateurs de recevoir les alertes BAM/CAM et de transmettre des ordres depuis le terrain. Réalisée en #typescript avec #react, elle prend en charge l'escalade des alertes et l'émission d'ordres de retour, et communique avec Xistar via #socketio.
+
+**Description détaillée**
+
+> L'application mobile prolonge Xistar sur le terrain : elle reçoit les alertes BAM/CAM et permet à l'opérateur d'agir sans passer par le poste principal. J'ai développé l'interface en #typescript avec #react ainsi que les échanges #socketio nécessaires à l'escalade des alertes et à l'émission d'ordres de retour.
+
+**Contributions proposées**
+
+- Concevoir les parcours mobiles liés à la réception des alertes et à l'émission d'ordres.
+- Afficher les alertes BAM/CAM et les informations nécessaires à leur traitement.
+- Implémenter l'escalade des alertes et l'envoi des ordres de retour.
+- Développer l'interface en #typescript avec #react et intégrer les échanges via #socketio.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `3`, mission `33`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `33`.
+
 ## Point de reprise recommandé
 
-1. Faire valider le simulateur de drones et de flotte navale, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-2. Continuer avec l'application mobile et l'émulateur de mur d'écrans liés à Xistar.
+1. Faire valider l'application mobile Xistar, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+2. Continuer avec l'émulateur de mur d'écrans lié à Xistar.
 3. Auditer ensuite les derniers champs de profil, les projets personnels et les contenus dupliqués avant l'application globale aux sources.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
