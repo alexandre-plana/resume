@@ -759,3 +759,29 @@ La nouvelle version précise le rôle de l’application pour les opérateurs su
 #### Motif de la réécriture
 
 La nouvelle version distingue l’émulateur du mur d’écrans opérationnel. Elle précise son rôle dans la reproduction des configurations, du tableau de mission et de la commande distante pour le développement et les démonstrations.
+
+### Graphique de répartition des langages
+
+**Statut :** suppression validée, non appliquée
+**Champs principaux :** `src/api/mockData.ts` → `mockProfile.languages` ; `src/App.tsx` → bloc `languageStack`
+
+#### Avant
+
+> TypeScript 35 % · C# 35 % · HTML5/CSS 20 % · Dart 10 %
+
+#### Après — décision validée
+
+> Suppression du graphique de répartition des langages et des pourcentages associés.
+
+La section « Langues », consacrée au français et à l’anglais, est conservée. La section « Compétences principales » validée reste la référence pour présenter les langages et technologies.
+
+#### Motif de la suppression
+
+Les pourcentages ne reposent sur aucune mesure documentée et donnent une impression de précision artificielle. Ils ne reflètent plus le profil présenté : Dart n’est relié à aucune expérience actuellement documentée, tandis que Go et Python sont absents du graphique. La section de compétences couvre déjà ces informations sans hiérarchie arbitraire.
+
+#### Cibles à traiter lors de l’application
+
+- Supprimer ou ne plus exposer `mockProfile.languages` dans `src/api/mockData.ts`.
+- Retirer le bloc visuel `languageStack` dans `src/App.tsx`.
+- Supprimer la traduction devenue inutilisée dans `src/locales/index.ts` si elle ne sert plus ailleurs.
+- Vérifier que `src/utils/exportMockCvToWord.ts` ne dépend pas de ces données.
