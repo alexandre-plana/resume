@@ -478,3 +478,50 @@ La nouvelle version présente Aeroball comme un travail de transposition des pro
 #### Motif de la réécriture
 
 La nouvelle version distingue les procédures de radioprotection, les scénarios d’accident et la gestion des équipes de secours. Elle montre comment ces éléments sont structurés en séquences de formation avant leur développement dans le module 3D.
+
+### Projet de maintenance des générateurs de vapeur
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `27` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.27`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.27`
+
+#### Avant — intitulé
+
+> C# / 3D Developer
+
+#### Après — intitulé validé
+
+> Développeur C# / Serious game
+
+#### Avant — carte
+
+> Serious game pour la maintenance nucléaire des générateurs de vapeurs. #csharp #unity3D #seriousgame #simulation #maintenance #nuclear #3d
+
+#### Après — carte validée
+
+> Développement d’un serious game #seriousgame destiné à préparer les interventions de maintenance des générateurs de vapeur pendant les arrêts de tranche. J’ai participé à la transposition des procédures de maintenance nucléaire en scénarios interactifs, puis à leur réalisation en #csharp sous #unity dans un environnement 3D.
+
+#### Avant — description détaillée
+
+> Serious game destiné à préparer les interventions durant les arrêts de tranche pour la maintenance des générateurs de vapeurs. #csharp #unity3D #seriousgame #simulation #maintenance #nuclear #3d. Simulation 3D temps réel, développement C# pour reproduire les procédures complexes de maintenance en environnement nucléaire.
+
+#### Après — description détaillée validée
+
+> Le serious game #seriousgame reproduisait les procédures de maintenance des générateurs de vapeur réalisées pendant les arrêts de tranche. Mon travail portait sur la structuration des séquences d’intervention, leur représentation dans un environnement 3D et le développement des interactions en #csharp sous #unity. L’application était conçue pour préparer les intervenants à ces opérations en environnement nucléaire.
+
+#### Avant — contributions détaillées
+
+- Maintenance nucléaire.
+- Simulation 3D.
+- Développement C#.
+
+#### Après — contributions détaillées validées
+
+- Analyser les procédures de maintenance des générateurs de vapeur et les traduire en scénarios de formation.
+- Structurer les séquences et les interactions correspondant aux différentes étapes d’intervention.
+- Représenter en 3D l’environnement et le déroulement des opérations de maintenance.
+- Développer en #csharp sous #unity le serious game #seriousgame et ses mécanismes interactifs.
+
+#### Motif de la réécriture
+
+La nouvelle version replace le projet dans le contexte des arrêts de tranche et décrit la transposition des procédures de maintenance en scénarios interactifs. Elle distingue la structuration des interventions, leur représentation 3D et le développement du serious game.
