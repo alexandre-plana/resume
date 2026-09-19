@@ -93,7 +93,8 @@ Use one revision cycle by default and at most two when problems remain. If a con
 - Treat verified technologies, frameworks, standards, and protocols as material information when they help a recruiter understand the contribution or match the profile to a role.
 - When the target format renders `#terms` as inline technical chips, place a selected chip beside the action, subsystem, standard, or protocol it qualifies; for example: `cartographie #maplibre #deckgl en symbologie #app-6d`.
 - Keep the sentence readable when chip styling is removed. Use canonical, source-supported terms and prefer a few discriminating chips to a detached stack inventory.
-- Outside fields that render inline chips, write technical terms normally rather than exposing raw `#markers`.
+- Apply the requested chip convention consistently across every prose field in scope: profile, experience card, detailed description, and contribution bullets. Titles and short labels remain plain unless the user explicitly includes them.
+- Check that each target field actually renders the markers as chips. When it does not, record the required presentation-layer change instead of silently limiting chips to the fields already supported.
 - Use quantified outcomes only when documented. Otherwise describe scope, constraints, reuse, or responsibility precisely.
 
 ## Final check
