@@ -685,3 +685,40 @@ La nouvelle version distingue les formations professionnelles, le stage et les d
 #### Motif de la réécriture
 
 La nouvelle version explicite les données produites, leur publication vers Xistar et l’usage du simulateur pour le développement et les démonstrations. Elle reformule le principe « zéro donnée mock » en distinguant les entités simulées des jeux de données statiques.
+
+### Projet Xistar — application mobile
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `33`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.33`
+
+#### Avant — intitulé
+
+> Développeur full stack
+
+#### Après — intitulé validé
+
+> Développeur TypeScript / Application mobile
+
+#### Avant — description
+
+> Application mobile de réception des alertes BAM/CAM et d'émission d'ordres (escalade, ordre de retour) : l'opérateur reste dans la boucle depuis le terrain.
+
+#### Après — carte validée
+
+> Développement d’une application mobile permettant aux opérateurs de recevoir les alertes BAM/CAM et de transmettre des ordres depuis le terrain. Réalisée en #typescript avec #react, elle prend en charge l’escalade des alertes et l’émission d’ordres de retour, et communique avec Xistar via #socketio.
+
+#### Après — description détaillée validée
+
+> L’application mobile prolonge Xistar sur le terrain : elle reçoit les alertes BAM/CAM et permet à l’opérateur d’agir sans passer par le poste principal. J’ai développé l’interface en #typescript avec #react ainsi que les échanges #socketio nécessaires à l’escalade des alertes et à l’émission d’ordres de retour.
+
+#### Après — contributions détaillées validées
+
+- Concevoir les parcours mobiles liés à la réception des alertes et à l’émission d’ordres.
+- Afficher les alertes BAM/CAM et les informations nécessaires à leur traitement.
+- Implémenter l’escalade des alertes et l’envoi des ordres de retour.
+- Développer l’interface en #typescript avec #react et intégrer les échanges via #socketio.
+
+#### Motif de la réécriture
+
+La nouvelle version précise le rôle de l’application pour les opérateurs sur le terrain et distingue les parcours mobiles, les fonctions d’alerte et d’ordre ainsi que la communication avec Xistar.
