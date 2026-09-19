@@ -19,19 +19,15 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 - Ne pas généraliser les micro-frontends à tout le parcours : cette architecture concerne principalement l'expérience IECA.
 - Ne pas placer l'AR/VR au premier plan du positionnement global : il s'agit d'expériences plus anciennes et ce marché n'est pas la cible principale actuelle.
 - Éviter « temps réel » comme formule de positionnement générique, car son sens dépend du domaine. Employer un terme plus précis dans le contexte concerné.
-- Conserver un ton professionnel et cohérent. Dans tous les contenus rédactionnels retravaillés — présentation globale, cartes, descriptions et contributions — intégrer sous forme de chips les technologies, normes et protocoles réellement utiles à côté de la réalisation concernée. Éviter les inventaires détachés et les formulations promotionnelles non étayées.
-- Lors de l'application aux sources, étendre le rendu des chips à `profile.bio`, `mission.desc` et `mission.tasks` ; actuellement, seul `cardSummary` transforme les marqueurs `#terme` en chips.
+- Conserver un ton professionnel et cohérent. Dans les expériences retravaillées — cartes, descriptions et contributions — intégrer sous forme de chips les technologies, normes et protocoles réellement utiles à côté de la réalisation concernée. La présentation globale reste sans chips ni spécification de technologies. Éviter les inventaires détachés et les formulations promotionnelles non étayées.
+- Lors de l'application aux sources, étendre le rendu des chips à `mission.desc` et `mission.tasks` ; actuellement, seul `cardSummary` transforme les marqueurs `#terme` en chips.
 - Ne pas inventer de résultat, de métrique, de responsabilité ou de niveau de leadership.
 
 ## Textes déjà validés
 
-Le titre et le sous-titre restent validés. La présentation globale et l'expérience Xistar sont validées sur le fond, mais doivent être revalidées après généralisation des chips à tous leurs contenus rédactionnels. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre et la présentation globale restent validés. L'expérience Xistar est validée sur le fond, mais doit être revalidée après généralisation des chips à ses contenus détaillés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
-Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale doit conserver son rôle de positionnement tout en faisant apparaître les technologies et protocoles les plus structurants.
-
-### Présentation globale enrichie — à valider
-
-> Développeur spécialisé dans les applications industrielles, j'ai construit une expertise front-end et UI/UX autour de #typescript, #react et #vue3, que j'étends aujourd'hui au développement full-stack. Sur Xistar, j'interviens de l'interface opérateur aux services qui intègrent et diffusent les données via #mqtt et #api-rest. J'aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.
+Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
 Décisions importantes prises pour Xistar :
 
@@ -123,7 +119,7 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 ## Point de reprise recommandé
 
-1. Faire valider la présentation globale et Xistar après généralisation des chips à tous les textes retravaillés.
+1. Faire valider Xistar après généralisation des chips à ses descriptions et contributions ; la présentation globale reste inchangée et validée.
 2. Reprendre avec la proposition IECA enrichie de chips dans la carte, la description et les contributions.
 3. Faire valider IECA, en particulier la formulation du sujet d'IP Sprint, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
 4. Reprendre ensuite la proposition AOA enrichie de chips, sans survaloriser l'AR/VR dans le positionnement général.
@@ -136,4 +132,4 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 - Certaines traductions et certains accents sont incomplets ou incohérents.
 - Les coordonnées de contact, dont l'adresse e-mail et la présentation du téléphone, devront être vérifiées avant finalisation.
 - L'export Word contient également des contenus susceptibles de dupliquer les données affichées et devra être contrôlé après la réécriture.
-- Le rendu des chips est actuellement limité à `cardSummary`. L'application finale devra utiliser le même rendu pour `profile.bio`, `mission.desc` et chaque entrée de `mission.tasks`, tandis que l'export Word devra éviter d'afficher des marqueurs `#` bruts.
+- Le rendu des chips est actuellement limité à `cardSummary`. L'application finale devra utiliser le même rendu pour `mission.desc` et chaque entrée de `mission.tasks`, tandis que l'export Word devra éviter d'afficher des marqueurs `#` bruts.
