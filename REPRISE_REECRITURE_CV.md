@@ -19,12 +19,15 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 - Ne pas généraliser les micro-frontends à tout le parcours : cette architecture concerne principalement l'expérience IECA.
 - Ne pas placer l'AR/VR au premier plan du positionnement global : il s'agit d'expériences plus anciennes et ce marché n'est pas la cible principale actuelle.
 - Éviter « temps réel » comme formule de positionnement générique, car son sens dépend du domaine. Employer un terme plus précis dans le contexte concerné.
-- Conserver un ton professionnel et cohérent. Éviter les inventaires de technologies, les hashtags dans les paragraphes et les formulations promotionnelles non étayées.
+- Conserver un ton professionnel et cohérent. Dans les cartes qui transforment les marqueurs `#terme` en chips, intégrer les technologies, normes et protocoles réellement utiles à côté de la réalisation concernée. Éviter les inventaires détachés et les formulations promotionnelles non étayées.
+- Dans les descriptions et les contributions, où les marqueurs ne sont pas transformés en chips, écrire les termes techniques normalement.
 - Ne pas inventer de résultat, de métrique, de responsabilité ou de niveau de leadership.
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale et l'expérience Xistar sont validés. Leurs versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`, qui fait foi pour leur future application.
+Le titre, le sous-titre et la présentation globale sont validés. L'expérience Xistar est validée sur le fond, mais sa formulation doit être revalidée après réintégration des informations techniques. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+
+Le titre, le sous-titre et la présentation globale ne nécessitent pas de chips : ces champs ne disposent pas du rendu prévu pour les cartes, et la présentation doit rester centrée sur le positionnement. Xistar reste validé sur le fond, mais les formulations ci-dessous doivent être revalidées après réintégration des informations techniques.
 
 Décisions importantes prises pour Xistar :
 
@@ -35,6 +38,24 @@ Décisions importantes prises pour Xistar :
 - décrire l'application multi-écran, sa gestion centralisée depuis un poste maître et la communication entre instances ;
 - présenter le rejeu temporel comme un support à l'analyse, aux rapports de situation et aux débriefings ;
 - insister sur la capacité d'adaptation aux différents profils de déploiement plutôt que sur la modularité technique.
+
+### Révision technique proposée pour Xistar — à valider
+
+**Carte**
+
+> Développeur full-stack sur Xistar, un poste de commandement tactique maritime accessible depuis le navigateur. J'interviens sur l'interface opérateur #dockview, la cartographie #maplibre #deckgl en symbologie OTAN #app-6d et l'interopérabilité avec les systèmes partenaires via #mqtt et #api-rest. L'application pilote un mur d'écrans depuis un poste maître et propose un rejeu temporel pour les rapports de situation et les débriefings.
+
+**Description détaillée**
+
+> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. Son interface cartographique s'appuie sur MapLibre et deck.gl pour afficher une symbologie OTAN APP-6D. Le produit échange avec des systèmes partenaires via MQTT et API REST pour recevoir leurs données, transmettre des ordres et publier des informations. Ses profils de déploiement et la communication entre instances permettent de l'adapter aux contextes défense, portuaire et démonstration.
+
+**Contributions proposées**
+
+- Concevoir l'espace de travail opérateur sous forme de panneaux Dockview et intégrer la cartographie MapLibre et deck.gl en symbologie OTAN APP-6D.
+- Développer le système d'alertes et ses mécanismes d'escalade, avec une API dédiée et l'envoi de notifications par e-mail.
+- Assurer l'interopérabilité avec les systèmes partenaires : ingestion des données, transmission des ordres et publication via des brokers MQTT et une API REST.
+- Développer l'application multi-écran et sa gestion centralisée depuis un poste maître, avec partage distant et synchronisation des vues.
+- Mettre en place un rejeu temporel des opérations destiné à l'analyse, aux rapports de situation et aux débriefings.
 
 ## Travail en cours : IECA
 
@@ -49,15 +70,15 @@ Décisions importantes prises pour Xistar :
 
 **Carte**
 
-> Développeur front-end sur IECA, la plateforme IIoT Edge de Schneider Electric, avec des interventions ponctuelles côté back-end. Au sein de l'équipe, j'ai contribué aux domaines fonctionnels des connecteurs, des calculs, des conditions, des alertes et du scripting. J'ai également conçu des composants partagés, notamment une table configurable, un socle de routage et un sélecteur de propriétés.
+> Développeur front-end sur IECA, la plateforme IIoT Edge de Schneider Electric, avec des interventions ponctuelles côté back-end. J'ai contribué à plusieurs domaines fonctionnels — connecteurs, calculs, conditions, alertes et scripting — ainsi qu'au socle partagé de l'architecture #microfrontend fondée sur #vue3 #typescript et #single-spa.
 
 **Description détaillée**
 
-> Développement d'applications Edge industrielles organisées en micro-frontends, au sein d'une équipe Scrum pluridisciplinaire. Mon intervention était principalement front-end, complétée par l'extension ponctuelle de fonctionnalités back-end. Le périmètre couvrait plusieurs domaines fonctionnels de la plateforme, le micro-frontend utilitaire partagé, les tests et le suivi de la qualité du code.
+> Au sein d'une équipe Scrum pluridisciplinaire, j'ai développé des applications Edge organisées en micro-frontends avec Vue 3, TypeScript et single-spa. Mon périmètre couvrait principalement les interfaces et leur architecture, avec quelques extensions de fonctionnalités back-end. J'intervenais à la fois sur les domaines fonctionnels de la plateforme, les composants partagés, les tests et le suivi de la qualité du code.
 
 **Contributions proposées**
 
-- Contribuer à la mise en place des fonctionnalités liées aux connecteurs, aux calculs, aux conditions, aux alertes et au scripting.
+- Participer au développement des fonctionnalités liées aux connecteurs, aux calculs, aux conditions, aux alertes et au scripting.
 - Concevoir des composants partagés, dont une table configurable, un socle de routage et un sélecteur de propriétés.
 - Étendre ponctuellement les fonctionnalités back-end nécessaires aux évolutions prises en charge côté front-end.
 - Développer les tests unitaires des composants, des stores Pinia et des fonctions utilitaires, puis suivre les performances et la qualité du code.
@@ -77,7 +98,7 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 **Carte**
 
-> Développement d'Augmented Operator Advisor, une application industrielle multiplateforme pour Android, iOS et Windows. Mon travail a porté sur l'architecture front-end et les interfaces opérateur, ainsi que sur le fonctionnement hors ligne, la synchronisation avec le serveur et la compatibilité des projets entre versions.
+> Développeur #csharp #unity sur Augmented Operator Advisor, une application industrielle multiplateforme pour #android #ios et #windows. Mon travail a porté sur l'architecture front-end et les interfaces opérateur, ainsi que sur le fonctionnement #offline, la synchronisation avec le serveur et la compatibilité des projets entre versions.
 
 **Description détaillée**
 
@@ -98,12 +119,13 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 ## Point de reprise recommandé
 
-1. Reprendre avec la proposition IECA ci-dessus.
-2. Faire valider la carte, la description et les cinq contributions, en particulier la formulation du sujet d'IP Sprint.
-3. Une fois IECA validée, ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-4. Reprendre ensuite la proposition AOA en veillant à ne pas survaloriser l'AR/VR dans le positionnement général.
-5. Continuer avec les expériences suivantes selon le même processus.
-6. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis harmoniser les doublons et les traductions.
+1. Faire revalider la révision technique de Xistar, en particulier le choix et le placement des chips.
+2. Reprendre avec la proposition IECA enrichie de chips.
+3. Faire valider la carte, la description et les cinq contributions, en particulier la formulation du sujet d'IP Sprint.
+4. Une fois IECA validée, ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+5. Reprendre ensuite la proposition AOA en veillant à ne pas survaloriser l'AR/VR dans le positionnement général.
+6. Continuer avec les expériences suivantes selon le même processus.
+7. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
 

@@ -2,6 +2,8 @@
 
 Ce document consigne les textes validés avant leur application dans le CV. Les propositions rejetées ou encore en discussion n'y figurent pas.
 
+> **Révision technique en cours :** le titre, le sous-titre et la présentation globale restent validés. Le contenu de Xistar reste validé sur le fond, mais sa formulation doit être revalidée après réintégration des technologies, normes et protocoles sous forme de chips dans la carte. Ne pas l'appliquer aux sources avant cette revalidation.
+
 ## Version française
 
 ### Titre et sous-titre
@@ -44,7 +46,7 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 
 ### Expérience Xistar
 
-**Statut :** validée, non appliquée  
+**Statut :** validée sur le fond, révision technique à revalider, non appliquée
 **Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `31` (`badge`, `cardSummary`, `desc`, `tasks`)  
 **Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.31`
 
