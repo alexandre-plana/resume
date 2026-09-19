@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar et IECA sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA et AOA sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -93,9 +93,9 @@ La dernière contribution remplace l'ancienne formulation centrée sur la prése
 - `src/api/mockDataLocales.ts` : version française de l'expérience `1`, mission `11`.
 - La version anglaise devra ensuite être harmonisée sans traduire littéralement les formulations françaises.
 
-## Étape suivante : AOA
+## Expérience AOA — validée
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée conserve une dominante front-end tout en faisant apparaître la participation au serveur de projets en Python.
 
 **Carte**
 
@@ -105,7 +105,7 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > Pendant six ans, j'ai développé en #csharp et #unity les interfaces et l'architecture front-end d'une application #ar destinée aux opérateurs industriels. Le périmètre couvrait les versions #android, #ios et #windows, leur personnalisation pour les clients #oem, le fonctionnement #offline et la préparation des applications pour les différentes plateformes de distribution. J'ai également contribué au serveur de projets en #python et à la communication #http avec l'application.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Concevoir en #csharp et #unity l'architecture front-end et une interface adaptée à #android, #ios et #windows, en modes portrait et paysage.
 - Développer le fonctionnement #offline et la synchronisation #http, puis contribuer aux évolutions du serveur de projets en #python et à la gestion des erreurs réseau.
@@ -113,16 +113,45 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 - Mettre en place un système de styles externalisé pour produire des versions personnalisées aux couleurs des clients #oem.
 - Créer sous #unity un outil de tests unitaires intégré aux étapes précédant et suivant les builds.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `1`, mission `12`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `1`, mission `12`.
 
+## Étape suivante : expérience générale Oreka Ingénierie
+
+Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur C# / Unity 3D
+
+**Carte**
+
+> Développeur C# / Unity 3D chez Oreka Ingénierie sur des applications industrielles de simulation, de formation et de visualisation pour EDF, RTE, AREVA, DCNS et SUEZ. J'intervenais de l'analyse du besoin à la livraison : développement #csharp sous #unity, intégration de modèles issus de la #cao et conception d'interfaces 2D/3D, notamment pour des dispositifs #vr et #ar.
+
+**Description détaillée**
+
+> Pendant quatre ans, j'ai développé des applications interactives pour des contextes industriels, nucléaires et de défense. Mon rôle couvrait l'analyse des besoins et la faisabilité, le développement en #csharp sous #unity, la préparation des modèles issus de #solidworks et #3dsmax, ainsi que la conception des interfaces et des scénarios métier. J'assurais également l'optimisation CPU/GPU, la préparation des builds et le support des démonstrations client.
+
+**Contributions proposées**
+
+- Analyser les besoins clients, étudier leur faisabilité technique et participer aux spécifications ainsi qu'aux maquettes fonctionnelles.
+- Développer en #csharp sous #unity des interfaces et des systèmes interactifs 2D/3D, dont les interactions propres aux dispositifs #vr et #ar.
+- Intégrer et optimiser des modèles issus de la #cao avec #solidworks et #3dsmax : maillages, niveaux de détail, lightmaps, matériaux et shaders.
+- Implémenter les scénarios issus des procédures métier à l'aide de graphes d'états, de conditions et de déclencheurs, ainsi que des modules d'entrées-sorties et de chargement dynamique.
+- Optimiser les performances CPU/GPU avec les outils de profiling de #unity, puis préparer les builds, corriger les anomalies et accompagner les démonstrations client.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `2`, mission `21`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `21`.
+
 ## Point de reprise recommandé
 
-1. Reprendre avec la proposition AOA enrichie de chips, sans survaloriser l'AR/VR dans le positionnement général.
-2. Faire valider AOA, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-3. Continuer avec les expériences suivantes selon le même processus.
+1. Reprendre avec la proposition générale Oreka Ingénierie, en gardant la simulation industrielle et la chaîne de réalisation au premier plan.
+2. Faire valider cette expérience, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+3. Continuer avec les projets détaillés d'Oreka selon le même processus.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial

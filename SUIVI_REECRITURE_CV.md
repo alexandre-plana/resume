@@ -142,3 +142,53 @@ La nouvelle version met en avant l’interopérabilité, la gestion centralisée
 #### Motif de la réécriture
 
 La nouvelle version restitue l’étendue de la mission au-delà des composants partagés : domaines fonctionnels de la plateforme, dominante front-end, interventions back-end ponctuelles, tests et sujet d’IP Sprint. Les technologies et outils sont rattachés aux contributions concernées sous forme de chips.
+
+### Expérience Augmented Operator Advisor (AOA)
+
+**Statut :** validée, non appliquée
+**Champs principaux :** `src/api/mockData.ts` → expérience `1`, mission `12` ; `src/api/mockDataLocales.ts` → `fr.experiences.1.missions.12`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.1.missions.12`
+
+#### Intitulé conservé
+
+> Développeur C# / Unity
+
+#### Avant — carte
+
+> Développeur #csharp sur une application #ar industrielle multi-plateforme : conception d'interfaces opérateur #mobile et desktop, structuration de l'architecture front, gestion du mode #offline, de la communication #api avec le serveur de projets, et fiabilisation continue des versions en production.
+
+#### Après — carte validée
+
+> Développeur en #csharp et #unity sur Augmented Operator Advisor, une application industrielle #ar multiplateforme pour #android, #ios et #windows. Mon travail a porté sur l’architecture front-end et les interfaces opérateur, le fonctionnement #offline et la compatibilité des projets entre versions. J’ai également participé au développement du serveur de projets en #python et à ses échanges #http avec l’application.
+
+#### Avant — description détaillée
+
+> Développement pendant 6 ans d'une application AR multi-plateforme (Android, iOS, Windows) pour opérateurs industriels Schneider Electric. Conception et implémentation des interfaces opérateur (tableaux de bord, navigation, interactions tactiles et manettes), gestion des états complexes de la couche AR, mise en place du mode offline avec synchronisation automatique, création d'outils de tests unitaires pour Unity, gestion de la compatibilité multi-version, intégration d'un système de styles externalisé pour clients OEM, optimisation des performances et fiabilisation continue des versions en production.
+
+#### Après — description détaillée validée
+
+> Pendant six ans, j’ai développé en #csharp et #unity les interfaces et l’architecture front-end d’une application #ar destinée aux opérateurs industriels. Le périmètre couvrait les versions #android, #ios et #windows, leur personnalisation pour les clients #oem, le fonctionnement #offline et la préparation des applications pour les différentes plateformes de distribution. J’ai également contribué au serveur de projets en #python et à la communication #http avec l’application.
+
+#### Avant — contributions détaillées
+
+- Conception et développement d'une interface entièrement responsive (iOS, Android, Windows - modes portrait et paysage).
+- Compilation, préparation et déploiement des applications sur les différents stores (Google Play, App Store, SESU).
+- Création d'un outil dédié aux tests unitaires sous Unity 3D, intégré aux phases de pre-build et post-build.
+- Mise en place d'un système de styles externalisé permettant de livrer des versions personnalisées aux couleurs des clients, notamment pour les OEM.
+- Conception de l'architecture front-end de l'application : découpage modulaire, conventions de code et séparation des responsabilités.
+- Développement d'un système offline avec synchronisation automatique des données dès le rétablissement de la connexion.
+- Désérialisation et gestion de la rétrocompatibilité entre les versions de projets : lecture des anciens formats, migration silencieuse à la volée.
+- Implémentation de la couche de communication avec le serveur de projets : requêtes HTTP, gestion des erreurs réseau et logique de reconnexion.
+- Gestion du cycle de vie des données applicatives : invalidation du cache local, stratégie de rafraîchissement et purge des données obsolètes.
+
+#### Après — contributions détaillées validées
+
+- Concevoir en #csharp et #unity l’architecture front-end et une interface adaptée à #android, #ios et #windows, en modes portrait et paysage.
+- Développer le fonctionnement #offline et la synchronisation #http, puis contribuer aux évolutions du serveur de projets en #python et à la gestion des erreurs réseau.
+- Assurer la rétrocompatibilité des projets par la lecture des anciens formats et leur migration à la volée.
+- Mettre en place un système de styles externalisé pour produire des versions personnalisées aux couleurs des clients #oem.
+- Créer sous #unity un outil de tests unitaires intégré aux étapes précédant et suivant les builds.
+
+#### Motif de la réécriture
+
+La nouvelle version décrit le périmètre multiplateforme et les responsabilités techniques sans faire de l’AR le centre du profil. Elle distingue l’architecture front-end, le fonctionnement hors connexion, la compatibilité des projets, la personnalisation OEM et la contribution ciblée au serveur de projets en Python. Les technologies et le protocole sont rattachés aux réalisations concernées sous forme de chips.
