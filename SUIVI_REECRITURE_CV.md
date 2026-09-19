@@ -722,3 +722,40 @@ La nouvelle version explicite les données produites, leur publication vers Xist
 #### Motif de la réécriture
 
 La nouvelle version précise le rôle de l’application pour les opérateurs sur le terrain et distingue les parcours mobiles, les fonctions d’alerte et d’ordre ainsi que la communication avec Xistar.
+
+### Projet Xistar — émulateur de mur d’écrans
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `34`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.34`
+
+#### Avant — intitulé
+
+> Développeur full stack
+
+#### Après — intitulé validé
+
+> Développeur TypeScript / Émulateur multi-écran
+
+#### Avant — description
+
+> Émulateur de mur d'écrans pour développer et démontrer la conduite multi-vues sans salle physique : ensembles d'écrans, mission board, push distant de vues. Stack React / Vite.
+
+#### Après — carte validée
+
+> Développement d’un émulateur de mur d’écrans permettant de concevoir et démontrer les usages multi-vues de Xistar sans disposer d’une salle équipée. Réalisé en #typescript avec #react et #vite, il reproduit des ensembles d’écrans, un tableau de mission et l’envoi distant de vues depuis le poste maître.
+
+#### Après — description détaillée validée
+
+> L’émulateur reproduit la configuration d’un mur d’écrans physique : ensembles d’écrans, tableau de mission et envoi distant de vues. Je l’ai développé en #typescript avec #react et #vite afin de travailler sur la gestion centralisée des affichages et de préparer les démonstrations sans mobiliser une salle équipée.
+
+#### Après — contributions détaillées validées
+
+- Modéliser les ensembles d’écrans et leurs configurations d’affichage.
+- Reproduire le tableau de mission utilisé dans la conduite multi-vues.
+- Implémenter l’envoi distant de vues depuis le poste maître vers les écrans émulés.
+- Développer l’outil en #typescript avec #react et #vite pour le développement et les démonstrations.
+
+#### Motif de la réécriture
+
+La nouvelle version distingue l’émulateur du mur d’écrans opérationnel. Elle précise son rôle dans la reproduction des configurations, du tableau de mission et de la commande distante pour le développement et les démonstrations.

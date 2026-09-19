@@ -490,11 +490,11 @@ Les textes validés concernent le projet Xistar `33`.
 - `src/api/mockData.ts` : expérience `3`, mission `33`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `33`.
 
-## Étape suivante : émulateur de mur d'écrans
+## Émulateur de mur d'écrans — validé
 
-Les textes ci-dessous concernent le projet Xistar `34` et ne sont pas encore validés.
+Les textes validés concernent le projet Xistar `34`.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Développeur TypeScript / Émulateur multi-écran
 
@@ -506,22 +506,45 @@ Les textes ci-dessous concernent le projet Xistar `34` et ne sont pas encore val
 
 > L'émulateur reproduit la configuration d'un mur d'écrans physique : ensembles d'écrans, tableau de mission et envoi distant de vues. Je l'ai développé en #typescript avec #react et #vite afin de travailler sur la gestion centralisée des affichages et de préparer les démonstrations sans mobiliser une salle équipée.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Modéliser les ensembles d'écrans et leurs configurations d'affichage.
 - Reproduire le tableau de mission utilisé dans la conduite multi-vues.
 - Implémenter l'envoi distant de vues depuis le poste maître vers les écrans émulés.
 - Développer l'outil en #typescript avec #react et #vite pour le développement et les démonstrations.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `3`, mission `34`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `34`.
 
+## Étape suivante : graphique de répartition des langages
+
+Le profil affiche actuellement une barre de répartition fondée sur les valeurs suivantes : TypeScript 35 %, C# 35 %, HTML5/CSS 20 % et Dart 10 %.
+
+**Recommandation proposée**
+
+Supprimer ce graphique et les données `profile.languages` associées.
+
+**Motifs**
+
+- Les pourcentages ne correspondent à aucune mesure documentée et donnent une impression de précision artificielle.
+- Dart ne reflète pas les expériences actuellement présentées dans le CV.
+- Go et Python, désormais documentés, en sont absents.
+- La section « Compétences principales » validée présente déjà les langages sans hiérarchie arbitraire.
+- La section « Langues » consacrée au français et à l'anglais reste inchangée.
+
+**Cibles après validation**
+
+- `src/api/mockData.ts` : supprimer ou ne plus exposer `mockProfile.languages`.
+- `src/App.tsx` : retirer le bloc visuel `languageStack`.
+- `src/locales/index.ts` : supprimer la traduction devenue inutilisée si elle ne sert plus ailleurs.
+- `src/utils/exportMockCvToWord.ts` : vérifier qu'aucune exportation ne dépend de ce graphique.
+
 ## Point de reprise recommandé
 
-1. Faire valider l'émulateur de mur d'écrans, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-2. Auditer ensuite les derniers champs de profil, les projets personnels et les contenus dupliqués avant l'application globale aux sources.
+1. Faire valider la suppression du graphique de répartition des langages et la consigner dans `SUIVI_REECRITURE_CV.md`.
+2. Auditer ensuite les projets professionnels dupliqués, les projets personnels et les derniers champs de profil avant l'application globale aux sources.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
