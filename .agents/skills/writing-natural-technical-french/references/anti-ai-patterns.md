@@ -47,6 +47,8 @@ Repeated openings, identical paragraph lengths, systematic three-part lists, and
 
 Keep established domain terms when they are more precise than a paraphrase. Explain a term when the expected reader may not know it or when misunderstanding would change the conclusion. Avoid stacking technologies where one named mechanism is enough.
 
+When a CV or portfolio deliberately renders `#terms` as inline technical chips, preserve the terms that identify a relevant technology, standard, or protocol. Attach each chip to the contribution it explains instead of collecting chips in a stack at the end. The surrounding sentence must remain understandable without the visual treatment.
+
 ## Before and after
 
 Source facts:
@@ -69,7 +71,7 @@ In a CV, omit the second sentence unless the absence of evidence itself matters.
 
 - Use the first person in a short profile when it sounds like the candidate; omit it in compact achievement bullets.
 - Prefer role and contribution over self-assessment. Let work demonstrate curiosity, rigor, seniority, or leadership.
-- Separate the product context from the technology list.
+- Connect selected technical chips to the product context or action they support; do not replace the contribution with a technology list.
 - Replace task inventories with a few contributions that distinguish the candidate.
 - A result may be qualitative when exact: reused by several teams, shipped on three platforms, operated offline, or designed for a regulated environment. Do not convert scope into impact.
 
@@ -80,6 +82,7 @@ In a CV, omit the second sentence unless the absence of evidence itself matters.
 | Making the prose “more senior” by strengthening claims | Show scope, decisions, constraints, or responsibility that the sources support |
 | Removing every transition in pursuit of density | Keep transitions that express a real relationship |
 | Replacing repeated technical terms with loose synonyms | Keep the stable term |
+| Removing technical chips to make the prose look cleaner | Retain verified, discriminating chips and anchor them to the relevant contribution |
 | Hiding uncertainty to sound decisive | State the known value, source, date, or uncertainty |
 | Adding numbers for credibility | Use only documented numbers |
 | Rewriting sound passages during every pass | Revise only failed passages |

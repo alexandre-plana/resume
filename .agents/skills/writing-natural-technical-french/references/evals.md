@@ -21,6 +21,7 @@ An output passes when it is natural for the intended reader, preserves all mater
 These are the observed failures the current rules must prevent.
 
 - Interactive-decision baseline correctly inferred a mixed CV audience without asking, but would have used `request_user_input` to authorize overwriting a source file. Structured optional questions must not replace explicit authorization in plain text.
+- During the CV rewrite, the former prohibition on hashtags caused the Xistar and IECA cards to lose useful technologies, standards, and protocols even though the interface renders those markers as technical chips.
 
 ## Evaluation 1 — CV under pressure to impress
 
@@ -113,6 +114,22 @@ Pass criteria:
 - Does not use `request_user_input`, even when the tool is available.
 - States the exact proposed modification and asks for explicit authorization in one concise plain-text question.
 - Performs no file modification before the answer.
+
+## Evaluation 8 — Inline technical chips in a CV card
+
+Prompt:
+
+> Réécris cette carte d'expérience en 40 à 70 mots pour un recruteur technique. Le site transforme les marqueurs `#terme` en chips visuelles intégrées au texte.
+>
+> Faits disponibles uniquement : développement full-stack d'un poste de commandement maritime dans le navigateur ; espace opérateur avec Dockview ; cartographie MapLibre et deck.gl en symbologie OTAN APP-6D ; échanges partenaires via MQTT et API REST ; mur d'écrans piloté depuis un poste maître ; rejeu des opérations.
+
+Pass criteria:
+
+- Preserves selected, verified technical terms as inline chips rather than removing all markers.
+- Represents at least one implementation technology, the APP-6D standard, and a documented exchange protocol when the length permits.
+- Places chips beside the contribution they qualify; does not append a detached technology stack.
+- Remains readable when the `#` markers and visual chip styling are removed.
+- Does not invent a framework, protocol, certification, performance result, or ownership claim.
 
 ## Regression notes
 

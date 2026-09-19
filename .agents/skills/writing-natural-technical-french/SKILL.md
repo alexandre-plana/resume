@@ -90,7 +90,10 @@ Use one revision cycle by default and at most two when problems remain. If a con
 - Summary: 60–100 words; specialization and trajectory, without a list of personal qualities.
 - Experience card: context, role, and up to two meaningful contributions in 40–70 words.
 - Detailed experience: four or five concrete actions or outcomes, beginning with precise verbs when using bullets.
-- Do not repeat technologies already visible as badges or inject hashtags into prose.
+- Treat verified technologies, frameworks, standards, and protocols as material information when they help a recruiter understand the contribution or match the profile to a role.
+- When the target format renders `#terms` as inline technical chips, place a selected chip beside the action, subsystem, standard, or protocol it qualifies; for example: `cartographie #maplibre #deckgl en symbologie #app-6d`.
+- Keep the sentence readable when chip styling is removed. Use canonical, source-supported terms and prefer a few discriminating chips to a detached stack inventory.
+- Outside fields that render inline chips, write technical terms normally rather than exposing raw `#markers`.
 - Use quantified outcomes only when documented. Otherwise describe scope, constraints, reuse, or responsibility precisely.
 
 ## Final check
