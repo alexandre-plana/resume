@@ -99,16 +99,16 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 **Carte**
 
-> Développeur en #csharp et #unity sur Augmented Operator Advisor, une application industrielle #ar multiplateforme pour #android, #ios et #windows. Mon travail a porté sur l'architecture front-end et les interfaces opérateur, ainsi que sur le fonctionnement #offline, les échanges #http avec le serveur et la compatibilité des projets entre versions.
+> Développeur en #csharp et #unity sur Augmented Operator Advisor, une application industrielle #ar multiplateforme pour #android, #ios et #windows. Mon travail a porté sur l'architecture front-end et les interfaces opérateur, le fonctionnement #offline et la compatibilité des projets entre versions. J'ai également participé au développement du serveur de projets en #python et à ses échanges #http avec l'application.
 
 **Description détaillée**
 
-> Pendant six ans, j'ai développé en #csharp et #unity les interfaces et l'architecture front-end d'une application #ar destinée aux opérateurs industriels. Le périmètre couvrait les versions #android, #ios et #windows, leur personnalisation pour les clients #oem, la communication #http avec le serveur de projets et la préparation des applications pour les différentes plateformes de distribution.
+> Pendant six ans, j'ai développé en #csharp et #unity les interfaces et l'architecture front-end d'une application #ar destinée aux opérateurs industriels. Le périmètre couvrait les versions #android, #ios et #windows, leur personnalisation pour les clients #oem, le fonctionnement #offline et la préparation des applications pour les différentes plateformes de distribution. J'ai également contribué au serveur de projets en #python et à la communication #http avec l'application.
 
 **Contributions proposées**
 
 - Concevoir en #csharp et #unity l'architecture front-end et une interface adaptée à #android, #ios et #windows, en modes portrait et paysage.
-- Développer le fonctionnement #offline, la synchronisation avec le serveur via #http au retour de la connexion et la gestion des erreurs réseau.
+- Développer le fonctionnement #offline et la synchronisation #http, puis contribuer aux évolutions du serveur de projets en #python et à la gestion des erreurs réseau.
 - Assurer la rétrocompatibilité des projets par la lecture des anciens formats et leur migration à la volée.
 - Mettre en place un système de styles externalisé pour produire des versions personnalisées aux couleurs des clients #oem.
 - Créer sous #unity un outil de tests unitaires intégré aux étapes précédant et suivant les builds.
