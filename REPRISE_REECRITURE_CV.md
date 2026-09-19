@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom, Dosicase, EMEM, Aeroball, le module de formation en radioprotection et le projet de maintenance des générateurs de vapeur sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -316,11 +316,11 @@ La version validée replace le projet dans le contexte des arrêts de tranche et
 - `src/api/mockData.ts` : expérience `2`, mission `27`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `27`.
 
-## Étape suivante : radioprotection en chirurgie interventionnelle
+## Projet de radioprotection en chirurgie interventionnelle — validé
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée décrit la dosimétrie au cours des scénarios, les zones exposées et l'intégration des protocoles de radioprotection dans la simulation médicale.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Développeur C# / Simulation médicale 3D
 
@@ -332,23 +332,40 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > L'application simulait des situations de chirurgie interventionnelle pour former les équipes à l'exposition radiologique et aux précautions associées. Mon travail portait sur l'intégration de la #dosimetrie dans la simulation, la visualisation des zones exposées et la restitution des protocoles de #radioprotection destinés aux opérateurs. J'ai développé ces éléments en #csharp sous #unity dans un environnement 3D.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Traduire les protocoles de #radioprotection en séquences de formation destinées aux équipes chirurgicales.
 - Intégrer la #dosimetrie et représenter son évolution au cours des scénarios simulés.
 - Visualiser les zones exposées aux rayonnements dans l'environnement 3D.
 - Développer en #csharp sous #unity la simulation médicale et ses interactions.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `2`, mission `28`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `28`.
 
+## Étape suivante : objectif professionnel
+
+Le champ actuel réduit encore le positionnement à un poste front-end et associe les micro-frontends à l'ensemble du profil. La proposition suivante n'est pas encore validée.
+
+**Avant**
+
+> Poste Front End web dans un contexte industriel · Vue.js ou React · TypeScript · micro-frontend · équipe orientée qualité & UX
+
+**Après proposé**
+
+> Développement full-stack d'applications industrielles · Forte composante front-end et UI/UX · React ou Vue.js · TypeScript · Équipe attentive à la qualité
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockDataLocales.ts` : `fr.profile.seeking`.
+- `src/api/mockDataLocales.ts` : `en.profile.seeking`, à reformuler en anglais sans traduction littérale.
+
 ## Point de reprise recommandé
 
-1. Faire valider la proposition sur la radioprotection en chirurgie interventionnelle, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-2. Continuer avec les autres projets détaillés d'Oreka selon le même processus.
-3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
+1. Faire valider le nouvel objectif professionnel, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+2. Auditer ensuite les sections compétences et formations avant l'application globale aux sources.
+3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
