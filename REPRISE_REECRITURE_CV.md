@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom et Dosicase sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom, Dosicase et EMEM sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -204,11 +204,11 @@ La version validée relie la conception UX/UI aux objectifs pédagogiques de la 
 - `src/api/mockData.ts` : expérience `2`, mission `23`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `23`.
 
-## Étape suivante : EMEM
+## Projet EMEM — validé
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée décrit précisément la simulation, la représentation des flux, la gestion des matériaux radioactifs et les interfaces opérateur.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Développeur C# / Simulation 3D
 
@@ -220,21 +220,49 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > L'application représentait le fonctionnement de l'enceinte mobile et les opérations liées à l'évacuation de matériel en contexte nucléaire. Mon travail portait sur le développement #csharp de la simulation sous #unity, la visualisation des flux et la gestion des matériaux radioactifs. J'ai également développé les interfaces opérateur en #wpf pour piloter et suivre la simulation.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Développer en #csharp sous #unity la simulation 3D interactive de l'enceinte mobile.
 - Représenter en 3D les flux associés aux opérations d'évacuation de matériel.
 - Implémenter la gestion et la représentation des matériaux radioactifs dans la simulation.
 - Concevoir en #wpf les interfaces de contrôle destinées aux opérateurs.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `2`, mission `24`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `24`.
 
+## Étape suivante : Aeroball
+
+Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur C# / Serious game
+
+**Carte**
+
+> Développement d'un serious game #seriousgame destiné à former les opérateurs à l'utilisation du poste de contrôle Aeroball en environnement nucléaire. J'ai participé à la traduction des procédures opérationnelles en scénarios interactifs, puis à leur réalisation sous #unity en #csharp et à la modélisation 3D de l'environnement de formation.
+
+**Description détaillée**
+
+> Le projet reproduisait en simulation le déroulement des procédures associées au poste de contrôle Aeroball. Mon travail portait sur la transformation des procédures opérationnelles en séquences de formation interactives, le développement en #csharp sous #unity et la modélisation 3D de l'environnement. Le serious game #seriousgame permettait aux opérateurs de s'entraîner à l'utilisation du poste de contrôle dans un cadre simulé.
+
+**Contributions proposées**
+
+- Analyser les procédures opérationnelles du poste de contrôle Aeroball et les traduire en scénarios de formation.
+- Concevoir les séquences et les interactions du serious game #seriousgame.
+- Développer en #csharp sous #unity la simulation 3D et le déroulement des scénarios.
+- Modéliser l'environnement de formation et l'intégrer dans l'application.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `2`, mission `25`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `25`.
+
 ## Point de reprise recommandé
 
-1. Faire valider la proposition EMEM, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+1. Faire valider la proposition Aeroball, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
 2. Continuer avec les autres projets détaillés d'Oreka selon le même processus.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.

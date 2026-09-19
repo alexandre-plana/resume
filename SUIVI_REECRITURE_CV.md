@@ -337,3 +337,50 @@ La nouvelle version présente Simulhom comme un travail de conception fonctionne
 #### Motif de la réécriture
 
 La nouvelle version précise la finalité de Dosicase et relie le travail UX/UI aux besoins pédagogiques de la formation en radioprotection. Elle distingue la structuration du parcours, l’organisation des informations, la conception des interactions et la contribution à l’intégration technique.
+
+### Projet EMEM
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `24` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.24`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.24`
+
+#### Avant — intitulé
+
+> C# / 3D Developer
+
+#### Après — intitulé validé
+
+> Développeur C# / Simulation 3D
+
+#### Avant — carte
+
+> Simulation 3D interactive d'une enceinte mobile nucléaire. #csharp #unity3D #simulation #nuclear #3d #wpf
+
+#### Après — carte validée
+
+> Développement d’une simulation 3D interactive de l’EMEM, une enceinte mobile destinée à l’évacuation de matériel en environnement nucléaire. J’ai contribué à la représentation des flux et des matériaux radioactifs ainsi qu’à la conception des interfaces de contrôle pour les opérateurs, en #csharp avec #unity et #wpf.
+
+#### Avant — description détaillée
+
+> Simulation 3D interactive d'une enceinte mobile nucléaire. #csharp #unity3D #simulation #nuclear #3d #wpf. Visualisation 3D des flux, gestion des matériaux radioactifs, interfaces de contrôle temps réel pour opérateurs.
+
+#### Après — description détaillée validée
+
+> L’application représentait le fonctionnement de l’enceinte mobile et les opérations liées à l’évacuation de matériel en contexte nucléaire. Mon travail portait sur le développement #csharp de la simulation sous #unity, la visualisation des flux et la gestion des matériaux radioactifs. J’ai également développé les interfaces opérateur en #wpf pour piloter et suivre la simulation.
+
+#### Avant — contributions détaillées
+
+- Simulation 3D.
+- Gestion des matériaux radioactifs.
+- Interfaces temps réel.
+
+#### Après — contributions détaillées validées
+
+- Développer en #csharp sous #unity la simulation 3D interactive de l’enceinte mobile.
+- Représenter en 3D les flux associés aux opérations d’évacuation de matériel.
+- Implémenter la gestion et la représentation des matériaux radioactifs dans la simulation.
+- Concevoir en #wpf les interfaces de contrôle destinées aux opérateurs.
+
+#### Motif de la réécriture
+
+La nouvelle version explicite le rôle de l’EMEM et les responsabilités exercées sur la simulation, les flux, les matériaux radioactifs et les interfaces opérateur. Elle remplace la mention générique « temps réel » par une description concrète du pilotage et du suivi de la simulation.
