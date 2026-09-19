@@ -431,3 +431,50 @@ La nouvelle version explicite le rôle de l’EMEM et les responsabilités exerc
 #### Motif de la réécriture
 
 La nouvelle version présente Aeroball comme un travail de transposition des procédures opérationnelles en séquences de formation interactives. Elle distingue la conception des scénarios, le développement de la simulation et la modélisation de l’environnement.
+
+### Projet de formation en radioprotection
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `26` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.26`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.26`
+
+#### Avant — intitulé
+
+> C# / 3D Developer
+
+#### Après — intitulé validé
+
+> Développeur C# / Simulation de formation
+
+#### Avant — carte
+
+> Module de formation interactive 3D sur la radioprotection et la sécurité nucléaire. #csharp #unity3D #simulation #radioprotection #training #3d
+
+#### Après — carte validée
+
+> Développement d’un module de formation interactive 3D consacré à la radioprotection et aux procédures de sécurité nucléaire. J’ai participé à la conception et à la réalisation de scénarios d’accident simulés, incluant la gestion des équipes de secours, puis à leur intégration en #csharp sous #unity.
+
+#### Avant — description détaillée
+
+> Module de formation interactive 3D sur la radioprotection et les procédures de sécurité nucléaire. #csharp #unity3D #simulation #radioprotection #training #3d. Simulations de scénarios d'accident, gestion des équipes de secours.
+
+#### Après — description détaillée validée
+
+> Le module proposait des scénarios d’accident simulés pour former aux procédures de radioprotection et de sécurité nucléaire. Mon travail portait sur la structuration des séquences de formation, la modélisation du déroulement des scénarios et la gestion des équipes de secours. J’ai ensuite développé et intégré ces mécanismes en #csharp sous #unity dans un environnement 3D.
+
+#### Avant — contributions détaillées
+
+- Formation radioprotection.
+- Simulation scénarios.
+- Gestion équipes.
+
+#### Après — contributions détaillées validées
+
+- Traduire les procédures de sécurité nucléaire en séquences de formation interactives.
+- Concevoir les scénarios d’accident simulés et leur déroulement.
+- Implémenter la gestion des équipes de secours au sein de la simulation.
+- Développer en #csharp sous #unity le module de formation et son environnement 3D.
+
+#### Motif de la réécriture
+
+La nouvelle version distingue les procédures de radioprotection, les scénarios d’accident et la gestion des équipes de secours. Elle montre comment ces éléments sont structurés en séquences de formation avant leur développement dans le module 3D.

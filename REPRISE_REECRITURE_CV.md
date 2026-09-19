@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom, Dosicase, EMEM et Aeroball sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom, Dosicase, EMEM, Aeroball et le module de formation en radioprotection sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -260,11 +260,11 @@ La version validée met en avant la transformation des procédures opérationnel
 - `src/api/mockData.ts` : expérience `2`, mission `25`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `25`.
 
-## Étape suivante : formation en radioprotection
+## Projet de formation en radioprotection — validé
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée distingue les procédures de sécurité, les scénarios d'accident, la gestion des équipes de secours et leur réalisation en simulation 3D.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Développeur C# / Simulation de formation
 
@@ -276,21 +276,49 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > Le module proposait des scénarios d'accident simulés pour former aux procédures de radioprotection et de sécurité nucléaire. Mon travail portait sur la structuration des séquences de formation, la modélisation du déroulement des scénarios et la gestion des équipes de secours. J'ai ensuite développé et intégré ces mécanismes en #csharp sous #unity dans un environnement 3D.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Traduire les procédures de sécurité nucléaire en séquences de formation interactives.
 - Concevoir les scénarios d'accident simulés et leur déroulement.
 - Implémenter la gestion des équipes de secours au sein de la simulation.
 - Développer en #csharp sous #unity le module de formation et son environnement 3D.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `2`, mission `26`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `26`.
 
+## Étape suivante : maintenance des générateurs de vapeur
+
+Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur C# / Serious game
+
+**Carte**
+
+> Développement d'un serious game #seriousgame destiné à préparer les interventions de maintenance des générateurs de vapeur pendant les arrêts de tranche. J'ai participé à la transposition des procédures de maintenance nucléaire en scénarios interactifs, puis à leur réalisation en #csharp sous #unity dans un environnement 3D.
+
+**Description détaillée**
+
+> Le serious game #seriousgame reproduisait les procédures de maintenance des générateurs de vapeur réalisées pendant les arrêts de tranche. Mon travail portait sur la structuration des séquences d'intervention, leur représentation dans un environnement 3D et le développement des interactions en #csharp sous #unity. L'application était conçue pour préparer les intervenants à ces opérations en environnement nucléaire.
+
+**Contributions proposées**
+
+- Analyser les procédures de maintenance des générateurs de vapeur et les traduire en scénarios de formation.
+- Structurer les séquences et les interactions correspondant aux différentes étapes d'intervention.
+- Représenter en 3D l'environnement et le déroulement des opérations de maintenance.
+- Développer en #csharp sous #unity le serious game #seriousgame et ses mécanismes interactifs.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `2`, mission `27`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `27`.
+
 ## Point de reprise recommandé
 
-1. Faire valider la proposition de formation en radioprotection, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+1. Faire valider la proposition sur la maintenance des générateurs de vapeur, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
 2. Continuer avec les autres projets détaillés d'Oreka selon le même processus.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
