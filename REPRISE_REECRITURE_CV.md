@@ -518,11 +518,11 @@ Les textes validés concernent le projet Xistar `34`.
 - `src/api/mockData.ts` : expérience `3`, mission `34`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `34`.
 
-## Étape suivante : graphique de répartition des langages
+## Graphique de répartition des langages — suppression validée
 
 Le profil affiche actuellement une barre de répartition fondée sur les valeurs suivantes : TypeScript 35 %, C# 35 %, HTML5/CSS 20 % et Dart 10 %.
 
-**Recommandation proposée**
+**Décision validée**
 
 Supprimer ce graphique et les données `profile.languages` associées.
 
@@ -534,17 +534,42 @@ Supprimer ce graphique et les données `profile.languages` associées.
 - La section « Compétences principales » validée présente déjà les langages sans hiérarchie arbitraire.
 - La section « Langues » consacrée au français et à l'anglais reste inchangée.
 
-**Cibles après validation**
+**Cibles à traiter lors de l'application**
 
 - `src/api/mockData.ts` : supprimer ou ne plus exposer `mockProfile.languages`.
 - `src/App.tsx` : retirer le bloc visuel `languageStack`.
 - `src/locales/index.ts` : supprimer la traduction devenue inutilisée si elle ne sert plus ailleurs.
 - `src/utils/exportMockCvToWord.ts` : vérifier qu'aucune exportation ne dépend de ce graphique.
 
+## Étape suivante : structure de l'onglet « Projets »
+
+L'onglet contient actuellement neuf réalisations professionnelles déjà décrites dans les expériences : IECA, AOA, Simulhom, Dosicase, EMEM, Aeroball, la formation en radioprotection, la maintenance des générateurs de vapeur et la radioprotection en chirurgie interventionnelle. Leurs textes sont plus anciens que les versions validées et comportent plusieurs formulations désormais écartées, notamment les mentions génériques de « temps réel » et une place trop importante accordée à l'AR/VR.
+
+Il contient aussi le CV interactif, classé comme projet personnel, alors qu'un onglet « Projets persos » existe déjà.
+
+**Recommandation proposée**
+
+Transformer cet onglet en une sélection de réalisations professionnelles plutôt qu'en une copie des expériences :
+
+- renommer l'onglet « Réalisations » ;
+- y présenter une sélection resserrée et complémentaire : Xistar, IECA, AOA, Simulhom et un regroupement des serious games industriels ;
+- rédiger chaque carte autour du produit, du besoin traité et de la contribution principale, à partir des textes déjà validés ;
+- déplacer le CV interactif vers l'onglet « Projets persos » et supprimer les filtres « Pro » / « Perso » devenus inutiles ;
+- ne pas reprendre séparément toutes les anciennes missions Oreka, déjà accessibles dans le détail de l'expérience.
+
+Cette organisation évite une seconde chronologie quasi identique, donne une place visible à Xistar et conserve une lecture plus transversale des réalisations.
+
+**Cibles après validation**
+
+- `src/api/mockData.ts` : `mockProjects` et, pour le CV interactif, `mockPersonalProjects`.
+- `src/api/projectsLocales.ts` : versions française et anglaise des réalisations.
+- `src/components/tabs/ProjectsTab.tsx` : filtres et distinction artificielle entre projets professionnels et personnels.
+- `src/locales/index.ts` : libellé de l'onglet et textes des filtres devenus inutiles.
+
 ## Point de reprise recommandé
 
-1. Faire valider la suppression du graphique de répartition des langages et la consigner dans `SUIVI_REECRITURE_CV.md`.
-2. Auditer ensuite les projets professionnels dupliqués, les projets personnels et les derniers champs de profil avant l'application globale aux sources.
+1. Faire valider la transformation de l'onglet « Projets » en sélection de réalisations professionnelles.
+2. Rédiger ensuite les cartes retenues à partir des contenus déjà validés, puis auditer les projets personnels et les derniers champs de profil.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
