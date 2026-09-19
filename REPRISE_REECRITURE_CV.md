@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom, Dosicase, EMEM, Aeroball et le module de formation en radioprotection sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom, Dosicase, EMEM, Aeroball, le module de formation en radioprotection et le projet de maintenance des générateurs de vapeur sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -288,11 +288,11 @@ La version validée distingue les procédures de sécurité, les scénarios d'ac
 - `src/api/mockData.ts` : expérience `2`, mission `26`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `26`.
 
-## Étape suivante : maintenance des générateurs de vapeur
+## Projet de maintenance des générateurs de vapeur — validé
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée replace le projet dans le contexte des arrêts de tranche et décrit la transposition des procédures de maintenance en serious game.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Développeur C# / Serious game
 
@@ -304,21 +304,49 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > Le serious game #seriousgame reproduisait les procédures de maintenance des générateurs de vapeur réalisées pendant les arrêts de tranche. Mon travail portait sur la structuration des séquences d'intervention, leur représentation dans un environnement 3D et le développement des interactions en #csharp sous #unity. L'application était conçue pour préparer les intervenants à ces opérations en environnement nucléaire.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Analyser les procédures de maintenance des générateurs de vapeur et les traduire en scénarios de formation.
 - Structurer les séquences et les interactions correspondant aux différentes étapes d'intervention.
 - Représenter en 3D l'environnement et le déroulement des opérations de maintenance.
 - Développer en #csharp sous #unity le serious game #seriousgame et ses mécanismes interactifs.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `2`, mission `27`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `27`.
 
+## Étape suivante : radioprotection en chirurgie interventionnelle
+
+Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur C# / Simulation médicale 3D
+
+**Carte**
+
+> Développement d'une simulation médicale 3D destinée à former les équipes de chirurgie interventionnelle aux pratiques de radioprotection. J'ai contribué à la représentation de la dosimétrie au cours des scénarios, à la visualisation des zones exposées aux rayonnements et à l'intégration des protocoles opérateur en #csharp sous #unity.
+
+**Description détaillée**
+
+> L'application simulait des situations de chirurgie interventionnelle pour former les équipes à l'exposition radiologique et aux précautions associées. Mon travail portait sur l'intégration de la #dosimetrie dans la simulation, la visualisation des zones exposées et la restitution des protocoles de #radioprotection destinés aux opérateurs. J'ai développé ces éléments en #csharp sous #unity dans un environnement 3D.
+
+**Contributions proposées**
+
+- Traduire les protocoles de #radioprotection en séquences de formation destinées aux équipes chirurgicales.
+- Intégrer la #dosimetrie et représenter son évolution au cours des scénarios simulés.
+- Visualiser les zones exposées aux rayonnements dans l'environnement 3D.
+- Développer en #csharp sous #unity la simulation médicale et ses interactions.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `2`, mission `28`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `28`.
+
 ## Point de reprise recommandé
 
-1. Faire valider la proposition sur la maintenance des générateurs de vapeur, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+1. Faire valider la proposition sur la radioprotection en chirurgie interventionnelle, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
 2. Continuer avec les autres projets détaillés d'Oreka selon le même processus.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
