@@ -242,3 +242,51 @@ La nouvelle version décrit le périmètre multiplateforme et les responsabilit�
 #### Motif de la réécriture
 
 La nouvelle version place la conception fonctionnelle et les serious games au premier plan : analyse des besoins, formalisation des parcours et transformation des procédures métier en scénarios interactifs. Le développement Unity, l’intégration 3D, l’optimisation et la livraison restent visibles comme mise en œuvre de cette conception. La VR et l’AR sont conservées dans le contexte des dispositifs concernés sans devenir le positionnement général du profil.
+
+### Projet Simulhom
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `22` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.22`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.22`
+
+#### Avant — intitulé
+
+> Conception générale & UX/UI
+
+#### Après — intitulé validé
+
+> Conception fonctionnelle & UX/UI
+
+#### Avant — carte
+
+> Conception générale et UX/UI du simulateur ergonomique 3D #vr #csharp #Unity3D pour la prévention des TMS en milieu industriel. Collaboration avec des ergonomes, analyse posturale temps réel, feedback visuel des risques, interface opérateur intuitive.
+
+#### Après — carte validée
+
+> Conception fonctionnelle et UX/UI de Simulhom, un simulateur ergonomique 3D destiné à prévenir les troubles musculosquelettiques en milieu industriel. En collaboration avec des ergonomes, j’ai traduit les méthodes d’analyse posturale en parcours, visualisations et retours compréhensibles pour l’utilisateur, puis participé à leur réalisation en #csharp sous #unity.
+
+#### Avant — description détaillée
+
+> Conception générale du produit en collaboration avec des ergonomes, conception et réalisation UX/UI. Simulateur ergonomique 3D pour la prévention des TMS en milieu industriel. Analyse posturale temps réel, feedback visuel des risques.
+
+#### Après — description détaillée validée
+
+> Simulhom est un simulateur ergonomique 3D conçu pour analyser les postures de travail et visualiser les risques de TMS. J’ai participé à la conception fonctionnelle du produit avec des ergonomes, puis conçu les parcours et l’interface #uiux afin de rendre les indicateurs posturaux lisibles et exploitables. J’ai également contribué au développement de l’application en #csharp sous #unity et à l’intégration des retours visuels dans la scène 3D.
+
+#### Avant — contributions détaillées
+
+- Conception générale du produit.
+- Collaboration avec des ergonomes.
+- Conception et réalisation UX/UI.
+- Développement Unity 3D.
+
+#### Après — contributions détaillées validées
+
+- Participer à la conception fonctionnelle du produit avec des ergonomes, en formalisant les usages et les scénarios d’analyse.
+- Concevoir les parcours, l’interface #uiux et les retours visuels associés aux risques posturaux.
+- Développer en #csharp sous #unity les interactions et les composants du simulateur 3D.
+- Intégrer l’analyse posturale et restituer les indicateurs de risque au fil de la simulation.
+
+#### Motif de la réécriture
+
+La nouvelle version présente Simulhom comme un travail de conception fonctionnelle et UX/UI mené avec des ergonomes. Elle relie l’analyse posturale aux parcours, aux visualisations et aux retours proposés à l’utilisateur, tout en conservant la contribution au développement Unity et C#.

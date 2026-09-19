@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA et l'expérience générale Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie et Simulhom sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -148,11 +148,11 @@ La version validée met en avant la conception fonctionnelle et la création de 
 - `src/api/mockData.ts` : expérience `2`, mission `21`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `21`.
 
-## Étape suivante : Simulhom
+## Projet Simulhom — validé
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée met en avant la conception fonctionnelle menée avec des ergonomes, l'UX/UI et la restitution des risques posturaux.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Conception fonctionnelle & UX/UI
 
@@ -164,21 +164,49 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > Simulhom est un simulateur ergonomique 3D conçu pour analyser les postures de travail et visualiser les risques de TMS. J'ai participé à la conception fonctionnelle du produit avec des ergonomes, puis conçu les parcours et l'interface #uiux afin de rendre les indicateurs posturaux lisibles et exploitables. J'ai également contribué au développement de l'application en #csharp sous #unity et à l'intégration des retours visuels dans la scène 3D.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Participer à la conception fonctionnelle du produit avec des ergonomes, en formalisant les usages et les scénarios d'analyse.
 - Concevoir les parcours, l'interface #uiux et les retours visuels associés aux risques posturaux.
 - Développer en #csharp sous #unity les interactions et les composants du simulateur 3D.
 - Intégrer l'analyse posturale et restituer les indicateurs de risque au fil de la simulation.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `2`, mission `22`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `22`.
 
+## Étape suivante : Dosicase
+
+Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Conception UX/UI
+
+**Carte**
+
+> Conception UX/UI de Dosicase, un simulateur destiné à la formation en radioprotection sur chantier-école. J'ai structuré les parcours et conçu les interfaces pour rendre les risques radiologiques et les scénarios de formation compréhensibles pour les apprenants, puis participé à leur intégration dans l'application en #csharp sous #unity.
+
+**Description détaillée**
+
+> Dosicase met la simulation au service de la formation pratique en radioprotection. J'ai conçu l'expérience et l'interface #uiux pour présenter les situations et les risques radiologiques de manière pédagogique, puis contribué à leur intégration dans le simulateur en #csharp sous #unity. Le travail portait autant sur l'organisation des informations que sur les interactions nécessaires à l'apprentissage en chantier-école.
+
+**Contributions proposées**
+
+- Structurer le parcours pédagogique à partir des objectifs de formation en radioprotection.
+- Concevoir l'interface #uiux et organiser les informations liées aux situations et aux risques radiologiques.
+- Définir les interactions du simulateur nécessaires à l'apprentissage pratique en chantier-école.
+- Participer à l'intégration de l'expérience dans l'application en #csharp sous #unity.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `2`, mission `23`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `23`.
+
 ## Point de reprise recommandé
 
-1. Faire valider la proposition Simulhom, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+1. Faire valider la proposition Dosicase, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
 2. Continuer avec les autres projets détaillés d'Oreka selon le même processus.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
