@@ -32,6 +32,7 @@ Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale
 Décisions importantes prises pour Xistar :
 
 - faire apparaître le périmètre full-stack sans réduire la mission à des micro-frontends ;
+- intégrer la stack confirmée de Xistar : TypeScript et React pour l'interface, Go pour les services ;
 - distinguer Dockview et l'organisation de l'interface du système d'alertes ;
 - préciser que l'escalade des alertes passe par une API dédiée ainsi que par des notifications par e-mail ;
 - mettre en avant l'interopérabilité : ingestion des données partenaires, transmission des ordres et publication via MQTT et API REST ;
@@ -43,17 +44,17 @@ Décisions importantes prises pour Xistar :
 
 **Carte**
 
-> Développeur full-stack sur Xistar, un poste de commandement tactique maritime accessible depuis le navigateur. J'interviens sur l'interface opérateur #dockview, la cartographie #maplibre #deckgl en symbologie OTAN #app-6d et l'interopérabilité avec les systèmes partenaires via #mqtt et #api-rest. L'application pilote un mur d'écrans depuis un poste maître et propose un rejeu temporel pour les rapports de situation et les débriefings.
+> Développeur full-stack sur Xistar, un poste de commandement tactique maritime accessible depuis le navigateur. J'interviens sur l'interface opérateur en #typescript et #react, les services en #go, la cartographie #maplibre #deckgl en symbologie OTAN #app-6d et l'interopérabilité via #mqtt et #api-rest. L'application pilote un mur d'écrans depuis un poste maître et propose un rejeu temporel pour les rapports de situation et les débriefings.
 
 **Description détaillée**
 
-> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. Son interface cartographique s'appuie sur #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Le produit ingère des flux partenaires #ais, #nmea, #cot et #mavlink, transmet des ordres et publie des informations via #mqtt et #api-rest. Ses profils de déploiement et la communication entre instances permettent de l'adapter aux contextes défense, portuaire et démonstration.
+> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. L'interface opérateur repose sur #typescript, #react et #dockview ; la cartographie utilise #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Les services #go ingèrent des flux partenaires #ais, #nmea, #cot et #mavlink, transmettent des ordres et publient des informations via #mqtt et #api-rest. Les profils de déploiement et la communication entre instances permettent d'adapter le produit aux contextes défense, portuaire et démonstration.
 
 **Contributions enrichies à valider**
 
-- Concevoir l'espace de travail opérateur sous forme de panneaux #dockview et intégrer la cartographie #maplibre #deckgl en symbologie OTAN #app-6d.
+- Concevoir en #typescript et #react l'espace de travail opérateur sous forme de panneaux #dockview, puis intégrer la cartographie #maplibre #deckgl en symbologie OTAN #app-6d.
 - Développer le système d'alertes et ses mécanismes d'escalade, avec une #api dédiée et l'envoi de notifications par e-mail.
-- Assurer l'interopérabilité avec les systèmes partenaires : ingestion des flux #ais, #nmea, #cot et #mavlink, transmission des ordres et publication via #mqtt et #api-rest.
+- Assurer dans les services #go l'interopérabilité avec les systèmes partenaires : ingestion des flux #ais, #nmea, #cot et #mavlink, transmission des ordres et publication via #mqtt et #api-rest.
 - Développer l'application multi-écran et sa gestion centralisée depuis un poste maître, avec partage distant et synchronisation des vues.
 - Mettre en place un rejeu temporel des opérations destiné à l'analyse, aux rapports de situation et aux débriefings.
 
