@@ -25,9 +25,9 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre et la présentation globale sont validés. L'expérience Xistar est validée sur le fond, mais sa formulation doit être revalidée après réintégration des informations techniques. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale et l'expérience Xistar sont validés. Leurs versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`, qui fait foi pour leur future application.
 
-Le titre, le sous-titre et la présentation globale ne nécessitent pas de chips : ces champs ne disposent pas du rendu prévu pour les cartes, et la présentation doit rester centrée sur le positionnement. Xistar reste validé sur le fond, mais les formulations ci-dessous doivent être revalidées après réintégration des informations techniques.
+Le titre, le sous-titre et la présentation globale ne nécessitent pas de chips : ces champs ne disposent pas du rendu prévu pour les cartes, et la présentation doit rester centrée sur le positionnement. La révision technique de Xistar a été validée après réintégration des informations techniques.
 
 Décisions importantes prises pour Xistar :
 
@@ -39,7 +39,7 @@ Décisions importantes prises pour Xistar :
 - présenter le rejeu temporel comme un support à l'analyse, aux rapports de situation et aux débriefings ;
 - insister sur la capacité d'adaptation aux différents profils de déploiement plutôt que sur la modularité technique.
 
-### Révision technique proposée pour Xistar — à valider
+### Révision technique de Xistar — validée
 
 **Carte**
 
@@ -49,7 +49,7 @@ Décisions importantes prises pour Xistar :
 
 > Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. Son interface cartographique s'appuie sur MapLibre et deck.gl pour afficher une symbologie OTAN APP-6D. Le produit échange avec des systèmes partenaires via MQTT et API REST pour recevoir leurs données, transmettre des ordres et publier des informations. Ses profils de déploiement et la communication entre instances permettent de l'adapter aux contextes défense, portuaire et démonstration.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Concevoir l'espace de travail opérateur sous forme de panneaux Dockview et intégrer la cartographie MapLibre et deck.gl en symbologie OTAN APP-6D.
 - Développer le système d'alertes et ses mécanismes d'escalade, avec une API dédiée et l'envoi de notifications par e-mail.
@@ -119,13 +119,12 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 ## Point de reprise recommandé
 
-1. Faire revalider la révision technique de Xistar, en particulier le choix et le placement des chips.
-2. Reprendre avec la proposition IECA enrichie de chips.
-3. Faire valider la carte, la description et les cinq contributions, en particulier la formulation du sujet d'IP Sprint.
-4. Une fois IECA validée, ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-5. Reprendre ensuite la proposition AOA en veillant à ne pas survaloriser l'AR/VR dans le positionnement général.
-6. Continuer avec les expériences suivantes selon le même processus.
-7. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis harmoniser les doublons et les traductions.
+1. Reprendre avec la proposition IECA enrichie de chips.
+2. Faire valider la carte, la description et les cinq contributions, en particulier la formulation du sujet d'IP Sprint.
+3. Une fois IECA validée, ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+4. Reprendre ensuite la proposition AOA en veillant à ne pas survaloriser l'AR/VR dans le positionnement général.
+5. Continuer avec les expériences suivantes selon le même processus.
+6. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
 
