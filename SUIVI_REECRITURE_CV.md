@@ -572,3 +572,21 @@ La nouvelle version replace le projet dans le contexte des arrêts de tranche et
 #### Motif de la réécriture
 
 La nouvelle version replace la dosimétrie et les protocoles de radioprotection dans les scénarios de formation destinés aux équipes chirurgicales. Elle remplace la mention « temps réel » par une description concrète de l’évolution de la dosimétrie et de la visualisation des zones exposées.
+
+### Objectif professionnel
+
+**Statut :** validé, non appliqué
+**Champ principal :** `src/api/mockDataLocales.ts` → `fr.profile.seeking`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.profile.seeking`
+
+#### Avant
+
+> Poste Front End web dans un contexte industriel · Vue.js ou React · TypeScript · micro-frontend · équipe orientée qualité & UX
+
+#### Après — texte validé
+
+> Développement full-stack · Expertise front-end et UI/UX · Conception fonctionnelle · Équipe attentive à la qualité produit
+
+#### Motif de la réécriture
+
+Le nouvel objectif ne limite plus la recherche à un domaine, une technologie ou une architecture particulière. Il exprime le type de rôle recherché, les axes d’expertise et l’attention portée à la qualité produit.
