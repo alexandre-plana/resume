@@ -92,3 +92,53 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 #### Motif de la réécriture
 
 La nouvelle version met en avant l’interopérabilité, la gestion centralisée du mur d’écrans, le rejeu temporel et la capacité d’adaptation aux différents déploiements. Dockview et le système d’alertes sont présentés comme deux responsabilités distinctes. Les technologies, la norme APP-6D et les protocoles d’échange sont intégrés au contexte des réalisations sous forme de chips dans la carte, la description et les contributions, sans transformer les textes en inventaires techniques.
+
+### Expérience IECA
+
+**Statut :** validée, non appliquée
+**Champs principaux :** `src/api/mockData.ts` → expérience `1`, mission `11` ; `src/api/mockDataLocales.ts` → `fr.experiences.1.missions.11`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.1.missions.11`
+
+#### Avant — intitulé
+
+> Développeur front end
+
+#### Après — intitulé validé
+
+> Développeur front-end
+
+#### Avant — carte
+
+> Développeur frontend sur la plateforme IIoT Edge de Schneider : conception de composants mutualisés #vue3 #typescript pour plusieurs équipes projet, structuration de l’architecture #single-spa #microfrontend, industrialisation de la qualité avec #jest et #sonarqube, contribution active au delivery #scrum orienté performance et maintenabilité. Exemples de tâches : création de composants graphiques, intégration d’un module de gestion des alertes, optimisation du chargement des données, mise en place de tests unitaires, refactoring, amélioration de l’accessibilité.
+
+#### Après — carte validée
+
+> Développeur front-end sur IECA, la plateforme IIoT Edge de Schneider Electric, avec des interventions ponctuelles côté back-end. J’ai contribué à plusieurs domaines fonctionnels — connecteurs, calculs, conditions, alertes et scripting — ainsi qu’au socle partagé de l’architecture #microfrontend fondée sur #vue3 #typescript et #single-spa.
+
+#### Avant — description détaillée
+
+> Développement d’applications Edge industrielles en architecture micro-frontend avec Vue 3 et TypeScript. Contribution active à la vie du projet en Scrum, avec un focus constant sur la qualité, la performance et l’accessibilité.
+
+#### Après — description détaillée validée
+
+> Au sein d’une équipe #scrum pluridisciplinaire, j’ai développé des applications Edge organisées en #microfrontend avec #vue3, #typescript et #single-spa. Mon périmètre couvrait principalement les interfaces et leur architecture, avec quelques extensions de fonctionnalités back-end. J’intervenais à la fois sur les domaines fonctionnels de la plateforme, les composants partagés, les tests et le suivi de la qualité du code.
+
+#### Avant — contributions détaillées
+
+- Concevoir et développer des composants front réutilisables par les différentes équipes du projet.
+- Implémenter une architecture micro-frontend.
+- Implémenter les tests unitaires en utilisant Jest.
+- Surveiller les performances et le bon fonctionnement de l’application, et améliorer la qualité du code via SonarQube.
+- Amélioration continue de l’architecture et de la scalabilité du projet.
+
+#### Après — contributions détaillées validées
+
+- Participer au développement des fonctionnalités liées aux connecteurs, aux calculs, aux conditions, aux alertes et au scripting.
+- Concevoir en #vue3 et #typescript des composants partagés, dont une table configurable, un socle de routage et un sélecteur de propriétés.
+- Étendre ponctuellement les fonctionnalités back-end nécessaires aux évolutions prises en charge côté front-end.
+- Développer avec #jest les tests unitaires des composants, des stores #pinia et des fonctions utilitaires, puis suivre les performances et la qualité du code avec #sonarqube.
+- Concevoir, lors d’un IP Sprint, un prototype d’application #mobile destiné à transmettre les alertes aux opérateurs d’astreinte en dehors de la plateforme IECA.
+
+#### Motif de la réécriture
+
+La nouvelle version restitue l’étendue de la mission au-delà des composants partagés : domaines fonctionnels de la plateforme, dominante front-end, interventions back-end ponctuelles, tests et sujet d’IP Sprint. Les technologies et outils sont rattachés aux contributions concernées sous forme de chips.

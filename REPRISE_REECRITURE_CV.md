@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale et l'expérience Xistar sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar et IECA sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -58,7 +58,7 @@ Décisions importantes prises pour Xistar :
 - Développer l'application multi-écran et sa gestion centralisée depuis un poste maître, avec partage distant et synchronisation des vues.
 - Mettre en place un rejeu temporel des opérations destiné à l'analyse, aux rapports de situation et aux débriefings.
 
-## Travail en cours : IECA
+## Expérience IECA — validée
 
 ### Faits apportés par l'utilisateur
 
@@ -67,7 +67,7 @@ Décisions importantes prises pour Xistar :
 - Conception de composants partagés, sans limiter la mission à ce seul périmètre : table configurable, socle de routage et sélecteur de propriétés.
 - Réalisation, lors d'un IP Sprint, d'un sujet d'application mobile destiné à la communication externe des alertes vers les opérateurs d'astreinte.
 
-### Proposition actuelle — non validée
+### Version validée
 
 **Carte**
 
@@ -77,7 +77,7 @@ Décisions importantes prises pour Xistar :
 
 > Au sein d'une équipe #scrum pluridisciplinaire, j'ai développé des applications Edge organisées en #microfrontend avec #vue3, #typescript et #single-spa. Mon périmètre couvrait principalement les interfaces et leur architecture, avec quelques extensions de fonctionnalités back-end. J'intervenais à la fois sur les domaines fonctionnels de la plateforme, les composants partagés, les tests et le suivi de la qualité du code.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Participer au développement des fonctionnalités liées aux connecteurs, aux calculs, aux conditions, aux alertes et au scripting.
 - Concevoir en #vue3 et #typescript des composants partagés, dont une table configurable, un socle de routage et un sélecteur de propriétés.
@@ -85,9 +85,9 @@ Décisions importantes prises pour Xistar :
 - Développer avec #jest les tests unitaires des composants, des stores #pinia et des fonctions utilitaires, puis suivre les performances et la qualité du code avec #sonarqube.
 - Concevoir, lors d'un IP Sprint, un prototype d'application #mobile destiné à transmettre les alertes aux opérateurs d'astreinte en dehors de la plateforme IECA.
 
-La dernière contribution remplace l'ancienne formulation centrée sur la présentation du prototype aux Product Owners. Elle n'a pas encore été validée dans sa rédaction définitive.
+La dernière contribution remplace l'ancienne formulation centrée sur la présentation du prototype aux Product Owners et précise sa finalité pour les opérateurs d'astreinte.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `1`, mission `11`.
 - `src/api/mockDataLocales.ts` : version française de l'expérience `1`, mission `11`.
@@ -99,16 +99,16 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 **Carte**
 
-> Développeur #csharp #unity sur Augmented Operator Advisor, une application industrielle multiplateforme pour #android #ios et #windows. Mon travail a porté sur l'architecture front-end et les interfaces opérateur, ainsi que sur le fonctionnement #offline, la synchronisation avec le serveur et la compatibilité des projets entre versions.
+> Développeur en #csharp et #unity sur Augmented Operator Advisor, une application industrielle multiplateforme pour #android, #ios et #windows. Mon travail a porté sur l'architecture front-end et les interfaces opérateur, ainsi que sur le fonctionnement #offline, les échanges #http avec le serveur et la compatibilité des projets entre versions.
 
 **Description détaillée**
 
-> Pendant six ans, j'ai développé en #csharp et #unity les interfaces et l'architecture front-end d'une application #ar destinée aux opérateurs industriels. Le périmètre couvrait les versions #android, #ios et #windows, leur personnalisation pour les clients #oem, la communication #api avec le serveur de projets et la préparation des applications pour les différentes plateformes de distribution.
+> Pendant six ans, j'ai développé en #csharp et #unity les interfaces et l'architecture front-end d'une application #ar destinée aux opérateurs industriels. Le périmètre couvrait les versions #android, #ios et #windows, leur personnalisation pour les clients #oem, la communication #http avec le serveur de projets et la préparation des applications pour les différentes plateformes de distribution.
 
 **Contributions proposées**
 
 - Concevoir en #csharp et #unity l'architecture front-end et une interface adaptée à #android, #ios et #windows, en modes portrait et paysage.
-- Développer le fonctionnement #offline, la synchronisation avec l'#api au retour de la connexion et la gestion des erreurs réseau.
+- Développer le fonctionnement #offline, la synchronisation avec le serveur via #http au retour de la connexion et la gestion des erreurs réseau.
 - Assurer la rétrocompatibilité des projets par la lecture des anciens formats et leur migration à la volée.
 - Mettre en place un système de styles externalisé pour produire des versions personnalisées aux couleurs des clients #oem.
 - Créer sous #unity un outil de tests unitaires intégré aux étapes précédant et suivant les builds.
@@ -120,11 +120,10 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 ## Point de reprise recommandé
 
-1. Reprendre avec la proposition IECA enrichie de chips dans la carte, la description et les contributions.
-2. Faire valider IECA, en particulier la formulation du sujet d'IP Sprint, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-3. Reprendre ensuite la proposition AOA enrichie de chips, sans survaloriser l'AR/VR dans le positionnement général.
-4. Continuer avec les expériences suivantes selon le même processus.
-5. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
+1. Reprendre avec la proposition AOA enrichie de chips, sans survaloriser l'AR/VR dans le positionnement général.
+2. Faire valider AOA, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+3. Continuer avec les expériences suivantes selon le même processus.
+4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
 
