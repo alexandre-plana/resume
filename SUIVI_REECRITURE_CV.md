@@ -384,3 +384,50 @@ La nouvelle version précise la finalité de Dosicase et relie le travail UX/UI 
 #### Motif de la réécriture
 
 La nouvelle version explicite le rôle de l’EMEM et les responsabilités exercées sur la simulation, les flux, les matériaux radioactifs et les interfaces opérateur. Elle remplace la mention générique « temps réel » par une description concrète du pilotage et du suivi de la simulation.
+
+### Projet Aeroball
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `25` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.25`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.25`
+
+#### Avant — intitulé
+
+> C# / 3D Developer
+
+#### Après — intitulé validé
+
+> Développeur C# / Serious game
+
+#### Avant — carte
+
+> Serious game de formation Aeroball pour le nucléaire. #csharp #unity3D #seriousgame #simulation #nuclear #3d
+
+#### Après — carte validée
+
+> Développement d’un serious game #seriousgame destiné à former les opérateurs à l’utilisation du poste de contrôle Aeroball en environnement nucléaire. J’ai participé à la traduction des procédures opérationnelles en scénarios interactifs, puis à leur réalisation sous #unity en #csharp et à la modélisation 3D de l’environnement de formation.
+
+#### Avant — description détaillée
+
+> Serious game de formation pour l'utilisation du poste de contrôle Aeroball en milieu nucléaire. #csharp #unity3D #seriousgame #simulation #nuclear #3d. Simulation 3D interactive, développement C# et modélisation 3D pour reproduire fidèlement les procédures opérationnelles.
+
+#### Après — description détaillée validée
+
+> Le projet reproduisait en simulation le déroulement des procédures associées au poste de contrôle Aeroball. Mon travail portait sur la transformation des procédures opérationnelles en séquences de formation interactives, le développement en #csharp sous #unity et la modélisation 3D de l’environnement. Le serious game #seriousgame permettait aux opérateurs de s’entraîner à l’utilisation du poste de contrôle dans un cadre simulé.
+
+#### Avant — contributions détaillées
+
+- Serious game.
+- Simulation 3D.
+- Modélisation procédurale.
+
+#### Après — contributions détaillées validées
+
+- Analyser les procédures opérationnelles du poste de contrôle Aeroball et les traduire en scénarios de formation.
+- Concevoir les séquences et les interactions du serious game #seriousgame.
+- Développer en #csharp sous #unity la simulation 3D et le déroulement des scénarios.
+- Modéliser l’environnement de formation et l’intégrer dans l’application.
+
+#### Motif de la réécriture
+
+La nouvelle version présente Aeroball comme un travail de transposition des procédures opérationnelles en séquences de formation interactives. Elle distingue la conception des scénarios, le développement de la simulation et la modélisation de l’environnement.

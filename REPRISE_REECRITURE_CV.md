@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom, Dosicase et EMEM sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA, l'expérience générale Oreka Ingénierie, Simulhom, Dosicase, EMEM et Aeroball sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -232,11 +232,11 @@ La version validée décrit précisément la simulation, la représentation des 
 - `src/api/mockData.ts` : expérience `2`, mission `24`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `24`.
 
-## Étape suivante : Aeroball
+## Projet Aeroball — validé
 
-Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+La version validée met en avant la transformation des procédures opérationnelles en séquences de formation, puis leur réalisation en simulation 3D.
 
-**Intitulé proposé**
+**Intitulé validé**
 
 > Développeur C# / Serious game
 
@@ -248,21 +248,49 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 > Le projet reproduisait en simulation le déroulement des procédures associées au poste de contrôle Aeroball. Mon travail portait sur la transformation des procédures opérationnelles en séquences de formation interactives, le développement en #csharp sous #unity et la modélisation 3D de l'environnement. Le serious game #seriousgame permettait aux opérateurs de s'entraîner à l'utilisation du poste de contrôle dans un cadre simulé.
 
-**Contributions proposées**
+**Contributions validées**
 
 - Analyser les procédures opérationnelles du poste de contrôle Aeroball et les traduire en scénarios de formation.
 - Concevoir les séquences et les interactions du serious game #seriousgame.
 - Développer en #csharp sous #unity la simulation 3D et le déroulement des scénarios.
 - Modéliser l'environnement de formation et l'intégrer dans l'application.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : expérience `2`, mission `25`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `25`.
 
+## Étape suivante : formation en radioprotection
+
+Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
+
+**Intitulé proposé**
+
+> Développeur C# / Simulation de formation
+
+**Carte**
+
+> Développement d'un module de formation interactive 3D consacré à la radioprotection et aux procédures de sécurité nucléaire. J'ai participé à la conception et à la réalisation de scénarios d'accident simulés, incluant la gestion des équipes de secours, puis à leur intégration en #csharp sous #unity.
+
+**Description détaillée**
+
+> Le module proposait des scénarios d'accident simulés pour former aux procédures de radioprotection et de sécurité nucléaire. Mon travail portait sur la structuration des séquences de formation, la modélisation du déroulement des scénarios et la gestion des équipes de secours. J'ai ensuite développé et intégré ces mécanismes en #csharp sous #unity dans un environnement 3D.
+
+**Contributions proposées**
+
+- Traduire les procédures de sécurité nucléaire en séquences de formation interactives.
+- Concevoir les scénarios d'accident simulés et leur déroulement.
+- Implémenter la gestion des équipes de secours au sein de la simulation.
+- Développer en #csharp sous #unity le module de formation et son environnement 3D.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : expérience `2`, mission `26`.
+- `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `26`.
+
 ## Point de reprise recommandé
 
-1. Faire valider la proposition Aeroball, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+1. Faire valider la proposition de formation en radioprotection, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
 2. Continuer avec les autres projets détaillés d'Oreka selon le même processus.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les expériences suivantes.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
