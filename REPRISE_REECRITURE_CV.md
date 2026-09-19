@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, l'objectif professionnel, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, l'objectif professionnel, les compétences principales, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -361,39 +361,83 @@ Le champ validé reste volontairement généraliste : il ne cible ni domaine ni 
 - `src/api/mockDataLocales.ts` : `fr.profile.seeking`.
 - `src/api/mockDataLocales.ts` : `en.profile.seeking`, à reformuler en anglais sans traduction littérale.
 
-## Étape suivante : compétences principales
+## Compétences principales — validées
 
-La section actuelle ne comporte que deux groupes et ne reflète pas le périmètre full-stack validé. La proposition suivante n'est pas encore validée.
+La nouvelle organisation reflète le périmètre full-stack, l'interopérabilité et l'outillage documentés dans les expériences.
 
 **Avant**
 
 - **Frameworks :** Vue3, React, single-spa, Jest, Flutter, Unity 3D.
 - **Outils :** Docker, Git, Postman, Jira, Figma.
 
-**Après proposé**
+**Après validé**
 
 - **Langages :** TypeScript, Go, C#, Python.
 - **Front-end & visualisation :** React, Vue 3, single-spa, Dockview, MapLibre, deck.gl, Unity 3D.
 - **Services & interopérabilité :** API REST, MQTT, AIS, NMEA, CoT, MAVLink.
 - **Qualité & outils :** Jest, Vitest, SonarQube, GitLab CI, Docker, Git, Postman, Jira, Figma.
 
-**Principes de sélection**
+**Principes de sélection validés**
 
 - Faire apparaître les compétences documentées dans les expériences validées.
 - Distinguer les langages, l'interface, les échanges système et l'outillage.
 - Ne pas faire de la section un inventaire exhaustif ; les détails restent attachés aux expériences.
 - Retirer Flutter, qui n'est relié à aucune expérience actuellement documentée.
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockData.ts` : `mockSkills`.
 - `src/api/mockDataLocales.ts` : `fr.skills` et `en.skills`.
 - Vérifier la hauteur de la barre latérale après passage de deux à quatre groupes.
 
+## Étape suivante : formations et diplômes
+
+La proposition suivante harmonise les libellés, corrige « licence » et distingue les formations, le stage et les diplômes. Elle n'est pas encore validée.
+
+**Formation React · TypeScript**
+
+- Libellé : `📌 Formation`
+- Intitulé : `React · TypeScript`
+- Établissement et date : `Datacorp · 2026`
+- Description : `Formation approfondie à React et TypeScript, centrée sur les pratiques modernes du développement front-end.`
+
+**Formation TypeScript · Docker · Vue.js**
+
+- Libellé : `📌 Formation`
+- Intitulé : `TypeScript · Docker · Vue.js`
+- Établissement et date : `Datacorp · 2023`
+- Description : `Formations professionnelles à TypeScript, Docker et Vue.js, appliquées au développement d'applications web.`
+
+**Stage de fin de licence**
+
+- Libellé : `📌 Stage`
+- Intitulé : `Polymorph`
+- Contexte et date : `Stage de fin de licence · 2013`
+- Description : `Design graphique · Communication visuelle`
+
+**Licence 3D temps réel**
+
+- Libellé : `📌 Diplôme`
+- Intitulé : `Licence 3D temps réel`
+- Établissement et date : `3DI Laval · 2012–2013`
+- Description : `Unity 3D · Réalité virtuelle · 3D temps réel`
+
+**BTS Communication visuelle**
+
+- Libellé : `📌 Diplôme`
+- Intitulé : `BTS Communication visuelle — option Multimédia`
+- Établissement et date : `3DI Laval · 2010–2012`
+- Description : `Multimédia · Web · Vidéo`
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : `mockFormation`.
+- `src/api/mockDataLocales.ts` : `fr.formation` et `en.formation`.
+
 ## Point de reprise recommandé
 
-1. Faire valider la nouvelle organisation des compétences, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-2. Auditer ensuite la section formations avant l'application globale aux sources.
+1. Faire valider la section formations et diplômes, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+2. Auditer ensuite les derniers champs de profil et les contenus dupliqués avant l'application globale aux sources.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
