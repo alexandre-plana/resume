@@ -84,6 +84,7 @@ In a CV, omit the second sentence unless the absence of evidence itself matters.
 | Replacing repeated technical terms with loose synonyms | Keep the stable term |
 | Removing technical chips to make the prose look cleaner | Retain verified, discriminating chips and anchor them to the relevant contribution |
 | Adding chips only to the summary card | Apply the convention to every prose field in scope and verify rendering support for each field |
+| Treating every CV field as having the same technical density | Respect field-specific intent; a positioning paragraph may remain chip-free while experiences carry the technical detail |
 | Hiding uncertainty to sound decisive | State the known value, source, date, or uncertainty |
 | Adding numbers for credibility | Use only documented numbers |
 | Rewriting sound passages during every pass | Revise only failed passages |

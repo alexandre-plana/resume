@@ -2,7 +2,7 @@
 
 Ce document consigne les versions avant/après, leur statut de validation et les révisions demandées avant leur application dans le CV.
 
-> **Révision en cours :** les technologies, normes et protocoles doivent être réintégrés sous forme de chips dans tous les contenus rédactionnels déjà retravaillés. Le titre et le sous-titre restent validés ; la présentation globale et les textes détaillés de Xistar doivent être revalidés après cet enrichissement.
+> **Révision en cours :** les technologies, normes et protocoles doivent être réintégrés sous forme de chips dans les expériences déjà retravaillées. Le titre, le sous-titre et la présentation globale restent validés sans chips ; les textes détaillés de Xistar doivent être revalidés après cet enrichissement.
 
 ## Version française
 
@@ -28,7 +28,7 @@ Le titre reflète le périmètre full-stack actuel sans effacer l'expertise fron
 
 ### Présentation globale
 
-**Statut :** validée sur le fond, révision des chips à revalider, non appliquée
+**Statut :** validée, non appliquée
 **Champ principal :** `src/api/mockDataLocales.ts` → `fr.profile.bio`  
 **Doublon à synchroniser lors de l'application :** `src/api/mockData.ts` → `mockProfile.bio`
 
@@ -36,13 +36,13 @@ Le titre reflète le périmètre full-stack actuel sans effacer l'expertise fron
 
 > Développeur Front-End avec 13 ans d’expérience, j’ai évolué dans des secteurs industriels exigeants (énergie, nucléaire, défense, IIoT). J’ai appris à concevoir des interfaces intuitives et fiables, en collaborant avec des équipes pluridisciplinaires et en adaptant les solutions aux besoins métier. Curieux, rigoureux et orienté qualité, je maîtrise les architectures modernes (micro-frontend, Vue, React, TypeScript) et je place l’expérience utilisateur au cœur de chaque projet.
 
-#### Après — version enrichie en chips à valider
+#### Après — texte validé
 
-> Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX autour de #typescript, #react et #vue3, que j’étends aujourd’hui au développement full-stack. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données via #mqtt et #api-rest. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.
+> Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX que j’étends aujourd’hui au développement full-stack. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données en temps réel. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.
 
 #### Motif de la réécriture
 
-Le nouveau texte présente le positionnement et la manière de travailler, sans répéter la chronologie détaillée dans les expériences. Il distingue le socle front-end et UI/UX du périmètre full-stack actuel et réintroduit les principales technologies et les protocoles liés au poste actuel.
+Le nouveau texte présente le positionnement et la manière de travailler, sans répéter la chronologie détaillée dans les expériences. Il distingue le socle front-end et UI/UX du périmètre full-stack actuel, sans détailler les technologies qui figurent dans les expériences.
 
 ### Expérience Xistar
 

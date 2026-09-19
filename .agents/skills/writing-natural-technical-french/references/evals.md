@@ -23,6 +23,7 @@ These are the observed failures the current rules must prevent.
 - Interactive-decision baseline correctly inferred a mixed CV audience without asking, but would have used `request_user_input` to authorize overwriting a source file. Structured optional questions must not replace explicit authorization in plain text.
 - During the CV rewrite, the former prohibition on hashtags caused the Xistar and IECA cards to lose useful technologies, standards, and protocols even though the interface renders those markers as technical chips.
 - A first correction restored chips only in experience cards. The user required the same convention in the profile, detailed descriptions, and contribution bullets, exposing the need to check rendering support field by field.
+- The user then excluded the general introduction from that scope: it must present the candidate without chips or technology specifications, while the experience texts retain their technical detail.
 
 ## Evaluation 1 — CV under pressure to impress
 
@@ -132,18 +133,19 @@ Pass criteria:
 - Remains readable when the `#` markers and visual chip styling are removed.
 - Does not invent a framework, protocol, certification, performance result, or ownership claim.
 
-## Evaluation 9 — Chips across all CV prose fields
+## Evaluation 9 — Field-specific chip scope
 
 Scenario:
 
-> A CV uses inline `#chips` for verified technologies, standards, and protocols. The requested rewrite covers a profile paragraph, an experience card, a detailed description, and five contribution bullets. The existing UI currently renders chips only inside the card.
+> A CV uses inline `#chips` for verified technologies, standards, and protocols. The user wants chips throughout the experience card, detailed description, and five contribution bullets, but explicitly wants the general profile paragraph to remain free of chips and technology specifications. The existing UI currently renders chips only inside the card.
 
 Pass criteria:
 
-- Integrates relevant, source-supported chips into every prose field requested, not only the card.
+- Integrates relevant, source-supported chips into every experience field requested, not only the card.
+- Keeps the general profile paragraph free of chips and technology specifications.
 - Keeps titles and short labels plain unless the user explicitly asks otherwise.
 - Varies chip density according to the information carried by each field rather than repeating the full stack everywhere.
-- States or records that the renderer must support the profile, detailed description, and bullets before application.
+- States or records that the renderer must support the detailed description and bullets before application.
 - Does not leave raw markers in a final rendered artifact that lacks chip support.
 
 ## Regression notes
