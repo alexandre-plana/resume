@@ -1,6 +1,8 @@
 # Suivi de réécriture du CV
 
-Ce document consigne les textes validés avant leur application dans le CV. Les propositions rejetées ou encore en discussion n'y figurent pas.
+Ce document consigne les versions avant/après, leur statut de validation et les révisions demandées avant leur application dans le CV.
+
+> **Révision en cours :** les technologies, normes et protocoles doivent être réintégrés sous forme de chips dans tous les contenus rédactionnels déjà retravaillés. Le titre et le sous-titre restent validés ; la présentation globale et les textes détaillés de Xistar doivent être revalidés après cet enrichissement.
 
 ## Version française
 
@@ -26,7 +28,7 @@ Le titre reflète le périmètre full-stack actuel sans effacer l'expertise fron
 
 ### Présentation globale
 
-**Statut :** validée, non appliquée  
+**Statut :** validée sur le fond, révision des chips à revalider, non appliquée
 **Champ principal :** `src/api/mockDataLocales.ts` → `fr.profile.bio`  
 **Doublon à synchroniser lors de l'application :** `src/api/mockData.ts` → `mockProfile.bio`
 
@@ -34,17 +36,17 @@ Le titre reflète le périmètre full-stack actuel sans effacer l'expertise fron
 
 > Développeur Front-End avec 13 ans d’expérience, j’ai évolué dans des secteurs industriels exigeants (énergie, nucléaire, défense, IIoT). J’ai appris à concevoir des interfaces intuitives et fiables, en collaborant avec des équipes pluridisciplinaires et en adaptant les solutions aux besoins métier. Curieux, rigoureux et orienté qualité, je maîtrise les architectures modernes (micro-frontend, Vue, React, TypeScript) et je place l’expérience utilisateur au cœur de chaque projet.
 
-#### Après — texte validé
+#### Après — version enrichie en chips à valider
 
-> Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX que j’étends aujourd’hui au développement full-stack. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données en temps réel. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.
+> Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX autour de #typescript, #react et #vue3, que j’étends aujourd’hui au développement full-stack. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données via #mqtt et #api-rest. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.
 
 #### Motif de la réécriture
 
-Le nouveau texte présente le positionnement et la manière de travailler, sans répéter la chronologie détaillée dans les expériences. Il distingue le socle front-end et UI/UX du périmètre full-stack actuel.
+Le nouveau texte présente le positionnement et la manière de travailler, sans répéter la chronologie détaillée dans les expériences. Il distingue le socle front-end et UI/UX du périmètre full-stack actuel et réintroduit les principales technologies et les protocoles liés au poste actuel.
 
 ### Expérience Xistar
 
-**Statut :** validée, non appliquée
+**Statut :** validée sur le fond, généralisation des chips à revalider, non appliquée
 **Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `31` (`badge`, `cardSummary`, `desc`, `tasks`)  
 **Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.31`
 
@@ -68,9 +70,9 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 
 > Développement de Xistar, poste de commandement tactique maritime dans le navigateur : un produit unique couvrant la boucle capteur → opérateur → décision → action → analyse. Image tactique temps réel (MapLibre + deck.gl, symbologie OTAN APP-6D, grille MGRS, bathymétrie), conduite de missions et de drones avec enchaînements automatiques et humain dans la boucle, mur d'écrans synchronisé avec push distant, rejeu complet des opérations. Architecture « pont » : adaptateurs isolés aux frontières (AIS, NMEA, CoT, MAVLink) vers un modèle canonique diffusé via MQTT et Socket.io. Une seule base de code produit trois déclinaisons (défense, portuaire, démo) grâce à un registre de features par profil avec lazy loading et tree-shaking.
 
-#### Après — description détaillée validée
+#### Après — description enrichie en chips à valider
 
-> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. Son interface cartographique s’appuie sur MapLibre et deck.gl pour afficher une symbologie OTAN APP-6D. Le produit échange avec des systèmes partenaires via MQTT et API REST pour recevoir leurs données, transmettre des ordres et publier des informations. Ses profils de déploiement et la communication entre instances permettent de l’adapter aux contextes défense, portuaire et démonstration.
+> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, le pilotage multi-écran et le rejeu des opérations. Son interface cartographique s’appuie sur #maplibre et #deckgl pour afficher une symbologie OTAN #app-6d, une grille #mgrs et la bathymétrie. Le produit ingère des flux partenaires #ais, #nmea, #cot et #mavlink, transmet des ordres et publie des informations via #mqtt et #api-rest. Ses profils de déploiement et la communication entre instances permettent de l’adapter aux contextes défense, portuaire et démonstration.
 
 #### Avant — contributions détaillées
 
@@ -81,14 +83,14 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 - Mettre en place le rejeu synchronisé multi-écrans et le mur d'écrans avec push distant de vues
 - Outiller la qualité : Vitest front et back, lint, pipeline GitLab CI en 5 étapes avec déploiement taggé et smoke tests
 
-#### Après — contributions détaillées validées
+#### Après — contributions enrichies en chips à valider
 
-- Concevoir l’espace de travail opérateur sous forme de panneaux Dockview et intégrer la cartographie MapLibre et deck.gl en symbologie OTAN APP-6D.
-- Développer le système d’alertes et ses mécanismes d’escalade, avec une API dédiée et l’envoi de notifications par e-mail.
-- Assurer l’interopérabilité avec les systèmes partenaires : ingestion des données, transmission des ordres et publication via des brokers MQTT et une API REST.
+- Concevoir l’espace de travail opérateur sous forme de panneaux #dockview et intégrer la cartographie #maplibre #deckgl en symbologie OTAN #app-6d.
+- Développer le système d’alertes et ses mécanismes d’escalade, avec une #api dédiée et l’envoi de notifications par e-mail.
+- Assurer l’interopérabilité avec les systèmes partenaires : ingestion des flux #ais, #nmea, #cot et #mavlink, transmission des ordres et publication via #mqtt et #api-rest.
 - Développer l’application multi-écran et sa gestion centralisée depuis un poste maître, avec partage distant et synchronisation des vues.
 - Mettre en place un rejeu temporel des opérations destiné à l’analyse, aux rapports de situation et aux débriefings.
 
 #### Motif de la réécriture
 
-La nouvelle version met en avant l’interopérabilité, la gestion centralisée du mur d’écrans, le rejeu temporel et la capacité d’adaptation aux différents déploiements. Dockview et le système d’alertes sont présentés comme deux responsabilités distinctes. Les technologies, la norme APP-6D et les protocoles d’échange sont intégrés au contexte des réalisations sous forme de chips, sans transformer la carte en inventaire technique.
+La nouvelle version met en avant l’interopérabilité, la gestion centralisée du mur d’écrans, le rejeu temporel et la capacité d’adaptation aux différents déploiements. Dockview et le système d’alertes sont présentés comme deux responsabilités distinctes. Les technologies, la norme APP-6D et les protocoles d’échange sont intégrés au contexte des réalisations sous forme de chips dans la carte, la description et les contributions, sans transformer les textes en inventaires techniques.
