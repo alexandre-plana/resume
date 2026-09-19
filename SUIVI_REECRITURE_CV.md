@@ -525,3 +525,50 @@ La nouvelle version distingue les procédures de radioprotection, les scénarios
 #### Motif de la réécriture
 
 La nouvelle version replace le projet dans le contexte des arrêts de tranche et décrit la transposition des procédures de maintenance en scénarios interactifs. Elle distingue la structuration des interventions, leur représentation 3D et le développement du serious game.
+
+### Projet de radioprotection en chirurgie interventionnelle
+
+**Statut :** validé, non appliqué
+**Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `28` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.28`
+**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.28`
+
+#### Avant — intitulé
+
+> C# / 3D Developer
+
+#### Après — intitulé validé
+
+> Développeur C# / Simulation médicale 3D
+
+#### Avant — carte
+
+> Simulation 3D pour la formation chirurgicale et la radioprotection. #csharp #unity3D #simulation #medical #dosimetry #healthcare #3d
+
+#### Après — carte validée
+
+> Développement d’une simulation médicale 3D destinée à former les équipes de chirurgie interventionnelle aux pratiques de radioprotection. J’ai contribué à la représentation de la dosimétrie au cours des scénarios, à la visualisation des zones exposées aux rayonnements et à l’intégration des protocoles opérateur en #csharp sous #unity.
+
+#### Avant — description détaillée
+
+> Simulation 3D pour la formation des équipes chirurgicales. #csharp #unity3D #simulation #medical #dosimetry #healthcare #3d. Dosimétrie en temps réel, visualisation des zones sensibles aux radiations, protocole de radioprotection opérateur.
+
+#### Après — description détaillée validée
+
+> L’application simulait des situations de chirurgie interventionnelle pour former les équipes à l’exposition radiologique et aux précautions associées. Mon travail portait sur l’intégration de la #dosimetrie dans la simulation, la visualisation des zones exposées et la restitution des protocoles de #radioprotection destinés aux opérateurs. J’ai développé ces éléments en #csharp sous #unity dans un environnement 3D.
+
+#### Avant — contributions détaillées
+
+- Simulation médicale.
+- Dosimétrie temps réel.
+- Radioprotection opérateur.
+
+#### Après — contributions détaillées validées
+
+- Traduire les protocoles de #radioprotection en séquences de formation destinées aux équipes chirurgicales.
+- Intégrer la #dosimetrie et représenter son évolution au cours des scénarios simulés.
+- Visualiser les zones exposées aux rayonnements dans l’environnement 3D.
+- Développer en #csharp sous #unity la simulation médicale et ses interactions.
+
+#### Motif de la réécriture
+
+La nouvelle version replace la dosimétrie et les protocoles de radioprotection dans les scénarios de formation destinés aux équipes chirurgicales. Elle remplace la mention « temps réel » par une description concrète de l’évolution de la dosimétrie et de la visualisation des zones exposées.
