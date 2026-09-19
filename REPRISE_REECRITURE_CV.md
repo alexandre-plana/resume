@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, l'objectif professionnel, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -344,27 +344,56 @@ La version validée décrit la dosimétrie au cours des scénarios, les zones ex
 - `src/api/mockData.ts` : expérience `2`, mission `28`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `28`.
 
-## Étape suivante : objectif professionnel
+## Objectif professionnel — validé
 
-Le champ actuel réduit encore le positionnement à un poste front-end et associe les micro-frontends à l'ensemble du profil. La proposition suivante reste volontairement généraliste : elle ne cible ni domaine ni technologie particuliers.
+Le champ validé reste volontairement généraliste : il ne cible ni domaine ni technologie particuliers.
 
 **Avant**
 
 > Poste Front End web dans un contexte industriel · Vue.js ou React · TypeScript · micro-frontend · équipe orientée qualité & UX
 
-**Après proposé**
+**Après validé**
 
 > Développement full-stack · Expertise front-end et UI/UX · Conception fonctionnelle · Équipe attentive à la qualité produit
 
-**Cibles à synchroniser après validation**
+**Cibles à synchroniser lors de l'application**
 
 - `src/api/mockDataLocales.ts` : `fr.profile.seeking`.
 - `src/api/mockDataLocales.ts` : `en.profile.seeking`, à reformuler en anglais sans traduction littérale.
 
+## Étape suivante : compétences principales
+
+La section actuelle ne comporte que deux groupes et ne reflète pas le périmètre full-stack validé. La proposition suivante n'est pas encore validée.
+
+**Avant**
+
+- **Frameworks :** Vue3, React, single-spa, Jest, Flutter, Unity 3D.
+- **Outils :** Docker, Git, Postman, Jira, Figma.
+
+**Après proposé**
+
+- **Langages :** TypeScript, Go, C#, Python.
+- **Front-end & visualisation :** React, Vue 3, single-spa, Dockview, MapLibre, deck.gl, Unity 3D.
+- **Services & interopérabilité :** API REST, MQTT, AIS, NMEA, CoT, MAVLink.
+- **Qualité & outils :** Jest, Vitest, SonarQube, GitLab CI, Docker, Git, Postman, Jira, Figma.
+
+**Principes de sélection**
+
+- Faire apparaître les compétences documentées dans les expériences validées.
+- Distinguer les langages, l'interface, les échanges système et l'outillage.
+- Ne pas faire de la section un inventaire exhaustif ; les détails restent attachés aux expériences.
+- Retirer Flutter, qui n'est relié à aucune expérience actuellement documentée.
+
+**Cibles à synchroniser après validation**
+
+- `src/api/mockData.ts` : `mockSkills`.
+- `src/api/mockDataLocales.ts` : `fr.skills` et `en.skills`.
+- Vérifier la hauteur de la barre latérale après passage de deux à quatre groupes.
+
 ## Point de reprise recommandé
 
-1. Faire valider le nouvel objectif professionnel, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
-2. Auditer ensuite les sections compétences et formations avant l'application globale aux sources.
+1. Faire valider la nouvelle organisation des compétences, puis ajouter son avant/après dans `SUIVI_REECRITURE_CV.md`.
+2. Auditer ensuite la section formations avant l'application globale aux sources.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
