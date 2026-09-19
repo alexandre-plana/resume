@@ -99,7 +99,7 @@ Les textes ci-dessous ont été proposés mais ne sont pas encore validés.
 
 **Carte**
 
-> Développeur en #csharp et #unity sur Augmented Operator Advisor, une application industrielle multiplateforme pour #android, #ios et #windows. Mon travail a porté sur l'architecture front-end et les interfaces opérateur, ainsi que sur le fonctionnement #offline, les échanges #http avec le serveur et la compatibilité des projets entre versions.
+> Développeur en #csharp et #unity sur Augmented Operator Advisor, une application industrielle #ar multiplateforme pour #android, #ios et #windows. Mon travail a porté sur l'architecture front-end et les interfaces opérateur, ainsi que sur le fonctionnement #offline, les échanges #http avec le serveur et la compatibilité des projets entre versions.
 
 **Description détaillée**
 
