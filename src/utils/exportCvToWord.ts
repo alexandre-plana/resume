@@ -15,67 +15,14 @@
 import type { IRunOptions } from 'docx'
 import type { Language } from '../locales'
 import { getTranslations } from '../locales'
-import { mockActivity, mockExperiences, mockFormation, mockProfile, mockSkills } from '../api/mockData'
-import { getMockDataLocale } from '../api/mockDataLocales'
-import { getProjectsLocale } from '../api/projectsLocales'
-import type { Activity, Experience, Formation, Profile, Project, Skill } from '../types'
+import type { Experience, Formation, PersonalProject, Profile, Skill } from '../types'
 
-// Data merge helpers
-
-const mergeLocalizedProfile = (language: Language): Profile => {
-  const locale = getMockDataLocale(language)
-  return {
-    ...mockProfile,
-    title: locale.profile.title,
-    subtitle: locale.profile.subtitle,
-    bio: locale.profile.bio,
-    company: locale.profile.company,
-    interests: locale.profile.interests,
-  }
-}
-
-const mergeLocalizedExperiences = (language: Language): Experience[] => {
-  const locale = getMockDataLocale(language)
-  return mockExperiences.map((experience) => {
-    const localizedExperience = locale.experiences[String(experience.id)]
-    return {
-      ...experience,
-      company: localizedExperience?.company ?? experience.company,
-      employer: localizedExperience?.employer ?? experience.employer,
-      missions: experience.missions.map((mission) => {
-        const localizedMission = localizedExperience?.missions[String(mission.id)]
-        return {
-          ...mission,
-          badge: localizedMission?.badge ?? mission.badge,
-          context: localizedMission?.context ?? mission.context,
-          desc: localizedMission?.desc ?? mission.desc,
-          tasks: localizedMission?.tasks ?? mission.tasks,
-          retrospective: localizedMission?.retrospective ?? mission.retrospective,
-        }
-      }),
-    }
-  })
-}
-
-const mergeLocalizedSkills = (language: Language): Skill[] => {
-  const locale = getMockDataLocale(language)
-  return mockSkills.map((skill, index) => ({ ...skill, cat: locale.skills[index]?.cat ?? skill.cat }))
-}
-
-const mergeLocalizedFormation = (language: Language): Formation[] => {
-  const locale = getMockDataLocale(language)
-  return mockFormation.map((formation, index) => ({ ...formation, ...(locale.formation[index] ?? {}) }))
-}
-
-const mergeLocalizedActivity = (language: Language): Activity[] => {
-  const locale = getMockDataLocale(language)
-  return mockActivity.map((activity, index) => ({
-    ...activity,
-    action: locale.activity[index]?.action ?? activity.action,
-    repo: locale.activity[index]?.repo ?? activity.repo,
-    detail: locale.activity[index]?.detail ?? activity.detail,
-    time: locale.activity[index]?.time ?? activity.time,
-  }))
+export interface CvExportData {
+  profile: Profile
+  experiences: Experience[]
+  skills: Skill[]
+  formations: Formation[]
+  personalProjects: PersonalProject[]
 }
 
 // Visual tokens inspired by src/styles/variables.css
@@ -269,7 +216,7 @@ const buildHeaderCard = (profile: Profile): Table =>
                 spacing: { after: 100 },
               }),
               new Paragraph({
-                children: [monoRun('Company: ', { bold: true, color: PALETTE.text2 }), bodyRun('Consultant R&D · Datacorp', { size: 19, color: PALETTE.text2 })],
+                children: [monoRun('Company: ', { bold: true, color: PALETTE.text2 }), bodyRun(profile.company, { size: 19, color: PALETTE.text2 })],
                 spacing: { line: 220, after: 40 },
               }),
               new Paragraph({
@@ -439,8 +386,82 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
   })
 }
 
-const buildProjectCard = (project: Project): Table =>
-  new Table({
+const buildPersonalProjectCard = (
+  project: PersonalProject,
+  t: ReturnType<typeof getTranslations>,
+): Table => {
+  const headerRuns: TextRun[] = [
+    monoRun(project.name, { bold: true, size: 18, color: PALETTE.blue }),
+    new TextRun({ text: '  ' }),
+    badgeRun(project.role, 'blue', true),
+  ]
+
+  if (project.status) {
+    headerRuns.push(new TextRun({ text: ' ' }), badgeRun(project.status, 'success', true))
+  }
+
+  const children: Paragraph[] = [
+    new Paragraph({
+      children: headerRuns,
+      spacing: { after: 50 },
+    }),
+    new Paragraph({
+      children: [monoRun(`${project.kind} · ${project.period}`, { size: 16, color: PALETTE.text3 })],
+      spacing: { after: 70 },
+    }),
+    new Paragraph({
+      children: [bodyRun(project.desc, { size: 20, color: PALETTE.text2 })],
+      spacing: { after: 70, line: 250 },
+    }),
+  ]
+
+  if (project.details) {
+    children.push(
+      new Paragraph({
+        children: [bodyRun(project.details, { size: 19, color: PALETTE.text2 })],
+        spacing: { after: 80, line: 250 },
+      }),
+    )
+  }
+
+  if (project.highlights?.length) {
+    children.push(
+      new Paragraph({
+        children: [
+          monoRun(t.personalModal.highlightsTitle.toUpperCase(), {
+            bold: true,
+            allCaps: true,
+            size: 16,
+            color: PALETTE.blue,
+            characterSpacing: 8,
+          }),
+        ],
+        spacing: { after: 80 },
+      }),
+    )
+
+    project.highlights.forEach((highlight) => {
+      children.push(
+        new Paragraph({
+          children: [bodyRun(highlight, { size: 19, color: PALETTE.text2 })],
+          bullet: { level: 0 },
+          indent: { left: 340 },
+          spacing: { line: 230, after: 60 },
+        }),
+      )
+    })
+  }
+
+  if (project.stack.length > 0) {
+    children.push(
+      new Paragraph({
+        children: badgeRuns(project.stack, 'neutral', (technology) => `#${technology}`),
+        spacing: { before: 30 },
+      }),
+    )
+  }
+
+  return new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
     borders: {
       top: borderLine(PALETTE.borderSoft, 6),
@@ -455,40 +476,13 @@ const buildProjectCard = (project: Project): Table =>
         children: [
           new TableCell({
             margins: { top: 110, bottom: 110, left: 120, right: 120 },
-            children: [
-              new Paragraph({
-                children: [
-                  monoRun(project.name, { bold: true, size: 18, color: PALETTE.blue }),
-                  new TextRun({ text: '  ' }),
-                  badgeRun(project.role, 'blue', true),
-                ],
-                spacing: { after: 50 },
-              }),
-              new Paragraph({
-                children: [monoRun(`${project.company} · ${project.period}`, { size: 16, color: PALETTE.text3 })],
-                spacing: { after: 70 },
-              }),
-              new Paragraph({
-                children: [bodyRun(project.context, { italics: true, size: 19, color: PALETTE.text3 })],
-                spacing: { after: 70, line: 220 },
-              }),
-              new Paragraph({
-                children: [bodyRun(project.desc, { size: 20, color: PALETTE.text2 })],
-                spacing: { after: 70, line: 250 },
-              }),
-              new Paragraph({
-                children: [monoRun('STACK: ', { bold: true, allCaps: true, size: 16, color: PALETTE.text2 }), bodyRun(project.stack, { size: 19 })],
-                spacing: { after: 70 },
-              }),
-              new Paragraph({
-                children: badgeRuns(project.tags, 'neutral', (tag) => `#${tag}`),
-              }),
-            ],
+            children,
           }),
         ],
       }),
     ],
   })
+}
 
 const addSpacingBetweenCards = (children: DocChild[]): void => {
   children.push(spacer(100))
@@ -496,14 +490,9 @@ const addSpacingBetweenCards = (children: DocChild[]): void => {
 
 // Main export
 
-export const exportMockCvToWord = async (language: Language): Promise<void> => {
+export const exportCvToWord = async (data: CvExportData, language: Language): Promise<void> => {
   const t = getTranslations(language)
-  const profile = mergeLocalizedProfile(language)
-  const experiences = mergeLocalizedExperiences(language)
-  const skills = mergeLocalizedSkills(language)
-  const formations = mergeLocalizedFormation(language)
-  const activity = mergeLocalizedActivity(language)
-  const projects = getProjectsLocale(language)
+  const { profile, experiences, skills, formations, personalProjects } = data
 
   const children: DocChild[] = []
 
@@ -514,25 +503,15 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
   children.push(buildAboutCard(profile.bio))
   children.push(spacer(180))
 
-  // Suppression de la section Langues & languageStack
-
-  children.push(sectionHeading(t.common.coreSkills))
-  // Ajout de la ligne LANGAGES
+  children.push(sectionHeading(t.common.languages))
   children.push(
     new Paragraph({
-      children: [
-        monoRun('LANGAGES', {
-          bold: true,
-          allCaps: true,
-          size: 16,
-          color: PALETTE.blue,
-          characterSpacing: 8,
-        }),
-        bodyRun(`  ${profile.languages.map((lang) => lang.name).join(' · ')}`, { size: 20, color: PALETTE.text2 }),
-      ],
-      spacing: { after: 80, line: 230 },
+      children: badgeRuns(profile.langs.map((entry) => `${entry.label} · ${entry.level}`), 'neutral'),
+      spacing: { line: 220, after: 180 },
     }),
   )
+
+  children.push(sectionHeading(t.common.coreSkills))
   skills.forEach((skill) => {
     children.push(
       new Paragraph({
@@ -582,15 +561,6 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
     children.push(spacer(140))
   })
 
-  children.push(sectionHeading(t.sections.professionalProjects))
-  projects.forEach((project, index) => {
-    children.push(buildProjectCard(project))
-    if (index < projects.length - 1) {
-      addSpacingBetweenCards(children)
-    }
-  })
-  children.push(spacer(180))
-
   children.push(sectionHeading(t.tabs.formations))
   formations.forEach((formation, index) => {
     children.push(
@@ -610,26 +580,14 @@ export const exportMockCvToWord = async (language: Language): Promise<void> => {
   })
   children.push(spacer(160))
 
-  if (activity.length > 0) {
-    children.push(sectionHeading(t.sections.activity))
-    activity.forEach((entry) => {
-      const detail = entry.detail ? ` - ${entry.detail}` : ''
-      children.push(
-        new Paragraph({
-          children: [
-            bodyRun(entry.action, { size: 20 }),
-            new TextRun({ text: ' ' }),
-            badgeRun(entry.repo, 'blue'),
-            bodyRun(`${detail} (${entry.time})`, { size: 19, color: PALETTE.text2 }),
-          ],
-          bullet: { level: 0 },
-          indent: { left: 300 },
-          spacing: { line: 220, after: 50 },
-        }),
-      )
-    })
-    children.push(spacer(160))
-  }
+  children.push(sectionHeading(t.tabs.personalProjects))
+  personalProjects.forEach((project, index) => {
+    children.push(buildPersonalProjectCard(project, t))
+    if (index < personalProjects.length - 1) {
+      addSpacingBetweenCards(children)
+    }
+  })
+  children.push(spacer(180))
 
   children.push(sectionHeading(t.sidebar.interests))
   children.push(

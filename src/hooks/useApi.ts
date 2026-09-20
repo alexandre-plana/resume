@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../store/appStore'
 import { getMockDataLocale } from '../api/mockDataLocales'
-import { getProjectsLocale } from '../api/projectsLocales'
 import { api } from '../api'
 
 export const useProfile = () => {
@@ -97,25 +96,6 @@ export const useFormation = () => {
   })
 }
 
-export const useActivity = () => {
-  const language = useAppStore((state) => state.language)
-  const dataLocales = getMockDataLocale(language)
-
-  return useQuery({
-    queryKey: ['activity', language],
-    queryFn: async () => {
-      const activity = await api.activityService.getActivity()
-      return activity.map((act, idx) => ({
-        ...act,
-        action: dataLocales.activity[idx]?.action || act.action,
-        repo: dataLocales.activity[idx]?.repo || act.repo,
-        detail: dataLocales.activity[idx]?.detail,
-        time: dataLocales.activity[idx]?.time || act.time,
-      }))
-    },
-  })
-}
-
 export const usePersonalProjects = () => {
   const language = useAppStore((state) => state.language)
   const dataLocales = getMockDataLocale(language)
@@ -144,25 +124,4 @@ export const useContact = () => {
       return api.contactService.sendMessage(data)
     },
   }
-}
-
-export const useProjects = () => {
-  const language = useAppStore((state) => state.language)
-  const projectsLocales = getProjectsLocale(language)
-
-  return useQuery({
-    queryKey: ['projects', language],
-    queryFn: async () => {
-      const projects = await api.projectService.getProjects()
-      return projects.map((project, idx) => {
-        const projectLocale = projectsLocales[idx]
-        return {
-          ...project,
-          desc: projectLocale?.desc || project.desc,
-          context: projectLocale?.context || project.context,
-          role: projectLocale?.role || project.role,
-        }
-      })
-    },
-  })
 }

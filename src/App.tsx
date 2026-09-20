@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties } from 'react'
-import { useActivity, useExperiences, useFormation, usePersonalProjects, useProfile, useProjects, useSkills } from './hooks/useApi'
+import { useExperiences, useFormation, usePersonalProjects, useProfile, useSkills } from './hooks/useApi'
 import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
 import { Tabs } from './components/Tabs'
@@ -12,7 +12,6 @@ import type { Mission } from './types'
 import { FormationsTab } from './components/tabs/FormationsTab'
 import { OverviewTab } from './components/tabs/OverviewTab'
 import { PersonalProjectsTab } from './components/tabs/PersonalProjectsTab'
-import { ProjectsTab } from './components/tabs/ProjectsTab'
 import styles from './App.module.css'
 
 type MissionPopout = {
@@ -29,28 +28,23 @@ type MissionPopout = {
 function App() {
   const profileQuery = useProfile()
   const experiencesQuery = useExperiences()
-  const projectsQuery = useProjects()
   const skillsQuery = useSkills()
   const formationQuery = useFormation()
   const personalProjectsQuery = usePersonalProjects()
-  const activityQuery = useActivity()
 
   const language = useAppStore((state) => state.language)
   const activeTab = useAppStore((state) => state.activeTab)
   const contactOpen = useAppStore((state) => state.contactOpen)
   const setContactOpen = useAppStore((state) => state.setContactOpen)
-  const setActiveTab = useAppStore((state) => state.setActiveTab)
   const t = getTranslations(language)
 
   const profile = profileQuery.data
   const skills = skillsQuery.data
   const hasAnyQueryError =
     experiencesQuery.isError ||
-    projectsQuery.isError ||
     skillsQuery.isError ||
     formationQuery.isError ||
-    personalProjectsQuery.isError ||
-    activityQuery.isError
+    personalProjectsQuery.isError
 
   const [activeMission, setActiveMission] = useState<MissionPopout | null>(null)
 
@@ -83,12 +77,6 @@ function App() {
   }
 
   useEffect(() => {
-    if (activeTab === 'skills') {
-      setActiveTab('overview')
-    }
-  }, [activeTab, setActiveTab])
-
-  useEffect(() => {
     if (!activeMission) return
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -119,7 +107,20 @@ function App() {
 
   return (
     <>
-      <Toolbar language={language} />
+      <Toolbar
+        language={language}
+        exportData={
+          experiencesQuery.data && skillsQuery.data && formationQuery.data && personalProjectsQuery.data
+            ? {
+                profile,
+                experiences: experiencesQuery.data,
+                skills: skillsQuery.data,
+                formations: formationQuery.data,
+                personalProjects: personalProjectsQuery.data,
+              }
+            : undefined
+        }
+      />
       <div className={styles.wrapper}>
         <div className={styles.layout}>
           <aside className={styles.sidebar}>
@@ -246,15 +247,6 @@ function App() {
               />
             )}
 
-            {activeTab === 'projects' && (
-              <ProjectsTab
-                projects={projectsQuery.data}
-                isLoading={projectsQuery.isLoading}
-                isError={projectsQuery.isError}
-                errorMessage={t.queryErrors.projects}
-                t={t}
-              />
-            )}
             {activeTab === 'formations' && (
               <FormationsTab
                 formation={formationQuery.data}

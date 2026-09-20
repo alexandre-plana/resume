@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { Language } from '../locales'
 
-export type Tab = 'overview' | 'projects' | 'formations' | 'personal' | 'skills'
+export type Tab = 'overview' | 'formations' | 'personal'
 
 export interface Toast {
   id: string
