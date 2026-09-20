@@ -205,41 +205,6 @@
   color: var(--text-3);
 }
 
-.langBar {
-  height: 8px;
-  border-radius: 99px;
-  overflow: hidden;
-  display: flex;
-  gap: 2px;
-  margin-bottom: 10px;
-}
-
-.langSeg {
-  height: 100%;
-  border-radius: 2px;
-}
-
-.langLegend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  font-size: 0.75rem;
-  color: var(--text-2);
-}
-
-.legendItem {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.legendDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
 .langRow {
   display: flex;
   gap: 8px;

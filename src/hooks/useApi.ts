@@ -16,6 +16,7 @@ export const useProfile = () => {
         title: dataLocales.profile.title,
         subtitle: dataLocales.profile.subtitle,
         bio: dataLocales.profile.bio,
+        seeking: dataLocales.profile.seeking,
         company: dataLocales.profile.company,
         interests: dataLocales.profile.interests,
       }

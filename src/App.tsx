@@ -151,6 +151,11 @@ function App() {
               </li>
             </ul>
 
+            <div className={styles.seekingBox}>
+              <strong>{t.sidebar.seekingLabel}</strong>
+              {profile.seeking}
+            </div>
+
             <div className={styles.aboutMobileAfterContact}>
               <div className={styles.sectionHeader}>👤 {t.sections.about}</div>
               <div className={styles.aboutSection}>
@@ -165,30 +170,6 @@ function App() {
                   <span key={`${lang.label}-${idx}`} className={styles.langPill}>
                     {lang.label} <span>{lang.level}</span>
                   </span>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.section}>
-              <div className={styles.label}>{t.common.languageStack}</div>
-              <div className={styles.langBar}>
-                {profile.languages.map((lang, idx) => (
-                  <div
-                    key={`langbar-${lang.name}-${idx}`}
-                    className={styles.langSeg}
-                    style={{
-                      width: `${lang.pct}%`,
-                      background: lang.color,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className={styles.langLegend}>
-                {profile.languages.map((lang, idx) => (
-                  <div key={`legend-${lang.name}-${idx}`} className={styles.legendItem}>
-                    <div className={styles.legendDot} style={{ background: lang.color }} />
-                    {lang.name}
-                  </div>
                 ))}
               </div>
             </div>
