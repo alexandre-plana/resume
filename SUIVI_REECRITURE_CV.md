@@ -799,3 +799,61 @@ Ce circuit a été supprimé. L'export Word utilise désormais directement les d
 **Statut :** retrait validé et appliqué
 
 Ohlabo est retiré du CV web et de l'export Word, son avancement étant jugé insuffisant pour le présenter parmi les projets personnels. Les données françaises et anglaises correspondantes ont été supprimées.
+
+### Sélection des projets personnels
+
+**Statut :** sélection appliquée
+
+La section est désormais limitée à `iasit`, `vorrery`, `kin` et `n-fold-protocol`. Les projets `specia` et `lavis · Aquarelle Studio` ont été retirés du CV web et de l'export Word, de même que leurs traductions anglaises.
+
+### Projet personnel Kin
+
+**Statut :** nouvelle carte appliquée
+
+**Source vérifiée :** [alexandre-plana/kin](https://github.com/alexandre-plana/kin)
+
+#### Carte
+
+> Conception d'une mémoire numérique familiale privée et auto-hébergée, destinée à conserver photos, vidéos et documents sur un serveur domestique. Le produit prévoit une galerie Android, une administration locale et un accès mobile distant, avec une attention particulière portée à la fiabilité du stockage et à la maîtrise des données.
+
+#### Description détaillée
+
+> Le dépôt rassemble le cadrage fonctionnel et technique de Kin. La feuille de route progresse d'un socle exécutable vers une bibliothèque familiale installable, puis vers la recherche, les albums partagés et un coffre documentaire. Chaque livrable précise les usages, les limites de sécurité et les contrats à préserver avant l'implémentation.
+
+#### Points clés
+
+- Structuration de la feuille de route en 13 livrables fonctionnels, du socle technique à l'organisation familiale.
+- Conception du stockage : contrôles d'intégrité, sauvegarde et restauration locales, synchronisation par machine à états.
+- Définition d'une galerie Android, de fichiers simples et d'albums partageables.
+- Modèle d'authentification, appairage des appareils, groupes, audiences et règles de visibilité.
+- Administration web locale et accès mobile distant prévu via Cloudflare Tunnel.
+
+#### Positionnement retenu
+
+La carte distingue explicitement le cadrage du développement : le dépôt contient une conception fonctionnelle et technique structurée, mais pas encore l'implémentation des applications décrites. Le rôle affiché est donc « Conception produit & architecture » et le statut reste « en conception ».
+
+### Projet personnel N-Fold Protocol
+
+**Statut :** nouvelle carte appliquée
+
+**Source vérifiée :** [alexandre-plana/n-fold-protocol](https://github.com/alexandre-plana/n-fold-protocol)
+
+#### Carte
+
+> Conception et développement d'un jeu tactique 3D centré sur la programmation d'une escouade autonome. Le joueur configure l'ordre de priorité des aptitudes, lance un scénario déterministe, observe les décisions prises par les personnages, puis ajuste ses règles. Le prototype vise à rendre chaque comportement prévisible, lisible et explicable.
+
+#### Description détaillée
+
+> Le projet sépare les données conçues dans Godot, une simulation C# indépendante du moteur et la couche de présentation 3D. Le prototype permet déjà de déplacer un point de commandement, de piloter une formation, d'affronter un ennemi et de configurer un programme composé d'aptitudes ordonnées, tout en conservant une exécution reproductible.
+
+#### Points clés
+
+- Simulation C# à pas fixe séparée des scènes et animations Godot, avec snapshots et événements déterministes.
+- Déplacement d'escouade autour d'un point de commandement, formation configurable et locomotion synchronisée.
+- Programme de personnage composé d'un passif et de quatre emplacements d'aptitudes ordonnés avec solution de repli.
+- Combat découpé en phases préparation, exécution et récupération, avec ciblage et retours visuels.
+- Validation par tests .NET, tests Godot sans interface et contrats automatisés en Python.
+
+#### Technologies présentées sous forme de chips
+
+`#godot` · `#csharp` · `#.net8` · `#3d` · `#tests`

@@ -59,6 +59,21 @@ Décisions importantes prises pour Xistar :
 - Assurer dans les services #go l'interopérabilité avec les systèmes partenaires : ingestion des flux #ais, #nmea, #cot et #mavlink, transmission des ordres et publication via #mqtt et #api-rest.
 - Développer l'application multi-écran et sa gestion centralisée depuis un poste maître, puis mettre en place le rejeu temporel destiné à l'analyse, aux rapports de situation et aux débriefings.
 
+## Projets personnels — sélection appliquée
+
+La sélection des projets personnels affichés dans le CV web et dans l'export Word est désormais limitée à :
+
+- `iasit` ;
+- `vorrery` ;
+- `kin` ;
+- `n-fold-protocol`.
+
+`specia`, `lavis · Aquarelle Studio` et `ohlabo` ont été retirés. Les traductions anglaises inutilisées ont également été supprimées.
+
+La carte `kin` a été réécrite à partir du dépôt [alexandre-plana/kin](https://github.com/alexandre-plana/kin). Elle présente le projet comme un travail de conception produit et d'architecture, conformément à son état actuel : cadrage fonctionnel et technique détaillé, sans revendiquer une implémentation applicative encore absente du dépôt.
+
+Une carte `n-fold-protocol` a été créée à partir du dépôt [alexandre-plana/n-fold-protocol](https://github.com/alexandre-plana/n-fold-protocol). Elle décrit le prototype Godot/C# actuellement implémenté : simulation déterministe à pas fixe, déplacement en formation, combat, programmation d'aptitudes et stratégie de validation automatisée.
+
 ## Expérience IECA — validée
 
 ### Faits apportés par l'utilisateur
