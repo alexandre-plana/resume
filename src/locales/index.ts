@@ -21,8 +21,6 @@ export interface Translations {
   }
   tabs: {
     overview: string
-    skills: string
-    projects: string
     formations: string
     personalProjects: string
   }
@@ -30,17 +28,10 @@ export interface Translations {
     uiUxCulture: string
     skills: string
     formation: string
-    activity: string
     timeline: string
     contributions: string
     about: string
     professionalExperience: string
-    professionalProjects: string
-  }
-  activity: {
-    follower: string
-    starred: string
-    followed: string
   }
   toolbar: {
     print: string
@@ -50,10 +41,8 @@ export interface Translations {
     profile: string
     partialData: string
     experiences: string
-    projects: string
     skills: string
     formation: string
-    activity: string
     personalProjects: string
   }
   formationControls: {
@@ -64,12 +53,6 @@ export interface Translations {
     training: string
     degree: string
     personalProject: string
-    empty: string
-  }
-  projectControls: {
-    types: string
-    professional: string
-    personal: string
     empty: string
   }
   mission: {
@@ -128,8 +111,6 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Aperçu',
-      skills: 'Compétences',
-      projects: 'Projets',
       formations: 'Formations',
       personalProjects: 'Projets persos',
     },
@@ -137,17 +118,10 @@ export const translations: Record<Language, Translations> = {
       uiUxCulture: '🎨 Culture UI/UX',
       skills: 'Compétences',
       formation: 'Formation',
-      activity: 'Activité',
       timeline: 'Expérience',
       contributions: 'Contribution',
       about: 'A propos',
       professionalExperience: 'Experiences professionnelles',
-      professionalProjects: 'Projets',
-    },
-    activity: {
-      follower: 'a commencé à suivre',
-      starred: 'a mis en étoile',
-      followed: 'a suivi',
     },
     toolbar: {
       print: 'Imprimer',
@@ -157,10 +131,8 @@ export const translations: Record<Language, Translations> = {
       profile: 'Impossible de charger le profil.',
       partialData: 'Certaines donnees sont indisponibles pour le moment.',
       experiences: 'Impossible de charger les experiences.',
-      projects: 'Impossible de charger les projets.',
       skills: 'Impossible de charger les competences.',
       formation: 'Impossible de charger les formations.',
-      activity: 'Impossible de charger l\'activite.',
       personalProjects: 'Impossible de charger les projets personnels.',
     },
     formationControls: {
@@ -171,12 +143,6 @@ export const translations: Record<Language, Translations> = {
       training: 'formation',
       degree: 'diplome',
       personalProject: 'projet perso',
-      empty: 'Aucun element a afficher avec les filtres actuels.',
-    },
-    projectControls: {
-      types: 'Types',
-      professional: 'professionnel',
-      personal: 'personnel',
       empty: 'Aucun element a afficher avec les filtres actuels.',
     },
     mission: {
@@ -233,8 +199,6 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Overview',
-      skills: 'Skills',
-      projects: 'Projects',
       formations: 'Trainings',
       personalProjects: 'Side Projects',
     },
@@ -242,17 +206,10 @@ export const translations: Record<Language, Translations> = {
       uiUxCulture: '🎨 UI/UX Culture',
       skills: 'Skills',
       formation: 'Education',
-      activity: 'Activity',
       timeline: 'Experience',
       contributions: 'Contributions',
       about: 'About',
       professionalExperience: 'Professional Experience',
-      professionalProjects: 'Projects',
-    },
-    activity: {
-      follower: 'started following',
-      starred: 'starred',
-      followed: 'followed',
     },
     toolbar: {
       print: 'Print',
@@ -262,10 +219,8 @@ export const translations: Record<Language, Translations> = {
       profile: 'Unable to load profile data.',
       partialData: 'Some data is currently unavailable.',
       experiences: 'Unable to load experiences.',
-      projects: 'Unable to load projects.',
       skills: 'Unable to load skills.',
       formation: 'Unable to load education entries.',
-      activity: 'Unable to load activity.',
       personalProjects: 'Unable to load personal projects.',
     },
     formationControls: {
@@ -276,12 +231,6 @@ export const translations: Record<Language, Translations> = {
       training: 'training',
       degree: 'degree',
       personalProject: 'personal project',
-      empty: 'No item to display with the current filters.',
-    },
-    projectControls: {
-      types: 'Types',
-      professional: 'professional',
-      personal: 'personal',
       empty: 'No item to display with the current filters.',
     },
     mission: {

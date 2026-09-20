@@ -539,76 +539,34 @@ Supprimer ce graphique et les données `profile.languages` associées.
 - `src/api/mockData.ts` : supprimer ou ne plus exposer `mockProfile.languages`.
 - `src/App.tsx` : retirer le bloc visuel `languageStack`.
 - `src/locales/index.ts` : supprimer la traduction devenue inutilisée si elle ne sert plus ailleurs.
-- `src/utils/exportMockCvToWord.ts` : vérifier qu'aucune exportation ne dépend de ce graphique.
+- `src/utils/exportCvToWord.ts` : retirer toute dépendance à `profile.languages` lors de l'application de cette décision aux sources.
 
-## Étape suivante : structure de l'onglet « Projets »
+## Nettoyage de l'ancien onglet « Projets » et de l'export Word — appliqué
 
-L'onglet contient actuellement neuf réalisations professionnelles déjà décrites dans les expériences : IECA, AOA, Simulhom, Dosicase, EMEM, Aeroball, la formation en radioprotection, la maintenance des générateurs de vapeur et la radioprotection en chirurgie interventionnelle. Leurs textes sont plus anciens que les versions validées et comportent plusieurs formulations désormais écartées, notamment les mentions génériques de « temps réel » et une place trop importante accordée à l'AR/VR.
+L'audit du rendu a confirmé que l'ancien onglet « Projets » n'était plus accessible depuis la navigation. Son composant et ses données étaient encore chargés en arrière-plan, et l'export Word les ajoutait sous forme d'une section dupliquant les expériences.
 
-Il contient aussi le CV interactif, classé comme projet personnel, alors qu'un onglet « Projets persos » existe déjà.
+Le reliquat a été supprimé : composant, données, traductions, services, requête, type et styles associés. Les anciens états d'onglets « projects » et « skills », ainsi que le circuit d'activité vide, ont également été retirés.
 
-**Recommandation proposée**
+L'export Word reçoit désormais directement les données localisées déjà chargées par l'interface web. Il reprend les sections réellement accessibles : profil, langues, compétences, expériences, formations, projets personnels et centres d'intérêt. La logique de fusion propre à l'ancien export et la section des projets professionnels dupliqués ont été supprimées.
 
-Transformer cet onglet en une sélection de réalisations professionnelles plutôt qu'en une copie des expériences :
+**Vérifications effectuées**
 
-- renommer l'onglet « Réalisations » ;
-- y présenter une sélection resserrée et complémentaire : Xistar, IECA, AOA, Simulhom et un regroupement des serious games industriels ;
-- rédiger chaque carte autour du produit, du besoin traité et de la contribution principale, à partir des textes déjà validés ;
-- déplacer le CV interactif vers l'onglet « Projets persos » et supprimer les filtres « Pro » / « Perso » devenus inutiles ;
-- ne pas reprendre séparément toutes les anciennes missions Oreka, déjà accessibles dans le détail de l'expérience.
-
-Cette organisation évite une seconde chronologie quasi identique, donne une place visible à Xistar et conserve une lecture plus transversale des réalisations.
-
-### Première carte proposée — Xistar
-
-**Statut :** proposition en attente de validation
-
-Xistar n'apparaît pas dans l'onglet actuel, alors qu'il s'agit de l'expérience la plus récente et de celle qui représente le mieux le périmètre full-stack actuel.
-
-**Nom**
-
-> Xistar
-
-**Organisation**
-
-> X-PERT / Datacorp
-
-**Rôle**
-
-> Développeur full-stack · Conception fonctionnelle
-
-**Période**
-
-> 2026
-
-**Contexte**
-
-> Poste de commandement tactique maritime
-
-**Description proposée**
-
-> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, l'affichage multi-écran et le rejeu des opérations. Je contribue à la conception fonctionnelle des parcours opérateur et au développement full-stack : interface en #typescript et #react, cartographie #maplibre #deckgl en symbologie #app-6d et services #go pour l'interopérabilité #mqtt #api-rest.
-
-Cette carte synthétise le produit et le périmètre de contribution sans reprendre toute la description de l'expérience. Lors de l'application, le rendu des marqueurs techniques en chips devra être étendu aux descriptions de l'onglet.
-
-**Cibles après validation**
-
-- `src/api/mockData.ts` : `mockProjects` et, pour le CV interactif, `mockPersonalProjects`.
-- `src/api/projectsLocales.ts` : versions française et anglaise des réalisations.
-- `src/components/tabs/ProjectsTab.tsx` : filtres et distinction artificielle entre projets professionnels et personnels.
-- `src/locales/index.ts` : libellé de l'onglet et textes des filtres devenus inutiles.
+- `npm run lint` : réussi.
+- `npm run build` : réussi.
+- Tests des exports français et anglais depuis le CV local : documents `.docx` générés sans erreur dans la console.
+- Contrôle des deux documents : présence des expériences, formations et projets personnels ; absence de section autonome reprenant les anciens projets professionnels.
 
 ## Point de reprise recommandé
 
-1. Faire valider la transformation de l'onglet « Projets » en sélection de réalisations professionnelles ainsi que la première carte Xistar proposée ci-dessus.
-2. Rédiger ensuite les cartes IECA, AOA, Simulhom et « Formation et simulation industrielles », puis auditer les projets personnels et les derniers champs de profil.
+1. Auditer les textes des projets personnels actuellement visibles.
+2. Vérifier les derniers champs du profil, notamment les coordonnées de contact.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
 
-- Plusieurs contenus sont dupliqués entre `src/api/mockData.ts` et `src/api/mockDataLocales.ts` ; les deux sources devront rester cohérentes lors de l'application.
+- Plusieurs contenus restent dupliqués entre `src/api/mockData.ts` et `src/api/mockDataLocales.ts` ; les deux sources devront rester cohérentes lors de l'application.
 - Certaines traductions et certains accents sont incomplets ou incohérents.
 - Les coordonnées de contact, dont l'adresse e-mail et la présentation du téléphone, devront être vérifiées avant finalisation.
-- L'export Word contient également des contenus susceptibles de dupliquer les données affichées et devra être contrôlé après la réécriture.
+- L'export Word utilise maintenant les mêmes données localisées que le rendu web ; il devra être contrôlé de nouveau après l'application globale des textes validés.
 - Le rendu des chips est actuellement limité à `cardSummary`. L'application finale devra utiliser le même rendu pour `mission.desc` et chaque entrée de `mission.tasks`, tandis que l'export Word devra éviter d'afficher des marqueurs `#` bruts.

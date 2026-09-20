@@ -922,93 +922,6 @@
   margin-bottom: 10px;
 }
 
-/* PROJECTS */
-.project {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
-  position: relative;
-  /* Ligne verticale à gauche, comme les missions */
-  border-left: 2px solid var(--blue);
-  padding-left: 18px;
-  background: var(--bg-2);
-  border-radius: var(--radius);
-}
-
-.projectHeader {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  position: relative;
-  /* Décale le dot pour l'aligner avec la ligne */
-  margin-left: -11px;
-}
-
-.projectTitleRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.projectTypeBadge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1px 8px;
-  border-radius: 999px;
-  border: 1px solid;
-  font-size: 0.67rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  font-family: var(--font-mono);
-}
-
-.projectTypeBadgeProfessional {
-  color: #065f46;
-  background: #d1fae5;
-  border-color: #6ee7b7;
-}
-
-.projectTypeBadgePersonal {
-  color: #9d174d;
-  background: #fce7f3;
-  border-color: #f9a8d4;
-}
-
-.projectContent {
-  margin-left: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.projectContext {
-  font-size: 0.75rem;
-  color: var(--text-3);
-  margin-bottom: 2px;
-}
-
-.projectDesc {
-  font-size: 0.78rem;
-  color: var(--text-2);
-  line-height: 1.55;
-  background: var(--bg-2);
-  border-left: 3px solid var(--blue);
-  padding: 10px 12px;
-  border-radius: 3px;
-  margin-bottom: 2px;
-}
-
-.projectStack {
-  font-size: 0.72rem;
-  color: var(--text-3);
-  font-family: var(--font-mono);
-}
-
 /* SKILLS */
 .skillsBlock {
   margin-bottom: 24px;
@@ -1374,10 +1287,6 @@
     display: block !important;
   }
 
-  .projectsSection {
-    display: none !important;
-  }
-
   .formationsSection {
     display: none !important;
   }
@@ -1404,11 +1313,6 @@
 
   .timeline {
     margin-bottom: 12px;
-  }
-
-  .projectTypeBadge {
-    font-size: 0.58rem;
-    padding: 1px 6px;
   }
 
   .tlCompany {
@@ -1546,7 +1450,6 @@
   /* Fix cards overflow on mobile */
   .mission,
   .missionFeatured,
-  .project,
   .aboutSection,
   .skillsBlock,
   .qrCodeCard {
@@ -1555,9 +1458,7 @@
   }
 
   .missionName,
-  .projectName,
   .missionDesc,
-  .projectDesc,
   .missionTaskPreviewItem,
   .missionTaskPreviewMore {
     word-wrap: break-word;

@@ -57,16 +57,6 @@ export interface Formation {
   meta: string
 }
 
-export interface Activity {
-  id: number
-  icon: string
-  type: 'blue' | 'green' | 'orange'
-  action: string
-  repo: string
-  detail: string
-  time: string
-}
-
 export interface PersonalProject {
   id: number
   name: string
@@ -78,16 +68,4 @@ export interface PersonalProject {
   stack: string[]
   period: string
   status?: string
-}
-
-export interface Project {
-  id: number
-  name: string
-  company: string
-  role: string
-  period: string
-  desc: string
-  context: string
-  stack: string
-  tags: string[]
 }

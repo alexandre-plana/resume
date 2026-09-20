@@ -44,14 +44,6 @@ export interface LocalizedMockData {
       meta: string
     }
   }
-  activity: {
-    [key: number]: {
-      action: string
-      repo: string
-      detail?: string
-      time: string
-    }
-  }
   personalProjects: {
     [key: number]: {
       kind?: string
@@ -232,7 +224,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         meta: 'Multimédia · Web · Vidéo',
       },
     },
-    activity: {},
     personalProjects: {},
   },
   en: {
@@ -394,7 +385,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         meta: 'Multimedia · Web · Video',
       },
     },
-    activity: {},
     personalProjects: {
       0: {
         kind: 'Educational platform',

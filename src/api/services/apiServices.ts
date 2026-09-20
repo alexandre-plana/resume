@@ -1,5 +1,5 @@
 import { BASE_URL } from '../config'
-import { Profile, Experience, Skill, Formation, Activity, Project, PersonalProject } from '../../types'
+import { Profile, Experience, Skill, Formation, PersonalProject } from '../../types'
 
 export const profileService = {
   getProfile: async (): Promise<Profile> => {
@@ -17,14 +17,6 @@ export const experienceService = {
   },
 }
 
-export const projectService = {
-  getProjects: async (): Promise<Project[]> => {
-    const response = await fetch(`${BASE_URL}/projects`)
-    if (!response.ok) throw new Error('Failed to fetch projects')
-    return response.json()
-  },
-}
-
 export const skillService = {
   getSkills: async (): Promise<Skill[]> => {
     const response = await fetch(`${BASE_URL}/skills`)
@@ -37,14 +29,6 @@ export const formationService = {
   getFormation: async (): Promise<Formation[]> => {
     const response = await fetch(`${BASE_URL}/formation`)
     if (!response.ok) throw new Error('Failed to fetch formation')
-    return response.json()
-  },
-}
-
-export const activityService = {
-  getActivity: async (): Promise<Activity[]> => {
-    const response = await fetch(`${BASE_URL}/activity`)
-    if (!response.ok) throw new Error('Failed to fetch activity')
     return response.json()
   },
 }

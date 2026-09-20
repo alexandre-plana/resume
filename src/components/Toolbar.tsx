@@ -2,13 +2,15 @@ import { memo, useEffect, useRef, useState } from 'react'
 import { useAppStore } from '../store/appStore'
 import styles from './Toolbar.module.css'
 import { getTranslations } from '../locales'
-import { exportMockCvToWord } from '../utils/exportMockCvToWord'
+import { exportCvToWord } from '../utils/exportCvToWord'
+import type { CvExportData } from '../utils/exportCvToWord'
 
 interface ToolbarProps {
   language: 'fr' | 'en'
+  exportData?: CvExportData
 }
 
-function ToolbarComponent({ language }: ToolbarProps) {
+function ToolbarComponent({ language, exportData }: ToolbarProps) {
   const setLanguage = useAppStore((state) => state.setLanguage)
   const t = getTranslations(language)
   const [isHidden, setIsHidden] = useState(false)
@@ -45,7 +47,8 @@ function ToolbarComponent({ language }: ToolbarProps) {
   }
 
   const handleExportWord = async () => {
-    await exportMockCvToWord(language)
+    if (!exportData) return
+    await exportCvToWord(exportData, language)
   }
 
   const printLabel = t.toolbar.print
@@ -75,7 +78,7 @@ function ToolbarComponent({ language }: ToolbarProps) {
           </button>
         </div>
         {process.env.NODE_ENV === 'development' && (
-          <button className={styles.exportBtn} onClick={handleExportWord} title={exportWordLabel}>
+          <button className={styles.exportBtn} onClick={handleExportWord} title={exportWordLabel} disabled={!exportData}>
             <span className={styles.icon}>📝</span>
             {exportWordLabel}
           </button>

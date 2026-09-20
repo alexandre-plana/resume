@@ -784,4 +784,12 @@ Les pourcentages ne reposent sur aucune mesure documentée et donnent une impres
 - Supprimer ou ne plus exposer `mockProfile.languages` dans `src/api/mockData.ts`.
 - Retirer le bloc visuel `languageStack` dans `src/App.tsx`.
 - Supprimer la traduction devenue inutilisée dans `src/locales/index.ts` si elle ne sert plus ailleurs.
-- Vérifier que `src/utils/exportMockCvToWord.ts` ne dépend pas de ces données.
+- Vérifier que `src/utils/exportCvToWord.ts` ne dépend pas de ces données.
+
+### Ancien onglet « Projets » et export Word
+
+**Statut :** nettoyage appliqué
+
+L'ancien onglet « Projets » n'était plus présent dans la navigation du CV web, mais son composant, ses données et ses services restaient chargés. L'export Word les reprenait dans une section qui répétait les expériences professionnelles.
+
+Ce circuit a été supprimé. L'export Word utilise désormais directement les données localisées chargées par l'interface et restitue les sections visibles : profil, langues, compétences, expériences, formations, projets personnels et centres d'intérêt.
