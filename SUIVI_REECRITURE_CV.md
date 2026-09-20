@@ -857,3 +857,66 @@ La carte distingue explicitement le cadrage du développement : le dépôt conti
 #### Technologies présentées sous forme de chips
 
 `#godot` · `#csharp` · `#.net8` · `#3d` · `#tests`
+
+### Projet personnel Iasit
+
+**Statut :** validé, non appliqué
+
+#### Avant — type
+
+> Outillage dev
+
+#### Après — type validé
+
+> Pilotage du développement assisté par IA
+
+#### Avant — rôle
+
+> Développeur full stack
+
+#### Après — rôle validé
+
+> Conception produit & développement full-stack
+
+#### Avant — carte
+
+> Outil de pilotage pour le développement assisté par agents IA : tâches, exécutions et findings traçables, génération de prompts canoniques (run / verify / fix) et orchestration de lots complets. Il pilote le backlog de mes autres projets persos — 580 commits en deux mois.
+
+#### Après — carte validée
+
+> Iasit est un outil de pilotage du développement assisté par des agents IA. Je l'ai conçu pour structurer le cycle préparation, exécution, vérification, correction et acceptation, suivre les bugs sous forme de findings, puis capitaliser sur les problèmes récurrents en les promouvant en learned rules. Ces règles sont réinjectées dans les futurs prompts afin d'améliorer progressivement les exécutions. L'application repose sur #react #typescript et un runtime #nodejs.
+
+#### Avant — description détaillée
+
+> Né du développement assisté par agents IA : l'outil trace tout ce qui compte (tâches, exécutions, findings) et génère des prompts canoniques exécutés par un agent externe — l'app elle-même n'exécute aucune IA, le périmètre est volontairement borné. C'est le méta-outil du lot : kin et vorrery embarquent ses données de pilotage.
+
+#### Après — description détaillée validée
+
+> Le runtime #nodejs gère plusieurs projets et maintient un statut de référence pour chaque tâche. Les bugs et les écarts constatés pendant les vérifications sont enregistrés sous forme de findings, avec leur sévérité, leurs preuves, les fichiers concernés et une correction proposée. Un finding ouvert déclenche le cycle `fix` puis `re-verify` et bloque l'acceptation tant qu'il n'est pas traité.
+>
+> Lorsqu'un enseignement peut être réutilisé, le finding est promu explicitement en learned rule. La règle conserve son origine, son périmètre et son statut ; les règles actives pertinentes sont ensuite sélectionnées et intégrées aux futurs prompts. Cette boucle permet à Iasit de capitaliser sur les erreurs rencontrées et d'adapter progressivement les instructions transmises aux agents.
+
+#### Avant — points clés
+
+- Formats canoniques Task / TaskExecution / VerificationFinding, statut comme source de vérité unique.
+- Prompts run / verify / fix / next en double rendu : fullPrompt + compactInstruction.
+- Batch : orchestration d'une plage de tâches (run → verify → fix → re-verify) avec parité CLI/runtime.
+- Registry d'agents et chaîne de handoff documentée (analyst → … → release-operator).
+- Graphe de contexte Sigma.js avec mode focus, index de fichiers du dépôt, réconciliation d'artefacts.
+
+#### Après — points clés validés
+
+- Concevoir les formats de référence pour les tâches, les exécutions et les findings, puis valider leurs données avec #zod.
+- Développer en #react et #typescript les vues de suivi ainsi que le graphe de contexte #sigmajs reliant tâches, exécutions, findings et fichiers.
+- Construire un runtime #nodejs multi-projets qui génère les instructions `run`, `verify`, `fix` et `next`, à l'unité ou par lots, et expose leur cycle via #api-rest et #mcp.
+- Gérer les bugs à travers une boucle traçable `verify → finding → fix → re-verify`, avec preuves, sévérité, fichiers concernés et blocage de l'acceptation en présence d'écarts ouverts.
+- Promouvoir les enseignements réutilisables en learned rules, conserver leur provenance et réinjecter les règles actives pertinentes dans les futurs prompts.
+
+#### Motif de la réécriture
+
+La nouvelle version présente d'abord la finalité de l'outil et son cycle de pilotage. Elle remplace la métrique des 580 commits par des responsabilités vérifiables, détaille la gestion des bugs et décrit la promotion des findings en learned rules comme un mécanisme explicite de capitalisation. L'amélioration des futurs prompts découle de règles sélectionnées selon leur pertinence ; elle n'est pas présentée comme un apprentissage autonome.
+
+#### Cibles à synchroniser lors de l'application
+
+- `src/api/mockData.ts` : projet personnel `4`.
+- `src/api/mockDataLocales.ts` : traduction anglaise du projet personnel `4`.
