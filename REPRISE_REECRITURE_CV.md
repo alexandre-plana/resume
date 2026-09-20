@@ -559,6 +559,38 @@ Transformer cet onglet en une sélection de réalisations professionnelles plut�
 
 Cette organisation évite une seconde chronologie quasi identique, donne une place visible à Xistar et conserve une lecture plus transversale des réalisations.
 
+### Première carte proposée — Xistar
+
+**Statut :** proposition en attente de validation
+
+Xistar n'apparaît pas dans l'onglet actuel, alors qu'il s'agit de l'expérience la plus récente et de celle qui représente le mieux le périmètre full-stack actuel.
+
+**Nom**
+
+> Xistar
+
+**Organisation**
+
+> X-PERT / Datacorp
+
+**Rôle**
+
+> Développeur full-stack · Conception fonctionnelle
+
+**Période**
+
+> 2026
+
+**Contexte**
+
+> Poste de commandement tactique maritime
+
+**Description proposée**
+
+> Xistar réunit la situation tactique, la conduite de missions et de drones, la gestion des alertes, l'affichage multi-écran et le rejeu des opérations. Je contribue à la conception fonctionnelle des parcours opérateur et au développement full-stack : interface en #typescript et #react, cartographie #maplibre #deckgl en symbologie #app-6d et services #go pour l'interopérabilité #mqtt #api-rest.
+
+Cette carte synthétise le produit et le périmètre de contribution sans reprendre toute la description de l'expérience. Lors de l'application, le rendu des marqueurs techniques en chips devra être étendu aux descriptions de l'onglet.
+
 **Cibles après validation**
 
 - `src/api/mockData.ts` : `mockProjects` et, pour le CV interactif, `mockPersonalProjects`.
@@ -568,8 +600,8 @@ Cette organisation évite une seconde chronologie quasi identique, donne une pla
 
 ## Point de reprise recommandé
 
-1. Faire valider la transformation de l'onglet « Projets » en sélection de réalisations professionnelles.
-2. Rédiger ensuite les cartes retenues à partir des contenus déjà validés, puis auditer les projets personnels et les derniers champs de profil.
+1. Faire valider la transformation de l'onglet « Projets » en sélection de réalisations professionnelles ainsi que la première carte Xistar proposée ci-dessus.
+2. Rédiger ensuite les cartes IECA, AOA, Simulhom et « Formation et simulation industrielles », puis auditer les projets personnels et les derniers champs de profil.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
