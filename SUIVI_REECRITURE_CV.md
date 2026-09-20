@@ -860,7 +860,7 @@ La carte distingue explicitement le cadrage du développement : le dépôt conti
 
 ### Projet personnel Iasit
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 
 #### Avant — type
 
@@ -923,7 +923,7 @@ La nouvelle version présente d'abord la finalité de l'outil et son cycle de pi
 
 ### Projet personnel Vorrery
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 
 #### Avant — type
 

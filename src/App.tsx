@@ -4,6 +4,7 @@ import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
 import { Tabs } from './components/Tabs'
 import { TechBadge } from './components/TechBadge'
+import { InlineTechText } from './components/InlineTechText'
 import { ContactModal } from './components/ContactModal'
 import { Toolbar } from './components/Toolbar'
 import { PhoneNumber } from './components/PhoneNumber'
@@ -308,7 +309,9 @@ function App() {
 
             <div className={styles.missionModalCore}>
               <div className={styles.missionModalContext}>{activeMission.mission.context}</div>
-              <div className={styles.missionModalDesc}>{activeMission.mission.desc}</div>
+              <div className={styles.missionModalDesc}>
+                <InlineTechText text={activeMission.mission.desc} />
+              </div>
 
               {activeMission.mission.tasks && activeMission.mission.tasks.length > 0 && (
                 <div className={styles.missionTasksSection}>
@@ -316,7 +319,7 @@ function App() {
                   <ul className={styles.missionTasksList}>
                     {activeMission.mission.tasks.map((task, idx) => (
                       <li key={`mission-task-${activeMission.mission.id}-${idx}`} className={styles.missionTaskItem}>
-                        {task}
+                        <InlineTechText text={task} />
                       </li>
                     ))}
                   </ul>
