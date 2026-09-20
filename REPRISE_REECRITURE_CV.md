@@ -82,6 +82,14 @@ La gestion des bugs doit apparaître comme une boucle traçable `verify → find
 
 La capitalisation repose sur la promotion explicite d'un finding en learned rule. La règle conserve sa provenance, son périmètre et son statut, puis les règles actives pertinentes sont sélectionnées et intégrées aux futurs prompts. Présenter ce mécanisme comme une amélioration continue fondée sur les problèmes rencontrés, et non comme un apprentissage autonome non supervisé.
 
+## Projet personnel Vorrery — validé
+
+La réécriture de la carte `vorrery` est validée mais n'est pas encore appliquée aux données du CV. L'angle retenu est celui d'un sandbox pédagogique 3D fondé sur la manipulation, l'observation et la comparaison de scénarios.
+
+La présentation doit mettre en avant la coexistence de plusieurs niveaux d'accompagnement : exploration libre, laboratoire de manipulation, expériences guidées et parcours pour enfants. La génération visible étape par étape, la possibilité de rejouer une expérience et l'absence de score ou de progression imposée constituent les principaux éléments pédagogiques à conserver.
+
+Les détails liés à l'espace, à la gravité et aux modèles physiques restent des supports de l'expérience, mais ne doivent pas dominer la carte. Les technologies discriminantes restent intégrées au texte sous forme de chips : `#react`, `#typescript`, `#threejs`, `#react-three-fiber` et `#web-workers`.
+
 ## Expérience IECA — validée
 
 ### Faits apportés par l'utilisateur
@@ -585,10 +593,9 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 
 ## Point de reprise recommandé
 
-1. Auditer le projet personnel `vorrery`, Iasit étant désormais validé et Kin déjà appliqué.
-2. Vérifier les derniers champs du profil, notamment les coordonnées de contact.
-3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
-4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
+1. Vérifier les derniers champs du profil, notamment les coordonnées de contact.
+2. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
+3. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
 
