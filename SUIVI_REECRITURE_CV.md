@@ -793,3 +793,9 @@ Les pourcentages ne reposent sur aucune mesure documentée et donnent une impres
 L'ancien onglet « Projets » n'était plus présent dans la navigation du CV web, mais son composant, ses données et ses services restaient chargés. L'export Word les reprenait dans une section qui répétait les expériences professionnelles.
 
 Ce circuit a été supprimé. L'export Word utilise désormais directement les données localisées chargées par l'interface et restitue les sections visibles : profil, langues, compétences, expériences, formations, projets personnels et centres d'intérêt.
+
+### Projet personnel Ohlabo
+
+**Statut :** retrait validé et appliqué
+
+Ohlabo est retiré du CV web et de l'export Word, son avancement étant jugé insuffisant pour le présenter parmi les projets personnels. Les données françaises et anglaises correspondantes ont été supprimées.

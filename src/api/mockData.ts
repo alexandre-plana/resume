@@ -322,24 +322,6 @@ export const mockFormation: Formation[] = [
 
 export const mockPersonalProjects: PersonalProject[] = [
   {
-    id: 1,
-    name: 'ohlabo',
-    kind: 'Plateforme éducative',
-    role: 'Développeur full stack',
-    desc: "Plateforme éducative 6-11 ans : le cycle de l'eau, les volcans ou les incendies expliqués en dioramas voxel manipulables bloc par bloc. Moteur de simulation déterministe sans aucune dépendance, triple rendu d'un même modèle — 3D, coupe 2D, DOM accessible — et mode hors-ligne pensé pour l'école.",
-    details: "Le voxel n'est pas un choix esthétique : il sert à montrer l'intérieur des phénomènes — on coupe un volcan comme un gâteau pour voir la chambre magmatique. L'architecture est verrouillée par 26 décisions documentées, et le backlog outillé compte 95 tâches en 17 lots, vérifiées en CI.",
-    highlights: [
-      'Moteur voxel déterministe zéro dépendance — Math.random et imports interdits, vérifié mécaniquement par lint en CI',
-      "Triple rendu d'un même modèle : 3D (three.js/TSL, WebGL + WebGPU), coupe 2D de repli et arbre DOM d'accessibilité",
-      'Contenu pédagogique piloté par manifestes versionnés avec validateur CLI',
-      "Suivi d'apprentissage xAPI minimisé par conception : aucun classement entre enfants, ni geste ni caméra",
-      'Monorepo pnpm en 6 paquets : engine, render-3d, render-2d, a11y, player, shell',
-    ],
-    stack: ['ts', 'three.js', 'webgpu', 'vite', 'vitest'],
-    period: '2026',
-    status: 'actif',
-  },
-  {
     id: 2,
     name: 'kin',
     kind: 'App auto-hébergée',

@@ -386,21 +386,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
     },
     personalProjects: {
-      0: {
-        kind: 'Educational platform',
-        role: 'Full stack developer',
-        desc: 'Educational platform for ages 6-11: the water cycle, volcanoes or wildfires explained through voxel dioramas children manipulate block by block. Deterministic zero-dependency simulation engine, triple rendering of a single model — 3D, 2D cross-section, accessible DOM — and an offline mode designed for schools.',
-        details: "Voxels aren't an aesthetic choice: they exist to show the inside of things — you cut a volcano open like a cake to see the magma chamber. The architecture is locked by 26 documented decisions, and the tooling-driven backlog counts 95 tasks across 17 batches, checked in CI.",
-        highlights: [
-          'Deterministic zero-dependency voxel engine — Math.random and imports forbidden, mechanically enforced by lint in CI',
-          'Triple rendering of one model: 3D (three.js/TSL, WebGL + WebGPU), 2D cross-section fallback and accessibility DOM tree',
-          'Versioned manifest-driven educational content with a CLI validator',
-          'xAPI learning tracking minimized by design: no ranking between children, no gesture or camera data',
-          'pnpm monorepo in 6 packages: engine, render-3d, render-2d, a11y, player, shell',
-        ],
-        status: 'active',
-      },
-      1: {
+      2: {
         kind: 'Self-hosted app',
         role: 'Full stack developer',
         desc: 'Self-hosted family digital memory: photos, videos and documents reliably stored at home, browsable through an Android gallery and a strictly local admin. Design phase completed: vision, architecture decisions and a full 13-milestone roadmap.',
@@ -413,7 +399,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         ],
         status: 'design phase',
       },
-      2: {
+      3: {
         kind: 'Scientific simulation',
         role: 'Full stack developer',
         desc: 'Emergent evolution observatory: a population of organisms is born, mutates, recombines and speciates on a hex grid — nothing is scripted, everything emerges. Deterministic headless engine (seeded RNG, state hashing), Web Worker simulation and live tracking of 12 genetic traits.',
@@ -427,7 +413,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         ],
         status: 'on hold',
       },
-      3: {
+      4: {
         kind: 'Dev tooling',
         role: 'Full stack developer',
         desc: 'Steering tool for AI-agent-assisted development: traceable tasks, executions and findings, canonical prompt generation (run / verify / fix) and full batch orchestration. It drives the backlog of my other side projects — 580 commits in two months.',
@@ -441,7 +427,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         ],
         status: 'in service',
       },
-      4: {
+      5: {
         kind: 'Real-time simulator',
         role: 'Full stack developer',
         desc: "Physically-based watercolor simulator in the browser: water flows, pigment granulates and darkens as it dries, just like on real paper. Shallow-water fluid solver (SIGGRAPH '97 model) implemented from scratch in WebGL2 shaders, Kubelka-Munk optical rendering and 52 hand-calibrated pigments.",
@@ -455,7 +441,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         ],
         status: 'active',
       },
-      5: {
+      6: {
         kind: '3D web app',
         role: 'Full stack developer',
         desc: "3D orbital forge: deterministic procedural planets build up layer by layer before the user's eyes, then join a living system model. 32-body gravity lab, black holes with gravitational lensing, Web Worker generation and a fully unit-tested math layer.",

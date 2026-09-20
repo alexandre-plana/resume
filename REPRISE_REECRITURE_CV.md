@@ -556,9 +556,13 @@ L'export Word reçoit désormais directement les données localisées déjà cha
 - Tests des exports français et anglais depuis le CV local : documents `.docx` générés sans erreur dans la console.
 - Contrôle des deux documents : présence des expériences, formations et projets personnels ; absence de section autonome reprenant les anciens projets professionnels.
 
+## Projet personnel Ohlabo — retiré
+
+Ohlabo a été supprimé de la liste des projets personnels, car son avancement ne justifie pas encore sa présence dans le CV. La suppression s'applique au rendu web, à la traduction anglaise et à l'export Word. Les traductions des projets personnels sont désormais associées à leur identifiant stable plutôt qu'à leur position dans la liste, afin d'éviter tout décalage lors d'un ajout ou d'un retrait.
+
 ## Point de reprise recommandé
 
-1. Auditer les textes des projets personnels actuellement visibles.
+1. Auditer les textes des projets personnels actuellement visibles, en commençant par Kin.
 2. Vérifier les derniers champs du profil, notamment les coordonnées de contact.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
