@@ -920,3 +920,66 @@ La nouvelle version présente d'abord la finalité de l'outil et son cycle de pi
 
 - `src/api/mockData.ts` : projet personnel `4`.
 - `src/api/mockDataLocales.ts` : traduction anglaise du projet personnel `4`.
+
+### Projet personnel Vorrery
+
+**Statut :** validé, non appliqué
+
+#### Avant — type
+
+> App web 3D
+
+#### Après — type validé
+
+> Sandbox pédagogique 3D
+
+#### Avant — rôle
+
+> Développeur full stack
+
+#### Après — rôle validé
+
+> Conception produit & développement front-end 3D
+
+#### Avant — carte
+
+> Forge orbitale 3D : des planètes procédurales déterministes se construisent couche par couche sous les yeux de l'utilisateur, puis rejoignent une maquette de système vivante. Laboratoire de gravité à 32 corps, trous noirs à lentille gravitationnelle, génération en Web Workers et couche mathématique intégralement testée.
+
+#### Après — carte validée
+
+> Vorrery est un sandbox pédagogique 3D conçu pour expérimenter, observer et comprendre par la manipulation. L'utilisateur construit ses propres systèmes, ajuste leurs paramètres et visualise immédiatement les conséquences de ses choix. Le produit combine exploration libre, expériences guidées et parcours adaptés aux enfants dans une interface #react #typescript rendue avec #threejs et #react-three-fiber.
+
+#### Avant — description détaillée
+
+> Le parti-pris : rendre la génération visible. Chaque planète traverse une timeline de couches (orbite, proto-sphère, géologie, relief, hydrosphère, climat, biomes, atmosphère, lunes…) où chaque étape modifie la scène à l'écran. Des contraintes physiques simplifiées (masse, gravité, albédo, pression) orientent l'archétype et les avertissements d'habitabilité.
+
+#### Après — description détaillée validée
+
+> Vorrery place l'expérimentation au centre de l'expérience. L'utilisateur peut créer une scène, modifier ses paramètres, comparer différents scénarios, revenir sur ses actions et recommencer avec les mêmes conditions. La génération reste visible étape par étape afin de montrer comment chaque choix transforme le résultat, plutôt que de présenter uniquement une scène terminée.
+>
+> Plusieurs niveaux d'accompagnement coexistent : un sandbox libre, un laboratoire proposant des outils de manipulation et de visualisation, des scénarios guidés et un espace destiné aux enfants. Ce dernier repose sur des consignes courtes, une narration audio et un carnet d'observations, sans score, échec ni progression imposée.
+
+#### Avant — points clés
+
+- Forge procédurale déterministe à couches visibles, génération en Web Workers hors thread principal.
+- Laboratoire de gravité : 32 corps, gizmos masse/position/vélocité, prédictions de trajectoire, sphères de Hill, undo/redo.
+- Objets compacts : trous noirs, pulsars et étoiles à neutrons.
+- Scène pour enfants avec sonification orbitale et narration audio.
+- Couche mathématique présentée comme intégralement testée.
+
+#### Après — points clés validés
+
+- Concevoir un sandbox permettant de créer, modifier et rejouer des expériences à partir de paramètres contrôlables.
+- Rendre la génération procédurale visible sous forme d'étapes successives afin de relier chaque transformation au résultat obtenu.
+- Proposer plusieurs modes d'exploration : manipulation libre, expériences guidées, configurations prédéfinies et parcours adaptés aux enfants.
+- Concevoir une expérience pédagogique fondée sur l'observation et l'essai, avec narration audio, sonification et carnet d'observations plutôt que des récompenses artificielles.
+- Développer l'interface en #react et #typescript, le rendu avec #threejs et #react-three-fiber, et déporter les calculs dans des #web-workers pour préserver la fluidité des manipulations.
+
+#### Motif de la réécriture
+
+La nouvelle version présente Vorrery comme un environnement d'expérimentation avant d'en détailler le domaine scientifique. Elle met en avant la manipulation, les différents niveaux d'accompagnement et la démarche pédagogique. Les mécanismes liés à l'espace, à la gravité et aux modèles physiques restent présents dans le produit, mais servent de support aux usages plutôt que de structurer la carte. La promesse absolue d'une couche mathématique intégralement testée est retirée.
+
+#### Cibles à synchroniser lors de l'application
+
+- `src/api/mockData.ts` : projet personnel `6`.
+- `src/api/mockDataLocales.ts` : traduction anglaise du projet personnel `6`.
