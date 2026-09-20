@@ -104,15 +104,15 @@ export const usePersonalProjects = () => {
     queryKey: ['personalProjects', language],
     queryFn: async () => {
       const personalProjects = await api.personalProjectService.getPersonalProjects()
-      return personalProjects.map((project, idx) => ({
+      return personalProjects.map((project) => ({
         ...project,
-        kind: dataLocales.personalProjects[idx]?.kind || project.kind,
-        role: dataLocales.personalProjects[idx]?.role || project.role,
-        desc: dataLocales.personalProjects[idx]?.desc || project.desc,
-        details: dataLocales.personalProjects[idx]?.details || project.details,
-        highlights: dataLocales.personalProjects[idx]?.highlights || project.highlights,
-        period: dataLocales.personalProjects[idx]?.period || project.period,
-        status: dataLocales.personalProjects[idx]?.status || project.status,
+        kind: dataLocales.personalProjects[project.id]?.kind || project.kind,
+        role: dataLocales.personalProjects[project.id]?.role || project.role,
+        desc: dataLocales.personalProjects[project.id]?.desc || project.desc,
+        details: dataLocales.personalProjects[project.id]?.details || project.details,
+        highlights: dataLocales.personalProjects[project.id]?.highlights || project.highlights,
+        period: dataLocales.personalProjects[project.id]?.period || project.period,
+        status: dataLocales.personalProjects[project.id]?.status || project.status,
       }))
     },
   })
