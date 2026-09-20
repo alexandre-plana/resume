@@ -27,6 +27,8 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 Le titre, le sous-titre, la présentation globale, l'objectif professionnel, les compétences principales, les formations, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
+Les coordonnées ont également été vérifiées : l’adresse e-mail doit devenir `alexandre.plana@gmail.com` et le téléphone doit être présenté au format international `+33 6 71 03 97 84`. L’intitulé employeur et la localisation restent inchangés. Le composant d’affichage du téléphone devra accepter ce nouveau format lors de l’application.
+
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
 Décisions importantes prises pour Xistar :
@@ -593,14 +595,14 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 
 ## Point de reprise recommandé
 
-1. Vérifier les derniers champs du profil, notamment les coordonnées de contact.
-2. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
-3. Appliquer les autres changements validés aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis harmoniser les doublons et les traductions.
+1. Appliquer les changements validés aux sources uniquement lorsque l'utilisateur le demandera explicitement.
+2. Harmoniser les doublons et les traductions françaises et anglaises pendant cette application.
+3. Contrôler ensuite les rendus web et Word, notamment la hauteur de la barre latérale et la présentation des coordonnées.
 
 ## Points techniques repérés lors de l'audit initial
 
 - Plusieurs contenus restent dupliqués entre `src/api/mockData.ts` et `src/api/mockDataLocales.ts` ; les deux sources devront rester cohérentes lors de l'application.
 - Certaines traductions et certains accents sont incomplets ou incohérents.
-- Les coordonnées de contact, dont l'adresse e-mail et la présentation du téléphone, devront être vérifiées avant finalisation.
+- La correction de l'adresse e-mail et la présentation internationale du téléphone sont validées mais restent à appliquer.
 - L'export Word utilise maintenant les mêmes données localisées que le rendu web ; il devra être contrôlé de nouveau après l'application globale des textes validés.
 - Le rendu des chips est mutualisé entre les résumés, les descriptions et les contributions du CV web. L'export Word convertit également les marqueurs en badges intégrés au texte.

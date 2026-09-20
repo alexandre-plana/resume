@@ -591,6 +591,27 @@ La nouvelle version replace la dosimétrie et les protocoles de radioprotection 
 
 Le nouvel objectif ne limite plus la recherche à un domaine, une technologie ou une architecture particulière. Il exprime le type de rôle recherché, les axes d’expertise et l’attention portée à la qualité produit.
 
+### Coordonnées
+
+**Statut :** correction validée, non appliquée
+**Champ principal :** `src/api/mockData.ts` → `mockProfile.email` et `mockProfile.phone`
+
+#### Avant
+
+> alexandre.plana@gmail
+>
+> 06.71.03.97.84
+
+#### Après — présentation validée
+
+> alexandre.plana@gmail.com
+>
+> +33 6 71 03 97 84
+
+#### Motif de la correction
+
+L’adresse e-mail actuellement affichée est incomplète. Le numéro adopte un format international plus adapté à la diffusion du CV. L’intitulé employeur et la localisation restent inchangés, faute d’information plus précise à leur sujet. Le composant d’affichage du téléphone devra être adapté, car son découpage actuel suppose un numéro français séparé par des points.
+
 ### Compétences principales
 
 **Statut :** validées, non appliquées
