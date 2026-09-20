@@ -20,7 +20,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 - Ne pas placer l'AR/VR au premier plan du positionnement global : il s'agit d'expériences plus anciennes et ce marché n'est pas la cible principale actuelle.
 - Éviter « temps réel » comme formule de positionnement générique, car son sens dépend du domaine. Employer un terme plus précis dans le contexte concerné.
 - Conserver un ton professionnel et cohérent. Dans les expériences retravaillées — cartes, descriptions et contributions — intégrer sous forme de chips les technologies, normes et protocoles réellement utiles à côté de la réalisation concernée. La présentation globale reste sans chips ni spécification de technologies. Éviter les inventaires détachés et les formulations promotionnelles non étayées.
-- Lors de l'application aux sources, étendre le rendu des chips à `mission.desc` et `mission.tasks` ; actuellement, seul `cardSummary` transforme les marqueurs `#terme` en chips.
+- Le rendu web transforme les marqueurs `#terme` en chips dans les cartes, les descriptions détaillées et les contributions. L'export Word applique le même traitement sans laisser apparaître de marqueurs bruts.
 - Ne pas inventer de résultat, de métrique, de responsabilité ou de niveau de leadership.
 
 ## Textes déjà validés
@@ -74,17 +74,17 @@ La carte `kin` a été réécrite à partir du dépôt [alexandre-plana/kin](htt
 
 Une carte `n-fold-protocol` a été créée à partir du dépôt [alexandre-plana/n-fold-protocol](https://github.com/alexandre-plana/n-fold-protocol). Elle décrit le prototype Godot/C# actuellement implémenté : simulation déterministe à pas fixe, déplacement en formation, combat, programmation d'aptitudes et stratégie de validation automatisée.
 
-## Projet personnel Iasit — validé
+## Projet personnel Iasit — validé et appliqué
 
-La réécriture de la carte `iasit` est validée mais n'est pas encore appliquée aux données du CV. Elle présente l'outil comme un système de pilotage du développement assisté par des agents IA, structuré autour du cycle préparation, exécution, vérification, correction et acceptation.
+La réécriture de la carte `iasit` est appliquée aux versions française et anglaise du CV. Elle présente l'outil comme un système de pilotage du développement assisté par des agents IA, structuré autour du cycle préparation, exécution, vérification, correction et acceptation.
 
 La gestion des bugs doit apparaître comme une boucle traçable `verify → finding → fix → re-verify`. Les findings conservent leur sévérité, leurs preuves, les fichiers concernés et la correction proposée ; leur présence bloque l'acceptation tant qu'ils restent ouverts.
 
 La capitalisation repose sur la promotion explicite d'un finding en learned rule. La règle conserve sa provenance, son périmètre et son statut, puis les règles actives pertinentes sont sélectionnées et intégrées aux futurs prompts. Présenter ce mécanisme comme une amélioration continue fondée sur les problèmes rencontrés, et non comme un apprentissage autonome non supervisé.
 
-## Projet personnel Vorrery — validé
+## Projet personnel Vorrery — validé et appliqué
 
-La réécriture de la carte `vorrery` est validée mais n'est pas encore appliquée aux données du CV. L'angle retenu est celui d'un sandbox pédagogique 3D fondé sur la manipulation, l'observation et la comparaison de scénarios.
+La réécriture de la carte `vorrery` est appliquée aux versions française et anglaise du CV. L'angle retenu est celui d'un sandbox pédagogique 3D fondé sur la manipulation, l'observation et la comparaison de scénarios.
 
 La présentation doit mettre en avant la coexistence de plusieurs niveaux d'accompagnement : exploration libre, laboratoire de manipulation, expériences guidées et parcours pour enfants. La génération visible étape par étape, la possibilité de rejouer une expérience et l'absence de score ou de progression imposée constituent les principaux éléments pédagogiques à conserver.
 
@@ -595,7 +595,7 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 
 1. Vérifier les derniers champs du profil, notamment les coordonnées de contact.
 2. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
-3. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
+3. Appliquer les autres changements validés aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis harmoniser les doublons et les traductions.
 
 ## Points techniques repérés lors de l'audit initial
 
@@ -603,4 +603,4 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 - Certaines traductions et certains accents sont incomplets ou incohérents.
 - Les coordonnées de contact, dont l'adresse e-mail et la présentation du téléphone, devront être vérifiées avant finalisation.
 - L'export Word utilise maintenant les mêmes données localisées que le rendu web ; il devra être contrôlé de nouveau après l'application globale des textes validés.
-- Le rendu des chips est actuellement limité à `cardSummary`. L'application finale devra utiliser le même rendu pour `mission.desc` et chaque entrée de `mission.tasks`, tandis que l'export Word devra éviter d'afficher des marqueurs `#` bruts.
+- Le rendu des chips est mutualisé entre les résumés, les descriptions et les contributions du CV web. L'export Word convertit également les marqueurs en badges intégrés au texte.

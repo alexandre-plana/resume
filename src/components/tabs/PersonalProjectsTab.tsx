@@ -2,6 +2,7 @@ import { memo, useEffect, useState, type CSSProperties } from 'react'
 import type { PersonalProject } from '../../types'
 import type { Translations } from '../../locales'
 import { TechBadge } from '../TechBadge'
+import { InlineTechText } from '../InlineTechText'
 import styles from '../../App.module.css'
 
 type ProjectPopout = {
@@ -112,7 +113,9 @@ function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessa
               </span>
             </div>
             <div className={styles.formTitle}>{project.name}</div>
-            <div className={styles.formSubtitle}>{project.desc}</div>
+            <div className={styles.formSubtitle}>
+              <InlineTechText text={project.desc} />
+            </div>
             <div className={styles.formMeta}>
               🗓 {project.period} · {project.role}
             </div>
@@ -159,9 +162,13 @@ function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessa
             </div>
 
             <div className={styles.missionModalCore}>
-              <div className={styles.missionModalContext}>{activeProject.project.desc}</div>
+              <div className={styles.missionModalContext}>
+                <InlineTechText text={activeProject.project.desc} />
+              </div>
               {activeProject.project.details && (
-                <div className={styles.missionModalDesc}>{activeProject.project.details}</div>
+                <div className={styles.missionModalDesc}>
+                  <InlineTechText text={activeProject.project.details} />
+                </div>
               )}
 
               {activeProject.project.highlights && activeProject.project.highlights.length > 0 && (
@@ -170,7 +177,7 @@ function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessa
                   <ul className={styles.missionTasksList}>
                     {activeProject.project.highlights.map((highlight, idx) => (
                       <li key={`personal-highlight-${activeProject.project.id}-${idx}`} className={styles.missionTaskItem}>
-                        {highlight}
+                        <InlineTechText text={highlight} />
                       </li>
                     ))}
                   </ul>

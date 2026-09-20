@@ -108,6 +108,12 @@ const badgeRun = (text: string, variant: BadgeVariant, allCaps = false): TextRun
   })
 }
 
+const inlineTaggedRuns = (text: string, options: RunOverrides = {}): TextRun[] =>
+  text
+    .split(/(#[a-zA-Z0-9-]+)/g)
+    .filter((part) => part.length > 0)
+    .map((part) => (part.startsWith('#') ? badgeRun(part, 'blue') : bodyRun(part, options)))
+
 const badgeRuns = (
   values: string[],
   variant: BadgeVariant,
@@ -313,7 +319,7 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
 
   children.push(
     new Paragraph({
-      children: [bodyRun(mission.desc, { size: 20, color: PALETTE.text2 })],
+      children: inlineTaggedRuns(mission.desc, { size: 20, color: PALETTE.text2 }),
       spacing: { after: 40, line: 270 },
     }),
   )
@@ -330,7 +336,7 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
     missionTasks.forEach((task) => {
       children.push(
         new Paragraph({
-          children: [bodyRun(task, { size: 20, color: PALETTE.text2 })],
+          children: inlineTaggedRuns(task, { size: 20, color: PALETTE.text2 }),
           bullet: { level: 0 },
           indent: { left: 340 },
           spacing: { line: 240, after: 70 },
@@ -410,7 +416,7 @@ const buildPersonalProjectCard = (
       spacing: { after: 70 },
     }),
     new Paragraph({
-      children: [bodyRun(project.desc, { size: 20, color: PALETTE.text2 })],
+      children: inlineTaggedRuns(project.desc, { size: 20, color: PALETTE.text2 }),
       spacing: { after: 70, line: 250 },
     }),
   ]
@@ -418,7 +424,7 @@ const buildPersonalProjectCard = (
   if (project.details) {
     children.push(
       new Paragraph({
-        children: [bodyRun(project.details, { size: 19, color: PALETTE.text2 })],
+        children: inlineTaggedRuns(project.details, { size: 19, color: PALETTE.text2 }),
         spacing: { after: 80, line: 250 },
       }),
     )
@@ -443,7 +449,7 @@ const buildPersonalProjectCard = (
     project.highlights.forEach((highlight) => {
       children.push(
         new Paragraph({
-          children: [bodyRun(highlight, { size: 19, color: PALETTE.text2 })],
+          children: inlineTaggedRuns(highlight, { size: 19, color: PALETTE.text2 }),
           bullet: { level: 0 },
           indent: { left: 340 },
           spacing: { line: 230, after: 60 },
