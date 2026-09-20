@@ -74,6 +74,14 @@ La carte `kin` a été réécrite à partir du dépôt [alexandre-plana/kin](htt
 
 Une carte `n-fold-protocol` a été créée à partir du dépôt [alexandre-plana/n-fold-protocol](https://github.com/alexandre-plana/n-fold-protocol). Elle décrit le prototype Godot/C# actuellement implémenté : simulation déterministe à pas fixe, déplacement en formation, combat, programmation d'aptitudes et stratégie de validation automatisée.
 
+## Projet personnel Iasit — validé
+
+La réécriture de la carte `iasit` est validée mais n'est pas encore appliquée aux données du CV. Elle présente l'outil comme un système de pilotage du développement assisté par des agents IA, structuré autour du cycle préparation, exécution, vérification, correction et acceptation.
+
+La gestion des bugs doit apparaître comme une boucle traçable `verify → finding → fix → re-verify`. Les findings conservent leur sévérité, leurs preuves, les fichiers concernés et la correction proposée ; leur présence bloque l'acceptation tant qu'ils restent ouverts.
+
+La capitalisation repose sur la promotion explicite d'un finding en learned rule. La règle conserve sa provenance, son périmètre et son statut, puis les règles actives pertinentes sont sélectionnées et intégrées aux futurs prompts. Présenter ce mécanisme comme une amélioration continue fondée sur les problèmes rencontrés, et non comme un apprentissage autonome non supervisé.
+
 ## Expérience IECA — validée
 
 ### Faits apportés par l'utilisateur
@@ -577,7 +585,7 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 
 ## Point de reprise recommandé
 
-1. Auditer les textes des projets personnels actuellement visibles, en commençant par Kin.
+1. Auditer le projet personnel `vorrery`, Iasit étant désormais validé et Kin déjà appliqué.
 2. Vérifier les derniers champs du profil, notamment les coordonnées de contact.
 3. Conserver la conception fonctionnelle parmi les axes à faire apparaître lorsqu'elle est documentée dans les contenus suivants.
 4. Appliquer les changements aux sources uniquement lorsque l'utilisateur le demandera explicitement, puis étendre le rendu des chips, harmoniser les doublons et les traductions.
