@@ -595,9 +595,18 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 
 ## Point de reprise recommandé
 
-1. Appliquer les changements validés aux sources uniquement lorsque l'utilisateur le demandera explicitement.
-2. Harmoniser les doublons et les traductions françaises et anglaises pendant cette application.
-3. Contrôler ensuite les rendus web et Word, notamment la hauteur de la barre latérale et la présentation des coordonnées.
+1. Reprendre l’application globale des textes validés : les données françaises et une première passe anglaise sont déjà partiellement synchronisées, mais les statuts du suivi restent à mettre à jour après contrôle.
+2. Vérifier les traductions anglaises des missions Oreka et les éventuels champs encore hérités des anciennes données françaises.
+3. Contrôler ensuite les rendus web et Word, notamment la hauteur de la barre latérale, la présentation des coordonnées et la suppression du graphique de langages.
+
+### Avancement de la passe d’application — session du 20 septembre 2026
+
+- Le titre, le sous-titre, la présentation globale, l’objectif professionnel, les coordonnées, les compétences et les formations ont été appliqués aux données de base et aux traductions de profil.
+- Les missions Xistar `31` à `34`, IECA `11`, AOA `12` et Oreka `21` à `28` ont été réécrites dans `src/api/mockData.ts`.
+- Les traductions anglaises correspondantes ont été commencées dans `src/api/mockDataLocales.ts`, y compris les huit projets Oreka qui n’étaient pas traduits auparavant.
+- Le graphique `profile.languages` a été retiré du type, des données et de l’interface ; l’objectif professionnel est maintenant affiché dans la barre latérale et l’export Word.
+- Le composant téléphone accepte désormais le format international `+33 6 71 03 97 84`.
+- `npm run lint` et `npm run build` ont réussi avant la dernière correction de formulation de l’introduction ; ils devront être relancés à la reprise.
 
 ## Points techniques repérés lors de l'audit initial
 

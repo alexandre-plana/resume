@@ -3,7 +3,6 @@ export type Language = 'fr' | 'en'
 export interface Translations {
   common: {
     languages: string
-    languageStack: string
     coreSkills: string
     openToWork: string
     contact: string
@@ -93,7 +92,6 @@ export const translations: Record<Language, Translations> = {
   fr: {
     common: {
       languages: 'Langues',
-      languageStack: 'Langages',
       coreSkills: 'Competences cles',
       openToWork: 'Ouvert à un poste',
       contact: '✉ Me contacter',
@@ -181,7 +179,6 @@ export const translations: Record<Language, Translations> = {
   en: {
     common: {
       languages: 'Languages',
-      languageStack: 'Languages',
       coreSkills: 'Core Skills',
       openToWork: 'Open to work',
       contact: '✉ Contact me',

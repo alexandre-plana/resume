@@ -4,12 +4,12 @@ export interface Profile {
   title: string
   subtitle: string
   bio: string
+  seeking: string
   company: string
   location: string
   email: string
   phone: string
   langs: { label: string; level: string }[]
-  languages: { name: string; pct: number; color: string }[]
   interests: string[]
 }
 
