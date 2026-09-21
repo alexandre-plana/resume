@@ -6,8 +6,8 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 - Branche de travail : `rewrite`.
 - Les textes validés sont consignés dans `SUIVI_REECRITURE_CV.md`.
-- Aucun texte validé n'a encore été appliqué aux fichiers source du CV.
-- Ne pas modifier les données du CV avant une demande explicite d'application globale.
+- Tous les textes validés à ce stade ont été appliqués aux fichiers source du CV, en français et en anglais.
+- Le rendu web et l'export Word utilisent désormais les mêmes données et la même sélection de contenus.
 - La réécriture est menée expérience par expérience. Une proposition encore en discussion ne doit pas être ajoutée au journal des textes validés.
 
 ## Cadre éditorial convenu
@@ -27,7 +27,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 Le titre, le sous-titre, la présentation globale, l'objectif professionnel, les compétences principales, les formations, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
-Les coordonnées ont également été vérifiées : l’adresse e-mail doit devenir `alexandre.plana@gmail.com` et le téléphone doit être présenté au format international `+33 6 71 03 97 84`. L’intitulé employeur et la localisation restent inchangés. Le composant d’affichage du téléphone devra accepter ce nouveau format lors de l’application.
+Les coordonnées ont également été appliquées : l’adresse e-mail est `alexandre.plana@gmail.com` et le téléphone est présenté au format international `+33 6 71 03 97 84`. L’intitulé employeur et la localisation restent inchangés. Le composant d’affichage du téléphone accepte ce format.
 
 Le titre et le sous-titre ne nécessitent pas de chips. La présentation globale conserve son rôle de positionnement et ne contient ni chips ni spécification de technologies.
 
@@ -121,11 +121,11 @@ Les détails liés à l'espace, à la gravité et aux modèles physiques restent
 
 La dernière contribution remplace l'ancienne formulation centrée sur la présentation du prototype aux Product Owners et précise sa finalité pour les opérateurs d'astreinte.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `1`, mission `11`.
 - `src/api/mockDataLocales.ts` : version française de l'expérience `1`, mission `11`.
-- La version anglaise devra ensuite être harmonisée sans traduire littéralement les formulations françaises.
+- La version anglaise a été harmonisée sans reprendre littéralement les formulations françaises.
 
 ## Expérience AOA — validée
 
@@ -147,7 +147,7 @@ La version validée conserve une dominante front-end tout en faisant apparaître
 - Mettre en place un système de styles externalisé pour produire des versions personnalisées aux couleurs des clients #oem.
 - Créer sous #unity un outil de tests unitaires intégré aux étapes précédant et suivant les builds.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `1`, mission `12`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `1`, mission `12`.
@@ -176,7 +176,7 @@ La version validée met en avant la conception fonctionnelle et la création de 
 - Intégrer et optimiser des modèles issus de la #cao avec #solidworks et #3dsmax : maillages, niveaux de détail, lightmaps, matériaux et shaders.
 - Optimiser les performances CPU/GPU avec les outils de profiling de #unity, puis préparer les builds, corriger les anomalies et accompagner les démonstrations client.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `2`, mission `21`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `21`.
@@ -204,7 +204,7 @@ La version validée met en avant la conception fonctionnelle menée avec des erg
 - Développer en #csharp sous #unity les interactions et les composants du simulateur 3D.
 - Intégrer l'analyse posturale et restituer les indicateurs de risque au fil de la simulation.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `2`, mission `22`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `22`.
@@ -232,7 +232,7 @@ La version validée relie la conception UX/UI aux objectifs pédagogiques de la 
 - Définir les interactions du simulateur nécessaires à l'apprentissage pratique en chantier-école.
 - Participer à l'intégration de l'expérience dans l'application en #csharp sous #unity.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `2`, mission `23`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `23`.
@@ -260,7 +260,7 @@ La version validée décrit précisément la simulation, la représentation des 
 - Implémenter la gestion et la représentation des matériaux radioactifs dans la simulation.
 - Concevoir en #wpf les interfaces de contrôle destinées aux opérateurs.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `2`, mission `24`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `24`.
@@ -288,7 +288,7 @@ La version validée met en avant la transformation des procédures opérationnel
 - Développer en #csharp sous #unity la simulation 3D et le déroulement des scénarios.
 - Modéliser l'environnement de formation et l'intégrer dans l'application.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `2`, mission `25`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `25`.
@@ -316,7 +316,7 @@ La version validée distingue les procédures de sécurité, les scénarios d'ac
 - Implémenter la gestion des équipes de secours au sein de la simulation.
 - Développer en #csharp sous #unity le module de formation et son environnement 3D.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `2`, mission `26`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `26`.
@@ -344,7 +344,7 @@ La version validée replace le projet dans le contexte des arrêts de tranche et
 - Représenter en 3D l'environnement et le déroulement des opérations de maintenance.
 - Développer en #csharp sous #unity le serious game #seriousgame et ses mécanismes interactifs.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `2`, mission `27`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `27`.
@@ -372,7 +372,7 @@ La version validée décrit la dosimétrie au cours des scénarios, les zones ex
 - Visualiser les zones exposées aux rayonnements dans l'environnement 3D.
 - Développer en #csharp sous #unity la simulation médicale et ses interactions.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `2`, mission `28`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `28`.
@@ -389,7 +389,7 @@ Le champ validé reste volontairement généraliste : il ne cible ni domaine ni 
 
 > Développement full-stack · Expertise front-end et UI/UX · Conception fonctionnelle · Équipe attentive à la qualité produit
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockDataLocales.ts` : `fr.profile.seeking`.
 - `src/api/mockDataLocales.ts` : `en.profile.seeking`, à reformuler en anglais sans traduction littérale.
@@ -417,7 +417,7 @@ La nouvelle organisation reflète le périmètre full-stack, l'interopérabilit�
 - Ne pas faire de la section un inventaire exhaustif ; les détails restent attachés aux expériences.
 - Retirer Flutter, qui n'est relié à aucune expérience actuellement documentée.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : `mockSkills`.
 - `src/api/mockDataLocales.ts` : `fr.skills` et `en.skills`.
@@ -462,7 +462,7 @@ La version validée harmonise les libellés, corrige « licence » et distingue 
 - Établissement et date : `3DI Laval · 2010–2012`
 - Description : `Multimédia · Web · Vidéo`
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : `mockFormation`.
 - `src/api/mockDataLocales.ts` : `fr.formation` et `en.formation`.
@@ -490,7 +490,7 @@ Les textes validés concernent le projet Xistar `32`.
 - Publier les données du simulateur vers Xistar via #mqtt.
 - Développer l'outil en #typescript sous #nodejs pour les démonstrations et la mise au point des fonctionnalités.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `3`, mission `32`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `32`.
@@ -518,7 +518,7 @@ Les textes validés concernent le projet Xistar `33`.
 - Implémenter l'escalade des alertes et l'envoi des ordres de retour.
 - Développer l'interface en #typescript avec #react et intégrer les échanges via #socketio.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `3`, mission `33`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `33`.
@@ -546,7 +546,7 @@ Les textes validés concernent le projet Xistar `34`.
 - Implémenter l'envoi distant de vues depuis le poste maître vers les écrans émulés.
 - Développer l'outil en #typescript avec #react et #vite pour le développement et les démonstrations.
 
-**Cibles à synchroniser lors de l'application**
+**Cibles synchronisées**
 
 - `src/api/mockData.ts` : expérience `3`, mission `34`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `3`, mission `34`.
@@ -597,21 +597,28 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 
 1. Reprendre l’application globale des textes validés : les données françaises et une première passe anglaise sont déjà partiellement synchronisées, mais les statuts du suivi restent à mettre à jour après contrôle.
 2. Vérifier les traductions anglaises des missions Oreka et les éventuels champs encore hérités des anciennes données françaises.
-3. Contrôler ensuite les rendus web et Word, notamment la hauteur de la barre latérale, la présentation des coordonnées et la suppression du graphique de langages.
+3. Les rendus web et Word ont été contrôlés, notamment la hauteur de la barre latérale, la présentation des coordonnées et la suppression du graphique de langages.
 
 ### Avancement de la passe d’application — session du 20 septembre 2026
 
 - Le titre, le sous-titre, la présentation globale, l’objectif professionnel, les coordonnées, les compétences et les formations ont été appliqués aux données de base et aux traductions de profil.
 - Les missions Xistar `31` à `34`, IECA `11`, AOA `12` et Oreka `21` à `28` ont été réécrites dans `src/api/mockData.ts`.
-- Les traductions anglaises correspondantes ont été commencées dans `src/api/mockDataLocales.ts`, y compris les huit projets Oreka qui n’étaient pas traduits auparavant.
+- Les traductions anglaises correspondantes ont été finalisées dans `src/api/mockDataLocales.ts`, y compris les huit projets Oreka qui n’étaient pas traduits auparavant.
 - Le graphique `profile.languages` a été retiré du type, des données et de l’interface ; l’objectif professionnel est maintenant affiché dans la barre latérale et l’export Word.
 - Le composant téléphone accepte désormais le format international `+33 6 71 03 97 84`.
-- `npm run lint` et `npm run build` ont réussi avant la dernière correction de formulation de l’introduction ; ils devront être relancés à la reprise.
+- `npm run lint` et `npm run build` ont réussi après l’application des textes validés.
+
+### Finalisation — session du 21 septembre 2026
+
+- Les rendus web français et anglais ont été contrôlés ; les traductions des projets Oreka sont rattachées à la bonne expérience.
+- Les exports Word français et anglais sont générés depuis les mêmes données localisées que le CV web.
+- Les deux documents Word comptent huit pages. Leur rendu a été contrôlé page par page, notamment les coupures de tableaux entre les pages et la lisibilité des intitulés de contributions.
+- Les fichiers livrés sont `artifacts/cv-alexandre-plana-fr-2026-09-21.docx` et `artifacts/cv-alexandre-plana-en-2026-09-21.docx`.
 
 ## Points techniques repérés lors de l'audit initial
 
-- Plusieurs contenus restent dupliqués entre `src/api/mockData.ts` et `src/api/mockDataLocales.ts` ; les deux sources devront rester cohérentes lors de l'application.
-- Certaines traductions et certains accents sont incomplets ou incohérents.
-- La correction de l'adresse e-mail et la présentation internationale du téléphone sont validées mais restent à appliquer.
-- L'export Word utilise maintenant les mêmes données localisées que le rendu web ; il devra être contrôlé de nouveau après l'application globale des textes validés.
+- Les contenus partagés entre `src/api/mockData.ts` et `src/api/mockDataLocales.ts` ont été synchronisés lors de l’application.
+- Les traductions anglaises et les libellés français ont été harmonisés pour les contenus retravaillés.
+- L’adresse e-mail corrigée et le téléphone au format international sont appliqués aux deux rendus.
+- L’export Word utilise les mêmes données localisées que le rendu web et a été contrôlé après l’application globale des textes validés.
 - Le rendu des chips est mutualisé entre les résumés, les descriptions et les contributions du CV web. L'export Word convertit également les marqueurs en badges intégrés au texte.
