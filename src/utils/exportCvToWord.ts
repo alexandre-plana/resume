@@ -131,6 +131,7 @@ const badgeRuns = (
 
 const sectionHeading = (label: string): Paragraph =>
   new Paragraph({
+    keepNext: true,
     children: [
       monoRun('◆ ', {
         bold: true,
@@ -299,8 +300,6 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
       spacing: { after: 110, line: 200 },
     }),
   ]
-  // Add header block as a single TableRow with cantSplit
-  // Instead of pushing a Table into a Paragraph array, push headerBlock directly
   children.push(...headerBlock)
 
   const pushMissionGap = (after = 70): void => {
@@ -328,7 +327,11 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
   if (missionTasks.length > 0) {
     children.push(
       new Paragraph({
-        children: [monoRun(t.mission.tasksTitle.toUpperCase(), { bold: true, allCaps: true, size: 16, color: PALETTE.blue, characterSpacing: 8 })],
+        children: [
+          bodyRun('\u00A0\u00A0', { size: 16 }),
+          monoRun(t.mission.tasksTitle.toUpperCase(), { bold: true, allCaps: true, size: 16, color: PALETTE.blue, characterSpacing: 8 }),
+        ],
+        indent: { left: 120 },
         spacing: { after: 90 },
       }),
     )
@@ -379,7 +382,6 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
     },
     rows: [
       new TableRow({
-        cantSplit: true,
         children: [
           new TableCell({
             shading: { type: ShadingType.CLEAR, fill: fillColor, color: 'auto' },
@@ -433,6 +435,7 @@ const buildPersonalProjectCard = (
   if (project.highlights?.length) {
     children.push(
       new Paragraph({
+        keepNext: true,
         children: [
           monoRun(t.personalModal.highlightsTitle.toUpperCase(), {
             bold: true,
@@ -496,7 +499,7 @@ const addSpacingBetweenCards = (children: DocChild[]): void => {
 
 // Main export
 
-export const exportCvToWord = async (data: CvExportData, language: Language): Promise<void> => {
+export const createCvWordBlob = async (data: CvExportData, language: Language): Promise<Blob> => {
   const t = getTranslations(language)
   const { profile, experiences, skills, formations, personalProjects } = data
 
@@ -553,6 +556,7 @@ export const exportCvToWord = async (data: CvExportData, language: Language): Pr
 
     children.push(
       new Paragraph({
+        keepNext: true,
         children: [
           bodyRun(experience.company, { bold: true, size: 26, color: PALETTE.text }),
           bodyRun(`  ${experience.employer}`, { size: 20, color: PALETTE.text2 }),
@@ -560,6 +564,7 @@ export const exportCvToWord = async (data: CvExportData, language: Language): Pr
         spacing: { after: 40 },
       }),
       new Paragraph({
+        keepNext: true,
         children: [monoRun(experience.period, { size: 16, color: PALETTE.text3 })],
         spacing: { after: 80 },
       }),
@@ -579,10 +584,12 @@ export const exportCvToWord = async (data: CvExportData, language: Language): Pr
   formations.forEach((formation, index) => {
     children.push(
       new Paragraph({
+        keepNext: true,
         children: [bodyRun(formation.title, { bold: true, size: 23 })],
         spacing: { after: 40 },
       }),
       new Paragraph({
+        keepNext: true,
         children: [monoRun(formation.sub, { size: 16, color: PALETTE.text3 })],
         spacing: { after: 40 },
       }),
@@ -642,7 +649,12 @@ export const exportCvToWord = async (data: CvExportData, language: Language): Pr
     ],
   })
 
-  const blob = await Packer.toBlob(doc)
+  return Packer.toBlob(doc)
+}
+
+export const exportCvToWord = async (data: CvExportData, language: Language): Promise<void> => {
+  const { profile } = data
+  const blob = await createCvWordBlob(data, language)
   const link = document.createElement('a')
   const fileDate = new Date().toISOString().slice(0, 10)
 

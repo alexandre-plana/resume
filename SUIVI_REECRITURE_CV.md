@@ -6,9 +6,9 @@ Ce document consigne les versions avant/après, leur statut de validation et les
 
 ### Titre et sous-titre
 
-**Statut :** validés, non appliqués  
+**Statut :** validés et appliqués
 **Champs principaux :** `src/api/mockDataLocales.ts` → `fr.profile.title` et `fr.profile.subtitle`  
-**Doublons à synchroniser lors de l'application :** `src/api/mockData.ts` → `mockProfile.title` et `mockProfile.subtitle`
+**Sources synchronisées :** `src/api/mockData.ts` → `mockProfile.title` et `mockProfile.subtitle`
 
 #### Avant
 
@@ -26,9 +26,9 @@ Le titre reflète le périmètre full-stack actuel sans effacer l'expertise fron
 
 ### Présentation globale
 
-**Statut :** validée, non appliquée
+**Statut :** validée et appliquée
 **Champ principal :** `src/api/mockDataLocales.ts` → `fr.profile.bio`  
-**Doublon à synchroniser lors de l'application :** `src/api/mockData.ts` → `mockProfile.bio`
+**Source synchronisée :** `src/api/mockData.ts` → `mockProfile.bio`
 
 #### Avant — texte actuellement affiché
 
@@ -44,9 +44,9 @@ Le nouveau texte présente le positionnement et la manière de travailler, sans 
 
 ### Expérience Xistar
 
-**Statut :** validée, non appliquée
+**Statut :** validée et appliquée
 **Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `31` (`badge`, `cardSummary`, `desc`, `tasks`)  
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.31`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.31`
 
 #### Avant — intitulé
 
@@ -95,9 +95,9 @@ La nouvelle version fait apparaître la conception fonctionnelle à partir des b
 
 ### Expérience IECA
 
-**Statut :** validée, non appliquée
+**Statut :** validée et appliquée
 **Champs principaux :** `src/api/mockData.ts` → expérience `1`, mission `11` ; `src/api/mockDataLocales.ts` → `fr.experiences.1.missions.11`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.1.missions.11`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.1.missions.11`
 
 #### Avant — intitulé
 
@@ -145,9 +145,9 @@ La nouvelle version restitue l’étendue de la mission au-delà des composants 
 
 ### Expérience Augmented Operator Advisor (AOA)
 
-**Statut :** validée, non appliquée
+**Statut :** validée et appliquée
 **Champs principaux :** `src/api/mockData.ts` → expérience `1`, mission `12` ; `src/api/mockDataLocales.ts` → `fr.experiences.1.missions.12`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.1.missions.12`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.1.missions.12`
 
 #### Intitulé conservé
 
@@ -195,9 +195,9 @@ La nouvelle version décrit le périmètre multiplateforme et les responsabilit�
 
 ### Expérience générale Oreka Ingénierie
 
-**Statut :** validée, non appliquée
+**Statut :** validée et appliquée
 **Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `21` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.21`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.21`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.21`
 
 #### Intitulé conservé
 
@@ -245,9 +245,9 @@ La nouvelle version place la conception fonctionnelle et les serious games au pr
 
 ### Projet Simulhom
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `22` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.22`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.22`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.22`
 
 #### Avant — intitulé
 
@@ -293,9 +293,9 @@ La nouvelle version présente Simulhom comme un travail de conception fonctionne
 
 ### Projet Dosicase
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `23` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.23`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.23`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.23`
 
 #### Avant — intitulé
 
@@ -340,9 +340,9 @@ La nouvelle version précise la finalité de Dosicase et relie le travail UX/UI 
 
 ### Projet EMEM
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `24` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.24`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.24`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.24`
 
 #### Avant — intitulé
 
@@ -387,9 +387,9 @@ La nouvelle version explicite le rôle de l’EMEM et les responsabilités exerc
 
 ### Projet Aeroball
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `25` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.25`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.25`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.25`
 
 #### Avant — intitulé
 
@@ -434,9 +434,9 @@ La nouvelle version présente Aeroball comme un travail de transposition des pro
 
 ### Projet de formation en radioprotection
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `26` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.26`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.26`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.26`
 
 #### Avant — intitulé
 
@@ -481,9 +481,9 @@ La nouvelle version distingue les procédures de radioprotection, les scénarios
 
 ### Projet de maintenance des générateurs de vapeur
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `27` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.27`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.27`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.27`
 
 #### Avant — intitulé
 
@@ -528,9 +528,9 @@ La nouvelle version replace le projet dans le contexte des arrêts de tranche et
 
 ### Projet de radioprotection en chirurgie interventionnelle
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `2`, mission `28` ; `src/api/mockDataLocales.ts` → `fr.experiences.2.missions.28`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.28`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.2.missions.28`
 
 #### Avant — intitulé
 
@@ -575,9 +575,9 @@ La nouvelle version replace la dosimétrie et les protocoles de radioprotection 
 
 ### Objectif professionnel
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champ principal :** `src/api/mockDataLocales.ts` → `fr.profile.seeking`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.profile.seeking`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.profile.seeking`
 
 #### Avant
 
@@ -593,7 +593,7 @@ Le nouvel objectif ne limite plus la recherche à un domaine, une technologie ou
 
 ### Coordonnées
 
-**Statut :** correction validée, non appliquée
+**Statut :** correction validée et appliquée
 **Champ principal :** `src/api/mockData.ts` → `mockProfile.email` et `mockProfile.phone`
 
 #### Avant
@@ -610,13 +610,13 @@ Le nouvel objectif ne limite plus la recherche à un domaine, une technologie ou
 
 #### Motif de la correction
 
-L’adresse e-mail actuellement affichée est incomplète. Le numéro adopte un format international plus adapté à la diffusion du CV. L’intitulé employeur et la localisation restent inchangés, faute d’information plus précise à leur sujet. Le composant d’affichage du téléphone devra être adapté, car son découpage actuel suppose un numéro français séparé par des points.
+L’adresse e-mail affichée auparavant était incomplète. Le numéro adopte maintenant un format international plus adapté à la diffusion du CV. L’intitulé employeur et la localisation restent inchangés, faute d’information plus précise à leur sujet. Le composant d’affichage du téléphone a été adapté à ce format.
 
 ### Compétences principales
 
-**Statut :** validées, non appliquées
+**Statut :** validées et appliquées
 **Champ principal :** `src/api/mockData.ts` → `mockSkills`
-**Libellés à synchroniser :** `src/api/mockDataLocales.ts` → `fr.skills` et `en.skills`
+**Libellés synchronisés :** `src/api/mockDataLocales.ts` → `fr.skills` et `en.skills`
 
 #### Avant
 
@@ -632,13 +632,13 @@ L’adresse e-mail actuellement affichée est incomplète. Le numéro adopte un 
 
 #### Motif de la réécriture
 
-La nouvelle organisation reflète le périmètre full-stack et les compétences documentées dans les expériences validées. Elle distingue les langages, les interfaces et la visualisation, les échanges système et l’outillage. Flutter est retiré faute d’expérience actuellement documentée dans le CV. La hauteur de la barre latérale devra être contrôlée lors de l’application.
+La nouvelle organisation reflète le périmètre full-stack et les compétences documentées dans les expériences validées. Elle distingue les langages, les interfaces et la visualisation, les échanges système et l’outillage. Flutter est retiré faute d’expérience actuellement documentée dans le CV. La hauteur de la barre latérale a été contrôlée lors de l’application.
 
 ### Formations et diplômes
 
-**Statut :** validés, non appliqués
+**Statut :** validés et appliqués
 **Champs principaux :** `src/api/mockData.ts` → `mockFormation`
-**Traductions à synchroniser :** `src/api/mockDataLocales.ts` → `fr.formation` et `en.formation`
+**Traductions synchronisées :** `src/api/mockDataLocales.ts` → `fr.formation` et `en.formation`
 
 #### Avant
 
@@ -672,9 +672,9 @@ La nouvelle version distingue les formations professionnelles, le stage et les d
 
 ### Projet Xistar — simulateur de drones et de flotte navale
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `32`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.32`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.32`
 
 #### Avant — intitulé
 
@@ -709,9 +709,9 @@ La nouvelle version explicite les données produites, leur publication vers Xist
 
 ### Projet Xistar — application mobile
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `33`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.33`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.33`
 
 #### Avant — intitulé
 
@@ -746,9 +746,9 @@ La nouvelle version précise le rôle de l’application pour les opérateurs su
 
 ### Projet Xistar — émulateur de mur d’écrans
 
-**Statut :** validé, non appliqué
+**Statut :** validé et appliqué
 **Champs principaux :** `src/api/mockData.ts` → expérience `3`, mission `34`
-**Traduction anglaise à harmoniser ultérieurement :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.34`
+**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.experiences.3.missions.34`
 
 #### Avant — intitulé
 
@@ -783,7 +783,7 @@ La nouvelle version distingue l’émulateur du mur d’écrans opérationnel. E
 
 ### Graphique de répartition des langages
 
-**Statut :** suppression validée, non appliquée
+**Statut :** suppression validée et appliquée
 **Champs principaux :** `src/api/mockData.ts` → `mockProfile.languages` ; `src/App.tsx` → bloc `languageStack`
 
 #### Avant
@@ -937,7 +937,7 @@ La carte distingue explicitement le cadrage du développement : le dépôt conti
 
 La nouvelle version présente d'abord la finalité de l'outil et son cycle de pilotage. Elle remplace la métrique des 580 commits par des responsabilités vérifiables, détaille la gestion des bugs et décrit la promotion des findings en learned rules comme un mécanisme explicite de capitalisation. L'amélioration des futurs prompts découle de règles sélectionnées selon leur pertinence ; elle n'est pas présentée comme un apprentissage autonome.
 
-#### Cibles à synchroniser lors de l'application
+#### Cibles synchronisées
 
 - `src/api/mockData.ts` : projet personnel `4`.
 - `src/api/mockDataLocales.ts` : traduction anglaise du projet personnel `4`.
@@ -1000,7 +1000,7 @@ La nouvelle version présente d'abord la finalité de l'outil et son cycle de pi
 
 La nouvelle version présente Vorrery comme un environnement d'expérimentation avant d'en détailler le domaine scientifique. Elle met en avant la manipulation, les différents niveaux d'accompagnement et la démarche pédagogique. Les mécanismes liés à l'espace, à la gravité et aux modèles physiques restent présents dans le produit, mais servent de support aux usages plutôt que de structurer la carte. La promesse absolue d'une couche mathématique intégralement testée est retirée.
 
-#### Cibles à synchroniser lors de l'application
+#### Cibles synchronisées
 
 - `src/api/mockData.ts` : projet personnel `6`.
 - `src/api/mockDataLocales.ts` : traduction anglaise du projet personnel `6`.
