@@ -6,7 +6,6 @@ export const mockProfile: Profile = {
   title: 'Développeur full-stack, expertise front-end',
   subtitle: 'Applications industrielles · UI/UX · Multiplateforme',
   bio: 'Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX que j’étends aujourd’hui au développement full-stack. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données opérationnelles. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.',
-  seeking: 'Développement full-stack · Expertise front-end et UI/UX · Conception fonctionnelle · Équipe attentive à la qualité produit',
   company: 'Consultant R&D · Datacorp / X-PERT',
   location: 'France',
   email: 'alexandre.plana@gmail.com',

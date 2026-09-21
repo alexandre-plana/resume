@@ -575,9 +575,8 @@ La nouvelle version replace la dosimétrie et les protocoles de radioprotection 
 
 ### Objectif professionnel
 
-**Statut :** validé et appliqué
-**Champ principal :** `src/api/mockDataLocales.ts` → `fr.profile.seeking`
-**Traduction anglaise harmonisée :** `src/api/mockDataLocales.ts` → `en.profile.seeking`
+**Statut :** retiré du CV le 21 septembre 2026
+**Anciennes sources supprimées :** `src/api/mockData.ts` → `mockProfile.seeking` ; `src/api/mockDataLocales.ts` → `fr.profile.seeking` et `en.profile.seeking`
 
 #### Avant
 
@@ -589,7 +588,11 @@ La nouvelle version replace la dosimétrie et les protocoles de radioprotection 
 
 #### Motif de la réécriture
 
-Le nouvel objectif ne limite plus la recherche à un domaine, une technologie ou une architecture particulière. Il exprime le type de rôle recherché, les axes d’expertise et l’attention portée à la qualité produit.
+Le nouvel objectif ne limitait plus la recherche à un domaine, une technologie ou une architecture particulière. Il exprimait le type de rôle recherché, les axes d’expertise et l’attention portée à la qualité produit.
+
+#### Décision ultérieure
+
+L’encart « À la recherche d’un poste » a finalement été retiré des versions web et Word. Les données, traductions, styles et références de typage associés ont également été supprimés afin de ne pas conserver de code inutilisé.
 
 ### Coordonnées
 

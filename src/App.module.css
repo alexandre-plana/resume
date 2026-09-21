@@ -185,26 +185,6 @@
   display: none;
 }
 
-.seekingBox {
-  background: var(--featured-bg);
-  border: 1px solid var(--featured-border);
-  border-radius: var(--radius);
-  padding: 12px;
-  margin-bottom: 20px;
-  font-size: 0.78rem;
-  color: var(--blue);
-  line-height: 1.55;
-}
-
-.seekingBox strong {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-3);
-}
-
 .langRow {
   display: flex;
   gap: 8px;

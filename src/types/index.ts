@@ -4,7 +4,6 @@ export interface Profile {
   title: string
   subtitle: string
   bio: string
-  seeking: string
   company: string
   location: string
   email: string

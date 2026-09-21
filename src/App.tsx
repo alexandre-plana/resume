@@ -151,11 +151,6 @@ function App() {
               </li>
             </ul>
 
-            <div className={styles.seekingBox}>
-              <strong>{t.sidebar.seekingLabel}</strong>
-              {profile.seeking}
-            </div>
-
             <div className={styles.aboutMobileAfterContact}>
               <div className={styles.sectionHeader}>👤 {t.sections.about}</div>
               <div className={styles.aboutSection}>
