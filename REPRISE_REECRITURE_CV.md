@@ -25,7 +25,7 @@ Ce document permet de reprendre le travail depuis une nouvelle session sans dép
 
 ## Textes déjà validés
 
-Le titre, le sous-titre, la présentation globale, l'objectif professionnel, les compétences principales, les formations, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
+Le titre, le sous-titre, la présentation globale, les compétences principales, les formations, Xistar, IECA, AOA et l'ensemble des projets Oreka Ingénierie sont validés. Les versions avant/après et leurs cibles exactes figurent dans `SUIVI_REECRITURE_CV.md`.
 
 Les coordonnées ont également été appliquées : l’adresse e-mail est `alexandre.plana@gmail.com` et le téléphone est présenté au format international `+33 6 71 03 97 84`. L’intitulé employeur et la localisation restent inchangés. Le composant d’affichage du téléphone accepte ce format.
 
@@ -377,9 +377,9 @@ La version validée décrit la dosimétrie au cours des scénarios, les zones ex
 - `src/api/mockData.ts` : expérience `2`, mission `28`.
 - `src/api/mockDataLocales.ts` : versions française et anglaise de l'expérience `2`, mission `28`.
 
-## Objectif professionnel — validé
+## Objectif professionnel — retiré du CV
 
-Le champ validé reste volontairement généraliste : il ne cible ni domaine ni technologie particuliers.
+Le champ avait été validé dans une formulation généraliste, puis retiré du CV à la demande de l’utilisateur le 21 septembre 2026. La donnée, son libellé, son style et son rendu dans l’export Word ont été supprimés du code.
 
 **Avant**
 
@@ -389,10 +389,11 @@ Le champ validé reste volontairement généraliste : il ne cible ni domaine ni 
 
 > Développement full-stack · Expertise front-end et UI/UX · Conception fonctionnelle · Équipe attentive à la qualité produit
 
-**Cibles synchronisées**
+**Anciennes cibles supprimées**
 
-- `src/api/mockDataLocales.ts` : `fr.profile.seeking`.
-- `src/api/mockDataLocales.ts` : `en.profile.seeking`, à reformuler en anglais sans traduction littérale.
+- `src/api/mockData.ts` : `mockProfile.seeking`.
+- `src/api/mockDataLocales.ts` : `fr.profile.seeking` et `en.profile.seeking`.
+- `src/App.tsx`, `src/App.module.css`, `src/locales/index.ts`, `src/types/index.ts`, `src/hooks/useApi.ts` et `src/utils/exportCvToWord.ts` : références de présentation et de typage associées.
 
 ## Compétences principales — validées
 

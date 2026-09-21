@@ -512,14 +512,6 @@ export const createCvWordBlob = async (data: CvExportData, language: Language): 
   children.push(buildAboutCard(profile.bio))
   children.push(spacer(180))
 
-  children.push(sectionHeading(t.sidebar.seekingLabel))
-  children.push(
-    new Paragraph({
-      children: [bodyRun(profile.seeking, { size: 20, color: PALETTE.text2 })],
-      spacing: { line: 230, after: 180 },
-    }),
-  )
-
   children.push(sectionHeading(t.common.languages))
   children.push(
     new Paragraph({

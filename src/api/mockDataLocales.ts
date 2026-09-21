@@ -6,7 +6,6 @@ export interface LocalizedMockData {
     subtitle: string
     bio: string
     company: string
-    seeking: string
     interests: string[]
     uiuxHighlight: {
       label: string
@@ -64,7 +63,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       subtitle: 'Applications industrielles · UI/UX · Multiplateforme',
       bio: 'Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX que j’étends aujourd’hui au développement full-stack. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données opérationnelles. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.',
       company: 'Consultant R&D · Datacorp / X-PERT',
-      seeking: 'Développement full-stack · Expertise front-end et UI/UX · Conception fonctionnelle · Équipe attentive à la qualité produit',
       interests: ['🎮 Jeux', '🚵 VTT', '🥾 Rando', '🍳 Cuisine'],
       uiuxHighlight: {
         label: '🎨 Culture UI/UX',
@@ -270,7 +268,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       subtitle: 'Industrial applications · UI/UX · Cross-platform',
       bio: 'I develop industrial applications, drawing on a strong frontend and UI/UX background that I now extend across the full stack. On Xistar, I work from the operator interface through to the services that ingest and distribute operational data. My approach connects user needs, architecture and technical constraints, with close attention to product consistency from the initial design to delivered code.',
       company: 'R&D Consultant · Datacorp / X-PERT',
-      seeking: 'Full-stack development · Frontend and UI/UX expertise · Functional design · Product-quality-focused team',
       interests: ['🎮 Gaming', '🚵 Mountain Biking', '🥾 Hiking', '🍳 Cooking'],
       uiuxHighlight: {
         label: '🎨 UI/UX Culture',

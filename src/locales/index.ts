@@ -14,7 +14,6 @@ export interface Translations {
     noData: string
   }
   sidebar: {
-    seekingLabel: string
     awards: string
     interests: string
   }
@@ -103,7 +102,6 @@ export const translations: Record<Language, Translations> = {
       noData: 'Aucune donnee a afficher.',
     },
     sidebar: {
-      seekingLabel: 'À la recherche d\'un poste',
       awards: 'Récompenses',
       interests: 'Centres d\'intérêt',
     },
@@ -190,7 +188,6 @@ export const translations: Record<Language, Translations> = {
       noData: 'No data to display.',
     },
     sidebar: {
-      seekingLabel: 'Looking for a role',
       awards: 'Awards',
       interests: 'Interests',
     },
