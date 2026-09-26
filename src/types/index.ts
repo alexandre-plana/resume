@@ -35,6 +35,7 @@ export interface Mission {
     id: number
     name: string
   }
+  parentMissionId?: number
   type?: string // e.g., 'projet', 'mission', etc.
   metrics?: { label: string }[]
 }

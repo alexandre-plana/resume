@@ -61,6 +61,7 @@ export const mockExperiences: Experience[] = [
           'Développer l’outil en #typescript sous #nodejs pour les démonstrations et la mise au point des fonctionnalités.',
         ],
         tags: ['node', 'ts', 'mqtt', 'simulation'],
+        parentMissionId: 31,
         type: 'projet',
       },
       {
@@ -79,6 +80,7 @@ export const mockExperiences: Experience[] = [
           'Développer l’interface en #typescript avec #react et intégrer les échanges via #socketio.',
         ],
         tags: ['react', 'mobile', 'socket.io', 'ts'],
+        parentMissionId: 31,
         type: 'projet',
       },
       {
@@ -97,6 +99,7 @@ export const mockExperiences: Experience[] = [
           'Développer l’outil en #typescript avec #react et #vite pour le développement et les démonstrations.',
         ],
         tags: ['react', 'vite', 'ts', 'desktop'],
+        parentMissionId: 31,
         type: 'projet',
       },
       {
@@ -117,7 +120,7 @@ export const mockExperiences: Experience[] = [
         ],
         relatedPersonalProject: { id: 4, name: 'Iasit' },
         tags: ['bmad', 'docker', 'gitlab ci', 'react', 'typescript', 'ai agents'],
-        type: 'projet',
+        type: 'mission',
       },
     ],
   },
@@ -211,6 +214,7 @@ export const mockExperiences: Experience[] = [
             'Intégrer l’analyse posturale et restituer les indicateurs de risque au fil de la simulation.',
           ],
           tags: ['unity', 'c#', '3d-temps-réel', 'vr', 'ergonomics'],
+          parentMissionId: 21,
           type: 'projet',
         },
         {
@@ -229,6 +233,7 @@ export const mockExperiences: Experience[] = [
             'Participer à l’intégration de l’expérience dans l’application en #csharp sous #unity.',
           ],
           tags: ['uiux', 'design', 'web', 'radioprotection', 'dosimetry', 'figma'],
+          parentMissionId: 21,
           type: 'projet',
         },
         {
@@ -247,6 +252,7 @@ export const mockExperiences: Experience[] = [
             'Concevoir en #wpf les interfaces de contrôle destinées aux opérateurs.',
           ],
           tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'desktop'],
+          parentMissionId: 21,
           type: 'projet',
         },
         {
@@ -265,6 +271,7 @@ export const mockExperiences: Experience[] = [
             'Modéliser l’environnement de formation et l’intégrer dans l’application.',
           ],
           tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'training', 'desktop'],
+          parentMissionId: 21,
           type: 'projet',
         },
         {
@@ -283,6 +290,7 @@ export const mockExperiences: Experience[] = [
             'Développer en #csharp sous #unity le module de formation et son environnement 3D.',
           ],
           tags: ['unity', 'c#', '3d-temps-réel', 'training', 'education'],
+          parentMissionId: 21,
           type: 'projet',
         },
         {
@@ -301,6 +309,7 @@ export const mockExperiences: Experience[] = [
             'Développer en #csharp sous #unity le serious game #seriousgame et ses mécanismes interactifs.',
           ],
           tags: ['unity', 'c#', '3d-temps-réel', 'nuclear', 'training', 'desktop'],
+          parentMissionId: 21,
           type: 'projet',
         },
         {
@@ -319,6 +328,7 @@ export const mockExperiences: Experience[] = [
             'Développer en #csharp sous #unity la simulation médicale et ses interactions.',
           ],
           tags: ['unity', 'c#', '3d-temps-réel', 'medical', 'healthcare'],
+          parentMissionId: 21,
           type: 'projet',
         },
     ],

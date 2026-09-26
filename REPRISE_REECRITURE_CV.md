@@ -626,7 +626,7 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 ### Extension de la mission X-PERT — session du 26 septembre 2026
 
 - La puce de la timeline est remplie pour identifier `Consultant R&D — X-PERT` comme expérience actuelle.
-- Une carte `x-pert/ai-workflow` est ajoutée sous Xistar. Elle présente le workflow d’agents IA inspiré de BMAD, l’isolation par image Docker propre à chaque projet, la distribution des runs par GitLab CI et l’outil React/TypeScript alimenté par les hooks des agents.
+- Une carte indépendante `x-pert/ai-workflow` est ajoutée dans l’expérience X-PERT, au même niveau que Xistar. Elle présente le workflow d’agents IA fondé sur BMAD, l’isolation par image Docker propre à chaque projet, la distribution des runs par GitLab CI et l’outil React/TypeScript alimenté par les hooks des agents.
 - Les rapports de session alimentent une boucle d’auto-amélioration des agents et du workflow.
 - Le texte distingue les deux apports : BMAD sert de base au workflow professionnel, tandis que le projet personnel Iasit avait permis de se familiariser en amont avec le pilotage d’agents, le suivi des exécutions et les boucles d’amélioration. Un lien depuis la mission permet d’accéder à la carte Iasit ; le même renvoi est intégré à l’export Word.
 - Un second sujet X-PERT reste à ajouter avant la prochaine livraison.
