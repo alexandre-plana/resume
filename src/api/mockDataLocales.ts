@@ -6,6 +6,7 @@ export interface LocalizedMockData {
     subtitle: string
     bio: string
     company: string
+    langs: { label: string; level: string }[]
     interests: string[]
     uiuxHighlight: {
       label: string
@@ -63,6 +64,10 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       subtitle: 'Applications industrielles · UI/UX · Multiplateforme',
       bio: 'Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX que j’étends aujourd’hui au développement full-stack. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données opérationnelles. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.',
       company: 'Consultant R&D · Datacorp / X-PERT',
+      langs: [
+        { label: 'Français', level: 'Natif' },
+        { label: 'Anglais', level: 'Technique' },
+      ],
       interests: ['🎮 Jeux', '🚵 VTT', '🥾 Rando', '🍳 Cuisine'],
       uiuxHighlight: {
         label: '🎨 Culture UI/UX',
@@ -264,10 +269,14 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
   },
   en: {
     profile: {
-      title: 'Full-stack developer, frontend expertise',
+      title: 'Full-stack developer with front-end expertise',
       subtitle: 'Industrial applications · UI/UX · Cross-platform',
-      bio: 'I develop industrial applications, drawing on a strong frontend and UI/UX background that I now extend across the full stack. On Xistar, I work from the operator interface through to the services that ingest and distribute operational data. My approach connects user needs, architecture and technical constraints, with close attention to product consistency from the initial design to delivered code.',
+      bio: 'I develop industrial applications, drawing on a strong front-end and UI/UX background that I now extend across the full stack. On Xistar, I work from the operator interface through to the services that ingest and distribute operational data. My approach connects user needs, architecture and technical constraints, with close attention to product consistency from the initial design to delivered code.',
       company: 'R&D Consultant · Datacorp / X-PERT',
+      langs: [
+        { label: 'French', level: 'Native' },
+        { label: 'English', level: 'Technical' },
+      ],
       interests: ['🎮 Gaming', '🚵 Mountain Biking', '🥾 Hiking', '🍳 Cooking'],
       uiuxHighlight: {
         label: '🎨 UI/UX Culture',
@@ -282,13 +291,13 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         missions: {
           '31': {
             badge: 'Full-stack developer',
-            context: 'Xistar — Marine Command Center',
-            desc: 'Xistar brings together tactical awareness, mission and drone control, alert management, multi-screen operation and mission replay. I contribute to functional design from operational requirements, defining operator workflows, interactions and expected feature behavior. The interface uses #typescript, #react and #dockview; mapping relies on #maplibre and #deckgl to display NATO #app-6d symbology, an #mgrs grid and bathymetry. #go services ingest partner feeds through #ais, #nmea, #cot and #mavlink, transmit commands and publish information through #mqtt and #api-rest. Deployment profiles and inter-instance communication adapt the product to defense, port and demonstration environments.',
-            cardSummary: 'Full-stack developer on Xistar, a browser-based maritime tactical command center. I contribute to the functional design of operator workflows and implement them with #typescript and #react, while also developing services in #go. The product combines tactical mapping with #maplibre and #deckgl using NATO #app-6d symbology, interoperability through #mqtt and #api-rest, multi-screen control and mission replay.',
+            context: 'Xistar — Maritime Tactical Command Center',
+            desc: 'Xistar brings together tactical awareness, mission and drone control, alert management, multi-screen operation and mission replay. Based on operational requirements, I contribute to the functional design of operator workflows, interactions and expected feature behavior. The interface uses #typescript, #react and #dockview; mapping relies on #maplibre and #deckgl to display NATO #app-6d symbology, an #mgrs grid and bathymetry. #go services ingest partner feeds through #ais, #nmea, #cot and #mavlink, transmit commands and publish information through #mqtt and #api-rest. Deployment profiles and communication between instances allow the product to adapt to defense, port and demonstration environments.',
+            cardSummary: 'Full-stack developer on Xistar, a browser-based maritime tactical command center. I help design operator workflows and implement them with #typescript and #react, while also developing services in #go. The product combines tactical mapping with #maplibre and #deckgl using NATO #app-6d symbology, interoperability through #mqtt and #api-rest, multi-screen control and mission replay.',
             tasks: [
-              'Contribute to Xistar’s functional design from operational requirements by defining operator workflows, interactions and expected feature behavior.',
+              'Contribute to Xistar’s functional design based on operational requirements: define operator workflows, interactions and expected feature behavior.',
               'Build the #typescript and #react operator workspace around #dockview panels, then integrate #maplibre and #deckgl mapping with NATO #app-6d symbology.',
-              'Develop the alert system and its escalation mechanisms, including a dedicated #api and email notifications.',
+              'Develop the alert system and its escalation mechanisms through a dedicated #api and email notifications.',
               'Implement interoperability in the #go services: ingest #ais, #nmea, #cot and #mavlink partner feeds, transmit commands and publish data through #mqtt and #api-rest.',
               'Develop the multi-screen application and centralized control from a master workstation, then implement mission replay for analysis, situation reports and debriefings.',
             ],
@@ -340,14 +349,14 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         employer: 'R&D Consultant — Datacorp',
         missions: {
           '11': {
-            badge: 'Frontend developer',
+            badge: 'Front-end developer',
             context: 'Industrial Automation Edge (IECA)',
-            desc: 'Within a multidisciplinary #scrum team, I developed Edge applications organized as #microfrontend modules with #vue3, #typescript and #single-spa. My work focused primarily on interfaces and frontend architecture, with occasional backend feature extensions. I contributed to the platform’s functional areas, shared components, tests and code-quality monitoring.',
-            cardSummary: 'Frontend developer on IECA, Schneider Electric’s IIoT Edge platform, with occasional backend contributions. I worked across several functional areas—connectors, computations, conditions, alerts and scripting—as well as the shared foundation of a #microfrontend architecture built with #vue3, #typescript and #single-spa.',
+            desc: 'Within a multidisciplinary #scrum team, I developed Edge applications organized as #microfrontend modules with #vue3, #typescript and #single-spa. My work focused primarily on interfaces and front-end architecture, with occasional back-end feature extensions. I contributed to the platform’s functional areas, shared components, tests and code-quality monitoring.',
+            cardSummary: 'Front-end developer on IECA, Schneider Electric’s IIoT Edge platform, with occasional back-end contributions. I worked across several functional areas—connectors, computations, conditions, alerts and scripting—as well as the shared foundation of a #microfrontend architecture built with #vue3, #typescript and #single-spa.',
             tasks: [
               'Contribute to features for connectors, computations, conditions, alerts and scripting.',
               'Build shared components in #vue3 and #typescript, including a configurable table, a routing foundation and a property selector.',
-              'Extend backend features where required by the frontend work.',
+              'Extend back-end features where required by the front-end work.',
               'Write unit tests for components, #pinia stores and utility functions with #jest, then monitor performance and code quality with #sonarqube.',
               'Design an IP Sprint prototype for a #mobile application that sends alerts to on-call operators outside the IECA platform.',
             ],
@@ -356,10 +365,10 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
           '12': {
             badge: 'C# / Unity Developer',
             context: 'Augmented Operator Advisor (AOA) — Industrial AR Application',
-            desc: 'For six years, I developed the interfaces and frontend architecture of an industrial #ar application in #csharp and #unity. The scope covered #android, #ios and #windows versions, customization for #oem clients, #offline operation and preparation for each distribution platform. I also contributed to the project server in #python and its #http communication with the application.',
-            cardSummary: 'Developer in #csharp and #unity on Augmented Operator Advisor, a cross-platform industrial #ar application for #android, #ios and #windows. My work covered frontend architecture and operator interfaces, #offline operation and project compatibility across versions. I also contributed to the project server in #python and its #http exchanges with the application.',
+            desc: 'For six years, I developed the interfaces and front-end architecture of an industrial #ar application in #csharp and #unity. The scope covered #android, #ios and #windows versions, customization for #oem clients, #offline operation and preparation for each distribution platform. I also contributed to the project server in #python and its #http communication with the application.',
+            cardSummary: 'Developer in #csharp and #unity on Augmented Operator Advisor, a cross-platform industrial #ar application for #android, #ios and #windows. My work covered front-end architecture and operator interfaces, #offline operation and project compatibility across versions. I also contributed to the project server in #python and its #http exchanges with the application.',
             tasks: [
-              'Design the frontend architecture and an interface adapted to #android, #ios and #windows in portrait and landscape modes using #csharp and #unity.',
+              'Design the front-end architecture and an interface adapted to #android, #ios and #windows in portrait and landscape modes using #csharp and #unity.',
               'Develop #offline operation and #http synchronization, then contribute to the #python project server and network-error handling.',
               'Maintain backward compatibility by reading legacy project formats and migrating them during loading.',
               'Implement an externalized style system for producing custom-branded versions for #oem clients.',
@@ -403,8 +412,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
           '23': {
             badge: 'UX/UI design',
             context: 'Dosicase — Radiation-safety training simulator',
-            desc: 'Dosicase uses simulation to support practical radiation-safety training. I designed the experience and #uiux interface to present situations and radiological risks in an educational way, then contributed to their integration into the simulator in #csharp with #unity. The work covered both information architecture and the interactions required for hands-on training.',
-            cardSummary: 'UX/UI design for Dosicase, a simulator used for radiation-safety training in a practice facility. I structured the learning workflows and designed interfaces that make radiological risks and training scenarios understandable, then contributed to their integration into the application in #csharp with #unity.',
+            desc: 'Dosicase uses simulation to support practical radiation-safety training. I designed the experience and #uiux interface to present situations and radiological risks clearly to learners, then contributed to their integration into the simulator in #csharp with #unity. The work covered both information architecture and the interactions required for hands-on training.',
+            cardSummary: 'UX/UI design for Dosicase, a simulator used for hands-on radiation-safety training. I structured the learning workflows and designed interfaces that make radiological risks and training scenarios understandable, then contributed to their integration into the application in #csharp with #unity.',
             tasks: [
               'Structure the learning journey from radiation-safety training objectives.',
               'Design the #uiux interface and organize information about situations and radiological risks.',
@@ -483,7 +492,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     },
     skills: {
       0: { cat: 'Languages' },
-      1: { cat: 'Frontend & visualization' },
+      1: { cat: 'Front-end & visualization' },
       2: { cat: 'Services & interoperability' },
       3: { cat: 'Quality & tools' },
     },
@@ -492,7 +501,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
         label: '📌 Training',
         title: 'React · TypeScript',
         sub: 'Datacorp · 2026',
-        meta: 'Advanced React and TypeScript training focused on modern frontend development practices',
+        meta: 'Advanced React and TypeScript training focused on modern front-end development practices',
       },
       1: {
         label: '📌 Training',
@@ -523,8 +532,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       4: {
         kind: 'AI-assisted development workflow',
         role: 'Product design & full-stack development',
-        desc: 'Iasit is a workflow management tool for development assisted by AI agents. I designed it to structure preparation, execution, verification, correction and acceptance, track bugs as findings, and turn recurring problems into learned rules. Relevant rules are fed back into future prompts to improve subsequent executions. The application combines #react #typescript with a #nodejs runtime.',
-        details: 'The #nodejs runtime manages multiple projects and maintains a reference status for each task. Bugs and discrepancies found during verification are recorded as findings with their severity, evidence, related files and a proposed correction. An open finding triggers the fix and re-verify cycle and blocks acceptance until it is addressed. When a lesson can be reused, the finding is explicitly promoted to a learned rule. The rule retains its origin, scope and status; relevant active rules are then selected and included in future prompts. This loop allows Iasit to capitalize on previous errors and progressively adapt the instructions sent to agents.',
+        desc: 'Iasit is a coordination tool for software development assisted by AI agents. I designed it to structure preparation, execution, verification, correction and acceptance, track bugs as findings, and turn recurring problems into learned rules. Relevant rules are fed back into future prompts to improve subsequent executions. The application combines #react and #typescript with a #nodejs runtime.',
+        details: 'The #nodejs runtime manages multiple projects and maintains a reference status for each task. Bugs and discrepancies found during verification are recorded as findings with their severity, evidence, related files and a proposed correction. An open finding triggers the fix and re-verify cycle and blocks acceptance until it is addressed. When a lesson can be reused, the finding is explicitly promoted to a learned rule. The rule retains its origin, scope and status; relevant active rules are then selected and included in future prompts. This loop allows Iasit to reuse lessons from earlier errors and progressively adapt the instructions sent to agents.',
         highlights: [
           'Design reference formats for tasks, executions and findings, then validate their data with #zod',
           'Build the tracking views in #react and #typescript, together with a #sigmajs context graph linking tasks, executions, findings and files',
@@ -536,7 +545,7 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
       6: {
         kind: '3D educational sandbox',
-        role: 'Product design & 3D frontend development',
+        role: 'Product design & 3D front-end development',
         desc: 'Vorrery is a 3D educational sandbox designed for learning through experimentation, observation and hands-on manipulation. Users build their own systems, adjust parameters and immediately see the consequences of their choices. The product combines free exploration, guided experiments and child-friendly journeys in a #react #typescript interface rendered with #threejs and #react-three-fiber.',
         details: 'Vorrery puts experimentation at the center of the experience. Users can create a scene, change its parameters, compare scenarios, undo their actions and start again under the same conditions. Generation remains visible step by step so that each choice can be connected to the resulting transformation instead of showing only a finished scene. Several levels of guidance coexist: a free sandbox, a laboratory with manipulation and visualization tools, guided scenarios and a space designed for children. The latter uses short instructions, audio narration and an observation notebook, with no scores, failure states or imposed progression.',
         highlights: [

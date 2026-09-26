@@ -482,6 +482,7 @@ const buildPersonalProjectCard = (
     },
     rows: [
       new TableRow({
+        cantSplit: true,
         children: [
           new TableCell({
             margins: { top: 110, bottom: 110, left: 120, right: 120 },

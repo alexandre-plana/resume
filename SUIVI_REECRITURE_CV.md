@@ -1007,3 +1007,14 @@ La nouvelle version présente Vorrery comme un environnement d'expérimentation 
 
 - `src/api/mockData.ts` : projet personnel `6`.
 - `src/api/mockDataLocales.ts` : traduction anglaise du projet personnel `6`.
+
+## Harmonisation de la version anglaise — 26 septembre 2026
+
+**Statut :** appliquée
+
+- Localisation des niveaux de langue dans `src/api/mockDataLocales.ts` et prise en compte de cette donnée dans `src/hooks/useApi.ts`.
+- Reformulation du titre en `Full-stack developer with front-end expertise`.
+- Remplacement de libellés trop littéraux ou peu naturels : `Education & Training`, `Personal Projects` et `Selected Contributions`.
+- Harmonisation de la terminologie `front-end` dans le profil, les compétences et les expériences.
+- Révision ciblée des textes Xistar, Dosicase et Iasit afin de conserver le sens des textes français avec une formulation naturelle en anglais.
+- Ajustement de l’export Word pour empêcher la coupure d’une fiche de projet personnel entre deux pages.

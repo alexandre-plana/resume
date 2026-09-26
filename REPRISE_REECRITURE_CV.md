@@ -594,18 +594,18 @@ L'export Word reçoit désormais directement les données localisées déjà cha
 
 Ohlabo a été supprimé de la liste des projets personnels, car son avancement ne justifie pas encore sa présence dans le CV. La suppression s'applique au rendu web, à la traduction anglaise et à l'export Word. Les traductions des projets personnels sont désormais associées à leur identifiant stable plutôt qu'à leur position dans la liste, afin d'éviter tout décalage lors d'un ajout ou d'un retrait.
 
-## Point de reprise recommandé
+## État actuel
 
-1. Reprendre l’application globale des textes validés : les données françaises et une première passe anglaise sont déjà partiellement synchronisées, mais les statuts du suivi restent à mettre à jour après contrôle.
-2. Vérifier les traductions anglaises des missions Oreka et les éventuels champs encore hérités des anciennes données françaises.
-3. Les rendus web et Word ont été contrôlés, notamment la hauteur de la barre latérale, la présentation des coordonnées et la suppression du graphique de langages.
+1. Les textes validés sont appliqués aux versions française et anglaise.
+2. Les expériences, formations et projets personnels disposent tous de leur contenu anglais.
+3. Les rendus web et Word ont été contrôlés, notamment la barre latérale, les coordonnées, les chips techniques et la suppression du graphique de langages.
 
 ### Avancement de la passe d’application — session du 20 septembre 2026
 
 - Le titre, le sous-titre, la présentation globale, l’objectif professionnel, les coordonnées, les compétences et les formations ont été appliqués aux données de base et aux traductions de profil.
 - Les missions Xistar `31` à `34`, IECA `11`, AOA `12` et Oreka `21` à `28` ont été réécrites dans `src/api/mockData.ts`.
 - Les traductions anglaises correspondantes ont été finalisées dans `src/api/mockDataLocales.ts`, y compris les huit projets Oreka qui n’étaient pas traduits auparavant.
-- Le graphique `profile.languages` a été retiré du type, des données et de l’interface ; l’objectif professionnel est maintenant affiché dans la barre latérale et l’export Word.
+- Le graphique de répartition des langages a été retiré du type, des données et de l’interface. L’objectif professionnel, ajouté à cette étape, a ensuite été supprimé des versions web et Word le 21 septembre 2026.
 - Le composant téléphone accepte désormais le format international `+33 6 71 03 97 84`.
 - `npm run lint` et `npm run build` ont réussi après l’application des textes validés.
 
@@ -615,6 +615,13 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 - Les exports Word français et anglais sont générés depuis les mêmes données localisées que le CV web.
 - Les deux documents Word comptent huit pages. Leur rendu a été contrôlé page par page, notamment les coupures de tableaux entre les pages et la lisibilité des intitulés de contributions.
 - Les fichiers livrés sont `artifacts/cv-alexandre-plana-fr-2026-09-21.docx` et `artifacts/cv-alexandre-plana-en-2026-09-21.docx`.
+
+### Harmonisation anglaise — session du 26 septembre 2026
+
+- Les niveaux de langue sont désormais localisés : `French · Native` et `English · Technical` dans la version anglaise.
+- Le titre anglais, les libellés de navigation et les intitulés de sections ont été reformulés pour éviter les calques, notamment `Education & Training`, `Personal Projects` et `Selected Contributions`.
+- Les textes anglais de Xistar, IECA, AOA, Dosicase, Iasit et Vorrery ont été relus et harmonisés avec les contenus français validés, sans modifier le périmètre des responsabilités.
+- Dans l’export Word, chaque fiche de projet personnel est désormais conservée sur une même page afin d’éviter qu’un titre soit isolé du reste de son contenu.
 
 ## Points techniques repérés lors de l'audit initial
 

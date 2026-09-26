@@ -193,13 +193,13 @@ export const translations: Record<Language, Translations> = {
     },
     tabs: {
       overview: 'Overview',
-      formations: 'Trainings',
-      personalProjects: 'Side Projects',
+      formations: 'Education & Training',
+      personalProjects: 'Personal Projects',
     },
     sections: {
       uiUxCulture: '🎨 UI/UX Culture',
       skills: 'Skills',
-      formation: 'Education',
+      formation: 'Education & Training',
       timeline: 'Experience',
       contributions: 'Contributions',
       about: 'About',
@@ -214,7 +214,7 @@ export const translations: Record<Language, Translations> = {
       partialData: 'Some data is currently unavailable.',
       experiences: 'Unable to load experiences.',
       skills: 'Unable to load skills.',
-      formation: 'Unable to load education entries.',
+      formation: 'Unable to load education and training entries.',
       personalProjects: 'Unable to load personal projects.',
     },
     formationControls: {
@@ -222,7 +222,7 @@ export const translations: Record<Language, Translations> = {
       sortDate: 'Date (newest)',
       sortName: 'Name (A-Z)',
       types: 'Types',
-      training: 'training',
+      training: 'training course',
       degree: 'degree',
       personalProject: 'personal project',
       empty: 'No item to display with the current filters.',
@@ -233,7 +233,7 @@ export const translations: Record<Language, Translations> = {
       expand: 'Expand',
       close: 'Close',
       tasksPreviewTitle: 'Key actions',
-      tasksTitle: 'Tasks Performed On The Project',
+      tasksTitle: 'Selected Contributions',
       retrospective: 'Retrospective',
     },
     personalModal: {
