@@ -31,6 +31,10 @@ export interface Mission {
   retrospective?: string
   tags: string[]
   isCurrent?: boolean
+  relatedPersonalProject?: {
+    id: number
+    name: string
+  }
   type?: string // e.g., 'projet', 'mission', etc.
   metrics?: { label: string }[]
 }

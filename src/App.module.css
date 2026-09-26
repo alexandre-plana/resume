@@ -307,6 +307,11 @@
   z-index: 1;
 }
 
+.tlDotCurrent {
+  background: var(--blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent);
+}
+
 .tlInfo {
   flex: 1;
 }
@@ -811,6 +816,25 @@
   font-size: 0.8rem;
   color: var(--text-2);
   line-height: 1.5;
+}
+
+.relatedPersonalProjectLink {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--link);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.relatedPersonalProjectLink:hover,
+.relatedPersonalProjectLink:focus-visible {
+  text-decoration: underline;
 }
 
 .missionMetaGrid {

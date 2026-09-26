@@ -1018,3 +1018,13 @@ La nouvelle version présente Vorrery comme un environnement d'expérimentation 
 - Harmonisation de la terminologie `front-end` dans le profil, les compétences et les expériences.
 - Révision ciblée des textes Xistar, Dosicase et Iasit afin de conserver le sens des textes français avec une formulation naturelle en anglais.
 - Ajustement de l’export Word pour empêcher la coupure d’une fiche de projet personnel entre deux pages.
+
+## Extension de la mission X-PERT — 26 septembre 2026
+
+**Statut :** premier sujet appliqué, second sujet à recevoir
+
+- Mise en évidence de l’expérience actuelle par le remplissage de sa puce dans la timeline.
+- Ajout de la carte `x-pert/ai-workflow`, avec ses versions française et anglaise.
+- Présentation du workflow inspiré de BMAD, des images Docker propres aux projets, du dispatch GitLab CI, du suivi React/TypeScript fondé sur les hooks et de l’amélioration des agents à partir des rapports de session.
+- Distinction explicite entre BMAD, utilisé comme base du workflow professionnel, et Iasit, expérience personnelle ayant permis de se familiariser en amont avec le sujet.
+- Ajout d’un lien interne vers la carte Iasit dans le CV web et d’un lien correspondant dans l’export Word.

@@ -286,8 +286,8 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
     },
     experiences: {
       '3': {
-        company: 'X-PERT',
-        employer: 'R&D Consultant — Datacorp',
+        company: 'Datacorp',
+        employer: 'R&D Consultant — X-PERT',
         missions: {
           '31': {
             badge: 'Full-stack developer',
@@ -339,6 +339,20 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Reproduce the mission board used for multi-view operations.',
               'Implement remote view dispatch from the master workstation to emulated screens.',
               'Develop the tool in #typescript with #react and #vite for development and demonstrations.',
+            ],
+            metrics: [],
+          },
+          '35': {
+            badge: 'AI workflow design & development',
+            context: 'AI agent execution workflow',
+            desc: 'I designed an AI-agent-assisted development workflow using the #bmad method as its foundation. My personal project Iasit also helped me become familiar with agent coordination, execution tracking and improvement loops, and that experience informed the project’s design. Each project has its own #docker image for running agents in an isolated environment, while runs are dispatched to a dedicated machine through #gitlab-ci. A tool built with #react and #typescript uses agent hooks to track progress as execution unfolds. Session reports feed a self-improvement loop for both the agents and the workflow.',
+            cardSummary: 'Designed an AI-agent-assisted development workflow based on the #bmad method. My personal project Iasit helped me become familiar with agent coordination, execution tracking and improvement loops. Each project has a dedicated #docker image, runs are dispatched through #gitlab-ci, and a #react and #typescript tool reports their progress.',
+            tasks: [
+              'Structure an AI-agent-assisted development workflow based on #bmad principles.',
+              'Isolate agent execution in #docker containers built from a project-specific image.',
+              'Use #gitlab-ci to trigger runs and dispatch them to a dedicated machine.',
+              'Build a #react and #typescript monitoring tool that uses agent hooks to show progress as execution unfolds.',
+              'Analyze session reports and automatically feed the lessons identified back into the agents and workflow.',
             ],
             metrics: [],
           },

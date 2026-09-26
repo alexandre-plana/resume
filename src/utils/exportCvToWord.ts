@@ -2,6 +2,7 @@
   AlignmentType,
   BorderStyle,
   Document,
+  ExternalHyperlink,
   Packer,
   Paragraph,
   ShadingType,
@@ -355,6 +356,28 @@ const buildMissionCard = (mission: Experience['missions'][number], t: ReturnType
     children.push(
       new Paragraph({
         children: [bodyRun(`${t.mission.retrospective}: ${mission.retrospective}`, { italics: true, color: PALETTE.green, size: 19 })],
+        spacing: { after: 40, line: 240 },
+      }),
+    )
+    pushMissionGap(70)
+  }
+
+  if (mission.relatedPersonalProject) {
+    children.push(
+      new Paragraph({
+        children: [
+          bodyRun(`${t.mission.relatedPersonalProject}: `, { bold: true, color: PALETTE.blue, size: 19 }),
+          new ExternalHyperlink({
+            link: `https://alexandre-plana.github.io/resume/#personal-project-${mission.relatedPersonalProject.id}`,
+            children: [
+              bodyRun(mission.relatedPersonalProject.name, {
+                color: PALETTE.blue,
+                size: 19,
+                underline: {},
+              }),
+            ],
+          }),
+        ],
         spacing: { after: 40, line: 240 },
       }),
     )

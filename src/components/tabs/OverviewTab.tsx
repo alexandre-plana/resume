@@ -96,10 +96,15 @@ function OverviewTabComponent({
       <div className={styles.timeline}>
         {experiences.map((exp) => {
           const missions = exp.missions.filter((m) => m.type !== 'projet');
+          const isCurrentExperience = exp.missions.some((mission) => mission.isCurrent);
           return (
             <div key={exp.id}>
               <div className={styles.tlCompany}>
-                <div className={styles.tlDot} />
+                <div
+                  className={`${styles.tlDot} ${isCurrentExperience ? styles.tlDotCurrent : ''}`}
+                  title={isCurrentExperience ? t.mission.current : undefined}
+                  aria-label={isCurrentExperience ? t.mission.current : undefined}
+                />
                 <div className={styles.tlInfo}>
                   <div className={styles.tlName}>{exp.company}</div>
                   <div className={styles.tlRole}>{exp.employer}</div>

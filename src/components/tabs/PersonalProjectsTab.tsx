@@ -45,6 +45,16 @@ const getProjectPopoutAnimation = (sourceEl: HTMLElement | null) => {
 function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessage, t }: PersonalProjectsTabProps) {
   const [activeProject, setActiveProject] = useState<ProjectPopout | null>(null)
 
+  useEffect(() => {
+    if (!projects?.length || !window.location.hash.startsWith('#personal-project-')) return
+
+    window.requestAnimationFrame(() => {
+      const projectCard = document.querySelector<HTMLElement>(window.location.hash)
+      projectCard?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      projectCard?.focus({ preventScroll: true })
+    })
+  }, [projects])
+
   const openProjectPopout = (project: PersonalProject, sourceEl: HTMLElement | null) => {
     setActiveProject({ project, animation: getProjectPopoutAnimation(sourceEl) })
   }
@@ -90,6 +100,7 @@ function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessa
         {visibleProjects.map((project) => (
           <div
             key={project.id}
+            id={`personal-project-${project.id}`}
             className={`${styles.formationCard} ${styles.personalCardClickable}`}
             role="button"
             tabIndex={0}

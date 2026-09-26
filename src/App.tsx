@@ -35,6 +35,7 @@ function App() {
 
   const language = useAppStore((state) => state.language)
   const activeTab = useAppStore((state) => state.activeTab)
+  const setActiveTab = useAppStore((state) => state.setActiveTab)
   const contactOpen = useAppStore((state) => state.contactOpen)
   const setContactOpen = useAppStore((state) => state.setContactOpen)
   const t = getTranslations(language)
@@ -75,6 +76,20 @@ function App() {
 
   const closeMissionPopout = () => {
     setActiveMission(null)
+  }
+
+  const openRelatedPersonalProject = (projectId: number) => {
+    closeMissionPopout()
+    window.history.replaceState(null, '', `#personal-project-${projectId}`)
+    setActiveTab('personal')
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const projectCard = document.getElementById(`personal-project-${projectId}`)
+        projectCard?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        projectCard?.focus({ preventScroll: true })
+      })
+    })
   }
 
   useEffect(() => {
@@ -307,6 +322,19 @@ function App() {
                   <div className={styles.missionRetrospectiveTitle}>{t.mission.retrospective}</div>
                   <div className={styles.missionRetrospectiveText}>{activeMission.mission.retrospective}</div>
                 </div>
+              )}
+
+              {activeMission.mission.relatedPersonalProject && (
+                <a
+                  href={`#personal-project-${activeMission.mission.relatedPersonalProject.id}`}
+                  className={styles.relatedPersonalProjectLink}
+                  onClick={(event) => {
+                    event.preventDefault()
+                    openRelatedPersonalProject(activeMission.mission.relatedPersonalProject!.id)
+                  }}
+                >
+                  {t.mission.relatedPersonalProject} : {activeMission.mission.relatedPersonalProject.name} →
+                </a>
               )}
             </div>
 

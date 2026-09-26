@@ -55,6 +55,7 @@ export interface Translations {
   }
   mission: {
     current: string
+    relatedPersonalProject: string
     openDetails: string
     expand: string
     close: string
@@ -143,6 +144,7 @@ export const translations: Record<Language, Translations> = {
     },
     mission: {
       current: 'actuel',
+      relatedPersonalProject: 'Voir le projet personnel associé',
       openDetails: 'Ouvrir le detail de la mission',
       expand: 'Agrandir',
       close: 'Fermer',
@@ -229,6 +231,7 @@ export const translations: Record<Language, Translations> = {
     },
     mission: {
       current: 'current',
+      relatedPersonalProject: 'View the related personal project',
       openDetails: 'Open mission details',
       expand: 'Expand',
       close: 'Close',

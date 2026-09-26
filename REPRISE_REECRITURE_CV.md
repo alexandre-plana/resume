@@ -623,6 +623,14 @@ Ohlabo a été supprimé de la liste des projets personnels, car son avancement 
 - Les textes anglais de Xistar, IECA, AOA, Dosicase, Iasit et Vorrery ont été relus et harmonisés avec les contenus français validés, sans modifier le périmètre des responsabilités.
 - Dans l’export Word, chaque fiche de projet personnel est désormais conservée sur une même page afin d’éviter qu’un titre soit isolé du reste de son contenu.
 
+### Extension de la mission X-PERT — session du 26 septembre 2026
+
+- La puce de la timeline est remplie pour identifier `Consultant R&D — X-PERT` comme expérience actuelle.
+- Une carte `x-pert/ai-workflow` est ajoutée sous Xistar. Elle présente le workflow d’agents IA inspiré de BMAD, l’isolation par image Docker propre à chaque projet, la distribution des runs par GitLab CI et l’outil React/TypeScript alimenté par les hooks des agents.
+- Les rapports de session alimentent une boucle d’auto-amélioration des agents et du workflow.
+- Le texte distingue les deux apports : BMAD sert de base au workflow professionnel, tandis que le projet personnel Iasit avait permis de se familiariser en amont avec le pilotage d’agents, le suivi des exécutions et les boucles d’amélioration. Un lien depuis la mission permet d’accéder à la carte Iasit ; le même renvoi est intégré à l’export Word.
+- Un second sujet X-PERT reste à ajouter avant la prochaine livraison.
+
 ## Points techniques repérés lors de l'audit initial
 
 - Les contenus partagés entre `src/api/mockData.ts` et `src/api/mockDataLocales.ts` ont été synchronisés lors de l’application.

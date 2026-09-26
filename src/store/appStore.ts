@@ -22,8 +22,11 @@ interface AppStore {
   setLanguage: (lang: Language) => void
 }
 
+const getInitialTab = (): Tab =>
+  typeof window !== 'undefined' && window.location.hash.startsWith('#personal-project-') ? 'personal' : 'overview'
+
 export const useAppStore = create<AppStore>((set) => ({
-  activeTab: 'overview',
+  activeTab: getInitialTab(),
   setActiveTab: (tab) => set({ activeTab: tab }),
   
   contactOpen: false,
