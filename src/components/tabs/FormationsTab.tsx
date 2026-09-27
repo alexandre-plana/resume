@@ -1,9 +1,8 @@
 import { memo, useMemo, useState } from 'react'
-import type { Formation } from '../../types'
+import type { Formation, FormationKind } from '../../types'
 import type { Language, Translations } from '../../locales'
 import styles from '../../App.module.css'
 
-type FormationKind = 'formation' | 'diplome'
 type FormationSort = 'date' | 'name'
 
 interface FormationsTabProps {
@@ -17,21 +16,10 @@ interface FormationsTabProps {
 
 const cleanFormationLabel = (rawLabel: string): string => rawLabel.replace(/^📌\s*/, '').trim()
 
-const getFormationKind = (rawLabel: string): FormationKind => {
-  const normalized = cleanFormationLabel(rawLabel).toLowerCase()
-
-  if (normalized.includes('dipl') || normalized.includes('degree') || normalized.includes('bachelor')) {
-    return 'diplome'
-  }
-
-  return 'formation'
-}
-
-const getFormationLabelMeta = (rawLabel: string): { icon: string; text: string } => {
+const getFormationLabelMeta = (kind: FormationKind, rawLabel: string): { icon: string; text: string } => {
   const text = cleanFormationLabel(rawLabel)
-  const kind = getFormationKind(rawLabel)
 
-  if (kind === 'diplome') {
+  if (kind === 'degree') {
     return { icon: '🎓', text }
   }
 
@@ -50,8 +38,8 @@ const getFormationSortYear = (sub: string): number => {
 function FormationsTabComponent({ formation, isLoading, isError, errorMessage, language, t }: FormationsTabProps) {
   const [formationSort, setFormationSort] = useState<FormationSort>('date')
   const [formationTypeFilters, setFormationTypeFilters] = useState<Record<FormationKind, boolean>>({
-    formation: true,
-    diplome: true,
+    training: true,
+    degree: true,
   })
 
   const toggleFormationType = (kind: FormationKind) => {
@@ -66,7 +54,7 @@ function FormationsTabComponent({ formation, isLoading, isError, errorMessage, l
     const collator = new Intl.Collator(language === 'fr' ? 'fr' : 'en', { sensitivity: 'base' })
 
     return formation
-      .filter((form) => formationTypeFilters[getFormationKind(form.label)])
+      .filter((form) => formationTypeFilters[form.kind])
       .slice()
       .sort((a, b) => {
         if (formationSort === 'name') {
@@ -113,27 +101,27 @@ function FormationsTabComponent({ formation, isLoading, isError, errorMessage, l
           <label className={styles.formationFilterItem}>
             <input
               type="checkbox"
-              checked={formationTypeFilters.formation}
-              onChange={() => toggleFormationType('formation')}
+              checked={formationTypeFilters.training}
+              onChange={() => toggleFormationType('training')}
             />
             {t.formationControls.training}
           </label>
           <label className={styles.formationFilterItem}>
             <input
               type="checkbox"
-              checked={formationTypeFilters.diplome}
-              onChange={() => toggleFormationType('diplome')}
+              checked={formationTypeFilters.degree}
+              onChange={() => toggleFormationType('degree')}
             />
             {t.formationControls.degree}
           </label>
         </div>
       </div>
       <div className={styles.formationGrid}>
-        {visibleFormation.map((form, idx) => {
-          const formLabelMeta = getFormationLabelMeta(form.label)
+        {visibleFormation.map((form) => {
+          const formLabelMeta = getFormationLabelMeta(form.kind, form.label)
 
           return (
-            <div key={idx} className={styles.formationCard}>
+            <div key={form.id} className={styles.formationCard}>
               <div className={styles.formLabel}>
                 <span className={styles.formLabelIcon} aria-hidden="true">
                   {formLabelMeta.icon}

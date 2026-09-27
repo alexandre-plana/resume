@@ -337,6 +337,7 @@ export const mockExperiences: Experience[] = [
 
 export const mockSkills: Skill[] = [
   {
+    id: 'languages',
     cat: 'Langages',
     featured: false,
     tags: [
@@ -347,6 +348,7 @@ export const mockSkills: Skill[] = [
     ],
   },
   {
+    id: 'frontend',
     cat: 'Front-end & visualisation',
     featured: false,
     tags: [
@@ -360,6 +362,7 @@ export const mockSkills: Skill[] = [
     ],
   },
   {
+    id: 'services',
     cat: 'Services & interopérabilité',
     featured: false,
     tags: [
@@ -372,6 +375,7 @@ export const mockSkills: Skill[] = [
     ],
   },
   {
+    id: 'tools',
     cat: 'Qualité & outils',
     featured: false,
     tags: [
@@ -390,6 +394,8 @@ export const mockSkills: Skill[] = [
 
 export const mockFormation: Formation[] = [
   {
+    id: 'training-react-typescript',
+    kind: 'training',
     label: '📌 Formation',
     title: 'React · TypeScript',
     sub: 'Datacorp · 2026',
@@ -397,6 +403,8 @@ export const mockFormation: Formation[] = [
 
   },
   {
+    id: 'training-typescript-docker-vue',
+    kind: 'training',
     label: '📌 Formation',
     title: 'TypeScript · Docker · Vue.js',
     sub: 'Datacorp · 2023',
@@ -404,6 +412,8 @@ export const mockFormation: Formation[] = [
 
   },
   {
+    id: 'training-polymorph',
+    kind: 'training',
     label: '📌 Stage',
     title: 'Polymorph',
     sub: 'Stage de fin de licence · 2013',
@@ -411,6 +421,8 @@ export const mockFormation: Formation[] = [
 
   },
   {
+    id: 'degree-licence-3d',
+    kind: 'degree',
     label: '📌 Diplôme',
     title: 'Licence 3D temps réel',
     sub: '3DI Laval · 2012–2013',
@@ -418,6 +430,8 @@ export const mockFormation: Formation[] = [
 
   },
   {
+    id: 'degree-bts-visual-communication',
+    kind: 'degree',
     label: '📌 Diplôme',
     title: 'BTS Communication visuelle — option Multimédia',
     sub: '3DI Laval · 2010–2012',

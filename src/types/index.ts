@@ -17,7 +17,7 @@ export interface Metric {
   label: string
 }
 
-export interface Mission {
+interface MissionBase {
   id: number
   featured: boolean
   name: string
@@ -35,10 +35,20 @@ export interface Mission {
     id: number
     name: string
   }
-  parentMissionId?: number
-  type?: string // e.g., 'projet', 'mission', etc.
   metrics?: { label: string }[]
 }
+
+export interface ProfessionalMission extends MissionBase {
+  type: 'mission'
+  parentMissionId?: never
+}
+
+export interface AttachedProject extends MissionBase {
+  type: 'projet'
+  parentMissionId: number
+}
+
+export type Mission = ProfessionalMission | AttachedProject
 
 export interface Experience {
   id: number
@@ -49,12 +59,17 @@ export interface Experience {
 }
 
 export interface Skill {
+  id: string
   cat: string
   featured: boolean
   tags: { l: string; k: string }[]
 }
 
+export type FormationKind = 'training' | 'degree'
+
 export interface Formation {
+  id: string
+  kind: FormationKind
   label: string
   title: string
   sub: string

@@ -31,19 +31,8 @@ export interface LocalizedMockData {
       }
     }
   }
-  skills: {
-    [key: number]: {
-      cat: string
-    }
-  }
-  formation: {
-    [key: number]: {
-      label: string
-      title: string
-      sub: string
-      meta: string
-    }
-  }
+  skills: Record<string, { cat: string }>
+  formation: Record<string, { label: string; title: string; sub: string; meta: string }>
   personalProjects: {
     [key: number]: {
       kind?: string
@@ -228,37 +217,37 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
     },
     skills: {
-      0: { cat: 'Langages' },
-      1: { cat: 'Front-end & visualisation' },
-      2: { cat: 'Services & interopérabilité' },
-      3: { cat: 'Qualité & outils' },
+      languages: { cat: 'Langages' },
+      frontend: { cat: 'Front-end & visualisation' },
+      services: { cat: 'Services & interopérabilité' },
+      tools: { cat: 'Qualité & outils' },
     },
     formation: {
-      0: {
+      'training-react-typescript': {
         label: '📌 Formation',
         title: 'React · TypeScript',
         sub: 'Datacorp · 2026',
         meta: 'Formation approfondie à React et TypeScript, centrée sur les pratiques modernes du développement front-end',
       },
-      1: {
+      'training-typescript-docker-vue': {
         label: '📌 Formation',
         title: 'TypeScript · Docker · Vue.js',
         sub: 'Datacorp · 2023',
         meta: 'Formations professionnelles à TypeScript, Docker et Vue.js, appliquées au développement d’applications web',
       },
-      2: {
+      'training-polymorph': {
         label: '📌 Stage',
         title: 'Polymorph',
         sub: 'Stage de fin de licence · 2013',
         meta: 'Design graphique · Communication visuelle',
       },
-      3: {
+      'degree-licence-3d': {
         label: '📌 Diplôme',
         title: 'Licence 3D temps réel',
         sub: '3DI Laval · 2012–2013',
         meta: 'Unity 3D · Réalité virtuelle · 3D temps réel',
       },
-      4: {
+      'degree-bts-visual-communication': {
         label: '📌 Diplôme',
         title: 'BTS Communication visuelle — option Multimédia',
         sub: '3DI Laval · 2010–2012',
@@ -505,37 +494,37 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
       },
     },
     skills: {
-      0: { cat: 'Languages' },
-      1: { cat: 'Front-end & visualization' },
-      2: { cat: 'Services & interoperability' },
-      3: { cat: 'Quality & tools' },
+      languages: { cat: 'Languages' },
+      frontend: { cat: 'Front-end & visualization' },
+      services: { cat: 'Services & interoperability' },
+      tools: { cat: 'Quality & tools' },
     },
     formation: {
-      0: {
+      'training-react-typescript': {
         label: '📌 Training',
         title: 'React · TypeScript',
         sub: 'Datacorp · 2026',
         meta: 'Advanced React and TypeScript training focused on modern front-end development practices',
       },
-      1: {
+      'training-typescript-docker-vue': {
         label: '📌 Training',
         title: 'TypeScript · Docker · Vue.js',
         sub: 'Datacorp · 2023',
         meta: 'Professional training in TypeScript, Docker and Vue.js applied to web application development',
       },
-      2: {
+      'training-polymorph': {
         label: '📌 Internship',
         title: 'Polymorph',
         sub: 'Final-year internship · 2013',
         meta: 'Graphic design · Visual communication',
       },
-      3: {
+      'degree-licence-3d': {
         label: '📌 Degree',
         title: 'Bachelor’s degree in real-time 3D',
         sub: '3DI Laval · 2012–2013',
         meta: 'Unity 3D · Virtual reality · Real-time 3D',
       },
-      4: {
+      'degree-bts-visual-communication': {
         label: '📌 Degree',
         title: 'BTS in Visual Communication — Multimedia option',
         sub: '3DI Laval · 2010–2012',
