@@ -17,6 +17,5 @@
     "jsxImportSource": "react",
     "types": ["react", "react-dom", "vite/client"]
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"]
 }
