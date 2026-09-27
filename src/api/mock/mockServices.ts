@@ -2,35 +2,40 @@ import { mockProfile, mockExperiences, mockSkills, mockFormation, mockPersonalPr
 import { Profile, Experience, Skill, Formation, PersonalProject } from '../../types'
 
 export const mockProfileService = {
-  getProfile: async (): Promise<Profile> => {
+  getProfile: async (signal?: AbortSignal): Promise<Profile> => {
+    void signal
     await new Promise(resolve => setTimeout(resolve, 300))
     return mockProfile
   },
 }
 
 export const mockExperienceService = {
-  getExperiences: async (): Promise<Experience[]> => {
+  getExperiences: async (signal?: AbortSignal): Promise<Experience[]> => {
+    void signal
     await new Promise(resolve => setTimeout(resolve, 400))
     return mockExperiences
   },
 }
 
 export const mockSkillService = {
-  getSkills: async (): Promise<Skill[]> => {
+  getSkills: async (signal?: AbortSignal): Promise<Skill[]> => {
+    void signal
     await new Promise(resolve => setTimeout(resolve, 300))
     return mockSkills
   },
 }
 
 export const mockFormationService = {
-  getFormation: async (): Promise<Formation[]> => {
+  getFormation: async (signal?: AbortSignal): Promise<Formation[]> => {
+    void signal
     await new Promise(resolve => setTimeout(resolve, 250))
     return mockFormation
   },
 }
 
 export const mockPersonalProjectService = {
-  getPersonalProjects: async (): Promise<PersonalProject[]> => {
+  getPersonalProjects: async (signal?: AbortSignal): Promise<PersonalProject[]> => {
+    void signal
     await new Promise(resolve => setTimeout(resolve, 300))
     return mockPersonalProjects
   },

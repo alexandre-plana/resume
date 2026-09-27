@@ -1,54 +1,46 @@
 import { BASE_URL } from '../config'
-import { Profile, Experience, Skill, Formation, PersonalProject } from '../../types'
+import {
+  contactResponseSchema,
+  formationsSchema,
+  personalProjectsSchema,
+  profileSchema,
+  skillsSchema,
+  experiencesSchema,
+} from '../schemas'
+import { fetchJson } from './fetchJson'
+import type { Experience, Formation, PersonalProject, Profile, Skill } from '../../types'
 
 export const profileService = {
-  getProfile: async (): Promise<Profile> => {
-    const response = await fetch(`${BASE_URL}/profile`)
-    if (!response.ok) throw new Error('Failed to fetch profile')
-    return response.json()
-  },
+  getProfile: (signal?: AbortSignal): Promise<Profile> =>
+    fetchJson(`${BASE_URL}/profile`, profileSchema, { signal }),
 }
 
 export const experienceService = {
-  getExperiences: async (): Promise<Experience[]> => {
-    const response = await fetch(`${BASE_URL}/experiences`)
-    if (!response.ok) throw new Error('Failed to fetch experiences')
-    return response.json()
-  },
+  getExperiences: (signal?: AbortSignal): Promise<Experience[]> =>
+    fetchJson(`${BASE_URL}/experiences`, experiencesSchema, { signal }),
 }
 
 export const skillService = {
-  getSkills: async (): Promise<Skill[]> => {
-    const response = await fetch(`${BASE_URL}/skills`)
-    if (!response.ok) throw new Error('Failed to fetch skills')
-    return response.json()
-  },
+  getSkills: (signal?: AbortSignal): Promise<Skill[]> =>
+    fetchJson(`${BASE_URL}/skills`, skillsSchema, { signal }),
 }
 
 export const formationService = {
-  getFormation: async (): Promise<Formation[]> => {
-    const response = await fetch(`${BASE_URL}/formation`)
-    if (!response.ok) throw new Error('Failed to fetch formation')
-    return response.json()
-  },
+  getFormation: (signal?: AbortSignal): Promise<Formation[]> =>
+    fetchJson(`${BASE_URL}/formation`, formationsSchema, { signal }),
 }
 
 export const personalProjectService = {
-  getPersonalProjects: async (): Promise<PersonalProject[]> => {
-    const response = await fetch(`${BASE_URL}/personal-projects`)
-    if (!response.ok) throw new Error('Failed to fetch personal projects')
-    return response.json()
-  },
+  getPersonalProjects: (signal?: AbortSignal): Promise<PersonalProject[]> =>
+    fetchJson(`${BASE_URL}/personal-projects`, personalProjectsSchema, { signal }),
 }
 
 export const contactService = {
   sendMessage: async (data: { name: string; email: string; message: string }): Promise<{ success: boolean }> => {
-    const response = await fetch(`${BASE_URL}/contact`, {
+    return fetchJson(`${BASE_URL}/contact`, contactResponseSchema, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
-    if (!response.ok) throw new Error('Failed to send message')
-    return response.json()
   },
 }

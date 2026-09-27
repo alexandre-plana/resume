@@ -11,7 +11,7 @@ export const useProfile = () => {
 
   const query = useQuery({
     queryKey: ['profile'],
-    queryFn: () => api.profileService.getProfile(),
+    queryFn: ({ signal }) => api.profileService.getProfile(signal),
   })
   const data = useMemo(() => {
     if (!query.data) return undefined
@@ -36,7 +36,7 @@ export const useExperiences = () => {
 
   const query = useQuery({
     queryKey: ['experiences'],
-    queryFn: () => api.experienceService.getExperiences(),
+    queryFn: ({ signal }) => api.experienceService.getExperiences(signal),
   })
   const data = useMemo(() => {
     if (!query.data) return undefined
@@ -78,7 +78,7 @@ export const useSkills = () => {
 
   const query = useQuery({
     queryKey: ['skills'],
-    queryFn: () => api.skillService.getSkills(),
+    queryFn: ({ signal }) => api.skillService.getSkills(signal),
   })
   const data = useMemo(
     () => (query.data ? localizeSkills(query.data, dataLocales.skills) : undefined),
@@ -94,7 +94,7 @@ export const useFormation = () => {
 
   const query = useQuery({
     queryKey: ['formation'],
-    queryFn: () => api.formationService.getFormation(),
+    queryFn: ({ signal }) => api.formationService.getFormation(signal),
   })
   const data = useMemo(
     () => (query.data ? localizeFormations(query.data, dataLocales.formation) : undefined),
@@ -110,7 +110,7 @@ export const usePersonalProjects = () => {
 
   const query = useQuery({
     queryKey: ['personalProjects'],
-    queryFn: () => api.personalProjectService.getPersonalProjects(),
+    queryFn: ({ signal }) => api.personalProjectService.getPersonalProjects(signal),
   })
   const data = useMemo(() => {
     if (!query.data) return undefined
