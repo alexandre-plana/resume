@@ -27,10 +27,7 @@ describe('project image gallery', () => {
 
     render(
       <PersonalProjectsTab
-        projects={[project]}
-        isLoading={false}
-        isError={false}
-        errorMessage=""
+        state={{ status: 'ready', data: [project] }}
         t={translations.fr}
       />,
     )
@@ -57,10 +54,7 @@ describe('project image gallery', () => {
 
     render(
       <PersonalProjectsTab
-        projects={[project]}
-        isLoading={false}
-        isError={false}
-        errorMessage=""
+        state={{ status: 'ready', data: [project] }}
         t={translations.fr}
       />,
     )
@@ -78,10 +72,7 @@ describe('project image gallery', () => {
 
     render(
       <PersonalProjectsTab
-        projects={[project]}
-        isLoading={false}
-        isError={false}
-        errorMessage=""
+        state={{ status: 'ready', data: [project] }}
         t={translations.fr}
       />,
     )
@@ -99,10 +90,7 @@ describe('project image gallery', () => {
 
     render(
       <PersonalProjectsTab
-        projects={[projectWithoutImages]}
-        isLoading={false}
-        isError={false}
-        errorMessage=""
+        state={{ status: 'ready', data: [projectWithoutImages] }}
         t={translations.fr}
       />,
     )

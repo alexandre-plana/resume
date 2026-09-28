@@ -1,6 +1,7 @@
 import { memo, useEffect, useState } from 'react'
 import type { PersonalProject } from '../../types'
 import type { Translations } from '../../locales'
+import { matchAsyncViewState, type AsyncViewState } from '../../types/asyncViewState'
 import { InlineTechText } from '../InlineTechText'
 import { TechBadge } from '../TechBadge'
 import { ProjectDialog, type ProjectPopout } from '../ProjectDialog'
@@ -9,14 +10,11 @@ import { parsePersonalProjectHash } from '../../navigation/personalProjectHash'
 import styles from '../../App.module.css'
 
 interface PersonalProjectsTabProps {
-  projects: PersonalProject[] | undefined
-  isLoading: boolean
-  isError: boolean
-  errorMessage: string
+  state: AsyncViewState<PersonalProject[]>
   t: Translations
 }
 
-function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessage, t }: PersonalProjectsTabProps) {
+function PersonalProjectsTabComponent({ state, t }: PersonalProjectsTabProps) {
   const [activeProject, setActiveProject] = useState<ProjectPopout | null>(null)
   const [locationHash, setLocationHash] = useState(() =>
     typeof window === 'undefined' ? '' : window.location.hash,
@@ -31,14 +29,14 @@ function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessa
 
   useEffect(() => {
     const projectId = parsePersonalProjectHash(locationHash)
-    if (!projects?.length || projectId === null) return
+    if (state.status !== 'ready' || state.data.length === 0 || projectId === null) return
 
     window.requestAnimationFrame(() => {
       const projectCard = document.getElementById(`personal-project-${projectId}`)
       projectCard?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       projectCard?.focus({ preventScroll: true })
     })
-  }, [projects, locationHash])
+  }, [locationHash, state])
 
   const openProjectPopout = (project: PersonalProject, sourceEl: HTMLElement | null) => {
     setActiveProject({ project, animation: getPopoutAnimation(sourceEl) })
@@ -48,18 +46,11 @@ function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessa
     setActiveProject(null)
   }
 
-  if (isLoading) {
-    return <div className={styles.formationEmpty}>{t.common.loading}</div>
-  }
-
-  if (isError) {
-    return <div className={styles.formationEmpty}>{errorMessage}</div>
-  }
-
-  const visibleProjects = projects ?? []
-
-  return (
-    <div className={styles.formationsSection}>
+  return matchAsyncViewState(state, {
+    loading: () => <div className={styles.formationEmpty}>{t.common.loading}</div>,
+    error: ({ message }) => <div className={styles.formationEmpty}>{message}</div>,
+    ready: ({ data: visibleProjects }) => (
+      <div className={styles.formationsSection}>
       <div className={styles.personalGrid}>
         {visibleProjects.map((project) => (
           <div
@@ -105,8 +96,9 @@ function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessa
       </div>
 
       {activeProject && <ProjectDialog popout={activeProject} t={t} onClose={closeProjectPopout} />}
-    </div>
-  )
+      </div>
+    ),
+  })
 }
 
 export const PersonalProjectsTab = memo(PersonalProjectsTabComponent)

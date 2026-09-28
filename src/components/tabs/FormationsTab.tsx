@@ -1,15 +1,13 @@
 import { memo, useMemo, useState } from 'react'
 import type { Formation, FormationKind } from '../../types'
 import type { Language, Translations } from '../../locales'
+import { matchAsyncViewState, type AsyncViewState } from '../../types/asyncViewState'
 import styles from '../../App.module.css'
 
 type FormationSort = 'date' | 'name'
 
 interface FormationsTabProps {
-  formation: Formation[] | undefined
-  isLoading: boolean
-  isError: boolean
-  errorMessage: string
+  state: AsyncViewState<Formation[]>
   language: Language
   t: Translations
 }
@@ -35,7 +33,7 @@ const getFormationSortYear = (sub: string): number => {
   return Math.max(...yearMatches.map((year) => Number(year)))
 }
 
-function FormationsTabComponent({ formation, isLoading, isError, errorMessage, language, t }: FormationsTabProps) {
+function FormationsTabComponent({ state, language, t }: FormationsTabProps) {
   const [formationSort, setFormationSort] = useState<FormationSort>('date')
   const [formationTypeFilters, setFormationTypeFilters] = useState<Record<FormationKind, boolean>>({
     training: true,
@@ -47,10 +45,7 @@ function FormationsTabComponent({ formation, isLoading, isError, errorMessage, l
   }
 
   const visibleFormation = useMemo(() => {
-    if (!formation) {
-      return []
-    }
-
+    const formation = state.status === 'ready' ? state.data : []
     const collator = new Intl.Collator(language === 'fr' ? 'fr' : 'en', { sensitivity: 'base' })
 
     return formation
@@ -68,18 +63,14 @@ function FormationsTabComponent({ formation, isLoading, isError, errorMessage, l
 
         return collator.compare(a.title, b.title)
       })
-  }, [formation, formationSort, formationTypeFilters, language])
+  }, [state, formationSort, formationTypeFilters, language])
 
-  if (isLoading) {
-    return <div className={styles.formationEmpty}>{t.common.loading}</div>
-  }
-
-  if (isError) {
-    return <div className={styles.formationEmpty}>{errorMessage}</div>
-  }
-
-  return (
-    <div className={styles.formationsSection}>
+  return matchAsyncViewState(state, {
+    loading: () => <div className={styles.formationEmpty}>{t.common.loading}</div>,
+    error: ({ message }) => <div className={styles.formationEmpty}>{message}</div>,
+    ready: () => {
+      return (
+        <div className={styles.formationsSection}>
       <div className={styles.formationControls}>
         <div className={styles.formationSortGroup}>
           <label className={styles.formationControlLabel} htmlFor="formation-sort">
@@ -136,8 +127,10 @@ function FormationsTabComponent({ formation, isLoading, isError, errorMessage, l
         })}
         {visibleFormation.length === 0 && <div className={styles.formationEmpty}>{t.formationControls.empty}</div>}
       </div>
-    </div>
-  )
+        </div>
+      )
+    },
+  })
 }
 
 export const FormationsTab = memo(FormationsTabComponent)

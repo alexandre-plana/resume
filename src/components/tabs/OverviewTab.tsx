@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import type { Experience, Mission } from '../../types'
 import type { Language, Translations } from '../../locales'
+import { matchAsyncViewState, type AsyncViewState } from '../../types/asyncViewState'
 import { QRCode } from '../QRCode'
 import { InlineTechText } from '../InlineTechText'
 import styles from '../../App.module.css'
@@ -60,38 +61,28 @@ const summarizeTaskPreview = (task: string) => {
 }
 
 interface OverviewTabProps {
-  experiences: Experience[] | undefined
-  isLoading: boolean
-  isError: boolean
-  errorMessage: string
+  state: AsyncViewState<Experience[]>
   language: Language
   t: Translations
   onOpenMission: (mission: Mission, company: string, employer: string, sourceEl: HTMLElement | null) => void
 }
 
 function OverviewTabComponent({
-  experiences,
-  isLoading,
-  isError,
-  errorMessage,
+  state,
   language,
   t,
   onOpenMission,
 }: OverviewTabProps) {
-  if (isLoading) {
-    return <div className={styles.formationEmpty}>{t.common.loading}</div>
-  }
+  return matchAsyncViewState(state, {
+    loading: () => <div className={styles.formationEmpty}>{t.common.loading}</div>,
+    error: ({ message }) => <div className={styles.formationEmpty}>{message}</div>,
+    ready: ({ data: experiences }) => {
+      if (experiences.length === 0) {
+        return <div className={styles.formationEmpty}>{t.common.noData}</div>
+      }
 
-  if (isError) {
-    return <div className={styles.formationEmpty}>{errorMessage}</div>
-  }
-
-  if (!experiences || experiences.length === 0) {
-    return <div className={styles.formationEmpty}>{t.common.noData}</div>
-  }
-
-  return (
-    <>
+      return (
+        <>
       <div className={styles.sectionHeader}>📌 {t.sections.professionalExperience}</div>
       <div className={styles.timeline}>
         {experiences.map((exp) => {
@@ -231,8 +222,10 @@ function OverviewTabComponent({
       <div className={styles.printQrBanner}>
         <QRCode url="https://alexandre-plana.github.io/resume/" language={language} />
       </div>
-    </>
-  )
+        </>
+      )
+    },
+  })
 }
 
 export const OverviewTab = memo(OverviewTabComponent)

@@ -240,6 +240,14 @@
   padding: 0;
 }
 
+.tabPanel {
+  display: none;
+}
+
+.tabPanelActive {
+  display: block;
+}
+
 .sectionHeader {
   font-size: 0.87rem;
   font-weight: 600;
@@ -1402,10 +1410,6 @@
     display: block !important;
   }
 
-  .formationsSection {
-    display: none !important;
-  }
-
   .skillsSection {
     display: none !important;
   }
@@ -1424,6 +1428,14 @@
     width: 100%;
     margin-top: 6px;
     margin-bottom: 12px;
+  }
+
+  .tabPanel {
+    display: none !important;
+  }
+
+  .overviewPanel {
+    display: block !important;
   }
 
   .timeline {

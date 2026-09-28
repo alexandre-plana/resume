@@ -9,13 +9,21 @@ import { Toolbar } from './components/Toolbar'
 import { PhoneNumber } from './components/PhoneNumber'
 import { getTranslations } from './locales'
 import type { Mission } from './types'
-import { FormationsTab } from './components/tabs/FormationsTab'
-import { OverviewTab } from './components/tabs/OverviewTab'
-import { PersonalProjectsTab } from './components/tabs/PersonalProjectsTab'
+import { TabPanels } from './components/TabPanels'
 import { parsePersonalProjectHash } from './navigation/personalProjectHash'
 import { MissionDialog, type MissionPopout } from './components/MissionDialog'
 import { getPopoutAnimation } from './utils/popoutAnimation'
 import styles from './App.module.css'
+import type { AsyncViewState } from './types/asyncViewState'
+
+const getAsyncViewState = <T,>(
+  query: { data: T | undefined; isLoading: boolean; isError: boolean },
+  errorMessage: string,
+): AsyncViewState<T> => {
+  if (query.isLoading) return { status: 'loading' }
+  if (query.isError || query.data === undefined) return { status: 'error', message: errorMessage }
+  return { status: 'ready', data: query.data }
+}
 
 function App() {
   const profileQuery = useProfile()
@@ -33,11 +41,12 @@ function App() {
 
   const profile = profileQuery.data
   const skills = skillsQuery.data
-  const hasAnyQueryError =
-    experiencesQuery.isError ||
-    skillsQuery.isError ||
-    formationQuery.isError ||
-    personalProjectsQuery.isError
+  const experiencesState = getAsyncViewState(experiencesQuery, t.queryErrors.experiences)
+  const formationState = getAsyncViewState(formationQuery, t.queryErrors.formation)
+  const personalProjectsState = getAsyncViewState(personalProjectsQuery, t.queryErrors.personalProjects)
+  const hasAnyQueryError = [experiencesState, formationState, personalProjectsState].some(
+    (state) => state.status === 'error',
+  ) || skillsQuery.isError
 
   const [activeMission, setActiveMission] = useState<MissionPopout | null>(null)
 
@@ -196,59 +205,15 @@ function App() {
 
             {hasAnyQueryError && <div className={styles.formationEmpty}>{t.queryErrors.partialData}</div>}
 
-            <div
-              id="panel-overview"
-              role="tabpanel"
-              aria-labelledby="tab-overview"
-              aria-hidden={activeTab !== 'overview'}
-            >
-              {activeTab === 'overview' && (
-                <OverviewTab
-                  experiences={experiencesQuery.data}
-                  isLoading={experiencesQuery.isLoading}
-                  isError={experiencesQuery.isError}
-                  errorMessage={t.queryErrors.experiences}
-                  language={language}
-                  t={t}
-                  onOpenMission={openMissionPopout}
-                />
-              )}
-            </div>
-
-            <div
-              id="panel-formations"
-              role="tabpanel"
-              aria-labelledby="tab-formations"
-              aria-hidden={activeTab !== 'formations'}
-            >
-              {activeTab === 'formations' && (
-                <FormationsTab
-                  formation={formationQuery.data}
-                  isLoading={formationQuery.isLoading}
-                  isError={formationQuery.isError}
-                  errorMessage={t.queryErrors.formation}
-                  language={language}
-                  t={t}
-                />
-              )}
-            </div>
-
-            <div
-              id="panel-personal"
-              role="tabpanel"
-              aria-labelledby="tab-personal"
-              aria-hidden={activeTab !== 'personal'}
-            >
-              {activeTab === 'personal' && (
-                <PersonalProjectsTab
-                  projects={personalProjectsQuery.data}
-                  isLoading={personalProjectsQuery.isLoading}
-                  isError={personalProjectsQuery.isError}
-                  errorMessage={t.queryErrors.personalProjects}
-                  t={t}
-                />
-              )}
-            </div>
+            <TabPanels
+              activeTab={activeTab}
+              experiencesState={experiencesState}
+              formationState={formationState}
+              personalProjectsState={personalProjectsState}
+              language={language}
+              t={t}
+              onOpenMission={openMissionPopout}
+            />
           </main>
         </div>
       </div>
