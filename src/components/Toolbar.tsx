@@ -64,6 +64,8 @@ function ToolbarComponent({ language, exportData }: ToolbarProps) {
         <div className={styles.langControl}>
           <button
             className={`${styles.langBtn} ${language === 'fr' ? styles.active : ''}`}
+            type="button"
+            aria-pressed={language === 'fr'}
             onClick={() => setLanguage('fr')}
             title="Français"
           >
@@ -71,6 +73,8 @@ function ToolbarComponent({ language, exportData }: ToolbarProps) {
           </button>
           <button
             className={`${styles.langBtn} ${language === 'en' ? styles.active : ''}`}
+            type="button"
+            aria-pressed={language === 'en'}
             onClick={() => setLanguage('en')}
             title="English"
           >

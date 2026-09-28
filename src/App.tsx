@@ -13,6 +13,7 @@ import type { Mission } from './types'
 import { FormationsTab } from './components/tabs/FormationsTab'
 import { OverviewTab } from './components/tabs/OverviewTab'
 import { PersonalProjectsTab } from './components/tabs/PersonalProjectsTab'
+import { parsePersonalProjectHash } from './navigation/personalProjectHash'
 import styles from './App.module.css'
 
 type MissionPopout = {
@@ -80,7 +81,11 @@ function App() {
 
   const openRelatedPersonalProject = (projectId: number) => {
     closeMissionPopout()
-    window.history.replaceState(null, '', `#personal-project-${projectId}`)
+    window.history.replaceState(
+      null,
+      '',
+      `${window.location.pathname}${window.location.search}#personal-project-${projectId}`,
+    )
     setActiveTab('personal')
 
     window.requestAnimationFrame(() => {
@@ -91,6 +96,21 @@ function App() {
       })
     })
   }
+
+  useEffect(() => {
+    document.documentElement.lang = language
+  }, [language])
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (parsePersonalProjectHash(window.location.hash) !== null) {
+        setActiveTab('personal')
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [setActiveTab])
 
   useEffect(() => {
     if (!activeMission) return
@@ -227,37 +247,59 @@ function App() {
 
             {hasAnyQueryError && <div className={styles.formationEmpty}>{t.queryErrors.partialData}</div>}
 
-            {activeTab === 'overview' && (
-              <OverviewTab
-                experiences={experiencesQuery.data}
-                isLoading={experiencesQuery.isLoading}
-                isError={experiencesQuery.isError}
-                errorMessage={t.queryErrors.experiences}
-                language={language}
-                t={t}
-                onOpenMission={openMissionPopout}
-              />
-            )}
+            <div
+              id="panel-overview"
+              role="tabpanel"
+              aria-labelledby="tab-overview"
+              aria-hidden={activeTab !== 'overview'}
+            >
+              {activeTab === 'overview' && (
+                <OverviewTab
+                  experiences={experiencesQuery.data}
+                  isLoading={experiencesQuery.isLoading}
+                  isError={experiencesQuery.isError}
+                  errorMessage={t.queryErrors.experiences}
+                  language={language}
+                  t={t}
+                  onOpenMission={openMissionPopout}
+                />
+              )}
+            </div>
 
-            {activeTab === 'formations' && (
-              <FormationsTab
-                formation={formationQuery.data}
-                isLoading={formationQuery.isLoading}
-                isError={formationQuery.isError}
-                errorMessage={t.queryErrors.formation}
-                language={language}
-                t={t}
-              />
-            )}
-            {activeTab === 'personal' && (
-              <PersonalProjectsTab
-                projects={personalProjectsQuery.data}
-                isLoading={personalProjectsQuery.isLoading}
-                isError={personalProjectsQuery.isError}
-                errorMessage={t.queryErrors.personalProjects}
-                t={t}
-              />
-            )}
+            <div
+              id="panel-formations"
+              role="tabpanel"
+              aria-labelledby="tab-formations"
+              aria-hidden={activeTab !== 'formations'}
+            >
+              {activeTab === 'formations' && (
+                <FormationsTab
+                  formation={formationQuery.data}
+                  isLoading={formationQuery.isLoading}
+                  isError={formationQuery.isError}
+                  errorMessage={t.queryErrors.formation}
+                  language={language}
+                  t={t}
+                />
+              )}
+            </div>
+
+            <div
+              id="panel-personal"
+              role="tabpanel"
+              aria-labelledby="tab-personal"
+              aria-hidden={activeTab !== 'personal'}
+            >
+              {activeTab === 'personal' && (
+                <PersonalProjectsTab
+                  projects={personalProjectsQuery.data}
+                  isLoading={personalProjectsQuery.isLoading}
+                  isError={personalProjectsQuery.isError}
+                  errorMessage={t.queryErrors.personalProjects}
+                  t={t}
+                />
+              )}
+            </div>
           </main>
         </div>
       </div>

@@ -3,6 +3,7 @@ import type { PersonalProject } from '../../types'
 import type { Translations } from '../../locales'
 import { TechBadge } from '../TechBadge'
 import { InlineTechText } from '../InlineTechText'
+import { parsePersonalProjectHash } from '../../navigation/personalProjectHash'
 import styles from '../../App.module.css'
 
 type ProjectPopout = {
@@ -44,16 +45,27 @@ const getProjectPopoutAnimation = (sourceEl: HTMLElement | null) => {
 
 function PersonalProjectsTabComponent({ projects, isLoading, isError, errorMessage, t }: PersonalProjectsTabProps) {
   const [activeProject, setActiveProject] = useState<ProjectPopout | null>(null)
+  const [locationHash, setLocationHash] = useState(() =>
+    typeof window === 'undefined' ? '' : window.location.hash,
+  )
 
   useEffect(() => {
-    if (!projects?.length || !window.location.hash.startsWith('#personal-project-')) return
+    const handleHashChange = () => setLocationHash(window.location.hash)
+
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  useEffect(() => {
+    const projectId = parsePersonalProjectHash(locationHash)
+    if (!projects?.length || projectId === null) return
 
     window.requestAnimationFrame(() => {
-      const projectCard = document.querySelector<HTMLElement>(window.location.hash)
+      const projectCard = document.getElementById(`personal-project-${projectId}`)
       projectCard?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       projectCard?.focus({ preventScroll: true })
     })
-  }, [projects])
+  }, [projects, locationHash])
 
   const openProjectPopout = (project: PersonalProject, sourceEl: HTMLElement | null) => {
     setActiveProject({ project, animation: getProjectPopoutAnimation(sourceEl) })

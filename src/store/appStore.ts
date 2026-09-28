@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { Language } from '../locales'
+import { parsePersonalProjectHash } from '../navigation/personalProjectHash'
 
 export type Tab = 'overview' | 'formations' | 'personal'
 
@@ -23,11 +24,24 @@ interface AppStore {
 }
 
 const getInitialTab = (): Tab =>
-  typeof window !== 'undefined' && window.location.hash.startsWith('#personal-project-') ? 'personal' : 'overview'
+  typeof window !== 'undefined' && parsePersonalProjectHash(window.location.hash) !== null ? 'personal' : 'overview'
+
+const clearPersonalProjectHash = () => {
+  if (typeof window === 'undefined' || parsePersonalProjectHash(window.location.hash) === null) {
+    return
+  }
+
+  window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
+}
 
 export const useAppStore = create<AppStore>((set) => ({
   activeTab: getInitialTab(),
-  setActiveTab: (tab) => set({ activeTab: tab }),
+  setActiveTab: (tab) => {
+    if (tab !== 'personal') {
+      clearPersonalProjectHash()
+    }
+    set({ activeTab: tab })
+  },
   
   contactOpen: false,
   setContactOpen: (open) => set({ contactOpen: open }),
