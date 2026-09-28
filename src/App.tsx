@@ -1,10 +1,9 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useState } from 'react'
 import { useExperiences, useFormation, usePersonalProjects, useProfile, useSkills } from './hooks/useApi'
 import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
 import { Tabs } from './components/Tabs'
 import { TechBadge } from './components/TechBadge'
-import { InlineTechText } from './components/InlineTechText'
 import { ContactModal } from './components/ContactModal'
 import { Toolbar } from './components/Toolbar'
 import { PhoneNumber } from './components/PhoneNumber'
@@ -14,18 +13,9 @@ import { FormationsTab } from './components/tabs/FormationsTab'
 import { OverviewTab } from './components/tabs/OverviewTab'
 import { PersonalProjectsTab } from './components/tabs/PersonalProjectsTab'
 import { parsePersonalProjectHash } from './navigation/personalProjectHash'
+import { MissionDialog, type MissionPopout } from './components/MissionDialog'
+import { getPopoutAnimation } from './utils/popoutAnimation'
 import styles from './App.module.css'
-
-type MissionPopout = {
-  company: string
-  employer: string
-  mission: Mission
-  animation: {
-    fromX: number
-    fromY: number
-    fromScale: number
-  }
-}
 
 function App() {
   const profileQuery = useProfile()
@@ -51,28 +41,8 @@ function App() {
 
   const [activeMission, setActiveMission] = useState<MissionPopout | null>(null)
 
-  const getMissionPopoutAnimation = (sourceEl: HTMLElement | null) => {
-    if (!sourceEl) {
-      return { fromX: 0, fromY: 8, fromScale: 0.96 }
-    }
-
-    const rect = sourceEl.getBoundingClientRect()
-    const viewportCenterX = window.innerWidth / 2
-    const viewportCenterY = window.innerHeight / 2
-    const sourceCenterX = rect.left + rect.width / 2
-    const sourceCenterY = rect.top + rect.height / 2
-    const targetModalWidth = Math.max(1, Math.min(840, window.innerWidth - 32))
-    const fromScale = Math.min(0.98, Math.max(0.42, rect.width / targetModalWidth))
-
-    return {
-      fromX: sourceCenterX - viewportCenterX,
-      fromY: sourceCenterY - viewportCenterY,
-      fromScale,
-    }
-  }
-
   const openMissionPopout = (mission: Mission, company: string, employer: string, sourceEl: HTMLElement | null) => {
-    setActiveMission({ mission, company, employer, animation: getMissionPopoutAnimation(sourceEl) })
+    setActiveMission({ mission, company, employer, animation: getPopoutAnimation(sourceEl) })
   }
 
   const closeMissionPopout = () => {
@@ -111,27 +81,6 @@ function App() {
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [setActiveTab])
-
-  useEffect(() => {
-    if (!activeMission) return
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        closeMissionPopout()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [activeMission])
-
-  const missionModalStyle = activeMission
-    ? ({
-        '--mission-from-x': `${activeMission.animation.fromX}px`,
-        '--mission-from-y': `${activeMission.animation.fromY}px`,
-        '--mission-from-scale': `${activeMission.animation.fromScale}`,
-      } as CSSProperties)
-    : undefined
 
   if (profileQuery.isLoading) {
     return <div className={styles.loading}>{t.common.loading}</div>
@@ -307,88 +256,12 @@ function App() {
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} language={language} />
 
       {activeMission && (
-        <div className={styles.missionOverlay} onClick={closeMissionPopout}>
-          <div
-            className={styles.missionModal}
-            style={missionModalStyle}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="mission-popout-title"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className={styles.missionModalHeader}>
-              <div className={styles.missionModalTitleWrap}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
-                  <div id="mission-popout-title" className={styles.missionModalTitle}>
-                    {activeMission.mission.name}
-                  </div>
-                  {activeMission.mission.isCurrent && (
-                    <span style={{ fontSize: '0.75rem', padding: '2px 6px', background: 'rgba(41, 128, 185, 0.2)', color: '#2980b9', borderRadius: '3px', fontWeight: 600 }}>
-                      {t.mission.current}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.missionModalCompany}>
-                  ⏱ {activeMission.mission.period} - {activeMission.mission.badge}
-                </div>
-                <div className={styles.missionModalCompany} style={{ marginTop: '4px' }}>
-                  {activeMission.company} · {activeMission.employer}
-                </div>
-              </div>
-              <button className={styles.missionModalClose} onClick={closeMissionPopout} title={t.mission.close}>
-                ✕
-              </button>
-            </div>
-
-            <div className={styles.missionModalCore}>
-              <div className={styles.missionModalContext}>{activeMission.mission.context}</div>
-              <div className={styles.missionModalDesc}>
-                <InlineTechText text={activeMission.mission.desc} />
-              </div>
-
-              {activeMission.mission.tasks && activeMission.mission.tasks.length > 0 && (
-                <div className={styles.missionTasksSection}>
-                  <div className={styles.missionTasksTitle}>{t.mission.tasksTitle}</div>
-                  <ul className={styles.missionTasksList}>
-                    {activeMission.mission.tasks.map((task, idx) => (
-                      <li key={`mission-task-${activeMission.mission.id}-${idx}`} className={styles.missionTaskItem}>
-                        <InlineTechText text={task} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {activeMission.mission.retrospective && (
-                <div className={styles.missionRetrospectiveSection}>
-                  <div className={styles.missionRetrospectiveTitle}>{t.mission.retrospective}</div>
-                  <div className={styles.missionRetrospectiveText}>{activeMission.mission.retrospective}</div>
-                </div>
-              )}
-
-              {activeMission.mission.relatedPersonalProject && (
-                <a
-                  href={`#personal-project-${activeMission.mission.relatedPersonalProject.id}`}
-                  className={styles.relatedPersonalProjectLink}
-                  onClick={(event) => {
-                    event.preventDefault()
-                    openRelatedPersonalProject(activeMission.mission.relatedPersonalProject!.id)
-                  }}
-                >
-                  {t.mission.relatedPersonalProject} : {activeMission.mission.relatedPersonalProject.name} →
-                </a>
-              )}
-            </div>
-
-            <div className={styles.missionMetaGrid}>
-              <div className={styles.missionMetaTags}>
-                {activeMission.mission.tags.map((tag, idx) => (
-                  <TechBadge key={`mission-popout-${activeMission.mission.id}-${tag}-${idx}`} label={tag} kind={tag} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <MissionDialog
+          popout={activeMission}
+          t={t}
+          onClose={closeMissionPopout}
+          onOpenPersonalProject={openRelatedPersonalProject}
+        />
       )}
 
       <footer className={styles.footer}>

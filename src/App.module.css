@@ -672,6 +672,22 @@
   min-width: 0;
 }
 
+.missionModalTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.missionModalCurrentBadge {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  background: rgba(41, 128, 185, 0.2);
+  color: #2980b9;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
 .missionModalTitle {
   font-size: 1.2rem;
   font-weight: 700;
@@ -684,6 +700,10 @@
   font-size: 0.76rem;
   color: var(--text-3);
   font-family: var(--font-mono);
+}
+
+.missionModalEmployer {
+  margin-top: 4px;
 }
 
 .missionModalClose {
