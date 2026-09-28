@@ -4,6 +4,7 @@ import type { PersonalProject } from '../types'
 import type { PopoutAnimation } from '../utils/popoutAnimation'
 import { Dialog } from './Dialog'
 import { InlineTechText } from './InlineTechText'
+import { ProjectGallery } from './ProjectGallery'
 import { TechBadge } from './TechBadge'
 import styles from '../App.module.css'
 
@@ -55,6 +56,14 @@ export function ProjectDialog({ popout, t, onClose }: ProjectDialogProps) {
       </div>
 
       <div className={styles.missionModalCore}>
+        {project.images && project.images.length > 0 && (
+          <ProjectGallery
+            images={project.images}
+            previousLabel={t.personalModal.previousImage}
+            nextLabel={t.personalModal.nextImage}
+            showLabel={t.personalModal.showImage}
+          />
+        )}
         <div className={styles.missionModalContext}>
           <InlineTechText text={project.desc} />
         </div>

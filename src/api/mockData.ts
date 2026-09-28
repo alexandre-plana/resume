@@ -458,6 +458,11 @@ export const mockPersonalProjects: PersonalProject[] = [
     stack: ['react', 'typescript', 'nodejs', 'zod', 'sigma.js', 'api rest', 'mcp'],
     period: '2026',
     status: 'en service',
+    images: [
+      { src: 'images/projects/iasit/dashboard.webp', alt: 'Tableau de bord Iasit' },
+      { src: 'images/projects/iasit/execution.webp', alt: "Détail d'une exécution d'agents IA" },
+      { src: 'images/projects/iasit/finding.webp', alt: "Détail d'un finding et de sa correction proposée" },
+    ],
   },
   {
     id: 6,

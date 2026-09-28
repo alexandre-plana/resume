@@ -42,6 +42,7 @@ export interface LocalizedMockData {
       highlights?: string[]
       period?: string
       status?: string
+      images?: { src: string; alt: string }[]
     }
   }
 }
@@ -545,6 +546,11 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
           'Promote reusable lessons to learned rules, preserve their provenance and feed relevant active rules back into future prompts',
         ],
         status: 'in service',
+        images: [
+          { src: 'images/projects/iasit/dashboard.webp', alt: 'Iasit dashboard' },
+          { src: 'images/projects/iasit/execution.webp', alt: 'AI agent execution details' },
+          { src: 'images/projects/iasit/finding.webp', alt: 'Finding details and proposed correction' },
+        ],
       },
       6: {
         kind: '3D educational sandbox',

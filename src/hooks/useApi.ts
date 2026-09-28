@@ -124,6 +124,7 @@ export const usePersonalProjects = () => {
       highlights: dataLocales.personalProjects[project.id]?.highlights || project.highlights,
       period: dataLocales.personalProjects[project.id]?.period || project.period,
       status: dataLocales.personalProjects[project.id]?.status || project.status,
+      images: dataLocales.personalProjects[project.id]?.images || project.images,
     }))
   }, [dataLocales, query.data])
 

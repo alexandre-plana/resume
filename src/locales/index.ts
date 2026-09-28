@@ -66,6 +66,9 @@ export interface Translations {
   personalModal: {
     openDetails: string
     highlightsTitle: string
+    previousImage: string
+    nextImage: string
+    showImage: string
   }
   contactModal: {
     title: string
@@ -155,6 +158,9 @@ export const translations: Record<Language, Translations> = {
     personalModal: {
       openDetails: 'Ouvrir le detail du projet',
       highlightsTitle: 'Points cles',
+      previousImage: 'Image précédente',
+      nextImage: 'Image suivante',
+      showImage: 'Afficher',
     },
     contactModal: {
       title: 'Me contacter',
@@ -242,6 +248,9 @@ export const translations: Record<Language, Translations> = {
     personalModal: {
       openDetails: 'Open project details',
       highlightsTitle: 'Highlights',
+      previousImage: 'Previous image',
+      nextImage: 'Next image',
+      showImage: 'Show',
     },
     contactModal: {
       title: 'Contact me',

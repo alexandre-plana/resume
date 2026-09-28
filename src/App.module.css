@@ -1135,6 +1135,132 @@
   font-size: 0.8rem;
 }
 
+.projectGallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 118px;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.projectGalleryViewport {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-2);
+}
+
+.projectGalleryMainImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.projectGalleryRail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.projectGalleryThumbnail {
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg-2);
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.projectGalleryThumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.projectGalleryThumbnail:hover,
+.projectGalleryThumbnail:focus-visible,
+.projectGalleryThumbnailActive {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue);
+  outline: none;
+}
+
+.projectGalleryArrow {
+  position: absolute;
+  top: 50%;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 50%;
+  background: rgba(31, 35, 40, 0.68);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.projectGalleryArrow:hover,
+.projectGalleryArrow:focus-visible {
+  background: rgba(31, 35, 40, 0.86);
+  transform: translateY(-50%) scale(1.04);
+  outline: 2px solid #fff;
+  outline-offset: 1px;
+}
+
+.projectGalleryArrowPrevious {
+  left: 10px;
+}
+
+.projectGalleryArrowNext {
+  right: 10px;
+}
+
+.projectGalleryCounter {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(31, 35, 40, 0.72);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1;
+}
+
+@media (max-width: 620px) {
+  .projectGallery {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .projectGalleryRail {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1px;
+  }
+
+  .projectGalleryThumbnail {
+    width: 96px;
+  }
+}
+
 /* ACTIVITY */
 .activity {
   background: var(--bg-2);

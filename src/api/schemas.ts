@@ -77,6 +77,7 @@ export const personalProjectSchema = z.object({
   stack: z.array(z.string()),
   period: z.string(),
   status: z.string().optional(),
+  images: z.array(z.object({ src: z.string().min(1), alt: z.string().min(1) })).optional(),
 }) satisfies z.ZodType<PersonalProject>
 
 export const contactResponseSchema = z.object({ success: z.boolean() })

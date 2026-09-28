@@ -87,4 +87,10 @@ export interface PersonalProject {
   stack: string[]
   period: string
   status?: string
+  images?: ProjectImage[]
+}
+
+export interface ProjectImage {
+  src: string
+  alt: string
 }
