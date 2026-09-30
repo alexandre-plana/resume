@@ -59,3 +59,17 @@ trois aperçus restent donc explicitement NON VÉRIFIÉS.
   extérieurement à cette phase.
 - La compilation ne doit laisser aucun `.tsbuildinfo`, `vite.config.js` ou
   `vite.config.d.ts` suivi par Git.
+
+## État final au 30 septembre 2026
+
+Les dix tâches du plan sont terminées sur `codex/resume-review-remediation`.
+La revue transversale a relevé trois défauts d'intégration, corrigés dans
+`acbc3de fix: close cross-task review gaps`, puis approuvés par une relecture
+indépendante ciblée. La suite complète passe (60 tests sur 21 fichiers), ainsi
+que `npm run lint`, `npm run check:bundle` et `npm audit --omit=dev` (aucune
+vulnérabilité de production). Le chunk initial est de 387,62 kB et ne contient
+pas de marqueur `docx`; `git diff 66f89d0..HEAD --check` ne signale rien.
+
+La seule vérification fonctionnelle encore ouverte est l'aperçu avant impression
+réel depuis les trois onglets, faute d'accès exploitable à Chrome/Edge et à
+l'aperçu du navigateur intégré. La procédure manuelle figure ci-dessus.
