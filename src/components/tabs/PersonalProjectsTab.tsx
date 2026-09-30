@@ -28,10 +28,11 @@ function PersonalProjectsTabComponent({ state, t }: PersonalProjectsTabProps) {
   }, [])
 
   const projectId = parsePersonalProjectHash(locationHash)
-  const projectCount = state.status === 'ready' ? state.data.length : 0
+  const projectAvailable =
+    state.status === 'ready' && projectId !== null && state.data.some((project) => project.id === projectId)
 
   useEffect(() => {
-    if (state.status !== 'ready' || projectCount === 0 || projectId === null) return
+    if (!projectAvailable || projectId === null) return
 
     const frameId = window.requestAnimationFrame(() => {
       const projectCard = document.getElementById(`personal-project-${projectId}`)
@@ -40,7 +41,7 @@ function PersonalProjectsTabComponent({ state, t }: PersonalProjectsTabProps) {
     })
 
     return () => window.cancelAnimationFrame(frameId)
-  }, [projectCount, projectId, state.status])
+  }, [projectAvailable, projectId])
 
   const openProjectPopout = (project: PersonalProject, sourceEl: HTMLElement | null) => {
     setActiveProject({ project, animation: getPopoutAnimation(sourceEl) })

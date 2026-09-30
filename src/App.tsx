@@ -100,11 +100,11 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [setActiveTab])
 
-  if (profileQuery.isLoading) {
+  if (profileQuery.status === 'pending' || profileQuery.isPending) {
     return <div className={styles.loading}>{t.common.loading}</div>
   }
 
-  if (profileQuery.isError || !profile) {
+  if (profileQuery.status === 'error' || profileQuery.isError || !profile) {
     return <div className={styles.loading}>{t.queryErrors.profile}</div>
   }
 
