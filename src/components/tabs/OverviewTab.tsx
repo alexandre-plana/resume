@@ -64,7 +64,7 @@ interface OverviewTabProps {
   state: AsyncViewState<Experience[]>
   language: Language
   t: Translations
-  onOpenMission: (mission: Mission, company: string, employer: string, sourceEl: HTMLElement | null) => void
+  onOpenMission: (mission: Mission, experienceId: number, sourceEl: HTMLElement | null) => void
 }
 
 function OverviewTabComponent({
@@ -126,12 +126,12 @@ function OverviewTabComponent({
                         role="button"
                         tabIndex={0}
                         aria-haspopup="dialog"
-                        aria-label={t.mission.openDetails}
-                        onClick={(event) => onOpenMission(mission, exp.company, exp.employer, event.currentTarget)}
+                        aria-label={`${t.mission.openDetails}: ${mission.name}`}
+                        onClick={(event) => onOpenMission(mission, exp.id, event.currentTarget)}
                         onKeyDown={(event) => {
                           if (event.key === 'Enter' || event.key === ' ') {
                             event.preventDefault();
-                            onOpenMission(mission, exp.company, exp.employer, event.currentTarget);
+                            onOpenMission(mission, exp.id, event.currentTarget);
                           }
                         }}
                       >
@@ -162,17 +162,17 @@ function OverviewTabComponent({
                                         role="button"
                                         tabIndex={0}
                                         aria-haspopup="dialog"
-                                        aria-label={t.mission.openDetails}
+                                        aria-label={`${t.mission.openDetails}: ${projet.name}`}
                                         style={{ flex: 1 }}
                                         onClick={(event) => {
                                           event.stopPropagation();
-                                          onOpenMission(projet, exp.company, exp.employer, event.currentTarget);
+                                          onOpenMission(projet, exp.id, event.currentTarget);
                                         }}
                                         onKeyDown={(event) => {
                                           if (event.key === 'Enter' || event.key === ' ') {
                                             event.preventDefault();
                                             event.stopPropagation();
-                                            onOpenMission(projet, exp.company, exp.employer, event.currentTarget);
+                                            onOpenMission(projet, exp.id, event.currentTarget);
                                           }
                                         }}
                                       >

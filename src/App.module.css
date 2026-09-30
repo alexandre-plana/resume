@@ -574,31 +574,6 @@
   transform: scale(1.08);
 }
 
-.missionOverlay {
-  --mission-toolbar-offset: 56px;
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 17, 30, 0.52);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: calc(var(--mission-toolbar-offset) + 12px) 16px 16px;
-  box-sizing: border-box;
-  z-index: 1200;
-  backdrop-filter: blur(1.5px);
-  animation: missionOverlayFadeIn 0.2s ease-out;
-}
-
-@keyframes missionOverlayFadeIn {
-  from {
-    background: rgba(10, 17, 30, 0);
-  }
-
-  to {
-    background: rgba(10, 17, 30, 0.52);
-  }
-}
-
 .missionModal {
   width: min(840px, 100%);
   max-height: calc(100vh - var(--mission-toolbar-offset) - 28px);
@@ -637,7 +612,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .missionOverlay,
   .missionModal {
     animation: none !important;
   }
@@ -1452,10 +1426,6 @@
     display: none !important;
   }
 
-  .missionOverlay {
-    display: none !important;
-  }
-
   .tags {
     gap: 3px !important;
   }
@@ -1543,11 +1513,6 @@
 
   .tlMissions {
     margin-left: 12px;
-  }
-
-  .missionOverlay {
-    --mission-toolbar-offset: 52px;
-    padding: calc(var(--mission-toolbar-offset) + 8px) 10px 10px;
   }
 
   .missionModal {

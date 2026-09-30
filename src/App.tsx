@@ -10,7 +10,7 @@ import { getTranslations } from './locales'
 import type { Mission } from './types'
 import { TabPanels } from './components/TabPanels'
 import { parsePersonalProjectHash } from './navigation/personalProjectHash'
-import { MissionDialog, type MissionPopout } from './components/MissionDialog'
+import { MissionDialog } from './components/MissionDialog'
 import { getPopoutAnimation } from './utils/popoutAnimation'
 import styles from './App.module.css'
 import type { AsyncViewState } from './types/asyncViewState'
@@ -20,6 +20,12 @@ type AsyncQueryState<T> = {
   isPending: boolean
   isError: boolean
   status: 'pending' | 'error' | 'success'
+}
+
+type ActiveMissionSelection = {
+  missionId: number
+  experienceId: number
+  animation: ReturnType<typeof getPopoutAnimation>
 }
 
 export const getAsyncViewState = <T,>(
@@ -47,6 +53,7 @@ function App() {
 
   const profile = profileQuery.data
   const skills = skillsQuery.data
+  const skillsPending = skillsQuery.isPending || String(skillsQuery.status) === 'pending'
   const experiencesState = getAsyncViewState(experiencesQuery, t.queryErrors.experiences)
   const formationState = getAsyncViewState(formationQuery, t.queryErrors.formation)
   const personalProjectsState = getAsyncViewState(personalProjectsQuery, t.queryErrors.personalProjects)
@@ -54,15 +61,20 @@ function App() {
     (state) => state.status === 'error',
   ) || skillsQuery.isError
 
-  const [activeMission, setActiveMission] = useState<MissionPopout | null>(null)
+  const [activeMission, setActiveMission] = useState<ActiveMissionSelection | null>(null)
 
-  const openMissionPopout = (mission: Mission, company: string, employer: string, sourceEl: HTMLElement | null) => {
-    setActiveMission({ mission, company, employer, animation: getPopoutAnimation(sourceEl) })
+  const openMissionPopout = (mission: Mission, experienceId: number, sourceEl: HTMLElement | null) => {
+    setActiveMission({ missionId: mission.id, experienceId, animation: getPopoutAnimation(sourceEl) })
   }
 
   const closeMissionPopout = () => {
     setActiveMission(null)
   }
+
+  const activeMissionExperience = activeMission
+    ? experiencesQuery.data?.find((experience) => experience.id === activeMission.experienceId)
+    : undefined
+  const activeMissionData = activeMissionExperience?.missions.find((mission) => mission.id === activeMission?.missionId)
 
   const openRelatedPersonalProject = (projectId: number) => {
     closeMissionPopout()
@@ -171,9 +183,9 @@ function App() {
             <div className={styles.section}>
               <div className={styles.label}>{t.common.coreSkills}</div>
               <div className={styles.sidebarSkillList}>
-                {skillsQuery.isLoading && <div className={styles.formationEmpty}>{t.common.loading}</div>}
+                {skillsPending && <div className={styles.formationEmpty}>{t.common.loading}</div>}
                 {skillsQuery.isError && <div className={styles.formationEmpty}>{t.queryErrors.skills}</div>}
-                {!skillsQuery.isLoading && !skillsQuery.isError &&
+                {!skillsPending && !skillsQuery.isError &&
                   skills?.map((skillCat) => (
                     <div key={skillCat.id} className={skillCat.featured ? styles.sidebarSkillGroupFeatured : styles.sidebarSkillGroup}>
                       <div className={skillCat.featured ? styles.sidebarSkillTitleFeatured : styles.sidebarSkillTitle}>
@@ -224,9 +236,14 @@ function App() {
         </div>
       </div>
 
-      {activeMission && (
+      {activeMission && activeMissionData && activeMissionExperience && (
         <MissionDialog
-          popout={activeMission}
+          popout={{
+            mission: activeMissionData,
+            company: activeMissionExperience.company,
+            employer: activeMissionExperience.employer,
+            animation: activeMission.animation,
+          }}
           t={t}
           onClose={closeMissionPopout}
           onOpenPersonalProject={openRelatedPersonalProject}

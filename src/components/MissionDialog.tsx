@@ -53,7 +53,7 @@ export function MissionDialog({ popout, t, onClose, onOpenPersonalProject }: Mis
             {company} · {employer}
           </div>
         </div>
-        <button type="button" className={styles.missionModalClose} onClick={onClose} title={t.mission.close}>
+        <button type="button" className={styles.missionModalClose} onClick={onClose} title={t.mission.close} aria-label={t.mission.close}>
           ✕
         </button>
       </div>

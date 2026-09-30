@@ -1,4 +1,4 @@
-import { act, cleanup, render } from '@testing-library/react'
+import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { translations } from '../../locales'
 import type { PersonalProject } from '../../types'
@@ -94,5 +94,22 @@ describe('PersonalProjectsTab deep links', () => {
     )
 
     expect(requestAnimationFrame).toHaveBeenCalledOnce()
+  })
+})
+
+describe('PersonalProjectsTab localized dialog', () => {
+  it('derives an open project dialog from the current localized project', () => {
+    const frenchProject: PersonalProject = { ...project, name: 'Projet FR', desc: 'Description FR' }
+    const englishProject: PersonalProject = { ...project, name: 'Project EN', desc: 'Description EN' }
+
+    const { rerender } = render(
+      <PersonalProjectsTab state={{ status: 'ready', data: [frenchProject] }} t={translations.fr} />,
+    )
+    fireEvent.click(screen.getByText('Projet FR'))
+    expect(within(screen.getByRole('dialog')).getByText('Description FR')).toBeInTheDocument()
+
+    rerender(<PersonalProjectsTab state={{ status: 'ready', data: [englishProject] }} t={translations.en} />)
+
+    expect(within(screen.getByRole('dialog')).getByText('Description EN')).toBeInTheDocument()
   })
 })

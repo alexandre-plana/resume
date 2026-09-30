@@ -1327,4 +1327,3 @@ git commit -m "docs: record resume quality checks"
 Run: `git diff origin/main...HEAD --check && git log --oneline origin/main..HEAD`
 
 Expected: aucune erreur d’espacement et dix commits ou moins, chacun correspondant à une unité testable du plan.
-

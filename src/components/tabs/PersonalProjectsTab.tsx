@@ -4,7 +4,7 @@ import type { Translations } from '../../locales'
 import { matchAsyncViewState, type AsyncViewState } from '../../types/asyncViewState'
 import { InlineTechText } from '../InlineTechText'
 import { TechBadge } from '../TechBadge'
-import { ProjectDialog, type ProjectPopout } from '../ProjectDialog'
+import { ProjectDialog } from '../ProjectDialog'
 import { getPopoutAnimation } from '../../utils/popoutAnimation'
 import { parsePersonalProjectHash } from '../../navigation/personalProjectHash'
 import styles from '../../App.module.css'
@@ -15,7 +15,7 @@ interface PersonalProjectsTabProps {
 }
 
 function PersonalProjectsTabComponent({ state, t }: PersonalProjectsTabProps) {
-  const [activeProject, setActiveProject] = useState<ProjectPopout | null>(null)
+  const [activeProjectId, setActiveProjectId] = useState<{ id: number; animation: ReturnType<typeof getPopoutAnimation> } | null>(null)
   const [locationHash, setLocationHash] = useState(() =>
     typeof window === 'undefined' ? '' : window.location.hash,
   )
@@ -44,12 +44,17 @@ function PersonalProjectsTabComponent({ state, t }: PersonalProjectsTabProps) {
   }, [projectAvailable, projectId])
 
   const openProjectPopout = (project: PersonalProject, sourceEl: HTMLElement | null) => {
-    setActiveProject({ project, animation: getPopoutAnimation(sourceEl) })
+    setActiveProjectId({ id: project.id, animation: getPopoutAnimation(sourceEl) })
   }
 
   const closeProjectPopout = () => {
-    setActiveProject(null)
+    setActiveProjectId(null)
   }
+
+  const activeProject =
+    activeProjectId && state.status === 'ready'
+      ? state.data.find((project) => project.id === activeProjectId.id)
+      : undefined
 
   return matchAsyncViewState(state, {
     loading: () => <div className={styles.formationEmpty}>{t.common.loading}</div>,
@@ -100,7 +105,9 @@ function PersonalProjectsTabComponent({ state, t }: PersonalProjectsTabProps) {
         {visibleProjects.length === 0 && <div className={styles.formationEmpty}>{t.formationControls.empty}</div>}
       </div>
 
-      {activeProject && <ProjectDialog popout={activeProject} t={t} onClose={closeProjectPopout} />}
+      {activeProject && activeProjectId && (
+        <ProjectDialog popout={{ project: activeProject, animation: activeProjectId.animation }} t={t} onClose={closeProjectPopout} />
+      )}
       </div>
     ),
   })

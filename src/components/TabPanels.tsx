@@ -15,7 +15,7 @@ interface TabPanelsProps {
   personalProjectsState: AsyncViewState<PersonalProject[]>
   language: Language
   t: Translations
-  onOpenMission: (mission: Mission, company: string, employer: string, sourceEl: HTMLElement | null) => void
+  onOpenMission: (mission: Mission, experienceId: number, sourceEl: HTMLElement | null) => void
 }
 
 interface OverviewPanelProps extends Pick<TabPanelsProps, 'experiencesState' | 'language' | 't' | 'onOpenMission'> {
