@@ -28,7 +28,7 @@ const OverviewPanel = ({ active, experiencesState, language, t, onOpenMission }:
     role="tabpanel"
     aria-labelledby="tab-overview"
     aria-label={t.tabs.overview}
-    aria-hidden="false"
+    aria-hidden={!active}
     className={`${styles.tabPanel} ${active ? styles.tabPanelActive : ''} ${styles.overviewPanel} overviewPanel`}
   >
     <OverviewTab state={experiencesState} language={language} t={t} onOpenMission={onOpenMission} />

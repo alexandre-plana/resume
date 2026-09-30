@@ -16,12 +16,21 @@ import { getPopoutAnimation } from './utils/popoutAnimation'
 import styles from './App.module.css'
 import type { AsyncViewState } from './types/asyncViewState'
 
-const getAsyncViewState = <T,>(
-  query: { data: T | undefined; isLoading: boolean; isError: boolean },
+type AsyncQueryState<T> = {
+  data: T | undefined
+  isPending: boolean
+  isError: boolean
+  status: 'pending' | 'error' | 'success'
+}
+
+export const getAsyncViewState = <T,>(
+  query: AsyncQueryState<T>,
   errorMessage: string,
 ): AsyncViewState<T> => {
-  if (query.isLoading) return { status: 'loading' }
-  if (query.isError || query.data === undefined) return { status: 'error', message: errorMessage }
+  if (query.isPending || query.status === 'pending') return { status: 'loading' }
+  if (query.isError || query.status === 'error' || query.data === undefined) {
+    return { status: 'error', message: errorMessage }
+  }
   return { status: 'ready', data: query.data }
 }
 

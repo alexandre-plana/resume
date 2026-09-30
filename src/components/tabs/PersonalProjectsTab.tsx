@@ -27,16 +27,20 @@ function PersonalProjectsTabComponent({ state, t }: PersonalProjectsTabProps) {
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
 
-  useEffect(() => {
-    const projectId = parsePersonalProjectHash(locationHash)
-    if (state.status !== 'ready' || state.data.length === 0 || projectId === null) return
+  const projectId = parsePersonalProjectHash(locationHash)
+  const projectCount = state.status === 'ready' ? state.data.length : 0
 
-    window.requestAnimationFrame(() => {
+  useEffect(() => {
+    if (state.status !== 'ready' || projectCount === 0 || projectId === null) return
+
+    const frameId = window.requestAnimationFrame(() => {
       const projectCard = document.getElementById(`personal-project-${projectId}`)
       projectCard?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       projectCard?.focus({ preventScroll: true })
     })
-  }, [locationHash, state])
+
+    return () => window.cancelAnimationFrame(frameId)
+  }, [projectCount, projectId, state.status])
 
   const openProjectPopout = (project: PersonalProject, sourceEl: HTMLElement | null) => {
     setActiveProject({ project, animation: getPopoutAnimation(sourceEl) })
