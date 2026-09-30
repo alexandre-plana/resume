@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { getTranslations, type Language } from '../locales'
+import resumeQrUrl from '../assets/resume-qr.svg'
 import styles from './QRCode.module.css'
 
 interface QRCodeProps {
@@ -8,7 +9,6 @@ interface QRCodeProps {
 }
 
 function QRCodeComponent({ url, language }: QRCodeProps) {
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`
   const t = getTranslations(language)
   const qrMessage = t.qr.message
   const qrLabel = t.qr.label
@@ -17,7 +17,7 @@ function QRCodeComponent({ url, language }: QRCodeProps) {
     <div className={styles.qrCodeContainer}>
       <div className={styles.qrCodeCard}>
         <img 
-          src={qrCodeUrl} 
+          src={resumeQrUrl}
           alt={t.qr.alt}
           width={150}
           height={150}

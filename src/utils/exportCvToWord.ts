@@ -17,6 +17,7 @@ import type { IRunOptions } from 'docx'
 import type { Language } from '../locales'
 import { getTranslations } from '../locales'
 import type { Experience, Formation, PersonalProject, Profile, Skill } from '../types'
+import { tokenizeTechText } from './techTokens'
 
 export interface CvExportData {
   profile: Profile
@@ -110,10 +111,9 @@ const badgeRun = (text: string, variant: BadgeVariant, allCaps = false): TextRun
 }
 
 const inlineTaggedRuns = (text: string, options: RunOverrides = {}): TextRun[] =>
-  text
-    .split(/(#[a-zA-Z0-9-]+)/g)
-    .filter((part) => part.length > 0)
-    .map((part) => (part.startsWith('#') ? badgeRun(part, 'blue') : bodyRun(part, options)))
+  tokenizeTechText(text).map((token) =>
+    token.type === 'tag' ? badgeRun(token.value, 'blue') : bodyRun(token.value, options),
+  )
 
 const badgeRuns = (
   values: string[],

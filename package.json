@@ -13,7 +13,9 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run --config vitest.config.ts",
-    "test:watch": "vitest --config vitest.config.ts"
+    "test:watch": "vitest --config vitest.config.ts",
+    "generate:qr": "qrcode -t svg -e M -q 2 -m 2 -o src/assets/resume-qr.svg https://alexandre-plana.github.io/resume/",
+    "check:bundle": "npm run build && node scripts/check-production-bundle.mjs"
   },
   "dependencies": {
     "@primer/octicons-react": "^19.38.0",
@@ -35,6 +37,7 @@
     "eslint": "^10.8.1",
     "eslint-plugin-react-hooks": "^7.1.1",
     "jsdom": "^26.1.0",
+    "qrcode": "^1.5.4",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.67.0",
     "vite": "^8.2.1",

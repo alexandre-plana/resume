@@ -2,7 +2,6 @@ import { memo, useEffect, useRef, useState } from 'react'
 import { useAppStore } from '../store/appStore'
 import styles from './Toolbar.module.css'
 import { getTranslations } from '../locales'
-import { exportCvToWord } from '../utils/exportCvToWord'
 import type { CvExportData } from '../utils/exportCvToWord'
 
 interface ToolbarProps {
@@ -47,7 +46,8 @@ function ToolbarComponent({ language, exportData }: ToolbarProps) {
   }
 
   const handleExportWord = async () => {
-    if (!exportData) return
+    if (!import.meta.env.DEV || !exportData) return
+    const { exportCvToWord } = await import('../utils/exportCvToWord')
     await exportCvToWord(exportData, language)
   }
 
@@ -81,7 +81,7 @@ function ToolbarComponent({ language, exportData }: ToolbarProps) {
             EN
           </button>
         </div>
-        {process.env.NODE_ENV === 'development' && (
+        {import.meta.env.DEV && (
           <button className={styles.exportBtn} onClick={handleExportWord} title={exportWordLabel} disabled={!exportData}>
             <span className={styles.icon}>📝</span>
             {exportWordLabel}
