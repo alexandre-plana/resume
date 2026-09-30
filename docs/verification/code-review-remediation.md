@@ -36,19 +36,20 @@ vérifie que le chunk initial ne contient pas de marqueurs OOXML `docx`.
 | Fragment `#personal-project-4` | GREEN : Projets persos est chargé et le focus arrive sur `personal-project-4` | Chromium intégré Codex |
 | Fragment `#personal-project-[` | GREEN : Aperçu est affiché après rechargement et aucune erreur console n'est observée | Chromium intégré Codex |
 | Panneau Aperçu et QR | GREEN : sur Formations et Projets persos, `#panel-overview` reste monté avec les expériences et un QR local; le CSS d'impression force `.overviewPanel` visible et masque les panneaux secondaires | Chromium intégré Codex |
-| Aperçu avant impression depuis les trois onglets | NON VÉRIFIÉ : l'activation d'Imprimer a bloqué CDP dans le navigateur intégré et aucun aperçu exploitable n'a pu être observé | Chromium intégré Codex |
+| Aperçu avant impression depuis les trois onglets | VALIDÉ PAR L'UTILISATEUR le 30 septembre 2026 après une demande de contrôler les trois onglets ; l'agent n'a pas pu observer lui-même les aperçus | Navigateur non précisé par l'utilisateur |
 
-## Procédure restante pour l'impression
+## Validation complémentaire de l'impression
 
-Dans Chrome ou Edge, démarrer l'application avec `npm run dev`, ouvrir
-`http://localhost:5173/resume/`, puis sélectionner successivement Aperçu,
-Formations et Projets persos. Cliquer sur Imprimer depuis chaque onglet et
-vérifier dans l'aperçu que les expériences professionnelles et le QR code
-local sont présents. Fermer l'aperçu entre chaque scénario et consigner le
-résultat dans la ligne correspondante ci-dessus.
+La vérification demandée à l'utilisateur consistait à ouvrir l'aperçu avant
+impression depuis Aperçu, Formations et Projets persos et à signaler tout écart
+visible. L'utilisateur a répondu « j'ai vérifié c'est bon » le 30 septembre
+2026. Le navigateur et les détails de chaque aperçu n'ont pas été précisés :
+cette validation est donc rapportée comme confirmation utilisateur, pas comme
+observation directe de l'agent.
 
-Chrome et Edge n'étaient pas disponibles via CUA pendant cette recette; les
-trois aperçus restent donc explicitement NON VÉRIFIÉS.
+Lors de la recette initiale, le navigateur intégré avait bloqué CDP à
+l'activation d'Imprimer ; aucun aperçu exploitable n'avait alors pu être
+observé par l'agent.
 
 ## Contrôles de dépôt
 
@@ -70,6 +71,6 @@ que `npm run lint`, `npm run check:bundle` et `npm audit --omit=dev` (aucune
 vulnérabilité de production). Le chunk initial est de 387,62 kB et ne contient
 pas de marqueur `docx`; `git diff 66f89d0..HEAD --check` ne signale rien.
 
-La seule vérification fonctionnelle encore ouverte est l'aperçu avant impression
-réel depuis les trois onglets, faute d'accès exploitable à Chrome/Edge et à
-l'aperçu du navigateur intégré. La procédure manuelle figure ci-dessus.
+L'aperçu avant impression, seule vérification fonctionnelle encore ouverte à
+ce stade, a depuis été déclaré conforme par l'utilisateur, selon la limite
+de preuve précisée ci-dessus.
