@@ -50,9 +50,13 @@ L'application est alors accessible à l'adresse [http://localhost:5173/resume/](
 ## Vérification et compilation
 
 ```bash
+npm test
 npm run lint
 npm run build
+npm run check:bundle
 ```
+
+`npm test` couvre la navigation, la localisation, les dialogues, les données API et la vue imprimable.
 
 Pour prévisualiser la version compilée :
 
