@@ -4,7 +4,6 @@ import { useAppStore } from './store/appStore'
 import { Avatar } from './components/Avatar'
 import { Tabs } from './components/Tabs'
 import { TechBadge } from './components/TechBadge'
-import { ContactModal } from './components/ContactModal'
 import { Toolbar } from './components/Toolbar'
 import { PhoneNumber } from './components/PhoneNumber'
 import { getTranslations } from './locales'
@@ -44,8 +43,6 @@ function App() {
   const language = useAppStore((state) => state.language)
   const activeTab = useAppStore((state) => state.activeTab)
   const setActiveTab = useAppStore((state) => state.setActiveTab)
-  const contactOpen = useAppStore((state) => state.contactOpen)
-  const setContactOpen = useAppStore((state) => state.setContactOpen)
   const t = getTranslations(language)
 
   const profile = profileQuery.data
@@ -226,8 +223,6 @@ function App() {
           </main>
         </div>
       </div>
-
-      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} language={language} />
 
       {activeMission && (
         <MissionDialog

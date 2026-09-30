@@ -12,11 +12,6 @@ export interface Profile {
   interests: string[]
 }
 
-export interface Metric {
-  value: string
-  label: string
-}
-
 interface MissionBase {
   id: number
   featured: boolean
@@ -35,7 +30,6 @@ interface MissionBase {
     id: number
     name: string
   }
-  metrics?: { label: string }[]
 }
 
 export interface ProfessionalMission extends MissionBase {

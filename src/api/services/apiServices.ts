@@ -1,6 +1,5 @@
 import { BASE_URL } from '../config'
 import {
-  contactResponseSchema,
   formationsSchema,
   personalProjectsSchema,
   profileSchema,
@@ -33,14 +32,4 @@ export const formationService = {
 export const personalProjectService = {
   getPersonalProjects: (signal?: AbortSignal): Promise<PersonalProject[]> =>
     fetchJson(`${BASE_URL}/personal-projects`, personalProjectsSchema, { signal }),
-}
-
-export const contactService = {
-  sendMessage: async (data: { name: string; email: string; message: string }): Promise<{ success: boolean }> => {
-    return fetchJson(`${BASE_URL}/contact`, contactResponseSchema, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-  },
 }

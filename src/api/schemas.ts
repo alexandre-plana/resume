@@ -2,7 +2,6 @@ import { z } from 'zod'
 import type { Experience, Formation, Mission, PersonalProject, Profile, Skill } from '../types'
 
 const localizedLevelSchema = z.object({ label: z.string(), level: z.string() })
-const metricSchema = z.object({ label: z.string() })
 const relatedProjectSchema = z.object({ id: z.number().int(), name: z.string() })
 
 export const profileSchema = z.object({
@@ -34,7 +33,6 @@ const missionBaseSchema = z.object({
   tags: z.array(z.string()),
   isCurrent: z.boolean().optional(),
   relatedPersonalProject: relatedProjectSchema.optional(),
-  metrics: z.array(metricSchema).optional(),
 })
 
 export const missionSchema = z.discriminatedUnion('type', [
@@ -79,8 +77,6 @@ export const personalProjectSchema = z.object({
   status: z.string().optional(),
   images: z.array(z.object({ src: z.string().min(1), alt: z.string().min(1) })).optional(),
 }) satisfies z.ZodType<PersonalProject>
-
-export const contactResponseSchema = z.object({ success: z.boolean() })
 
 export const experiencesSchema = z.array(experienceSchema)
 export const skillsSchema = z.array(skillSchema)

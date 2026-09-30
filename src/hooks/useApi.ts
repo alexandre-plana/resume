@@ -49,8 +49,6 @@ export const useExperiences = () => {
         employer: expLocale?.employer || exp.employer,
         missions: exp.missions.map((mission) => {
           const missionLocale = expLocale?.missions[mission.id.toString()]
-          const baseMetrics = mission.metrics ?? []
-          const localeMetrics = missionLocale?.metrics ?? baseMetrics
           return {
             ...mission,
             badge: missionLocale?.badge || mission.badge,
@@ -59,10 +57,6 @@ export const useExperiences = () => {
             cardSummary: missionLocale?.cardSummary || mission.cardSummary,
             tasks: missionLocale?.tasks || mission.tasks,
             retrospective: missionLocale?.retrospective || mission.retrospective,
-            metrics: localeMetrics.map((m, idx) => ({
-              ...(baseMetrics[idx] || {}),
-              label: m.label,
-            })),
           }
         }),
       }
@@ -129,12 +123,4 @@ export const usePersonalProjects = () => {
   }, [dataLocales, query.data])
 
   return { ...query, data }
-}
-
-export const useContact = () => {
-  return {
-    sendMessage: async (data: { name: string; email: string; message: string }) => {
-      return api.contactService.sendMessage(data)
-    },
-  }
 }

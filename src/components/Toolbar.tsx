@@ -57,10 +57,6 @@ function ToolbarComponent({ language, exportData }: ToolbarProps) {
   return (
     <div className={`${styles.toolbar} ${isHidden ? styles.toolbarHidden : ''}`}>
       <div className={styles.actions}>
-        {/* TODO: Réactiver le bouton Me contacter */}
-        {/* <button className={styles.contactBtn} onClick={onContact}>
-          {t.common.contact}
-        </button> */}
         <div className={styles.langControl}>
           <button
             className={`${styles.langBtn} ${language === 'fr' ? styles.active : ''}`}

@@ -9,7 +9,6 @@ export const api = USE_MOCK
       skillService: mockSvc.mockSkillService,
       formationService: mockSvc.mockFormationService,
       personalProjectService: mockSvc.mockPersonalProjectService,
-      contactService: mockSvc.mockContactService,
     }
   : {
       profileService: realSvc.profileService,
@@ -17,5 +16,4 @@ export const api = USE_MOCK
       skillService: realSvc.skillService,
       formationService: realSvc.formationService,
       personalProjectService: realSvc.personalProjectService,
-      contactService: realSvc.contactService,
     }

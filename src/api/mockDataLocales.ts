@@ -26,7 +26,6 @@ export interface LocalizedMockData {
           cardSummary?: string
           tasks?: string[]
           retrospective?: string
-          metrics: { label: string }[]
         }
       }
     }
@@ -82,8 +81,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Développer avec #jest les tests unitaires des composants, des stores #pinia et des fonctions utilitaires, puis suivre les performances et la qualité du code avec #sonarqube.',
               'Concevoir, lors d’un IP Sprint, un prototype d’application #mobile destiné à transmettre les alertes aux opérateurs d’astreinte en dehors de la plateforme IECA.',
             ],
-            metrics: [],
-               
           },
           '12': {
             badge: 'Développeur C# / Unity',
@@ -97,9 +94,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Mettre en place un système de styles externalisé pour produire des versions personnalisées aux couleurs des clients #oem.',
               'Créer sous #unity un outil de tests unitaires intégré aux étapes précédant et suivant les builds.',
             ],
-            metrics: [
-            ],
-               
           },
         },
       },
@@ -119,9 +113,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Intégrer et optimiser des modèles issus de la #cao avec #solidworks et #3dsmax : maillages, niveaux de détail, lightmaps, matériaux et shaders.',
               'Optimiser les performances CPU/GPU avec les outils de profiling de #unity, puis préparer les builds, corriger les anomalies et accompagner les démonstrations client.',
             ],
-            metrics: [
-            ],
-               
           },
             '22': {
               badge: 'Conception fonctionnelle & UX/UI',
@@ -133,7 +124,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 'Développer en #csharp sous #unity les interactions et les composants du simulateur 3D.',
                 'Intégrer l’analyse posturale et restituer les indicateurs de risque au fil de la simulation.',
               ],
-              metrics: [],
               cardSummary: 'Conception fonctionnelle et UX/UI de Simulhom, un simulateur ergonomique 3D destiné à prévenir les troubles musculosquelettiques en milieu industriel. En collaboration avec des ergonomes, j’ai traduit les méthodes d’analyse posturale en parcours, visualisations et retours compréhensibles pour l’utilisateur, puis participé à leur réalisation en #csharp sous #unity.',
             },
             '23': {
@@ -146,7 +136,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 'Définir les interactions du simulateur nécessaires à l’apprentissage pratique en chantier-école.',
                 'Participer à l’intégration de l’expérience dans l’application en #csharp sous #unity.',
               ],
-              metrics: [],
               cardSummary: 'Conception UX/UI de Dosicase, un simulateur destiné à la formation en radioprotection sur chantier-école. J’ai structuré les parcours et conçu les interfaces pour rendre les risques radiologiques et les scénarios de formation compréhensibles pour les apprenants, puis participé à leur intégration dans l’application en #csharp sous #unity.',
             },
             '24': {
@@ -159,7 +148,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 'Implémenter la gestion et la représentation des matériaux radioactifs dans la simulation.',
                 'Concevoir en #wpf les interfaces de contrôle destinées aux opérateurs.',
               ],
-              metrics: [],
               cardSummary: 'Développement d’une simulation 3D interactive de l’EMEM, une enceinte mobile destinée à l’évacuation de matériel en environnement nucléaire. J’ai contribué à la représentation des flux et des matériaux radioactifs ainsi qu’à la conception des interfaces de contrôle pour les opérateurs, en #csharp avec #unity et #wpf.',
             },
             '25': {
@@ -172,7 +160,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 'Développer en #csharp sous #unity la simulation 3D et le déroulement des scénarios.',
                 'Modéliser l’environnement de formation et l’intégrer dans l’application.',
               ],
-              metrics: [],
               cardSummary: 'Développement d’un serious game #seriousgame destiné à former les opérateurs à l’utilisation du poste de contrôle Aeroball en environnement nucléaire. J’ai participé à la traduction des procédures opérationnelles en scénarios interactifs, puis à leur réalisation sous #unity en #csharp et à la modélisation 3D de l’environnement de formation.',
             },
             '26': {
@@ -185,7 +172,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 'Implémenter la gestion des équipes de secours au sein de la simulation.',
                 'Développer en #csharp sous #unity le module de formation et son environnement 3D.',
               ],
-              metrics: [],
               cardSummary: 'Développement d’un module de formation interactive 3D consacré à la radioprotection et aux procédures de sécurité nucléaire. J’ai participé à la conception et à la réalisation de scénarios d’accident simulés, incluant la gestion des équipes de secours, puis à leur intégration en #csharp sous #unity.',
             },
             '27': {
@@ -198,7 +184,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 'Représenter en 3D l’environnement et le déroulement des opérations de maintenance.',
                 'Développer en #csharp sous #unity le serious game #seriousgame et ses mécanismes interactifs.',
               ],
-              metrics: [],
               cardSummary: 'Développement d’un serious game #seriousgame destiné à préparer les interventions de maintenance des générateurs de vapeur pendant les arrêts de tranche. J’ai participé à la transposition des procédures de maintenance nucléaire en scénarios interactifs, puis à leur réalisation en #csharp sous #unity dans un environnement 3D.',
             },
             '28': {
@@ -211,7 +196,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
                 'Visualiser les zones exposées aux rayonnements dans l’environnement 3D.',
                 'Développer en #csharp sous #unity la simulation médicale et ses interactions.',
               ],
-              metrics: [],
               cardSummary: 'Développement d’une simulation médicale 3D destinée à former les équipes de chirurgie interventionnelle aux pratiques de radioprotection. J’ai contribué à la représentation de la dosimétrie au cours des scénarios, à la visualisation des zones exposées aux rayonnements et à l’intégration des protocoles opérateur en #csharp sous #unity.',
             },
         },
@@ -291,7 +275,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Implement interoperability in the #go services: ingest #ais, #nmea, #cot and #mavlink partner feeds, transmit commands and publish data through #mqtt and #api-rest.',
               'Develop the multi-screen application and centralized control from a master workstation, then implement mission replay for analysis, situation reports and debriefings.',
             ],
-            metrics: [],
           },
           '32': {
             badge: 'TypeScript developer / Simulation',
@@ -304,7 +287,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Publish simulator data to Xistar through #mqtt.',
               'Develop the tool in #typescript on #nodejs for demonstrations and feature development.',
             ],
-            metrics: [],
           },
           '33': {
             badge: 'TypeScript developer / Mobile application',
@@ -317,7 +299,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Implement alert escalation and return orders.',
               'Build the interface in #typescript with #react and integrate communication through #socketio.',
             ],
-            metrics: [],
           },
           '34': {
             badge: 'TypeScript developer / Multi-screen emulator',
@@ -330,7 +311,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Implement remote view dispatch from the master workstation to emulated screens.',
               'Develop the tool in #typescript with #react and #vite for development and demonstrations.',
             ],
-            metrics: [],
           },
           '35': {
             badge: 'AI workflow design & development',
@@ -344,7 +324,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Build a #react and #typescript monitoring tool that uses agent hooks to show progress as execution unfolds.',
               'Analyze session reports and automatically feed the lessons identified back into the agents and workflow.',
             ],
-            metrics: [],
           },
         },
       },
@@ -364,7 +343,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Write unit tests for components, #pinia stores and utility functions with #jest, then monitor performance and code quality with #sonarqube.',
               'Design an IP Sprint prototype for a #mobile application that sends alerts to on-call operators outside the IECA platform.',
             ],
-            metrics: [],
           },
           '12': {
             badge: 'C# / Unity Developer',
@@ -378,7 +356,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Implement an externalized style system for producing custom-branded versions for #oem clients.',
               'Create a unit-testing tool in #unity integrated into the stages before and after builds.',
             ],
-            metrics: [],
           },
         },
       },
@@ -398,7 +375,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Integrate and optimize #cad models from #solidworks and #3dsmax: meshes, levels of detail, lightmaps, materials and shaders.',
               'Optimize CPU/GPU performance with #unity profiling tools, then prepare builds, fix defects and support client demonstrations.',
             ],
-            metrics: [],
           },
           '22': {
             badge: 'Functional design & UX/UI',
@@ -411,7 +387,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Develop interactions and 3D simulator components in #csharp with #unity.',
               'Integrate postural analysis and present risk indicators throughout the simulation.',
             ],
-            metrics: [],
           },
           '23': {
             badge: 'UX/UI design',
@@ -424,7 +399,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Define the simulator interactions required for hands-on training.',
               'Contribute to integrating the experience into the application in #csharp with #unity.',
             ],
-            metrics: [],
           },
           '24': {
             badge: 'C# developer / 3D simulation',
@@ -437,7 +411,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Implement radioactive-material management and visualization in the simulation.',
               'Design operator control interfaces in #wpf.',
             ],
-            metrics: [],
           },
           '25': {
             badge: 'C# developer / Serious game',
@@ -450,7 +423,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Develop the 3D simulation and scenario flow in #csharp with #unity.',
               'Model the training environment and integrate it into the application.',
             ],
-            metrics: [],
           },
           '26': {
             badge: 'C# developer / Training simulation',
@@ -463,7 +435,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Implement emergency-team management within the simulation.',
               'Develop the training module and its 3D environment in #csharp with #unity.',
             ],
-            metrics: [],
           },
           '27': {
             badge: 'C# developer / Serious game',
@@ -476,7 +447,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Represent the maintenance environment and operations in 3D.',
               'Develop the #seriousgame and its interactive mechanisms in #csharp with #unity.',
             ],
-            metrics: [],
           },
           '28': {
             badge: 'C# developer / 3D medical simulation',
@@ -489,7 +459,6 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Visualize radiation-exposed areas in the 3D environment.',
               'Develop the medical simulation and its interactions in #csharp with #unity.',
             ],
-            metrics: [],
           },
         },
       },

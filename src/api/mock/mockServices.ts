@@ -40,11 +40,3 @@ export const mockPersonalProjectService = {
     return mockPersonalProjects
   },
 }
-
-export const mockContactService = {
-  sendMessage: async (data: { name: string; email: string; message: string }): Promise<{ success: boolean }> => {
-    await new Promise(resolve => setTimeout(resolve, 500))
-    console.log('Message sent:', data)
-    return { success: true }
-  },
-}

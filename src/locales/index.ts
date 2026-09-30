@@ -5,7 +5,6 @@ export interface Translations {
     languages: string
     coreSkills: string
     openToWork: string
-    contact: string
     follow: string
     followers: string
     following: string
@@ -70,20 +69,6 @@ export interface Translations {
     nextImage: string
     showImage: string
   }
-  contactModal: {
-    title: string
-    wip: string
-    name: string
-    email: string
-    subject: string
-    message: string
-    send: string
-    cancel: string
-    namePlaceholder: string
-    emailPlaceholder: string
-    subjectPlaceholder: string
-    messagePlaceholder: string
-  }
   qr: {
     label: string
     message: string
@@ -97,7 +82,6 @@ export const translations: Record<Language, Translations> = {
       languages: 'Langues',
       coreSkills: 'Competences cles',
       openToWork: 'Ouvert à un poste',
-      contact: '✉ Me contacter',
       follow: 'Follow',
       followers: 'followers',
       following: 'following',
@@ -162,20 +146,6 @@ export const translations: Record<Language, Translations> = {
       nextImage: 'Image suivante',
       showImage: 'Afficher',
     },
-    contactModal: {
-      title: 'Me contacter',
-      wip: '🚧 Fonctionnalite en developpement',
-      name: 'Nom',
-      email: 'Email',
-      subject: 'Sujet',
-      message: 'Message',
-      send: 'Envoyer',
-      cancel: 'Annuler',
-      namePlaceholder: 'Votre nom',
-      emailPlaceholder: 'votre@email.com',
-      subjectPlaceholder: 'Sujet du message',
-      messagePlaceholder: 'Votre message...',
-    },
     qr: {
       label: 'Version complete du CV',
       message: 'QR code vers une version plus complete du CV en ligne.',
@@ -187,7 +157,6 @@ export const translations: Record<Language, Translations> = {
       languages: 'Languages',
       coreSkills: 'Core Skills',
       openToWork: 'Open to work',
-      contact: '✉ Contact me',
       follow: 'Follow',
       followers: 'followers',
       following: 'following',
@@ -251,20 +220,6 @@ export const translations: Record<Language, Translations> = {
       previousImage: 'Previous image',
       nextImage: 'Next image',
       showImage: 'Show',
-    },
-    contactModal: {
-      title: 'Contact me',
-      wip: '🚧 Feature in development',
-      name: 'Name',
-      email: 'Email',
-      subject: 'Subject',
-      message: 'Message',
-      send: 'Send',
-      cancel: 'Cancel',
-      namePlaceholder: 'Your name',
-      emailPlaceholder: 'your@email.com',
-      subjectPlaceholder: 'Message subject',
-      messagePlaceholder: 'Your message...',
     },
     qr: {
       label: 'Extended Resume',
