@@ -174,14 +174,14 @@ function App() {
                 {skillsQuery.isLoading && <div className={styles.formationEmpty}>{t.common.loading}</div>}
                 {skillsQuery.isError && <div className={styles.formationEmpty}>{t.queryErrors.skills}</div>}
                 {!skillsQuery.isLoading && !skillsQuery.isError &&
-                  skills?.map((skillCat, idx) => (
-                    <div key={idx} className={skillCat.featured ? styles.sidebarSkillGroupFeatured : styles.sidebarSkillGroup}>
+                  skills?.map((skillCat) => (
+                    <div key={skillCat.id} className={skillCat.featured ? styles.sidebarSkillGroupFeatured : styles.sidebarSkillGroup}>
                       <div className={skillCat.featured ? styles.sidebarSkillTitleFeatured : styles.sidebarSkillTitle}>
                         {skillCat.cat.replace(/^\/\/\s*/, '')}
                       </div>
                       <div className={styles.tags}>
                         {skillCat.tags.map((tag, tagIdx) => (
-                          <TechBadge key={`sidebar-skill-${idx}-${tag.k}-${tagIdx}`} label={tag.l} kind={tag.k} />
+                          <TechBadge key={`sidebar-skill-${skillCat.id}-${tag.k}-${tagIdx}`} label={tag.l} kind={tag.k} />
                         ))}
                       </div>
                     </div>
