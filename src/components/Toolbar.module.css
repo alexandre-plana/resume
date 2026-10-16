@@ -72,6 +72,11 @@
   font-family: inherit;
 }
 
+.exportBtn,
+.exportBtn:hover {
+  text-decoration: none;
+}
+
 .printBtn:hover,
 .exportBtn:hover {
   background-color: var(--blue);

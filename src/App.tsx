@@ -119,20 +119,7 @@ function App() {
 
   return (
     <>
-      <Toolbar
-        language={language}
-        exportData={
-          experiencesQuery.data && skillsQuery.data && formationQuery.data && personalProjectsQuery.data
-            ? {
-                profile,
-                experiences: experiencesQuery.data,
-                skills: skillsQuery.data,
-                formations: formationQuery.data,
-                personalProjects: personalProjectsQuery.data,
-              }
-            : undefined
-        }
-      />
+      <Toolbar language={language} />
       <div className={styles.wrapper}>
         <div className={styles.layout}>
           <aside className={styles.sidebar}>

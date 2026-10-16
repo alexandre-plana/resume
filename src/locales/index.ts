@@ -32,7 +32,7 @@ export interface Translations {
   }
   toolbar: {
     print: string
-    exportWord: string
+    exportPdf: string
   }
   queryErrors: {
     profile: string
@@ -109,7 +109,7 @@ export const translations: Record<Language, Translations> = {
     },
     toolbar: {
       print: 'Imprimer',
-      exportWord: 'Exporter Word',
+      exportPdf: 'Exporter PDF',
     },
     queryErrors: {
       profile: 'Impossible de charger le profil.',
@@ -184,7 +184,7 @@ export const translations: Record<Language, Translations> = {
     },
     toolbar: {
       print: 'Print',
-      exportWord: 'Export Word',
+      exportPdf: 'Export PDF',
     },
     queryErrors: {
       profile: 'Unable to load profile data.',
