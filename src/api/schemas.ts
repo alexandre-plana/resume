@@ -3,6 +3,9 @@ import type { Experience, Formation, Mission, PersonalProject, Profile, Skill } 
 
 const localizedLevelSchema = z.object({ label: z.string(), level: z.string() })
 const relatedProjectSchema = z.object({ id: z.number().int(), name: z.string() })
+const projectImageSchema = z.object({ type: z.literal('image').optional(), src: z.string().min(1), alt: z.string().min(1) })
+const projectVideoSchema = z.object({ type: z.literal('video'), src: z.string().min(1), alt: z.string().min(1), poster: z.string().min(1) })
+const projectMediaSchema = z.union([projectVideoSchema, projectImageSchema])
 
 export const profileSchema = z.object({
   name: z.string(),
@@ -33,6 +36,7 @@ const missionBaseSchema = z.object({
   tags: z.array(z.string()),
   isCurrent: z.boolean().optional(),
   relatedPersonalProject: relatedProjectSchema.optional(),
+  images: z.array(projectMediaSchema).optional(),
 })
 
 export const missionSchema = z.discriminatedUnion('type', [
@@ -75,7 +79,7 @@ export const personalProjectSchema = z.object({
   stack: z.array(z.string()),
   period: z.string(),
   status: z.string().optional(),
-  images: z.array(z.object({ src: z.string().min(1), alt: z.string().min(1) })).optional(),
+  images: z.array(projectImageSchema).optional(),
 }) satisfies z.ZodType<PersonalProject>
 
 export const experiencesSchema = z.array(experienceSchema)

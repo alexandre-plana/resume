@@ -1,4 +1,5 @@
 import { Language } from '../locales'
+import type { ProjectMedia } from '../types'
 
 export interface LocalizedMockData {
   profile: {
@@ -26,6 +27,7 @@ export interface LocalizedMockData {
           cardSummary?: string
           tasks?: string[]
           retrospective?: string
+          images?: ProjectMedia[]
         }
       }
     }
@@ -266,6 +268,17 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
           '31': {
             badge: 'Full-stack developer',
             context: 'Xistar — Maritime Tactical Command Center',
+            images: [
+              { src: 'images/projects/xistar/xistar-suivis-mission.webp', alt: 'Xistar — mission monitoring and maritime tactical situation' },
+              { src: 'images/projects/xistar/xistar-map-globe.webp', alt: 'Xistar — tactical mapping and globe view' },
+              { src: 'images/projects/xistar/xistar-stak-details-2.webp', alt: 'Xistar — track details and operational visualizations' },
+              { src: 'images/projects/xistar/xistar-creation-mission.webp', alt: 'Xistar — mission creation and configuration' },
+              { src: 'images/projects/xistar/xistar-gestion-ecrans.webp', alt: 'Xistar — screen and view management' },
+              { src: 'images/projects/xistar/xistar-map-layers.webp', alt: 'Xistar — map layer configuration' },
+              { src: 'images/projects/xistar/xistar-select-replay.webp', alt: 'Xistar — replay sequence selection' },
+              { src: 'images/projects/xistar/xistar.webp', alt: 'Xistar — command workstation and screen wall' },
+              { type: 'video', src: 'videos/projects/xistar/xistar-presentation-h264.mp4', poster: 'images/projects/xistar/xistar-presentation-h264-poster.webp', alt: 'Xistar presentation video' },
+            ],
             desc: 'Xistar brings together tactical awareness, mission and drone control, alert management, multi-screen operation and mission replay. Based on operational requirements, I contribute to the functional design of operator workflows, interactions and expected feature behavior. The interface uses #typescript, #react and #dockview; mapping relies on #maplibre and #deckgl to display NATO #app-6d symbology, an #mgrs grid and bathymetry. #go services ingest partner feeds through #ais, #nmea, #cot and #mavlink, transmit commands and publish information through #mqtt and #api-rest. Deployment profiles and communication between instances allow the product to adapt to defense, port and demonstration environments.',
             cardSummary: 'Full-stack developer on Xistar, a browser-based maritime tactical command center. I help design operator workflows and implement them with #typescript and #react, while also developing services in #go. The product combines tactical mapping with #maplibre and #deckgl using NATO #app-6d symbology, interoperability through #mqtt and #api-rest, multi-screen control and mission replay.',
             tasks: [
@@ -310,6 +323,42 @@ export const mockDataLocales: Record<Language, LocalizedMockData> = {
               'Reproduce the mission board used for multi-view operations.',
               'Implement remote view dispatch from the master workstation to emulated screens.',
               'Develop the tool in #typescript with #react and #vite for development and demonstrations.',
+            ],
+          },
+          '36': {
+            badge: 'UI design & front-end architecture',
+            context: 'X-PERT design system — from Figma to applications',
+            images: [
+              { src: 'images/projects/xpert-design-system/xpert-ds-sombre.webp', alt: 'X-PERT design system — component catalog in dark theme' },
+              { src: 'images/projects/xpert-design-system/xpert-ds-clair.webp', alt: 'X-PERT design system — component catalog in light theme' },
+              { src: 'images/projects/xpert-design-system/xpert-ds-sombre-tableau.webp', alt: 'X-PERT design system — search, filters and table in dark theme' },
+              { src: 'images/projects/xpert-design-system/xpert-ds-clair-tableau.webp', alt: 'X-PERT design system — search, filters and table in light theme' },
+              { src: 'images/projects/xpert-design-system/dashboard-dark.webp', alt: 'X-PERT design system — dashboard and charts in dark theme' },
+              { src: 'images/projects/xpert-design-system/dashboard-light.webp', alt: 'X-PERT design system — dashboard and charts in light theme' },
+            ],
+            desc: 'X-PERT’s design system covers technical applications, the company website and the visual styling of official documents and videos. Components are designed in #figma, developed in #typescript with #react and #shadcn, then published to a private #npm registry. The library combines standard elements—cards, buttons, switches and tables—with technical interface components: charts and treemaps, activity feeds, timelines, maps, tabs and resizable panels. Internal documentation describes their integration into applications and their use in official documents.',
+            cardSummary: 'A shared design system for X-PERT’s technical applications, company website, documents and videos. Components are designed in #figma, developed in #typescript with #react and #shadcn, then distributed through a private #npm registry. The library and its internal documentation cover both standard interface elements and technical visualizations.',
+            tasks: [
+              'Design interfaces and components in #figma for technical applications and the company website.',
+              'Build the library in #typescript and #react on top of #shadcn: cards, buttons, switches, tables, charts, treemaps, activity feeds, timelines, maps, tabs and resizable panels.',
+              'Publish components to a private #npm registry for distribution across company applications.',
+              'Define the visual styling of official documents and videos, and write internal documentation for applications and documents.',
+            ],
+          },
+          '37': {
+            badge: 'R&D · Creative coding & AI',
+            context: 'AI-assisted promotional video creation workshop',
+            images: [
+              { type: 'video', src: 'videos/projects/xpert-promo-video/xear-render-compressed.mp4', poster: 'images/projects/xpert-promo-video/xear-render-compressed-poster.webp', alt: 'XEAR promotional video' },
+              { type: 'video', src: 'videos/projects/xpert-promo-video/xtorp-720p.mp4', poster: 'images/projects/xpert-promo-video/xtorp-720p-poster.webp', alt: 'XTORP promotional video' },
+            ],
+            desc: 'The workshop combines creative coding and generative AI to create promotional videos. The R&D work focuses on generating animations in #html and #webgl and using #hyperframes to build animated sequences. Code serves as the medium for creating animations, with assistance from generative AI.',
+            cardSummary: 'An R&D workshop for creating promotional videos with generative AI. Animation generation in #html and #webgl and the use of #hyperframes connect creative coding with animation, using code as the medium for creating promotional sequences.',
+            tasks: [
+              'Develop a workshop for creating promotional videos with generative AI.',
+              'Explore animation generation in #html for promotional sequences.',
+              'Program animations and visual effects in #webgl.',
+              'Use #hyperframes to create animations for promotional videos.',
             ],
           },
           '35': {

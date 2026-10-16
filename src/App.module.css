@@ -1075,10 +1075,15 @@
 }
 
 .projectGallery {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 118px;
   gap: 10px;
   margin-bottom: 16px;
+}
+
+.projectGallerySingle {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .projectGalleryViewport {
@@ -1099,6 +1104,9 @@
 }
 
 .projectGalleryRail {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 118px;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -1108,6 +1116,7 @@
 }
 
 .projectGalleryThumbnail {
+  position: relative;
   flex: 0 0 auto;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -1126,6 +1135,17 @@
   height: 100%;
   border-radius: 4px;
   object-fit: cover;
+}
+
+.projectGalleryVideoBadge {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  display: flex;
+  padding: 3px;
+  border-radius: 4px;
+  background: rgba(31, 35, 40, 0.8);
+  color: #fff;
 }
 
 .projectGalleryThumbnail:hover,
@@ -1172,7 +1192,8 @@
 .projectGalleryCounter {
   position: absolute;
   left: 10px;
-  bottom: 10px;
+  top: 10px;
+  pointer-events: none;
   padding: 4px 9px;
   border-radius: 999px;
   background: rgba(31, 35, 40, 0.72);
@@ -1189,6 +1210,8 @@
   }
 
   .projectGalleryRail {
+    position: static;
+    width: auto;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;

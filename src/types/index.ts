@@ -30,6 +30,7 @@ interface MissionBase {
     id: number
     name: string
   }
+  images?: ProjectMedia[]
 }
 
 export interface ProfessionalMission extends MissionBase {
@@ -85,6 +86,16 @@ export interface PersonalProject {
 }
 
 export interface ProjectImage {
+  type?: 'image'
   src: string
   alt: string
 }
+
+export interface ProjectVideo {
+  type: 'video'
+  src: string
+  alt: string
+  poster: string
+}
+
+export type ProjectMedia = ProjectImage | ProjectVideo

@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { ChevronLeftIcon, ChevronRightIcon } from '@primer/octicons-react'
-import type { ProjectImage } from '../types'
+import { ChevronLeftIcon, ChevronRightIcon, PlayIcon } from '@primer/octicons-react'
+import type { ProjectMedia } from '../types'
 import styles from '../App.module.css'
 
 interface ProjectGalleryProps {
-  images: ProjectImage[]
+  images: ProjectMedia[]
   previousLabel: string
   nextLabel: string
   showLabel: string
@@ -34,16 +34,30 @@ export function ProjectGallery({ images, previousLabel, nextLabel, showLabel }: 
   }
 
   return (
-    <div className={styles.projectGallery}>
+    <div className={`${styles.projectGallery} ${usableImages.length === 1 ? styles.projectGallerySingle : ''}`}>
       <div className={styles.projectGalleryViewport}>
-        <img
+        {selectedImage.type === 'video' ? (
+          <video
+            key={selectedImage.src}
+            className={styles.projectGalleryMainImage}
+            src={resolveImageSrc(selectedImage.src)}
+            poster={resolveImageSrc(selectedImage.poster)}
+            aria-label={selectedImage.alt}
+            controls
+            playsInline
+            preload="none"
+            onError={() => discardImage(selectedImage.src)}
+          />
+        ) : (
+          <img
           className={styles.projectGalleryMainImage}
           src={resolveImageSrc(selectedImage.src)}
           alt={selectedImage.alt}
           loading="lazy"
           decoding="async"
           onError={() => discardImage(selectedImage.src)}
-        />
+          />
+        )}
 
         {usableImages.length > 1 && (
           <>
@@ -82,12 +96,17 @@ export function ProjectGallery({ images, previousLabel, nextLabel, showLabel }: 
               onClick={() => setActiveSource(image.src)}
             >
               <img
-                src={resolveImageSrc(image.src)}
+                src={resolveImageSrc(image.type === 'video' ? image.poster : image.src)}
                 alt=""
                 loading="lazy"
                 decoding="async"
-                onError={() => discardImage(image.src)}
+                onError={image.type === 'video' ? undefined : () => discardImage(image.src)}
               />
+              {image.type === 'video' && (
+                <span className={styles.projectGalleryVideoBadge} aria-hidden="true">
+                  <PlayIcon size={14} />
+                </span>
+              )}
             </button>
           ))}
         </div>

@@ -142,8 +142,8 @@ export const translations: Record<Language, Translations> = {
     personalModal: {
       openDetails: 'Ouvrir le détail du projet',
       highlightsTitle: 'Points clés',
-      previousImage: 'Image précédente',
-      nextImage: 'Image suivante',
+      previousImage: 'Média précédent',
+      nextImage: 'Média suivant',
       showImage: 'Afficher',
     },
     qr: {
@@ -217,8 +217,8 @@ export const translations: Record<Language, Translations> = {
     personalModal: {
       openDetails: 'Open project details',
       highlightsTitle: 'Highlights',
-      previousImage: 'Previous image',
-      nextImage: 'Next image',
+      previousImage: 'Previous media',
+      nextImage: 'Next media',
       showImage: 'Show',
     },
     qr: {

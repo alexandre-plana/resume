@@ -57,6 +57,7 @@ export const useExperiences = () => {
             cardSummary: missionLocale?.cardSummary || mission.cardSummary,
             tasks: missionLocale?.tasks || mission.tasks,
             retrospective: missionLocale?.retrospective || mission.retrospective,
+            images: missionLocale?.images || mission.images,
           }
         }),
       }
