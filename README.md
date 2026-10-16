@@ -13,7 +13,7 @@ Ce dépôt contient mon CV interactif, présenté dans une interface inspirée d
 - affichage bilingue en français et en anglais ;
 - mise en page adaptée aux écrans mobiles et aux ordinateurs ;
 - version optimisée pour l'impression ;
-- export au format Word disponible en environnement de développement ;
+- export PDF d'une page A4 (français et anglais), téléchargeable et imprimable depuis la barre d'outils ;
 - QR code vers la version en ligne.
 
 ## Technologies
@@ -96,3 +96,7 @@ La version publique est hébergée avec GitHub Pages. Le chemin de base `/resume
 ## Assistance par IA
 
 Des outils d'assistance par IA ont été utilisés pour certaines phases de développement, de revue et de rédaction. Les choix techniques et le contenu publié restent vérifiés et maintenus par l'auteur du dépôt.
+
+## Export PDF
+
+La barre d'outils propose le CV en une page A4, généré par `npm run export:pdf` (français et anglais, fichiers dans `public/pdf/`). La page source est `print.html`, construite à partir des mêmes données que le CV en ligne. La commande exige Edge ou Chrome (variable `CHROME_PATH` pour un autre chemin) et échoue si le contenu dépasse une page. Il faut régénérer et commiter les PDF après toute modification des données.
