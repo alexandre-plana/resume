@@ -1,95 +1,122 @@
-import { memo, useEffect, useRef, useState } from 'react'
-import { useAppStore } from '../store/appStore'
-import styles from './Toolbar.module.css'
-import { getTranslations } from '../locales'
-import type { CvExportData } from '../utils/exportCvToWord'
+import { memo, useEffect, useRef, useState } from "react";
+import { useAppStore } from "../store/appStore";
+import styles from "./Toolbar.module.css";
+import { getTranslations } from "../locales";
+import type { CvExportData } from "../utils/exportCvToWord";
 
 interface ToolbarProps {
-  language: 'fr' | 'en'
-  exportData?: CvExportData
+  language: "fr" | "en";
+  exportData?: CvExportData;
 }
 
 function ToolbarComponent({ language, exportData }: ToolbarProps) {
-  const setLanguage = useAppStore((state) => state.setLanguage)
-  const t = getTranslations(language)
-  const [isHidden, setIsHidden] = useState(false)
-  const lastScrollY = useRef(0)
+  const setLanguage = useAppStore((state) => state.setLanguage);
+  const t = getTranslations(language);
+  const [isHidden, setIsHidden] = useState(false);
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    lastScrollY.current = window.scrollY
+    lastScrollY.current = window.scrollY;
 
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      const isScrollingDown = currentScrollY > lastScrollY.current
-      const delta = Math.abs(currentScrollY - lastScrollY.current)
+      const currentScrollY = window.scrollY;
+      const isScrollingDown = currentScrollY > lastScrollY.current;
+      const delta = Math.abs(currentScrollY - lastScrollY.current);
 
       if (currentScrollY <= 8) {
-        setIsHidden(false)
+        setIsHidden(false);
       } else if (delta > 4 && isScrollingDown) {
-        setIsHidden(true)
+        setIsHidden(true);
       } else if (delta > 4 && !isScrollingDown) {
-        setIsHidden(false)
+        setIsHidden(false);
       }
 
-      lastScrollY.current = currentScrollY
-    }
+      lastScrollY.current = currentScrollY;
+    };
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handlePrint = () => {
-    window.print()
-  }
+    window.print();
+  };
 
   const handleExportWord = async () => {
-    if (!import.meta.env.DEV || !exportData) return
-    const { exportCvToWord } = await import('../utils/exportCvToWord')
-    await exportCvToWord(exportData, language)
-  }
+    if (!exportData || exporting) return;
+    setExporting(true);
+    setExportError(false);
+    try {
+      const { exportCvToWord } = await import("../utils/exportCvToWord");
+      await exportCvToWord(exportData, language);
+    } catch {
+      setExportError(true);
+    } finally {
+      setExporting(false);
+    }
+  };
 
-  const printLabel = t.toolbar.print
-  const exportWordLabel = t.toolbar.exportWord
+  const printLabel = t.toolbar.print;
+  const exportWordLabel = t.toolbar.exportWord;
 
   return (
-    <div className={`${styles.toolbar} ${isHidden ? styles.toolbarHidden : ''}`}>
+    <div
+      className={`${styles.toolbar} ${isHidden ? styles.toolbarHidden : ""}`}
+    >
       <div className={styles.actions}>
         <div className={styles.langControl}>
           <button
-            className={`${styles.langBtn} ${language === 'fr' ? styles.active : ''}`}
+            className={`${styles.langBtn} ${language === "fr" ? styles.active : ""}`}
             type="button"
-            aria-pressed={language === 'fr'}
-            onClick={() => setLanguage('fr')}
+            aria-pressed={language === "fr"}
+            onClick={() => setLanguage("fr")}
             title="Français"
           >
             FR
           </button>
           <button
-            className={`${styles.langBtn} ${language === 'en' ? styles.active : ''}`}
+            className={`${styles.langBtn} ${language === "en" ? styles.active : ""}`}
             type="button"
-            aria-pressed={language === 'en'}
-            onClick={() => setLanguage('en')}
+            aria-pressed={language === "en"}
+            onClick={() => setLanguage("en")}
             title="English"
           >
             EN
           </button>
         </div>
-        {import.meta.env.DEV && (
-          <button className={styles.exportBtn} onClick={handleExportWord} title={exportWordLabel} disabled={!exportData}>
-            <span className={styles.icon}>📝</span>
-            {exportWordLabel}
-          </button>
+        <button
+          className={styles.exportBtn}
+          onClick={handleExportWord}
+          title={exportWordLabel}
+          disabled={!exportData || exporting}
+          aria-busy={exporting}
+        >
+          <span className={styles.icon}>📝</span>
+          {exportWordLabel}
+        </button>
+        {exportError && (
+          <span role="alert">
+            {language === "fr"
+              ? "Export impossible. Réessayez."
+              : "Export failed. Please try again."}
+          </span>
         )}
-        <button className={styles.printBtn} onClick={handlePrint} title={printLabel}>
+        <button
+          className={styles.printBtn}
+          onClick={handlePrint}
+          title={printLabel}
+        >
           <span className={styles.icon}>🖨️</span>
           {printLabel}
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export const Toolbar = memo(ToolbarComponent)
+export const Toolbar = memo(ToolbarComponent);
