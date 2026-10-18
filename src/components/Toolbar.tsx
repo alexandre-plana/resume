@@ -69,6 +69,10 @@ function ToolbarComponent({ language, exportData }: ToolbarProps) {
       className={`${styles.toolbar} ${isHidden ? styles.toolbarHidden : ""}`}
     >
       <div className={styles.actions}>
+        <a className={styles.journeyBtn} href={`?view=journey&lang=${language}`}>
+          <span aria-hidden="true">▷</span>
+          {language === "fr" ? "Parcours interactif" : "Interactive journey"}
+        </a>
         <div className={styles.langControl}>
           <button
             className={`${styles.langBtn} ${language === "fr" ? styles.active : ""}`}

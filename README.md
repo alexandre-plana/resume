@@ -7,6 +7,7 @@ Ce dépôt contient mon CV interactif, présenté dans une interface inspirée d
 ## Fonctionnalités
 
 - parcours professionnel organisé par expériences et missions détaillées ;
+- vue plein écran « Parcours interactif » accessible depuis les headers du CV et du portfolio (`?view=journey`) : timeline multi-pistes, scènes SVG interactives et lecture synchronisée ;
 - compétences techniques regroupées par domaine ;
 - formations et certifications ;
 - sélection de projets personnels ;
@@ -15,6 +16,8 @@ Ce dépôt contient mon CV interactif, présenté dans une interface inspirée d
 - version optimisée pour l'impression ;
 - export au format Word disponible en environnement de développement ;
 - QR code vers la version en ligne.
+
+Dans le parcours interactif : Espace active ou suspend la lecture, les flèches passent au projet précédent ou suivant, Début et Fin rejoignent les extrémités. Le curseur permet de parcourir les années ; les points et le menu des projets donnent accès à chaque réalisation. La préférence système de réduction des animations désactive la lecture initiale et simplifie les scènes. Le CV classique reste accessible à tout moment.
 
 ## Technologies
 

@@ -35,6 +35,7 @@ it("keeps the classic CV accessible and translates the narrative", async () => {
     "href",
     "?view=cv&lang=fr",
   );
+  expect(screen.getByRole("link", { name: /Parcours interactif/ })).toHaveAttribute("href", "?view=journey&lang=fr");
   fireEvent.click(screen.getByRole("button", { name: "English" }));
   expect(
     screen.getByRole("heading", { name: /Interfaces/ }),
@@ -43,5 +44,6 @@ it("keeps the classic CV accessible and translates the narrative", async () => {
     "href",
     "?view=cv&lang=en",
   );
+  expect(screen.getByRole("link", { name: /Interactive journey/ })).toHaveAttribute("href", "?view=journey&lang=en");
   expect(await screen.findByText(/Oreka/)).toBeInTheDocument();
 });

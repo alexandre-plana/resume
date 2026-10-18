@@ -1,4 +1,6 @@
 /* Atelier d’interfaces — editorial shell, instrument-like demonstrations. */
+.portfolio .journey-entry-link { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; white-space: nowrap; color: var(--orange); }
+@media (max-width: 620px) { .portfolio .journey-entry-link { font-size: 9px; } .portfolio .header-actions { gap: 10px; } }
 body:has(.portfolio),
 body:has(.portfolio-loading) {
   padding: 0;
@@ -1503,7 +1505,9 @@ html {
   font-size: 12px;
   width: fit-content;
   margin-bottom: 18px;
+  margin-top: 22px;
 }
+@media (max-width: 600px) { .back-to-portfolio { margin-top: 74px; } }
 .portfolio [role="dialog"] {
   font-family: "Mona Sans", Arial, sans-serif;
 }

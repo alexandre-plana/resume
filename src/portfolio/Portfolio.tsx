@@ -21,6 +21,7 @@ import "./portfolio.css";
 import { InterfaceSculpture } from "./InterfaceSculpture";
 
 const ClassicCV = lazy(() => import("../App"));
+const InteractiveJourney = lazy(() => import("../journey/Journey"));
 const MissionDialog = lazy(() =>
   import("../components/MissionDialog").then((module) => ({
     default: module.MissionDialog,
@@ -212,6 +213,9 @@ export default function Portfolio() {
             </div>
             <a className="cv-link" href={cvHref}>
               {fr ? "CV classique" : "Classic résumé"} <span>↗</span>
+            </a>
+            <a className="journey-entry-link" href={`?view=journey&lang=${language}`}>
+              <span aria-hidden="true">▷</span> {fr ? "Parcours interactif" : "Interactive journey"}
             </a>
           </div>
         </header>
@@ -811,13 +815,16 @@ export default function Portfolio() {
 export function PortfolioRouter() {
   const language = useAppStore((s) => s.language);
   const setLanguage = useAppStore((s) => s.setLanguage);
-  const classic =
-    new URLSearchParams(window.location.search).get("view") === "cv";
+  const view = new URLSearchParams(window.location.search).get("view");
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("lang");
     if (requested === "en" || requested === "fr") setLanguage(requested);
   }, [setLanguage]);
-  return classic ? (
+  return view === "journey" ? (
+    <Suspense fallback={<p role="status">{language === "fr" ? "Chargement du parcours…" : "Loading the journey…"}</p>}>
+      <InteractiveJourney />
+    </Suspense>
+  ) : view === "cv" ? (
     <>
       <a className="back-to-portfolio" href={`?lang=${language}`}>
         ← {language === "fr" ? "Retour au portfolio" : "Back to portfolio"}
