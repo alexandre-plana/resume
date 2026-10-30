@@ -50,7 +50,7 @@ describe('buildDetailedModel', () => {
       expect(repos).not.toContain('ieca-data-publication-ui')
       const microFrontends = details.groups.filter((group) => group.title !== 'Prototypes').flatMap((group) => group.blocks)
       expect(microFrontends.every((block) => block.tags?.[0] === 'vue3')).toBe(true)
-      expect(details.groups.at(-1)?.blocks).toHaveLength(2)
+      expect(details.groups[details.groups.length - 1].blocks).toHaveLength(2)
     }
   })
 
