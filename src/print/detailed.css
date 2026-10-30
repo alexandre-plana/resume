@@ -55,11 +55,8 @@
   print-color-adjust: exact;
 }
 
-.dcv p,
-.dcv ul,
-.dcv h1,
-.dcv h2,
-.dcv h3 {
+/* Zero-specificity reset, so component rules below can set their own margins and padding. */
+:where(.dcv) :where(p, ul, h1, h2, h3) {
   margin: 0;
   padding: 0;
 }
@@ -234,6 +231,18 @@
   gap: 4px;
 }
 
+/* TechBadge already shrinks its chips for print; same size on screen keeps the cover fit check true to the PDF. */
+.dcv .dcv-chips > span {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  gap: 3px;
+}
+
+.dcv .dcv-chips > span > span {
+  width: 5px;
+  height: 5px;
+}
+
 .dcv-online {
   margin-top: auto;
   display: flex;
@@ -338,11 +347,13 @@
 .dcv-tl-role {
   font-size: 0.78em;
   color: var(--text-2);
-  margin-bottom: 4px;
 }
 
 .dcv-tl-period {
-  font-size: 0.72em;
+  margin-left: 6px;
+  font-weight: 400;
+  vertical-align: 1px;
+  font-size: 0.8em;
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: 99px;
@@ -392,6 +403,50 @@
 .dcv-mission-featured {
   background: var(--featured-bg);
   border-color: var(--featured-border);
+}
+
+.dcv-overview {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+}
+
+.dcv-overview.dcv-mission-featured {
+  background: var(--featured-bg);
+  border-color: var(--featured-border);
+}
+
+.dcv-overview .dcv-mission-context {
+  margin-bottom: 5px;
+}
+
+.dcv-overview-projects {
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  margin-bottom: 6px;
+  padding-left: 4px;
+}
+
+.dcv-overview-projects li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.85em;
+}
+
+.dcv-overview-projects .dcv-mission-context {
+  margin: 0;
+  font-size: 0.85em;
+}
+
+.dcv-overview-project-name {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--link);
+  white-space: nowrap;
 }
 
 .dcv-project {

@@ -3,7 +3,7 @@ import qrCode from '../assets/resume-qr.svg'
 import { Avatar } from '../components/Avatar'
 import { InlineTechText } from '../components/InlineTechText'
 import { TechBadge } from '../components/TechBadge'
-import type { CompanyHead, DetailedLabels, DetailedModel, MissionView } from './detailed'
+import type { CompanyHead, DetailedLabels, DetailedModel, MissionView, OverviewEntry } from './detailed'
 import type { DetailBlock } from './iecaDetails'
 import './detailed.css'
 
@@ -22,17 +22,18 @@ function Chips({ tags }: { tags: string[] }) {
 }
 
 // The section title travels with the company row so neither is left alone at the bottom of a page.
-function Timeline({ title, head, children }: { title: string; head: CompanyHead; children: ReactNode }) {
+function Timeline({ title, head, children }: { title?: string; head: CompanyHead; children: ReactNode }) {
   return (
     <div className="dcv-timeline">
       <div className="dcv-keep">
-        <div className="dcv-section-header">{title}</div>
+        {title && <div className="dcv-section-header">{title}</div>}
         <div className="dcv-tl-company">
           <span className={`dcv-tl-dot${head.current ? ' dcv-tl-dot-current' : ''}`} />
           <div>
-            <div className="dcv-tl-name">{head.company}</div>
+            <div className="dcv-tl-name">
+              {head.company} <span className="dcv-tl-period">{head.period}</span>
+            </div>
             <div className="dcv-tl-role">{head.employer}</div>
-            <span className="dcv-tl-period">{head.period}</span>
           </div>
         </div>
       </div>
@@ -86,6 +87,40 @@ function MissionCard({
       {children}
       {full && <Tasks tasks={mission.tasks} label={labels.tasks} />}
       {full && chips && <Chips tags={mission.tags} />}
+    </article>
+  )
+}
+
+// Cover timeline entry: what, role, when and the domain/technology chips; details follow on the next pages.
+function OverviewCard({ entry }: { entry: OverviewEntry }) {
+  return (
+    <article className={entry.featured ? 'dcv-overview dcv-mission-featured' : 'dcv-overview'}>
+      <div className="dcv-mission-top">
+        <span>📁</span>
+        <span className="dcv-mission-name">{entry.name}</span>
+        <span className="dcv-mission-badge">{entry.badge}</span>
+      </div>
+      <div className="dcv-mission-context">
+        {entry.title} · {entry.period}
+      </div>
+      {entry.projects.length > 0 && (
+        <ul className="dcv-overview-projects">
+          {entry.projects.map((project) => (
+            <li key={project.name}>
+              <span>🗂️</span>
+              <span className="dcv-overview-project-name">{project.name}</span>
+              <span className="dcv-mission-context">
+                {project.title} · {project.period}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="dcv-chips">
+        {entry.chips.map((chip) => (
+          <TechBadge key={chip.l} label={chip.l} kind={chip.k} />
+        ))}
+      </div>
     </article>
   )
 }
@@ -227,28 +262,25 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
           </section>
 
           <section>
-            <div className="dcv-section-header">{labels.highlights}</div>
-            <div className="dcv-grid">
-              {model.highlights.map((highlight) => (
-                <article className="dcv-card" key={highlight.title}>
-                  <div className="dcv-card-title">{highlight.title}</div>
-                  <p className="dcv-card-text">
-                    <InlineTechText text={highlight.text} />
-                  </p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <Timeline title={labels.vueFocus} head={model.schneiderWeb.head}>
-              <MissionCard mission={model.schneiderWeb.mission} labels={labels} chips={false} />
-            </Timeline>
+            <div className="dcv-section-header">{labels.overview}</div>
+            {model.overview.map((company) => (
+              <Timeline head={company.head} key={`${company.head.company}-${company.head.period}`}>
+                {company.entries.map((entry) => (
+                  <OverviewCard entry={entry} key={entry.name} />
+                ))}
+              </Timeline>
+            ))}
           </section>
         </main>
       </div>
 
       <div className="dcv-flow">
+        <section>
+          <Timeline title={labels.vueFocus} head={model.schneiderWeb.head}>
+            <MissionCard mission={model.schneiderWeb.mission} labels={labels} />
+          </Timeline>
+        </section>
+
         <section>
           <div className="dcv-section-header">{labels.iecaDetails}</div>
           <div className="dcv-about">

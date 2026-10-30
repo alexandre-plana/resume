@@ -11,7 +11,7 @@ import { RESUME_URL } from './onePage'
 export interface DetailedLabels {
   document: string
   about: string
-  highlights: string
+  overview: string
   vueFocus: string
   iecaDetails: string
   iecaModules: string
@@ -50,6 +50,26 @@ export interface MissionView {
   featured: boolean
 }
 
+export interface Chip {
+  l: string
+  k: string
+}
+
+export interface OverviewEntry {
+  name: string
+  title: string
+  badge: string
+  period: string
+  chips: Chip[]
+  featured: boolean
+  projects: { name: string; title: string; period: string }[]
+}
+
+export interface OverviewCompany {
+  head: CompanyHead
+  entries: OverviewEntry[]
+}
+
 export interface SkillGroup {
   cat: string
   featured: boolean
@@ -69,7 +89,7 @@ export interface DetailedModel {
   phone: string
   url: string
   bio: string
-  highlights: { title: string; text: string }[]
+  overview: OverviewCompany[]
   skills: SkillGroup[]
   formations: { id: string; kind: Formation['kind']; label: string; title: string; sub: string; meta: string }[]
   languages: { label: string; level: string }[]
@@ -93,7 +113,7 @@ type OwnLabels = Omit<DetailedLabels, 'about' | 'coreSkills' | 'languages' | 'op
 const LABELS: Record<Language, OwnLabels> = {
   fr: {
     document: 'CV détaillé',
-    highlights: '⚡ Expertise web en bref',
+    overview: '📌 Parcours',
     vueFocus: '📌 Vue.js · micro-frontend — Schneider Electric',
     iecaDetails: '🔎 IECA — détail technique',
     iecaModules: 'Domaines fonctionnels',
@@ -110,7 +130,7 @@ const LABELS: Record<Language, OwnLabels> = {
   },
   en: {
     document: 'Detailed resume',
-    highlights: '⚡ Web expertise at a glance',
+    overview: '📌 Career overview',
     vueFocus: '📌 Vue.js · micro-frontend — Schneider Electric',
     iecaDetails: '🔎 IECA — technical deep dive',
     iecaModules: 'Functional areas',
@@ -125,46 +145,6 @@ const LABELS: Record<Language, OwnLabels> = {
     education: '🎓 Education',
     online: 'Online resume',
   },
-}
-
-// Every statement below summarizes facts already detailed in the resume data.
-const HIGHLIGHTS: Record<Language, { title: string; text: string }[]> = {
-  fr: [
-    {
-      title: 'Vue 3 · micro-frontend',
-      text: 'Trois ans sur IECA, la plateforme IIoT Edge de Schneider Electric : modules #single-spa, composants partagés, stores #pinia testés avec #jest et qualité suivie dans #sonarqube.',
-    },
-    {
-      title: 'React · TypeScript',
-      text: 'Xistar, poste de commandement maritime dans le navigateur : espace de travail #dockview, cartographie #maplibre et #deckgl, flux temps réel #mqtt et #socketio.',
-    },
-    {
-      title: 'Design system',
-      text: 'Composants conçus sous #figma, développés en #react avec #shadcn et distribués via un registre #npm privé aux applications de X-PERT.',
-    },
-    {
-      title: 'UX/UI & conception fonctionnelle',
-      text: 'Depuis 2013, des besoins métier aux parcours et interfaces : serious games, simulateurs (Dosicase, Simulhom) et applications multiplateformes.',
-    },
-  ],
-  en: [
-    {
-      title: 'Vue 3 · micro-frontend',
-      text: 'Three years on IECA, Schneider Electric’s IIoT Edge platform: #single-spa modules, shared components, #pinia stores tested with #jest and code quality tracked in #sonarqube.',
-    },
-    {
-      title: 'React · TypeScript',
-      text: 'Xistar, a browser-based maritime command center: #dockview workspace, #maplibre and #deckgl mapping, real-time #mqtt and #socketio feeds.',
-    },
-    {
-      title: 'Design system',
-      text: 'Components designed in #figma, built in #react with #shadcn and distributed to X-PERT applications through a private #npm registry.',
-    },
-    {
-      title: 'UX/UI & functional design',
-      text: 'Since 2013, from business requirements to workflows and interfaces: serious games, simulators (Dosicase, Simulhom) and cross-platform applications.',
-    },
-  ],
 }
 
 // Tag kinds follow the online resume's tech-tag themes (src/theme/techTagTheme.ts).
@@ -239,6 +219,74 @@ const missionView = (language: Language, experienceId: number, missionId: number
   }
 }
 
+// Cover timeline: domain chips first (web, Vue, AI stand out), then the main technologies.
+// Kinds pick colors from the online tech-tag themes.
+const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux' | 'seriousGame', Chip>> = {
+  fr: {
+    web: { l: 'web', k: 'ts' },
+    vue: { l: 'vue 3', k: 'vue3' },
+    ai: { l: 'ia', k: 'mcp' },
+    xr: { l: '3d / xr', k: '3d' },
+    uiux: { l: 'ux/ui', k: 'uiux' },
+    seriousGame: { l: 'serious game', k: 'ar' },
+  },
+  en: {
+    web: { l: 'web', k: 'ts' },
+    vue: { l: 'vue 3', k: 'vue3' },
+    ai: { l: 'ai', k: 'mcp' },
+    xr: { l: '3d / xr', k: '3d' },
+    uiux: { l: 'ux/ui', k: 'uiux' },
+    seriousGame: { l: 'serious game', k: 'ar' },
+  },
+}
+
+const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
+  const d = DOMAIN_CHIPS[language]
+  return {
+    31: [d.web, { l: 'react', k: 'react' }, { l: 'typescript', k: 'ts' }, { l: 'go', k: 'green' }, { l: 'maplibre', k: 'maplibre' }, { l: 'mqtt', k: 'mqtt' }],
+    36: [d.web, d.uiux, { l: 'figma', k: 'figma' }, { l: 'react', k: 'react' }, { l: 'shadcn', k: 'green' }, { l: 'npm', k: 'green' }],
+    35: [d.ai, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }, { l: 'react', k: 'react' }],
+    37: [d.ai, { l: 'webgl', k: 'webgl2' }, { l: 'hyperframes', k: 'green' }],
+    11: [d.web, d.vue, { l: 'typescript', k: 'ts' }, { l: 'single-spa', k: 'spa' }, { l: 'pinia', k: 'green' }, { l: 'jest', k: 'jest' }, { l: 'sonarqube', k: 'sonarqube' }],
+    12: [d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'ar', k: 'ar' }, { l: 'mobile', k: 'mobile' }, { l: 'offline', k: 'offline' }],
+    21: [d.seriousGame, d.uiux, d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'vr', k: 'vr' }],
+  }
+}
+
+// Web, Vue and AI missions get the featured card style.
+const OVERVIEW_FEATURED = new Set([31, 11, 35])
+
+const overviewEntry = (language: Language, experienceId: number, missionId: number, projectIds: number[] = []): OverviewEntry => {
+  const mission = missionView(language, experienceId, missionId)
+  return {
+    name: mission.name,
+    title: mission.title,
+    badge: mission.badge,
+    period: mission.period,
+    chips: OVERVIEW_CHIPS(language)[missionId] ?? [],
+    featured: OVERVIEW_FEATURED.has(missionId),
+    projects: projectIds.map((id) => {
+      const project = missionView(language, experienceId, id)
+      return { name: project.name, title: project.title, period: project.period }
+    }),
+  }
+}
+
+const buildOverview = (language: Language): OverviewCompany[] => [
+  {
+    head: companyHead(language, 3, true),
+    entries: [31, 35, 36, 37].map((id) => overviewEntry(language, 3, id)),
+  },
+  {
+    head: companyHead(language, 1),
+    entries: [overviewEntry(language, 1, 11), overviewEntry(language, 1, 12)],
+  },
+  {
+    head: companyHead(language, 2),
+    entries: [overviewEntry(language, 2, 21, [23, 26, 22])],
+  },
+]
+
 // Personal projects that are not web applications stay off this web-oriented resume.
 const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery', 'kin']
 
@@ -285,7 +333,7 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
     phone: mockProfile.phone,
     url: RESUME_URL,
     bio: locale.profile.bio,
-    highlights: HIGHLIGHTS[language],
+    overview: buildOverview(language),
     skills: [WEB_SKILLS, ...skills, XR_SKILLS[language]],
     formations: localizeFormations(mockFormation, locale.formation).map(({ id, kind, label, title, sub, meta }) => ({
       id,
