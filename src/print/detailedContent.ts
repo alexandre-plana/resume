@@ -31,12 +31,12 @@ export const PROFILE: Record<Language, { title: string; subtitle: string; bio: s
   fr: {
     title: 'Développeur front-end / full-stack — Vue 3 · React · TypeScript',
     subtitle: 'Applications industrielles · Micro-frontends · IA',
-    bio: 'Venu du graphisme et de la 3D, j’ai l’œil pour l’interface et je veille à ce qu’elle respecte la spécification. En équipe, je m’occupe volontiers des composants partagés et de la revue de code, pour un code que d’autres peuvent reprendre sans moi. J’intègre l’IA à ma manière de travailler, avec les mêmes règles de relecture.',
+    bio: 'Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX. Chez Schneider Electric, j’ai développé en Vue 3 plusieurs micro-frontends de la plateforme IIoT IECA ainsi que des composants partagés entre les équipes. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données opérationnelles. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.',
   },
   en: {
     title: 'Front-end / full-stack developer — Vue 3 · React · TypeScript',
     subtitle: 'Industrial applications · Micro-frontends · AI',
-    bio: 'Trained in visual communication and 3D, I have an eye for interfaces and make sure they match the spec. On a team, I gladly take on shared components and code review, so others can pick up the code without me. I’ve built AI into the way I work, with the same review rules.',
+    bio: 'I develop industrial applications, drawing on a strong front-end and UI/UX background. At Schneider Electric, I built several Vue 3 micro-frontends of the IECA IIoT platform, along with components shared across teams. On Xistar, I work from the operator interface through to the services that ingest and distribute operational data. My approach connects user needs, architecture and technical constraints, with close attention to product consistency from the initial design to delivered code.',
   },
 }
 
