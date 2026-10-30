@@ -19,13 +19,14 @@ describe('buildDetailedModel', () => {
     expect(mission.desc).toContain('#vue3')
   })
 
-  it('adds the IECA technical deep dive in both languages', () => {
+  it('describes every IECA front-end component in both languages', () => {
     for (const language of ['fr', 'en'] as const) {
       const { details } = buildDetailedModel(language).schneiderWeb
 
-      expect(details.modules.map((block) => block.repo)).toContain('ieca-connectivity-ui')
-      expect(details.foundation).toHaveLength(4)
-      expect(details.other).toHaveLength(2)
+      const repos = details.groups.flatMap((group) => group.blocks.map((block) => block.repo))
+      expect(details.groups).toHaveLength(5)
+      expect(repos).toContain('ieca-connectivity-ui')
+      expect(repos).toContain('ieca-platform-configuration-ui')
     }
   })
 

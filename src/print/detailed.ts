@@ -13,10 +13,7 @@ export interface DetailedLabels {
   about: string
   overview: string
   vueFocus: string
-  iecaDetails: string
-  iecaModules: string
-  iecaFoundation: string
-  iecaOther: string
+  iecaComponents: string
   webXpert: string
   industrialAr: string
   oreka: string
@@ -111,10 +108,7 @@ const LABELS: Record<Language, OwnLabels> = {
     document: 'CV détaillé',
     overview: '📌 Parcours',
     vueFocus: '📌 Vue.js · micro-frontend — Schneider Electric',
-    iecaDetails: '🔎 IECA — détail technique',
-    iecaModules: 'Domaines fonctionnels',
-    iecaFoundation: 'Socle partagé',
-    iecaOther: 'Qualité & prototypes',
+    iecaComponents: 'Composants front-end d’IECA',
     webXpert: '📌 Développement web — X-PERT',
     industrialAr: '📌 Application AR industrielle — Schneider Electric',
     oreka: '📌 Serious games & simulation — Oreka Ingénierie',
@@ -128,10 +122,7 @@ const LABELS: Record<Language, OwnLabels> = {
     document: 'Detailed resume',
     overview: '📌 Career overview',
     vueFocus: '📌 Vue.js · micro-frontend — Schneider Electric',
-    iecaDetails: '🔎 IECA — technical deep dive',
-    iecaModules: 'Functional areas',
-    iecaFoundation: 'Shared foundation',
-    iecaOther: 'Quality & prototypes',
+    iecaComponents: 'IECA front-end components',
     webXpert: '📌 Web development — X-PERT',
     industrialAr: '📌 Industrial AR application — Schneider Electric',
     oreka: '📌 Serious games & simulation — Oreka Engineering',

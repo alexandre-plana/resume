@@ -302,22 +302,19 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
         <section>
           <Timeline title={labels.vueFocus} head={model.schneiderWeb.head}>
             <MissionCard mission={model.schneiderWeb.mission} labels={labels} />
+            <div className="dcv-subhead">{labels.iecaComponents}</div>
+            <div className="dcv-about">
+              <p>
+                <InlineTechText text={model.schneiderWeb.details.intro} />
+              </p>
+            </div>
+            {model.schneiderWeb.details.groups.map((group) => (
+              <div className="dcv-detail-group" key={group.title}>
+                <div className="dcv-subhead">{group.title}</div>
+                <DetailCards blocks={group.blocks} />
+              </div>
+            ))}
           </Timeline>
-        </section>
-
-        <section>
-          <div className="dcv-section-header">{labels.iecaDetails}</div>
-          <div className="dcv-about">
-            <p>
-              <InlineTechText text={model.schneiderWeb.details.intro} />
-            </p>
-          </div>
-          <div className="dcv-subhead">{labels.iecaModules}</div>
-          <DetailCards blocks={model.schneiderWeb.details.modules} />
-          <div className="dcv-subhead">{labels.iecaFoundation}</div>
-          <DetailCards blocks={model.schneiderWeb.details.foundation} />
-          <div className="dcv-subhead">{labels.iecaOther}</div>
-          <DetailCards blocks={model.schneiderWeb.details.other} />
         </section>
 
         <section>
