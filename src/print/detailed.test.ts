@@ -32,7 +32,9 @@ describe('buildDetailedModel', () => {
   it('lists the Oreka projects in the cover timeline and highlights web, Vue and AI', () => {
     const [xpert, schneider, oreka] = buildDetailedModel('fr').overview
 
-    expect(oreka.entries[0].projects.map((project) => project.name)).toEqual([
+    const orekaProjects = oreka.entries[0].projects
+    expect(orekaProjects).toHaveLength(7)
+    expect(orekaProjects.filter((project) => project.key).map((project) => project.name)).toEqual([
       'oreka/dosicase',
       'suez/serious-game-radioprotection',
       'simulhom',
