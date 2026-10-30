@@ -93,6 +93,9 @@ function MissionCard({
 
 // Cover timeline entry: what, role, when and the domain/technology chips; details follow on the next pages.
 function OverviewCard({ entry }: { entry: OverviewEntry }) {
+  const keyProjects = entry.projects.filter((project) => project.key)
+  const otherProjects = entry.projects.filter((project) => !project.key)
+
   return (
     <article className={entry.featured ? 'dcv-overview dcv-mission-featured' : 'dcv-overview'}>
       <div className="dcv-mission-top">
@@ -103,15 +106,27 @@ function OverviewCard({ entry }: { entry: OverviewEntry }) {
       <div className="dcv-mission-context">
         {entry.title} · {entry.period}
       </div>
-      {entry.projects.length > 0 && (
+      {keyProjects.length > 0 && (
         <ul className="dcv-overview-projects">
-          {entry.projects.map((project) => (
+          {keyProjects.map((project) => (
+            <li key={project.name}>
+              <div className="dcv-overview-project-head">
+                <span>🗂️</span>
+                <span className="dcv-overview-project-name">{project.name}</span>
+                <span className="dcv-overview-project-period">{project.period}</span>
+              </div>
+              <div className="dcv-overview-project-title">{project.title}</div>
+            </li>
+          ))}
+        </ul>
+      )}
+      {otherProjects.length > 0 && (
+        <ul className="dcv-overview-others">
+          {otherProjects.map((project) => (
             <li key={project.name}>
               <span>🗂️</span>
-              <span className="dcv-overview-project-name">{project.name}</span>
-              <span className="dcv-mission-context">
-                {project.title} · {project.period}
-              </span>
+              <span className="dcv-overview-other-title">{project.shortTitle}</span>
+              <span className="dcv-overview-project-period">{project.period}</span>
             </li>
           ))}
         </ul>
@@ -241,15 +256,17 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
         </aside>
 
         <main className="dcv-cover-main">
-          <section>
+          <section className="dcv-overview-section">
             <div className="dcv-section-header">{labels.overview}</div>
-            {model.overview.map((company) => (
-              <Timeline head={company.head} key={`${company.head.company}-${company.head.period}`}>
-                {company.entries.map((entry) => (
-                  <OverviewCard entry={entry} key={entry.name} />
-                ))}
-              </Timeline>
-            ))}
+            <div className="dcv-overview-body">
+              {model.overview.map((company) => (
+                <Timeline head={company.head} key={`${company.head.company}-${company.head.period}`}>
+                  {company.entries.map((entry) => (
+                    <OverviewCard entry={entry} key={entry.name} />
+                  ))}
+                </Timeline>
+              ))}
+            </div>
           </section>
         </main>
       </div>

@@ -4,7 +4,7 @@ import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile } fro
 import { getTranslations, type Language } from '../locales'
 import type { Formation } from '../types'
 import { IECA_DETAILS, type IecaDetails } from './iecaDetails'
-import { RESUME_URL } from './onePage'
+import { RESUME_URL, shortTitle } from './onePage'
 
 // Texts keep their #tech tags: the page renders them as inline tags, like the online resume.
 
@@ -61,7 +61,7 @@ export interface OverviewEntry {
   period: string
   chips: Chip[]
   featured: boolean
-  projects: { name: string; title: string; period: string }[]
+  projects: { name: string; title: string; shortTitle: string; period: string; key: boolean }[]
 }
 
 export interface OverviewCompany {
@@ -211,7 +211,14 @@ const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
 // Web, Vue and AI missions get the featured card style.
 const OVERVIEW_FEATURED = new Set([31, 11, 35])
 
-const overviewEntry = (language: Language, experienceId: number, missionId: number, projectIds: number[] = []): OverviewEntry => {
+// Projects listed under an entry; those in keyProjectIds are emphasized.
+const overviewEntry = (
+  language: Language,
+  experienceId: number,
+  missionId: number,
+  projectIds: number[] = [],
+  keyProjectIds: number[] = [],
+): OverviewEntry => {
   const mission = missionView(language, experienceId, missionId)
   return {
     name: mission.name,
@@ -222,7 +229,13 @@ const overviewEntry = (language: Language, experienceId: number, missionId: numb
     featured: OVERVIEW_FEATURED.has(missionId),
     projects: projectIds.map((id) => {
       const project = missionView(language, experienceId, id)
-      return { name: project.name, title: project.title, period: project.period }
+      return {
+        name: project.name,
+        title: project.title,
+        shortTitle: shortTitle(project.title),
+        period: project.period,
+        key: keyProjectIds.includes(id),
+      }
     }),
   }
 }
@@ -230,7 +243,7 @@ const overviewEntry = (language: Language, experienceId: number, missionId: numb
 const buildOverview = (language: Language): OverviewCompany[] => [
   {
     head: companyHead(language, 3, true),
-    entries: [31, 35, 36, 37].map((id) => overviewEntry(language, 3, id)),
+    entries: [overviewEntry(language, 3, 31, [33, 34, 32]), ...[35, 36, 37].map((id) => overviewEntry(language, 3, id))],
   },
   {
     head: companyHead(language, 1),
@@ -238,7 +251,7 @@ const buildOverview = (language: Language): OverviewCompany[] => [
   },
   {
     head: companyHead(language, 2),
-    entries: [overviewEntry(language, 2, 21, [23, 26, 22])],
+    entries: [overviewEntry(language, 2, 21, [23, 26, 22, 28, 24, 25, 27], [23, 26, 22])],
   },
 ]
 

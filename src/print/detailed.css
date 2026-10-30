@@ -406,20 +406,16 @@
 .dcv-overview-projects {
   list-style: none;
   display: grid;
-  gap: 2px;
-  margin-bottom: 6px;
-  padding-left: 4px;
+  gap: 5px;
+  margin: 2px 0 8px;
+  padding: 6px 0 0 4px;
+  border-top: 1px dashed var(--border);
 }
 
-.dcv-overview-projects li {
+.dcv-overview-project-head {
   display: flex;
   align-items: baseline;
   gap: 6px;
-  font-size: 0.85em;
-}
-
-.dcv-overview-projects .dcv-mission-context {
-  margin: 0;
   font-size: 0.85em;
 }
 
@@ -428,7 +424,78 @@
   font-size: 0.85em;
   font-weight: 600;
   color: var(--link);
+}
+
+.dcv-overview-project-period {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  color: var(--text-3);
   white-space: nowrap;
+}
+
+.dcv-overview-project-title {
+  padding-left: 1.6em;
+  font-size: 0.7em;
+  color: var(--text-2);
+}
+
+.dcv-overview-others {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 12px;
+  margin: 0 0 8px;
+  padding: 6px 0 0 4px;
+  border-top: 1px dashed var(--border);
+}
+
+.dcv-overview-projects + .dcv-overview-others {
+  border-top: none;
+  padding-top: 0;
+}
+
+.dcv-overview-others li {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  min-width: 0;
+  font-size: 0.7em;
+  color: var(--text-3);
+}
+
+.dcv-overview-other-title {
+  min-width: 0;
+}
+
+/* The career timeline fills the cover height: leftover space goes between companies,
+   and a single rail runs along all of them. */
+.dcv-overview-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dcv-overview-body {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dcv-overview-body::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-2);
+}
+
+.dcv-overview-body .dcv-tl-missions::before {
+  content: none;
 }
 
 .dcv-project {
