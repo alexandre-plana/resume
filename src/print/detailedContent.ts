@@ -31,12 +31,12 @@ export const PROFILE: Record<Language, { title: string; subtitle: string; bio: s
   fr: {
     title: 'Développeur front-end / full-stack — Vue 3 · React · TypeScript',
     subtitle: 'Applications industrielles · Micro-frontends · IA',
-    bio: 'Venu du graphisme et de la 3D, je conçois les interfaces que je code et je veille à leur cohérence, de la maquette à la mise en production. En équipe, je prends volontiers en charge ce qui sert à tous : composants partagés, revue de code. Je développe désormais avec des agents IA que j’orchestre et qui se relisent entre eux.',
+    bio: 'Venu du graphisme et de la 3D, j’ai l’œil pour l’interface et je veille à ce qu’elle respecte la spécification. En équipe, je m’occupe volontiers des composants partagés et de la revue de code, pour un code que d’autres peuvent reprendre sans moi. J’intègre l’IA à ma manière de travailler, avec les mêmes règles de relecture.',
   },
   en: {
     title: 'Front-end / full-stack developer — Vue 3 · React · TypeScript',
     subtitle: 'Industrial applications · Micro-frontends · AI',
-    bio: 'Trained in visual communication and 3D, I design the interfaces I build and keep them consistent from mockup to production. On a team, I gravitate toward the shared layer: common components and code review. I now work with AI agents I orchestrate, set up to review each other’s output.',
+    bio: 'Trained in visual communication and 3D, I have an eye for interfaces and make sure they match the spec. On a team, I gladly take on shared components and code review, so others can pick up the code without me. I’ve built AI into the way I work, with the same review rules.',
   },
 }
 
