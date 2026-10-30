@@ -16,6 +16,7 @@
     "test:watch": "vitest --config vitest.config.ts",
     "export:pdf": "node scripts/export-pdf.mjs",
     "export:pdf:detailed": "node scripts/export-pdf.mjs --detailed fr en",
+    "export:docx": "vite-node scripts/export-docx.ts",
     "generate:qr": "qrcode -t svg -e M -q 2 -m 2 -o src/assets/resume-qr.svg https://alexandre-plana.github.io/resume/",
     "check:bundle": "npm run build && node scripts/check-production-bundle.mjs"
   },

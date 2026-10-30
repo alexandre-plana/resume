@@ -105,3 +105,7 @@ La barre d'outils propose le CV en une page A4, généré par `npm run export:pd
 ### CV détaillé (plusieurs pages)
 
 `npm run export:pdf:detailed` produit `public/pdf/cv-alexandre-plana-detaille-fr.pdf` et `-en.pdf` à partir de `print-detailed.html`. Cette version met en avant l'expérience Vue.js chez Schneider Electric et le développement web chez X-PERT, puis détaille les projets Oreka (Dosicase, formation en radioprotection, Simulhom). Elle reprend le langage visuel du CV en ligne (cartes de mission, tags et chips de technologies, timeline) en réutilisant ses composants `TechBadge`, `InlineTechText` et `Avatar`. Seule la première page, avec sa colonne latérale, doit tenir sur une feuille A4 ; la suite s'étend sur autant de pages que nécessaire.
+
+### CV détaillé au format Word
+
+`npm run export:docx` produit `public/docx/cv-alexandre-plana-detaille-fr.docx` et `-en.docx` à partir du même modèle que la version imprimable (`src/print/detailedDocx.ts`). Le document reprend la mise en page et les couleurs (cartes, chips, tags de technologies, liste des dépôts) avec les polices Segoe UI et Consolas, disponibles dans Word.
