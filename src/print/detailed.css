@@ -1,0 +1,347 @@
+/* Same palette, type and rules as the one-page CV (onePage.css), spread over several A4 pages. */
+
+@page {
+  size: A4;
+  margin: 12mm 0 14mm;
+
+  @bottom-center {
+    content: 'Alexandre Plana · ' counter(page) ' / ' counter(pages);
+    font-family: 'Mona Sans', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 7pt;
+    color: #636c76;
+  }
+}
+
+/* The cover is a full-bleed sheet with the sidebar background. */
+@page :first {
+  margin: 0;
+
+  @bottom-center {
+    content: none;
+  }
+}
+
+.dcv {
+  --op-text: #1f2328;
+  --op-muted: #636c76;
+  --op-accent: #0969da;
+  --op-line: #d0d7de;
+  --op-side: #f6f8fa;
+  --op-chip: #ddf4ff;
+
+  font-family: 'Mona Sans', -apple-system, 'Segoe UI', sans-serif;
+  color: var(--op-text);
+  font-size: 8.5pt;
+  line-height: 1.35;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.dcv * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dcv-cover {
+  display: grid;
+  grid-template-columns: 62mm 1fr;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  background: #fff;
+  break-after: page;
+}
+
+.dcv-side {
+  background: var(--op-side);
+  border-right: 1px solid var(--op-line);
+  padding: 10mm 6mm 6mm;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2mm;
+  overflow: hidden;
+}
+
+.dcv-cover-main {
+  padding: 10mm 8mm 6mm 7mm;
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+  overflow: hidden;
+}
+
+.dcv-flow {
+  width: 210mm;
+  padding: 0 12mm 0 14mm;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+}
+
+.dcv h1 {
+  font-size: 20pt;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.dcv-title {
+  margin-top: 1mm;
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: var(--op-accent);
+}
+
+.dcv-subtitle {
+  color: var(--op-muted);
+}
+
+.dcv h2 {
+  font-size: 7.6pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--op-accent);
+  border-bottom: 1px solid var(--op-line);
+  padding-bottom: 0.8mm;
+  margin-bottom: 1.6mm;
+  break-after: avoid;
+}
+
+.dcv h3 {
+  font-size: 8.6pt;
+  font-weight: 650;
+}
+
+.dcv h4 {
+  font-size: 7.4pt;
+  font-weight: 650;
+  color: var(--op-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 1.4mm 0 0.8mm;
+  break-after: avoid;
+}
+
+.dcv h4.dcv-subhead {
+  color: var(--op-accent);
+  margin: 1mm 0 1.6mm;
+}
+
+/* Sidebar */
+
+.dcv-avatar {
+  width: 44mm;
+  height: 44mm;
+  border-radius: 50%;
+  object-fit: cover;
+  align-self: center;
+}
+
+.dcv-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6mm;
+  text-align: center;
+  font-size: 7.4pt;
+  word-break: break-all;
+}
+
+.dcv-skill,
+.dcv-edu {
+  margin-bottom: 1.6mm;
+}
+
+.dcv-skill h3,
+.dcv-edu h3 {
+  font-size: 7.6pt;
+}
+
+.dcv-skill p,
+.dcv-edu p {
+  color: var(--op-muted);
+}
+
+.dcv-online {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5mm;
+  text-align: center;
+  font-size: 7.2pt;
+  color: var(--op-muted);
+  word-break: break-all;
+}
+
+.dcv-online strong {
+  color: var(--op-text);
+}
+
+.dcv-qr {
+  width: 26mm;
+  height: 26mm;
+}
+
+/* Highlights */
+
+.dcv-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6mm;
+}
+
+.dcv-highlight {
+  padding: 1.6mm 2.2mm;
+  border: 1px solid var(--op-line);
+  border-left: 2px solid var(--op-accent);
+  border-radius: 1.2mm;
+  background: var(--op-side);
+}
+
+.dcv-highlight h3 {
+  font-size: 8pt;
+  color: var(--op-accent);
+  margin-bottom: 0.4mm;
+}
+
+.dcv-highlight p {
+  font-size: 7.8pt;
+}
+
+/* Experience */
+
+.dcv-company {
+  display: flex;
+  gap: 2mm;
+  align-items: baseline;
+  margin-bottom: 1.6mm;
+  color: var(--op-muted);
+  break-after: avoid;
+}
+
+.dcv-company strong {
+  color: var(--op-text);
+  font-size: 9pt;
+}
+
+.dcv-company span {
+  margin-left: auto;
+  font-size: 7.6pt;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dcv-mission {
+  padding-left: 2.6mm;
+  border-left: 1.4px solid var(--op-line);
+  margin-bottom: 3mm;
+}
+
+.dcv-mission-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 3mm;
+  align-items: baseline;
+  margin-bottom: 0.8mm;
+  break-after: avoid;
+}
+
+.dcv-mission-head .dcv-badge {
+  grid-column: 1 / -1;
+}
+
+.dcv-period {
+  font-size: 7.6pt;
+  font-weight: 600;
+  color: var(--op-muted);
+  white-space: nowrap;
+}
+
+.dcv-badge {
+  color: var(--op-muted);
+  font-weight: 500;
+}
+
+.dcv-tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6mm;
+}
+
+.dcv-tasks li {
+  position: relative;
+  padding-left: 3mm;
+  break-inside: avoid;
+}
+
+.dcv-tasks li::before {
+  content: '';
+  position: absolute;
+  left: 0.6mm;
+  top: 0.62em;
+  width: 1.1mm;
+  height: 1.1mm;
+  border-radius: 50%;
+  background: var(--op-accent);
+}
+
+.dcv-stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8mm;
+  margin-top: 1.4mm;
+}
+
+.dcv-stack li {
+  font-size: 6.8pt;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.6mm 1.6mm;
+  border-radius: 999px;
+  color: var(--op-accent);
+  background: var(--op-chip);
+}
+
+.dcv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2mm 3mm;
+  margin-bottom: 3mm;
+}
+
+.dcv-card {
+  padding: 1.8mm 2.4mm;
+  border: 1px solid var(--op-line);
+  border-radius: 1.2mm;
+  break-inside: avoid;
+}
+
+@media screen {
+  body {
+    background: #e6e9ed;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .dcv {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .dcv-flow {
+    padding-top: 12mm;
+    padding-bottom: 14mm;
+  }
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+}

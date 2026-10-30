@@ -13,6 +13,11 @@ const run = (file, args) =>
 const languages = process.argv.slice(2).filter((arg) => arg === 'fr' || arg === 'en')
 const targets = languages.length > 0 ? languages : ['fr']
 
+// --detailed prints the multi-page CV: only its cover sheet has to fit one A4 page.
+const detailed = process.argv.includes('--detailed')
+const page = detailed ? 'print-detailed.html' : 'print.html'
+const fileName = (lang) => (detailed ? `cv-alexandre-plana-detaille-${lang}.pdf` : `cv-alexandre-plana-${lang}.pdf`)
+
 const browserCandidates = [
   process.env.CHROME_PATH,
   'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
@@ -44,7 +49,7 @@ let failed = false
 
 try {
   for (const lang of targets) {
-    const url = `http://localhost:${port}/resume/print.html?lang=${lang}`
+    const url = `http://localhost:${port}/resume/${page}?lang=${lang}`
     const profile = await mkdtemp(join(tmpdir(), 'cv-pdf-'))
     const common = ['--headless=new', '--disable-gpu', `--user-data-dir=${profile}`, '--virtual-time-budget=10000']
 
@@ -52,13 +57,13 @@ try {
     const dom = await run(browser, [...common, '--dump-dom', url])
     const fit = /data-fit="(\w+)"/.exec(dom.stdout ?? '')?.[1]
     if (fit !== 'ok') {
-      console.error(`[${lang}] La page ne tient pas sur une feuille A4 (état : ${fit ?? 'inconnu'}).`)
+      console.error(`[${lang}] ${detailed ? 'La première page' : 'La page'} ne tient pas sur une feuille A4 (état : ${fit ?? 'inconnu'}).`)
       if (!fit) console.error(`navigateur : ${dom.message ?? dom.stderr?.slice(0, 400)}`)
       failed = true
       continue
     }
 
-    const output = join(outDir, `cv-alexandre-plana-${lang}.pdf`)
+    const output = join(outDir, fileName(lang))
     const print = await run(browser, [...common, '--no-pdf-header-footer', `--print-to-pdf=${output}`, url])
     if (!existsSync(output)) {
       console.error(`[${lang}] Export PDF échoué.\n${print.stderr}`)

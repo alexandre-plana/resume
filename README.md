@@ -14,6 +14,7 @@ Ce dépôt contient mon CV interactif, présenté dans une interface inspirée d
 - mise en page adaptée aux écrans mobiles et aux ordinateurs ;
 - version optimisée pour l'impression ;
 - export PDF d'une page A4 (français et anglais), téléchargeable et imprimable depuis la barre d'outils ;
+- CV détaillé de plusieurs pages (français et anglais), centré sur l'expérience web et Vue.js ;
 - QR code vers la version en ligne.
 
 ## Technologies
@@ -100,3 +101,7 @@ Des outils d'assistance par IA ont été utilisés pour certaines phases de dév
 ## Export PDF
 
 La barre d'outils propose le CV en une page A4, généré par `npm run export:pdf` (français et anglais, fichiers dans `public/pdf/`). La page source est `print.html`, construite à partir des mêmes données que le CV en ligne. La commande exige Edge ou Chrome (variable `CHROME_PATH` pour un autre chemin) et échoue si le contenu dépasse une page. Il faut régénérer et commiter les PDF après toute modification des données.
+
+### CV détaillé (plusieurs pages)
+
+`npm run export:pdf:detailed` produit `public/pdf/cv-alexandre-plana-detaille-fr.pdf` et `-en.pdf` à partir de `print-detailed.html`. Cette version met en avant l'expérience Vue.js chez Schneider Electric et le développement web chez X-PERT, puis détaille les projets Oreka (Dosicase, formation en radioprotection, Simulhom). Seule la première page, avec sa colonne latérale, doit tenir sur une feuille A4 ; la suite s'étend sur autant de pages que nécessaire.
