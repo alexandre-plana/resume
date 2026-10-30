@@ -31,12 +31,12 @@ export const PROFILE: Record<Language, { title: string; subtitle: string; bio: s
   fr: {
     title: 'Développeur front-end / full-stack — Vue 3 · React · TypeScript',
     subtitle: 'Applications industrielles · Micro-frontends · IA',
-    bio: 'Treize ans d’applications industrielles, de la 3D temps réel au web. Chez Schneider Electric, j’ai créé plusieurs micro-frontends Vue 3 de la plateforme IIoT IECA, dont le gabarit commun, et tenu un rôle transverse sur les composants partagés et la revue de code. Sur Xistar, je couvre la conception, le front-end, une partie du back-end en Go et la livraison, avec des agents IA que je conçois et orchestre.',
+    bio: 'Venu du graphisme et de la 3D, je conçois les interfaces que je code et je veille à leur cohérence, de la maquette à la mise en production. En équipe, je prends volontiers en charge ce qui sert à tous : composants partagés, revue de code. Je développe désormais avec des agents IA que j’orchestre et qui se relisent entre eux.',
   },
   en: {
     title: 'Front-end / full-stack developer — Vue 3 · React · TypeScript',
     subtitle: 'Industrial applications · Micro-frontends · AI',
-    bio: 'Thirteen years of industrial applications, from real-time 3D to the web. At Schneider Electric, I built several Vue 3 micro-frontends of the IECA IIoT platform, including the shared template, and held a cross-team role on shared components and code review. On Xistar, I cover design, front-end, part of the Go back end and delivery, working with AI agents I design and orchestrate.',
+    bio: 'Trained in visual communication and 3D, I design the interfaces I build and keep them consistent from mockup to production. On a team, I gravitate toward the shared layer: common components and code review. I now work with AI agents I orchestrate, set up to review each other’s output.',
   },
 }
 
