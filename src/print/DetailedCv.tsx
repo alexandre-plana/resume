@@ -195,6 +195,11 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
           <div className="dcv-profile-title">{model.title}</div>
           <div className="dcv-profile-subtitle">{model.subtitle}</div>
 
+          <div className="dcv-side-section">
+            <div className="dcv-label">{labels.about}</div>
+            <p className="dcv-side-about">{model.bio}</p>
+          </div>
+
           <ul className="dcv-meta">
             <li>
               <span className="dcv-icon">🏢</span>
@@ -226,24 +231,6 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
             </div>
           </div>
 
-          <div className="dcv-side-section">
-            <div className="dcv-label">{labels.coreSkills}</div>
-            <div className="dcv-skill-list">
-              {model.skills.map((skill) => (
-                <div className="dcv-skill-group" key={skill.cat}>
-                  <div className={skill.featured ? 'dcv-skill-title dcv-skill-title-featured' : 'dcv-skill-title'}>
-                    {skill.cat}
-                  </div>
-                  <div className="dcv-chips">
-                    {skill.tags.map((tag) => (
-                      <TechBadge key={tag.l} label={tag.l} kind={tag.k} />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           <div className="dcv-online">
             <img className="dcv-qr" src={qrCode} alt={labels.online} />
             <div>
@@ -254,13 +241,6 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
         </aside>
 
         <main className="dcv-cover-main">
-          <section>
-            <div className="dcv-section-header">{labels.about}</div>
-            <div className="dcv-about">
-              <p>{model.bio}</p>
-            </div>
-          </section>
-
           <section>
             <div className="dcv-section-header">{labels.overview}</div>
             {model.overview.map((company) => (

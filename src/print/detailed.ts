@@ -1,6 +1,6 @@
 import { getMockDataLocale } from '../api/mockDataLocales'
-import { localizeFormations, localizeSkills } from '../api/localizeData'
-import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile, mockSkills } from '../api/mockData'
+import { localizeFormations } from '../api/localizeData'
+import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile } from '../api/mockData'
 import { getTranslations, type Language } from '../locales'
 import type { Formation } from '../types'
 import { IECA_DETAILS, type IecaDetails } from './iecaDetails'
@@ -24,7 +24,6 @@ export interface DetailedLabels {
   otherProjects: string
   personalProjects: string
   education: string
-  coreSkills: string
   languages: string
   openToWork: string
   online: string
@@ -70,12 +69,6 @@ export interface OverviewCompany {
   entries: OverviewEntry[]
 }
 
-export interface SkillGroup {
-  cat: string
-  featured: boolean
-  tags: { l: string; k: string }[]
-}
-
 export interface DetailedModel {
   language: Language
   labels: DetailedLabels
@@ -90,7 +83,6 @@ export interface DetailedModel {
   url: string
   bio: string
   overview: OverviewCompany[]
-  skills: SkillGroup[]
   formations: { id: string; kind: Formation['kind']; label: string; title: string; sub: string; meta: string }[]
   languages: { label: string; level: string }[]
   schneiderWeb: { head: CompanyHead; mission: MissionView; details: IecaDetails }
@@ -108,7 +100,7 @@ export interface DetailedModel {
   }[]
 }
 
-type OwnLabels = Omit<DetailedLabels, 'about' | 'coreSkills' | 'languages' | 'openToWork' | 'tasks'>
+type OwnLabels = Omit<DetailedLabels, 'about' | 'languages' | 'openToWork' | 'tasks'>
 
 const LABELS: Record<Language, OwnLabels> = {
   fr: {
@@ -146,43 +138,6 @@ const LABELS: Record<Language, OwnLabels> = {
     online: 'Online resume',
   },
 }
-
-// Tag kinds follow the online resume's tech-tag themes (src/theme/techTagTheme.ts).
-const WEB_SKILLS: SkillGroup = {
-  cat: 'Web',
-  featured: true,
-  tags: [
-    { l: 'Vue 3', k: 'vue3' },
-    { l: 'Pinia', k: 'green' },
-    { l: 'single-spa', k: 'spa' },
-    { l: 'React', k: 'react' },
-    { l: 'Vite', k: 'vite' },
-    { l: 'Dockview', k: 'desktop' },
-    { l: 'shadcn', k: 'green' },
-    { l: 'MapLibre', k: 'maplibre' },
-    { l: 'deck.gl', k: 'deck.gl' },
-    { l: 'Socket.IO', k: 'socketio' },
-    { l: 'Tailwind', k: 'tailwind' },
-    { l: 'HTML / CSS', k: 'html' },
-  ],
-}
-
-const XR_TAGS = [
-  { l: 'Unity 3D', k: 'unity' },
-  { l: 'VR', k: 'vr' },
-  { l: 'AR', k: 'ar' },
-  { l: 'WPF', k: 'wpf' },
-  { l: 'SolidWorks', k: 'solidworks' },
-  { l: '3ds Max', k: '3dsmax' },
-]
-
-const XR_SKILLS: Record<Language, SkillGroup> = {
-  fr: { cat: '3D temps réel & XR', featured: false, tags: XR_TAGS },
-  en: { cat: 'Real-time 3D & XR', featured: false, tags: XR_TAGS },
-}
-
-// The web group above replaces the generic front-end group of the online resume.
-const SKILL_GROUPS = ['languages', 'services', 'tools']
 
 const findExperience = (id: number) => {
   const experience = mockExperiences.find((candidate) => candidate.id === id)
@@ -294,10 +249,6 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
   const locale = getMockDataLocale(language)
   const t = getTranslations(language)
 
-  const skills = localizeSkills(mockSkills, locale.skills)
-    .filter((skill) => SKILL_GROUPS.includes(skill.id))
-    .map((skill) => ({ cat: skill.cat, featured: false, tags: skill.tags }))
-
   const personalProjects = mockPersonalProjects
     .filter((project) => WEB_PERSONAL_PROJECTS.includes(project.name))
     .map((project) => {
@@ -318,7 +269,6 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
     labels: {
       ...LABELS[language],
       about: `👤 ${t.sections.about}`,
-      coreSkills: t.common.coreSkills,
       languages: t.common.languages,
       openToWork: t.common.openToWork,
       tasks: t.mission.tasksPreviewTitle,
@@ -334,7 +284,6 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
     url: RESUME_URL,
     bio: locale.profile.bio,
     overview: buildOverview(language),
-    skills: [WEB_SKILLS, ...skills, XR_SKILLS[language]],
     formations: localizeFormations(mockFormation, locale.formation).map(({ id, kind, label, title, sub, meta }) => ({
       id,
       kind,

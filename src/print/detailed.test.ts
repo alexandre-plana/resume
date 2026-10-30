@@ -10,7 +10,6 @@ describe('buildDetailedModel', () => {
     expect(model.xpert.companionTools).toHaveLength(3)
     expect(model.oreka.keyProjects.every((mission) => mission.tasks.length > 0)).toBe(true)
     expect(model.formations.length).toBeGreaterThan(0)
-    expect(model.skills[0].featured).toBe(true)
   })
 
   it('opens on the Vue.js mission at Schneider Electric, with its tech tags kept for inline rendering', () => {

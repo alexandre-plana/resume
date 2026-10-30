@@ -180,6 +180,13 @@
   margin-bottom: 14px;
 }
 
+/* App.module.css: aboutText, without the card frame to fit the narrow column. */
+.dcv-side-about {
+  font-size: 0.8em;
+  color: var(--text);
+  line-height: 1.6;
+}
+
 .dcv-lang-row {
   display: flex;
   gap: 6px;
@@ -198,31 +205,6 @@
 .dcv-lang-pill span {
   color: var(--text-3);
   margin-left: 4px;
-}
-
-.dcv-skill-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.dcv-skill-group + .dcv-skill-group {
-  padding-top: 8px;
-  border-top: 1px solid var(--border-2);
-}
-
-.dcv-skill-title {
-  font-size: 0.72em;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  font-family: var(--font-mono);
-  color: var(--text-3);
-  margin-bottom: 5px;
-}
-
-.dcv-skill-title-featured {
-  color: var(--blue);
 }
 
 .dcv-chips {
