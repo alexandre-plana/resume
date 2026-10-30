@@ -246,6 +246,33 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
             </div>
           </div>
 
+          <div className="dcv-side-section">
+            <div className="dcv-label">{labels.coreSkills}</div>
+            <div className="dcv-skill-list">
+              {model.skills.map((skill) => (
+                <div className="dcv-skill-group" key={skill.id}>
+                  <div className={skill.featured ? 'dcv-skill-title dcv-skill-title-featured' : 'dcv-skill-title'}>
+                    {skill.cat}
+                  </div>
+                  <div className="dcv-chips">
+                    {skill.tags.map((tag) => (
+                      <TechBadge key={`${skill.id}-${tag.l}`} label={tag.l} kind={tag.k} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="dcv-side-section">
+            <div className="dcv-label">{labels.interests}</div>
+            <div className="dcv-chips">
+              {model.interests.map((interest) => (
+                <TechBadge key={interest} label={interest} kind="interest" />
+              ))}
+            </div>
+          </div>
+
           <div className="dcv-online">
             <img className="dcv-qr" src={qrCode} alt={labels.online} />
             <div>

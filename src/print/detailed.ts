@@ -1,8 +1,8 @@
 import { getMockDataLocale } from '../api/mockDataLocales'
-import { localizeFormations } from '../api/localizeData'
-import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile } from '../api/mockData'
+import { localizeFormations, localizeSkills } from '../api/localizeData'
+import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile, mockSkills } from '../api/mockData'
 import { getTranslations, type Language } from '../locales'
-import type { Formation } from '../types'
+import type { Formation, Skill } from '../types'
 import { IECA_DETAILS, type IecaDetails } from './iecaDetails'
 import { RESUME_URL, shortTitle } from './onePage'
 
@@ -25,6 +25,8 @@ export interface DetailedLabels {
   personalProjects: string
   education: string
   languages: string
+  coreSkills: string
+  interests: string
   openToWork: string
   online: string
   tasks: string
@@ -83,6 +85,8 @@ export interface DetailedModel {
   url: string
   bio: string
   overview: OverviewCompany[]
+  skills: Skill[]
+  interests: string[]
   formations: { id: string; kind: Formation['kind']; label: string; title: string; sub: string; meta: string }[]
   languages: { label: string; level: string }[]
   schneiderWeb: { head: CompanyHead; mission: MissionView; details: IecaDetails }
@@ -100,7 +104,7 @@ export interface DetailedModel {
   }[]
 }
 
-type OwnLabels = Omit<DetailedLabels, 'about' | 'languages' | 'openToWork' | 'tasks'>
+type OwnLabels = Omit<DetailedLabels, 'about' | 'languages' | 'coreSkills' | 'interests' | 'openToWork' | 'tasks'>
 
 const LABELS: Record<Language, OwnLabels> = {
   fr: {
@@ -283,6 +287,8 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
       ...LABELS[language],
       about: `👤 ${t.sections.about}`,
       languages: t.common.languages,
+      coreSkills: t.common.coreSkills,
+      interests: t.sidebar.interests,
       openToWork: t.common.openToWork,
       tasks: t.mission.tasksPreviewTitle,
     },
@@ -297,6 +303,9 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
     url: RESUME_URL,
     bio: locale.profile.bio,
     overview: buildOverview(language),
+    // Same sidebar sections as the online resume.
+    skills: localizeSkills(mockSkills, locale.skills),
+    interests: locale.profile.interests,
     formations: localizeFormations(mockFormation, locale.formation).map(({ id, kind, label, title, sub, meta }) => ({
       id,
       kind,
