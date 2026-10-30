@@ -1,119 +1,129 @@
 import { getMockDataLocale } from '../api/mockDataLocales'
 import { localizeFormations, localizeSkills } from '../api/localizeData'
 import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile, mockSkills } from '../api/mockData'
-import type { Language } from '../locales'
-import { normalizeTechTag } from '../utils/techTokens'
+import { getTranslations, type Language } from '../locales'
+import type { Formation } from '../types'
 import { IECA_DETAILS, type IecaDetails } from './iecaDetails'
-import { firstSentence, RESUME_URL, shortTitle, toPlainText } from './onePage'
+import { RESUME_URL } from './onePage'
+
+// Texts keep their #tech tags: the page renders them as inline tags, like the online resume.
 
 export interface DetailedLabels {
   document: string
-  profile: string
+  about: string
   highlights: string
   vueFocus: string
   iecaDetails: string
   iecaModules: string
   iecaFoundation: string
-  iecaQuality: string
-  ipSprint: string
+  iecaOther: string
   webXpert: string
-  companionTools: string
   industrialAr: string
   oreka: string
   keyProjects: string
   otherProjects: string
   personalProjects: string
-  skills: string
   education: string
+  coreSkills: string
   languages: string
+  openToWork: string
   online: string
-  achievements: string
+  tasks: string
 }
 
 export interface CompanyHead {
   company: string
   employer: string
   period: string
+  current: boolean
 }
 
 export interface MissionView {
+  name: string
   title: string
-  shortTitle: string
   badge: string
   period: string
-  summary: string
+  desc: string
   brief: string
   tasks: string[]
-  stack: string[]
+  tags: string[]
+  featured: boolean
+}
+
+export interface SkillGroup {
+  cat: string
+  featured: boolean
+  tags: { l: string; k: string }[]
 }
 
 export interface DetailedModel {
   language: Language
   labels: DetailedLabels
   name: string
+  handle: string
   title: string
   subtitle: string
+  company: string
+  location: string
   email: string
   phone: string
   url: string
   bio: string
   highlights: { title: string; text: string }[]
-  skills: { cat: string; items: string[] }[]
-  formations: { title: string; sub: string }[]
+  skills: SkillGroup[]
+  formations: { id: string; kind: Formation['kind']; label: string; title: string; sub: string; meta: string }[]
   languages: { label: string; level: string }[]
   schneiderWeb: { head: CompanyHead; mission: MissionView; details: IecaDetails }
   xpert: { head: CompanyHead; xistar: MissionView; companionTools: MissionView[]; missions: MissionView[] }
   schneiderAr: { head: CompanyHead; mission: MissionView }
   oreka: { head: CompanyHead; overview: MissionView; keyProjects: MissionView[]; otherProjects: MissionView[] }
-  personalProjects: { name: string; kind: string; period: string; text: string; stack: string[] }[]
+  personalProjects: {
+    name: string
+    kind: string
+    status: string
+    period: string
+    role: string
+    desc: string
+    stack: string[]
+  }[]
 }
 
-const LABELS: Record<Language, DetailedLabels> = {
+type OwnLabels = Omit<DetailedLabels, 'about' | 'coreSkills' | 'languages' | 'openToWork' | 'tasks'>
+
+const LABELS: Record<Language, OwnLabels> = {
   fr: {
     document: 'CV détaillé',
-    profile: 'Profil',
-    highlights: 'Expertise web en bref',
-    vueFocus: 'Vue.js · micro-frontend — Schneider Electric',
-    iecaDetails: 'IECA — détail technique',
+    highlights: '⚡ Expertise web en bref',
+    vueFocus: '📌 Vue.js · micro-frontend — Schneider Electric',
+    iecaDetails: '🔎 IECA — détail technique',
     iecaModules: 'Domaines fonctionnels',
     iecaFoundation: 'Socle partagé',
-    iecaQuality: 'Qualité & industrialisation',
-    ipSprint: 'IP Sprint — prototypes mobiles',
-    webXpert: 'Développement web — X-PERT',
-    companionTools: 'Outils associés à Xistar',
-    industrialAr: 'Application AR industrielle — Schneider Electric',
-    oreka: 'Serious games & simulation — Oreka Ingénierie',
+    iecaOther: 'Qualité & prototypes',
+    webXpert: '📌 Développement web — X-PERT',
+    industrialAr: '📌 Application AR industrielle — Schneider Electric',
+    oreka: '📌 Serious games & simulation — Oreka Ingénierie',
     keyProjects: 'Projets phares',
     otherProjects: 'Autres réalisations',
-    personalProjects: 'Projets personnels web',
-    skills: 'Compétences',
-    education: 'Formation',
-    languages: 'Langues',
+    personalProjects: '🛠️ Projets persos',
+    education: '🎓 Formations',
     online: 'CV en ligne',
-    achievements: 'Réalisations',
   },
   en: {
     document: 'Detailed resume',
-    profile: 'Profile',
-    highlights: 'Web expertise at a glance',
-    vueFocus: 'Vue.js · micro-frontend — Schneider Electric',
-    iecaDetails: 'IECA — technical deep dive',
+    highlights: '⚡ Web expertise at a glance',
+    vueFocus: '📌 Vue.js · micro-frontend — Schneider Electric',
+    iecaDetails: '🔎 IECA — technical deep dive',
     iecaModules: 'Functional areas',
     iecaFoundation: 'Shared foundation',
-    iecaQuality: 'Quality & delivery',
-    ipSprint: 'IP Sprint — mobile prototypes',
-    webXpert: 'Web development — X-PERT',
-    companionTools: 'Xistar companion tools',
-    industrialAr: 'Industrial AR application — Schneider Electric',
-    oreka: 'Serious games & simulation — Oreka Engineering',
+    iecaOther: 'Quality & prototypes',
+    webXpert: '📌 Web development — X-PERT',
+    industrialAr: '📌 Industrial AR application — Schneider Electric',
+    oreka: '📌 Serious games & simulation — Oreka Engineering',
     keyProjects: 'Key projects',
     otherProjects: 'Other projects',
-    personalProjects: 'Personal web projects',
-    skills: 'Skills',
-    education: 'Education',
-    languages: 'Languages',
+    personalProjects: '🛠️ Personal projects',
+    education: '🎓 Education',
     online: 'Online resume',
-    achievements: 'Achievements',
   },
 }
 
@@ -122,15 +132,15 @@ const HIGHLIGHTS: Record<Language, { title: string; text: string }[]> = {
   fr: [
     {
       title: 'Vue 3 · micro-frontend',
-      text: 'Trois ans sur IECA, la plateforme IIoT Edge de Schneider Electric : modules single-spa, composants partagés, stores Pinia testés avec Jest et qualité suivie dans SonarQube.',
+      text: 'Trois ans sur IECA, la plateforme IIoT Edge de Schneider Electric : modules #single-spa, composants partagés, stores #pinia testés avec #jest et qualité suivie dans #sonarqube.',
     },
     {
       title: 'React · TypeScript',
-      text: 'Xistar, poste de commandement maritime dans le navigateur : espace de travail Dockview, cartographie MapLibre et deck.gl, flux temps réel MQTT et Socket.IO.',
+      text: 'Xistar, poste de commandement maritime dans le navigateur : espace de travail #dockview, cartographie #maplibre et #deckgl, flux temps réel #mqtt et #socketio.',
     },
     {
       title: 'Design system',
-      text: 'Composants conçus sous Figma, développés en React avec shadcn et distribués via un registre npm privé aux applications de X-PERT.',
+      text: 'Composants conçus sous #figma, développés en #react avec #shadcn et distribués via un registre #npm privé aux applications de X-PERT.',
     },
     {
       title: 'UX/UI & conception fonctionnelle',
@@ -140,15 +150,15 @@ const HIGHLIGHTS: Record<Language, { title: string; text: string }[]> = {
   en: [
     {
       title: 'Vue 3 · micro-frontend',
-      text: 'Three years on IECA, Schneider Electric’s IIoT Edge platform: single-spa modules, shared components, Pinia stores tested with Jest and code quality tracked in SonarQube.',
+      text: 'Three years on IECA, Schneider Electric’s IIoT Edge platform: #single-spa modules, shared components, #pinia stores tested with #jest and code quality tracked in #sonarqube.',
     },
     {
       title: 'React · TypeScript',
-      text: 'Xistar, a browser-based maritime command center: Dockview workspace, MapLibre and deck.gl mapping, real-time MQTT and Socket.IO feeds.',
+      text: 'Xistar, a browser-based maritime command center: #dockview workspace, #maplibre and #deckgl mapping, real-time #mqtt and #socketio feeds.',
     },
     {
       title: 'Design system',
-      text: 'Components designed in Figma, built in React with shadcn and distributed to X-PERT applications through a private npm registry.',
+      text: 'Components designed in #figma, built in #react with #shadcn and distributed to X-PERT applications through a private #npm registry.',
     },
     {
       title: 'UX/UI & functional design',
@@ -157,74 +167,42 @@ const HIGHLIGHTS: Record<Language, { title: string; text: string }[]> = {
   ],
 }
 
-const WEB_SKILLS: Record<Language, { cat: string; items: string[] }> = {
-  fr: {
-    cat: 'Écosystème web',
-    items: ['Vue 3', 'Pinia', 'single-spa', 'React', 'Vite', 'Dockview', 'shadcn', 'MapLibre', 'deck.gl', 'Socket.IO', 'Tailwind', 'HTML / CSS', 'WebGL'],
-  },
-  en: {
-    cat: 'Web ecosystem',
-    items: ['Vue 3', 'Pinia', 'single-spa', 'React', 'Vite', 'Dockview', 'shadcn', 'MapLibre', 'deck.gl', 'Socket.IO', 'Tailwind', 'HTML / CSS', 'WebGL'],
-  },
+// Tag kinds follow the online resume's tech-tag themes (src/theme/techTagTheme.ts).
+const WEB_SKILLS: SkillGroup = {
+  cat: 'Web',
+  featured: true,
+  tags: [
+    { l: 'Vue 3', k: 'vue3' },
+    { l: 'Pinia', k: 'green' },
+    { l: 'single-spa', k: 'spa' },
+    { l: 'React', k: 'react' },
+    { l: 'Vite', k: 'vite' },
+    { l: 'Dockview', k: 'desktop' },
+    { l: 'shadcn', k: 'green' },
+    { l: 'MapLibre', k: 'maplibre' },
+    { l: 'deck.gl', k: 'deck.gl' },
+    { l: 'Socket.IO', k: 'socketio' },
+    { l: 'Tailwind', k: 'tailwind' },
+    { l: 'HTML / CSS', k: 'html' },
+  ],
 }
 
-const XR_SKILLS: Record<Language, { cat: string; items: string[] }> = {
-  fr: { cat: '3D temps réel & XR', items: ['Unity 3D', 'C#', 'VR / AR', 'WPF', 'SolidWorks', '3ds Max'] },
-  en: { cat: 'Real-time 3D & XR', items: ['Unity 3D', 'C#', 'VR / AR', 'WPF', 'SolidWorks', '3ds Max'] },
+const XR_TAGS = [
+  { l: 'Unity 3D', k: 'unity' },
+  { l: 'VR', k: 'vr' },
+  { l: 'AR', k: 'ar' },
+  { l: 'WPF', k: 'wpf' },
+  { l: 'SolidWorks', k: 'solidworks' },
+  { l: '3ds Max', k: '3dsmax' },
+]
+
+const XR_SKILLS: Record<Language, SkillGroup> = {
+  fr: { cat: '3D temps réel & XR', featured: false, tags: XR_TAGS },
+  en: { cat: 'Real-time 3D & XR', featured: false, tags: XR_TAGS },
 }
 
 // The web group above replaces the generic front-end group of the online resume.
 const SKILL_GROUPS = ['languages', 'services', 'tools']
-
-// Stack chips: only recognized technologies are shown, under their usual spelling.
-const STACK_LABELS: Record<string, string> = {
-  ts: 'TypeScript',
-  typescript: 'TypeScript',
-  react: 'React',
-  vue3: 'Vue 3',
-  singlespa: 'single-spa',
-  go: 'Go',
-  dockview: 'Dockview',
-  maplibre: 'MapLibre',
-  deckgl: 'deck.gl',
-  mqtt: 'MQTT',
-  apirest: 'API REST',
-  node: 'Node.js',
-  nodejs: 'Node.js',
-  socketio: 'Socket.IO',
-  vite: 'Vite',
-  shadcn: 'shadcn',
-  figma: 'Figma',
-  npm: 'npm',
-  html: 'HTML',
-  css: 'CSS',
-  webgl: 'WebGL',
-  hyperframes: 'HyperFrames',
-  bmad: 'BMAD',
-  docker: 'Docker',
-  gitlabci: 'GitLab CI',
-  jest: 'Jest',
-  git: 'Git',
-  jira: 'Jira',
-  unity: 'Unity',
-  c: 'C#',
-  wpf: 'WPF',
-  winform: 'WinForms',
-  solidworks: 'SolidWorks',
-  '3dsmax': '3ds Max',
-  zod: 'Zod',
-  sigmajs: 'Sigma.js',
-  mcp: 'MCP',
-  threejs: 'Three.js',
-  r3f: 'React Three Fiber',
-  webworkers: 'Web Workers',
-  sqlite: 'SQLite',
-  android: 'Android',
-}
-
-export const stackLabels = (tags: string[]): string[] => [
-  ...new Set(tags.map((tag) => STACK_LABELS[normalizeTechTag(`#${tag}`)]).filter((label): label is string => Boolean(label))),
-]
 
 const findExperience = (id: number) => {
   const experience = mockExperiences.find((candidate) => candidate.id === id)
@@ -232,13 +210,14 @@ const findExperience = (id: number) => {
   return experience
 }
 
-const companyHead = (language: Language, experienceId: number): CompanyHead => {
+const companyHead = (language: Language, experienceId: number, current = false): CompanyHead => {
   const experience = findExperience(experienceId)
   const locale = getMockDataLocale(language).experiences[experienceId.toString()]
   return {
     company: locale?.company || experience.company,
     employer: locale?.employer || experience.employer,
     period: experience.period,
+    current,
   }
 }
 
@@ -246,17 +225,17 @@ const missionView = (language: Language, experienceId: number, missionId: number
   const mission = findExperience(experienceId).missions.find((candidate) => candidate.id === missionId)
   if (!mission) throw new Error(`Unknown mission ${missionId}`)
   const locale = getMockDataLocale(language).experiences[experienceId.toString()]?.missions[missionId.toString()]
-  const title = locale?.context || mission.context
 
   return {
-    title,
-    shortTitle: shortTitle(title),
+    name: mission.name,
+    title: locale?.context || mission.context,
     badge: locale?.badge || mission.badge,
     period: mission.period,
-    summary: toPlainText(locale?.desc || mission.desc),
-    brief: toPlainText(locale?.cardSummary || mission.cardSummary || mission.desc),
-    tasks: (locale?.tasks || mission.tasks || []).map(toPlainText),
-    stack: stackLabels(mission.tags),
+    desc: locale?.desc || mission.desc,
+    brief: locale?.cardSummary || mission.cardSummary || mission.desc,
+    tasks: locale?.tasks || mission.tasks || [],
+    tags: mission.tags,
+    featured: mission.featured,
   }
 }
 
@@ -265,10 +244,11 @@ const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery', 'kin']
 
 export const buildDetailedModel = (language: Language): DetailedModel => {
   const locale = getMockDataLocale(language)
+  const t = getTranslations(language)
 
   const skills = localizeSkills(mockSkills, locale.skills)
     .filter((skill) => SKILL_GROUPS.includes(skill.id))
-    .map((skill) => ({ cat: skill.cat, items: skill.tags.map((tag) => tag.l) }))
+    .map((skill) => ({ cat: skill.cat, featured: false, tags: skill.tags }))
 
   const personalProjects = mockPersonalProjects
     .filter((project) => WEB_PERSONAL_PROJECTS.includes(project.name))
@@ -277,31 +257,54 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
       return {
         name: project.name,
         kind: projectLocale?.kind || project.kind,
+        status: projectLocale?.status || project.status || '',
         period: project.period,
-        text: firstSentence(projectLocale?.desc || project.desc),
-        stack: stackLabels(project.stack),
+        role: projectLocale?.role || project.role,
+        desc: projectLocale?.desc || project.desc,
+        stack: project.stack,
       }
     })
 
   return {
     language,
-    labels: LABELS[language],
+    labels: {
+      ...LABELS[language],
+      about: `👤 ${t.sections.about}`,
+      coreSkills: t.common.coreSkills,
+      languages: t.common.languages,
+      openToWork: t.common.openToWork,
+      tasks: t.mission.tasksPreviewTitle,
+    },
     name: mockProfile.name,
+    handle: mockProfile.handle,
     title: locale.profile.title,
     subtitle: locale.profile.subtitle,
+    company: locale.profile.company,
+    location: mockProfile.location,
     email: mockProfile.email,
     phone: mockProfile.phone,
     url: RESUME_URL,
     bio: locale.profile.bio,
     highlights: HIGHLIGHTS[language],
-    skills: [WEB_SKILLS[language], ...skills, XR_SKILLS[language]],
-    formations: localizeFormations(mockFormation, locale.formation).map(({ title, sub }) => ({ title, sub })),
+    skills: [WEB_SKILLS, ...skills, XR_SKILLS[language]],
+    formations: localizeFormations(mockFormation, locale.formation).map(({ id, kind, label, title, sub, meta }) => ({
+      id,
+      kind,
+      label,
+      title,
+      sub,
+      meta,
+    })),
     languages: locale.profile.langs,
-    schneiderWeb: { head: companyHead(language, 1), mission: missionView(language, 1, 11), details: IECA_DETAILS[language] },
+    schneiderWeb: {
+      head: companyHead(language, 1),
+      mission: missionView(language, 1, 11),
+      details: IECA_DETAILS[language],
+    },
     xpert: {
-      head: companyHead(language, 3),
+      head: companyHead(language, 3, true),
       xistar: missionView(language, 3, 31),
-      companionTools: [33, 34, 32].map((id) => missionView(language, 3, id)),
+      companionTools: [32, 33, 34].map((id) => missionView(language, 3, id)),
       missions: [36, 35, 37].map((id) => missionView(language, 3, id)),
     },
     schneiderAr: { head: companyHead(language, 1), mission: missionView(language, 1, 12) },

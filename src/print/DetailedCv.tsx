@@ -1,81 +1,127 @@
-import { useEffect, useRef } from 'react'
-import avatar from '../Avatar.png'
+import { useEffect, useRef, type ReactNode } from 'react'
 import qrCode from '../assets/resume-qr.svg'
-import type { CompanyHead, DetailedModel, MissionView } from './detailed'
+import { Avatar } from '../components/Avatar'
+import { InlineTechText } from '../components/InlineTechText'
+import { TechBadge } from '../components/TechBadge'
+import type { CompanyHead, DetailedLabels, DetailedModel, MissionView } from './detailed'
 import type { DetailBlock } from './iecaDetails'
 import './detailed.css'
 
-function Stack({ items }: { items: string[] }) {
-  if (items.length === 0) return null
+// Same building blocks as the online resume: TechBadge chips, inline #tech tags,
+// timeline, mission cards and formation-style cards (see App.module.css).
+
+function Chips({ tags }: { tags: string[] }) {
+  if (tags.length === 0) return null
   return (
-    <ul className="dcv-stack">
-      {items.map((item) => (
-        <li key={item}>{item}</li>
+    <div className="dcv-chips">
+      {tags.map((tag) => (
+        <TechBadge key={tag} label={tag} kind={tag} />
       ))}
-    </ul>
-  )
-}
-
-function Company({ head }: { head: CompanyHead }) {
-  return (
-    <p className="dcv-company">
-      <strong>{head.company}</strong> — {head.employer}
-      <span>{head.period}</span>
-    </p>
-  )
-}
-
-function MissionTitle({ mission, short = false }: { mission: MissionView; short?: boolean }) {
-  return (
-    <div className="dcv-mission-head">
-      <h3>{short ? mission.shortTitle : mission.title}</h3>
-      <span className="dcv-period">{mission.period}</span>
-      <p className="dcv-badge">{mission.badge}</p>
     </div>
   )
 }
 
-// Full mission: narrative, every achievement and the stack.
-function Mission({ mission, achievements }: { mission: MissionView; achievements: string }) {
+// The section title travels with the company row so neither is left alone at the bottom of a page.
+function Timeline({ title, head, children }: { title: string; head: CompanyHead; children: ReactNode }) {
   return (
-    <article className="dcv-mission">
-      <MissionTitle mission={mission} />
-      <p>{mission.summary}</p>
-      {mission.tasks.length > 0 && (
-        <>
-          <h4>{achievements}</h4>
-          <ul className="dcv-tasks">
-            {mission.tasks.map((task) => (
-              <li key={task}>{task}</li>
-            ))}
-          </ul>
-        </>
-      )}
-      <Stack items={mission.stack} />
+    <div className="dcv-timeline">
+      <div className="dcv-keep">
+        <div className="dcv-section-header">{title}</div>
+        <div className="dcv-tl-company">
+          <span className={`dcv-tl-dot${head.current ? ' dcv-tl-dot-current' : ''}`} />
+          <div>
+            <div className="dcv-tl-name">{head.company}</div>
+            <div className="dcv-tl-role">{head.employer}</div>
+            <span className="dcv-tl-period">{head.period}</span>
+          </div>
+        </div>
+      </div>
+      <div className="dcv-tl-missions">{children}</div>
+    </div>
+  )
+}
+
+function Tasks({ tasks, label }: { tasks: string[]; label: string }) {
+  if (tasks.length === 0) return null
+  return (
+    <div className="dcv-tasks">
+      <div className="dcv-tasks-title">{label}</div>
+      <ul>
+        {tasks.map((task) => (
+          <li key={task}>
+            <InlineTechText text={task} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function MissionCard({
+  mission,
+  labels,
+  full = true,
+  children,
+}: {
+  mission: MissionView
+  labels: DetailedLabels
+  full?: boolean
+  children?: ReactNode
+}) {
+  return (
+    <article className={mission.featured ? 'dcv-mission dcv-mission-featured' : 'dcv-mission'}>
+      <div className="dcv-mission-top">
+        <span>📁</span>
+        <span className="dcv-mission-name">{mission.name}</span>
+        <span className="dcv-mission-badge">{mission.badge}</span>
+      </div>
+      <div className="dcv-mission-context">
+        {mission.title} · {mission.period}
+      </div>
+      <p className="dcv-mission-desc">
+        <InlineTechText text={full ? mission.desc : mission.brief} />
+      </p>
+      {children}
+      {full && <Tasks tasks={mission.tasks} label={labels.tasks} />}
+      {full && <Chips tags={mission.tags} />}
     </article>
   )
 }
 
-function DetailGrid({ blocks }: { blocks: DetailBlock[] }) {
+function ProjectCard({ mission }: { mission: MissionView }) {
+  return (
+    <article className="dcv-project">
+      <div className="dcv-mission-top">
+        <span>🗂️</span>
+        <span className="dcv-mission-name">{mission.name}</span>
+      </div>
+      <div className="dcv-mission-context">
+        {mission.title} · {mission.period}
+      </div>
+      <p className="dcv-mission-desc">
+        <InlineTechText text={mission.brief} />
+      </p>
+    </article>
+  )
+}
+
+function DetailCards({ blocks }: { blocks: DetailBlock[] }) {
   return (
     <div className="dcv-grid">
       {blocks.map((block) => (
-        <article className="dcv-card" key={block.title}>
-          <h3>{block.title}</h3>
-          <p>{block.text}</p>
+        <article className="dcv-project" key={block.repo}>
+          <div className="dcv-mission-top">
+            <span>📁</span>
+            <span className="dcv-mission-name">{block.repo}</span>
+          </div>
+          <div className="dcv-card-title">{block.title}</div>
+          <p className="dcv-mission-desc">
+            <InlineTechText text={block.text} />
+          </p>
+          {block.tags && <Chips tags={block.tags} />}
         </article>
       ))}
     </div>
-  )
-}
-
-// Compact mission: the card summary only.
-function MissionCard({ mission }: { mission: MissionView }) {
-  return (
-    <article className="dcv-card">
-      <MissionTitle mission={mission} short />
-      <p>{mission.brief}</p>
-    </article>
   )
 }
 
@@ -103,156 +149,195 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
     <div className="dcv" lang={model.language}>
       <div className="dcv-cover" ref={coverRef}>
         <aside className="dcv-side">
-          <img className="dcv-avatar" src={avatar} alt={model.name} />
+          <div className="dcv-avatar">
+            <Avatar name={model.name} language={model.language} />
+          </div>
 
-          <p className="dcv-contact">
-            <span>{model.email}</span>
-            <span>{model.phone}</span>
-          </p>
+          <div className="dcv-profile-name">{model.name}</div>
+          <div className="dcv-profile-handle">@{model.handle}</div>
+          <div className="dcv-profile-title">{model.title}</div>
+          <div className="dcv-profile-subtitle">{model.subtitle}</div>
 
-          <section>
-            <h2>{labels.skills}</h2>
-            {model.skills.map((skill) => (
-              <div className="dcv-skill" key={skill.cat}>
-                <h3>{skill.cat}</h3>
-                <p>{skill.items.join(' · ')}</p>
-              </div>
-            ))}
-          </section>
+          <ul className="dcv-meta">
+            <li>
+              <span className="dcv-icon">🏢</span>
+              {model.company}
+            </li>
+            <li>
+              <span className="dcv-icon">📍</span>
+              {model.location}
+            </li>
+            <li>
+              <span className="dcv-icon">✉</span>
+              {model.email}
+            </li>
+            <li>
+              <span className="dcv-icon">📞</span>
+              {model.phone}
+            </li>
+          </ul>
 
-          <section>
-            <h2>{labels.education}</h2>
-            {model.formations.map((formation) => (
-              <div className="dcv-edu" key={`${formation.title}-${formation.sub}`}>
-                <h3>{formation.title}</h3>
-                <p>{formation.sub}</p>
-              </div>
-            ))}
-          </section>
+          <div className="dcv-side-section">
+            <div className="dcv-label">{labels.languages}</div>
+            <div className="dcv-lang-row">
+              {model.languages.map((lang) => (
+                <span className="dcv-lang-pill" key={lang.label}>
+                  {lang.label}
+                  <span>{lang.level}</span>
+                </span>
+              ))}
+            </div>
+          </div>
 
-          <section>
-            <h2>{labels.languages}</h2>
-            <p>{model.languages.map((lang) => `${lang.label} (${lang.level})`).join(' · ')}</p>
-          </section>
+          <div className="dcv-side-section">
+            <div className="dcv-label">{labels.coreSkills}</div>
+            <div className="dcv-skill-list">
+              {model.skills.map((skill) => (
+                <div className="dcv-skill-group" key={skill.cat}>
+                  <div className={skill.featured ? 'dcv-skill-title dcv-skill-title-featured' : 'dcv-skill-title'}>
+                    {skill.cat}
+                  </div>
+                  <div className="dcv-chips">
+                    {skill.tags.map((tag) => (
+                      <TechBadge key={tag.l} label={tag.l} kind={tag.k} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
           <div className="dcv-online">
             <img className="dcv-qr" src={qrCode} alt={labels.online} />
-            <p>
-              <strong>{labels.online}</strong>
-              <br />
-              {model.url.replace('https://', '')}
-            </p>
+            <div>
+              <div className="dcv-label">{labels.online}</div>
+              <div className="dcv-online-url">{model.url.replace('https://', '')}</div>
+            </div>
           </div>
         </aside>
 
         <main className="dcv-cover-main">
-          <header>
-            <h1>{model.name}</h1>
-            <p className="dcv-title">{model.title}</p>
-            <p className="dcv-subtitle">{model.subtitle}</p>
-          </header>
-
           <section>
-            <h2>{labels.profile}</h2>
-            <p>{model.bio}</p>
+            <div className="dcv-section-header">{labels.about}</div>
+            <div className="dcv-about">
+              <p>{model.bio}</p>
+            </div>
           </section>
 
           <section>
-            <h2>{labels.highlights}</h2>
-            <div className="dcv-highlights">
+            <div className="dcv-section-header">{labels.highlights}</div>
+            <div className="dcv-grid">
               {model.highlights.map((highlight) => (
-                <div className="dcv-highlight" key={highlight.title}>
-                  <h3>{highlight.title}</h3>
-                  <p>{highlight.text}</p>
-                </div>
+                <article className="dcv-card" key={highlight.title}>
+                  <div className="dcv-card-title">{highlight.title}</div>
+                  <p className="dcv-card-text">
+                    <InlineTechText text={highlight.text} />
+                  </p>
+                </article>
               ))}
             </div>
           </section>
 
           <section>
-            <h2>{labels.vueFocus}</h2>
-            <Company head={model.schneiderWeb.head} />
-            <Mission mission={model.schneiderWeb.mission} achievements={labels.achievements} />
+            <Timeline title={labels.vueFocus} head={model.schneiderWeb.head}>
+              <MissionCard mission={model.schneiderWeb.mission} labels={labels} />
+            </Timeline>
           </section>
         </main>
       </div>
 
       <div className="dcv-flow">
         <section>
-          <h2>{labels.iecaDetails}</h2>
-          <p className="dcv-intro">{model.schneiderWeb.details.intro}</p>
-          <h4 className="dcv-subhead">{labels.iecaModules}</h4>
-          <DetailGrid blocks={model.schneiderWeb.details.modules} />
-          <h4 className="dcv-subhead">{labels.iecaFoundation}</h4>
-          <DetailGrid blocks={model.schneiderWeb.details.foundation} />
-          <div className="dcv-grid">
-            <article className="dcv-card">
-              <h3>{labels.iecaQuality}</h3>
-              <p>{model.schneiderWeb.details.quality}</p>
-              <Stack items={model.schneiderWeb.details.qualityStack} />
-            </article>
-            <article className="dcv-card">
-              <h3>{labels.ipSprint}</h3>
-              <p>{model.schneiderWeb.details.ipSprint}</p>
-              <Stack items={model.schneiderWeb.details.ipSprintStack} />
-            </article>
+          <div className="dcv-section-header">{labels.iecaDetails}</div>
+          <div className="dcv-about">
+            <p>
+              <InlineTechText text={model.schneiderWeb.details.intro} />
+            </p>
           </div>
+          <div className="dcv-subhead">{labels.iecaModules}</div>
+          <DetailCards blocks={model.schneiderWeb.details.modules} />
+          <div className="dcv-subhead">{labels.iecaFoundation}</div>
+          <DetailCards blocks={model.schneiderWeb.details.foundation} />
+          <div className="dcv-subhead">{labels.iecaOther}</div>
+          <DetailCards blocks={model.schneiderWeb.details.other} />
         </section>
 
         <section>
-          <h2>{labels.webXpert}</h2>
-          <Company head={model.xpert.head} />
-          <Mission mission={model.xpert.xistar} achievements={labels.achievements} />
-          <h4 className="dcv-subhead">{labels.companionTools}</h4>
-          <div className="dcv-grid">
-            {model.xpert.companionTools.map((mission) => (
-              <MissionCard mission={mission} key={mission.title} />
+          <Timeline title={labels.webXpert} head={model.xpert.head}>
+            <MissionCard mission={model.xpert.xistar} labels={labels}>
+              <div className="dcv-grid dcv-grid-3">
+                {model.xpert.companionTools.map((mission) => (
+                  <ProjectCard mission={mission} key={mission.name} />
+                ))}
+              </div>
+            </MissionCard>
+            {model.xpert.missions.map((mission) => (
+              <MissionCard mission={mission} labels={labels} key={mission.name} />
             ))}
-          </div>
-          {model.xpert.missions.map((mission) => (
-            <Mission mission={mission} achievements={labels.achievements} key={mission.title} />
-          ))}
+          </Timeline>
         </section>
 
         <section>
-          <h2>{labels.industrialAr}</h2>
-          <Company head={model.schneiderAr.head} />
-          <Mission mission={model.schneiderAr.mission} achievements={labels.achievements} />
+          <Timeline title={labels.industrialAr} head={model.schneiderAr.head}>
+            <MissionCard mission={model.schneiderAr.mission} labels={labels} />
+          </Timeline>
         </section>
 
         <section>
-          <h2>{labels.oreka}</h2>
-          <Company head={model.oreka.head} />
-          <Mission mission={model.oreka.overview} achievements={labels.achievements} />
-          <h4 className="dcv-subhead">{labels.keyProjects}</h4>
-          {model.oreka.keyProjects.map((mission) => (
-            <Mission mission={mission} achievements={labels.achievements} key={mission.title} />
-          ))}
-          <h4 className="dcv-subhead">{labels.otherProjects}</h4>
-          <div className="dcv-grid">
-            {model.oreka.otherProjects.map((mission) => (
-              <MissionCard mission={mission} key={mission.title} />
+          <Timeline title={labels.oreka} head={model.oreka.head}>
+            <MissionCard mission={model.oreka.overview} labels={labels} />
+            <div className="dcv-subhead">{labels.keyProjects}</div>
+            {model.oreka.keyProjects.map((mission) => (
+              <MissionCard mission={mission} labels={labels} key={mission.name} />
             ))}
-          </div>
+            <div className="dcv-subhead">{labels.otherProjects}</div>
+            <div className="dcv-grid">
+              {model.oreka.otherProjects.map((mission) => (
+                <ProjectCard mission={mission} key={mission.name} />
+              ))}
+            </div>
+          </Timeline>
         </section>
 
         <section>
-          <h2>{labels.personalProjects}</h2>
-          <div className="dcv-grid dcv-grid-3">
+          <div className="dcv-section-header">{labels.personalProjects}</div>
+          <div className="dcv-stack">
             {model.personalProjects.map((project) => (
               <article className="dcv-card" key={project.name}>
-                <div className="dcv-mission-head">
-                  <h3>{project.name}</h3>
-                  <span className="dcv-period">{project.period}</span>
-                  <p className="dcv-badge">{project.kind}</p>
+                <div className="dcv-form-label">
+                  <span>🛠️</span>
+                  {project.kind}
+                  {project.status && <span className="dcv-status">{project.status}</span>}
                 </div>
-                <p>{project.text}</p>
-                <Stack items={project.stack} />
+                <div className="dcv-form-title">{project.name}</div>
+                <p className="dcv-form-subtitle">
+                  <InlineTechText text={project.desc} />
+                </p>
+                <div className="dcv-form-meta">
+                  🗓 {project.period} · {project.role}
+                </div>
+                <Chips tags={project.stack} />
               </article>
             ))}
           </div>
         </section>
 
+        <section>
+          <div className="dcv-section-header">{labels.education}</div>
+          <div className="dcv-grid dcv-grid-3">
+            {model.formations.map((formation) => (
+              <article className="dcv-card" key={formation.id}>
+                <div className="dcv-form-label">
+                  <span>{formation.kind === 'degree' ? '🎓' : '📚'}</span>
+                  {formation.label.replace(/^📌\s*/, '')}
+                </div>
+                <div className="dcv-form-title">{formation.title}</div>
+                <div className="dcv-form-subtitle">{formation.sub}</div>
+                <div className="dcv-form-meta">{formation.meta}</div>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   )

@@ -1,11 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildDetailedModel, stackLabels } from './detailed'
-
-describe('stackLabels', () => {
-  it('keeps known technologies under their usual spelling and drops the rest', () => {
-    expect(stackLabels(['vue3', 'ts', 'typescript', 'c#', 'design system'])).toEqual(['Vue 3', 'TypeScript', 'C#'])
-  })
-})
+import { buildDetailedModel } from './detailed'
 
 describe('buildDetailedModel', () => {
   it.each(['fr', 'en'] as const)('builds a complete model in %s', (language) => {
@@ -16,30 +10,30 @@ describe('buildDetailedModel', () => {
     expect(model.xpert.companionTools).toHaveLength(3)
     expect(model.oreka.keyProjects.every((mission) => mission.tasks.length > 0)).toBe(true)
     expect(model.formations.length).toBeGreaterThan(0)
+    expect(model.skills[0].featured).toBe(true)
   })
 
-  it('opens on the Vue.js mission at Schneider Electric', () => {
+  it('opens on the Vue.js mission at Schneider Electric, with its tech tags kept for inline rendering', () => {
     const { mission } = buildDetailedModel('fr').schneiderWeb
 
-    expect(mission.title).toBe('Industrial Automation Edge (IECA)')
-    expect(mission.summary).toContain('Vue 3')
-    expect(mission.summary).not.toContain('#')
+    expect(mission.name).toBe('schneider-electric/iiot-edge-ieca')
+    expect(mission.desc).toContain('#vue3')
   })
 
   it('adds the IECA technical deep dive in both languages', () => {
     for (const language of ['fr', 'en'] as const) {
       const { details } = buildDetailedModel(language).schneiderWeb
 
-      expect(details.modules).toHaveLength(4)
-      expect(details.foundation.map((block) => block.title).length).toBe(4)
-      expect(details.qualityStack).toContain('SonarQube')
+      expect(details.modules.map((block) => block.repo)).toContain('ieca-connectivity-ui')
+      expect(details.foundation).toHaveLength(4)
+      expect(details.other).toHaveLength(2)
     }
   })
 
   it('details Dosicase, the radiation-safety serious game and Simulhom', () => {
-    const titles = buildDetailedModel('fr').oreka.keyProjects.map((mission) => mission.shortTitle)
+    const names = buildDetailedModel('fr').oreka.keyProjects.map((mission) => mission.name)
 
-    expect(titles).toEqual(['Dosicase', 'Formation en Radioprotection', 'Outil de prévention des TMS'])
+    expect(names).toEqual(['oreka/dosicase', 'suez/serious-game-radioprotection', 'simulhom'])
   })
 
   it('keeps only web personal projects', () => {
