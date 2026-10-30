@@ -439,18 +439,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-}
-
-/* Each company takes a share of the leftover height and spreads its cards over it. */
-.dcv-overview-body > .dcv-timeline {
-  display: flex;
-  flex-direction: column;
-}
-
-.dcv-overview-body .dcv-tl-missions {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  /* Cards of one company stay close; the leftover height goes between companies. */
   justify-content: space-between;
 }
 

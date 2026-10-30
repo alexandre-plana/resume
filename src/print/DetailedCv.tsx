@@ -22,20 +22,9 @@ function Chips({ tags }: { tags: string[] }) {
 }
 
 // The section title travels with the company row so neither is left alone at the bottom of a page.
-function Timeline({
-  title,
-  head,
-  grow,
-  children,
-}: {
-  title?: string
-  head: CompanyHead
-  // Cover only: share of the leftover height, so the timeline fills the page.
-  grow?: number
-  children: ReactNode
-}) {
+function Timeline({ title, head, children }: { title?: string; head: CompanyHead; children: ReactNode }) {
   return (
-    <div className="dcv-timeline" style={grow ? { flexGrow: grow } : undefined}>
+    <div className="dcv-timeline">
       <div className="dcv-keep">
         {title && <div className="dcv-section-header">{title}</div>}
         <div className="dcv-tl-company">
@@ -262,11 +251,7 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
             <div className="dcv-section-header">{labels.overview}</div>
             <div className="dcv-overview-body">
               {model.overview.map((company) => (
-                <Timeline
-                  head={company.head}
-                  grow={company.entries.length}
-                  key={`${company.head.company}-${company.head.period}`}
-                >
+                <Timeline head={company.head} key={`${company.head.company}-${company.head.period}`}>
                   {company.entries.map((entry) => (
                     <OverviewCard entry={entry} key={entry.name} />
                   ))}
