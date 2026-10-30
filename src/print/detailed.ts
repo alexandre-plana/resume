@@ -77,7 +77,7 @@ export interface OverviewCompany {
   head: CompanyHead
   entries: OverviewEntry[]
   // Shown as a thin "…" line: more projects than the cover lists.
-  more?: string
+  more?: boolean
 }
 
 export interface DetailedModel {
@@ -86,7 +86,6 @@ export interface DetailedModel {
   name: string
   title: string
   subtitle: string
-  github: string
   location: string
   email: string
   phone: string
@@ -290,7 +289,7 @@ const buildOverview = (language: Language): OverviewCompany[] => [
   {
     head: companyHead(language, 2),
     entries: [26, 22, 28, 24, 27].map((id) => overviewEntry(language, 2, id)),
-    more: language === 'fr' ? 'et d’autres serious games et simulateurs' : 'and more serious games and simulators',
+    more: true,
   },
 ]
 
@@ -298,7 +297,7 @@ const buildOverview = (language: Language): OverviewCompany[] => [
 const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery']
 
 // Applies French typography to every printed string except identifiers, addresses and chip keys.
-const TYPOGRAPHY_SKIP = new Set(['name', 'repo', 'url', 'email', 'phone', 'github', 'k', 'language'])
+const TYPOGRAPHY_SKIP = new Set(['name', 'repo', 'url', 'email', 'phone', 'k', 'language'])
 
 const withFrenchTypography = <T>(value: T, key = ''): T => {
   if (typeof value === 'string') return (TYPOGRAPHY_SKIP.has(key) ? value : frenchTypography(value)) as T
@@ -349,7 +348,6 @@ const buildModel = (language: Language): DetailedModel => {
     },
     name: mockProfile.name,
     ...PROFILE[language],
-    github: `github.com/${mockProfile.handle}`,
     location: 'Le Cannet (06)',
     email: mockProfile.email,
     phone: mockProfile.phone,

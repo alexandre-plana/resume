@@ -49,7 +49,7 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'frontend',
       cat: 'Front-end',
       featured: true,
-      tags: [tag('Vue 3', 'vue3'), tag('Pinia', 'green'), tag('React', 'react'), tag('TypeScript', 'ts'), tag('single-spa', 'spa'), tag('Tailwind', 'tailwind')],
+      tags: [tag('Vue 3', 'vue3'), tag('Pinia', 'green'), tag('React', 'react'), tag('single-spa', 'spa'), tag('Tailwind', 'tailwind')],
     },
     {
       id: 'ai',
@@ -58,10 +58,16 @@ export const SKILLS: Record<Language, Skill[]> = {
       tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('agents IA', 'mcp')],
     },
     {
+      id: 'languages',
+      cat: 'Langages',
+      featured: false,
+      tags: [tag('TypeScript', 'ts'), tag('Go', 'green'), tag('C#', 'csharp'), tag('Python', 'green')],
+    },
+    {
       id: 'services',
       cat: 'Back-end',
       featured: false,
-      tags: [tag('Go', 'green'), tag('MQTT', 'mqtt'), tag('API REST', 'apirest')],
+      tags: [tag('MQTT', 'mqtt'), tag('API REST', 'apirest'), tag('Socket.IO', 'socketio')],
     },
     {
       id: 'quality',
@@ -73,7 +79,7 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'design',
       cat: 'Design & 3D',
       featured: false,
-      tags: [tag('Figma', 'figma'), tag('Unity 3D', 'unity'), tag('C#', 'csharp')],
+      tags: [tag('Figma', 'figma'), tag('Unity 3D', 'unity')],
     },
   ],
   en: [
@@ -81,7 +87,7 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'frontend',
       cat: 'Front-end',
       featured: true,
-      tags: [tag('Vue 3', 'vue3'), tag('Pinia', 'green'), tag('React', 'react'), tag('TypeScript', 'ts'), tag('single-spa', 'spa'), tag('Tailwind', 'tailwind')],
+      tags: [tag('Vue 3', 'vue3'), tag('Pinia', 'green'), tag('React', 'react'), tag('single-spa', 'spa'), tag('Tailwind', 'tailwind')],
     },
     {
       id: 'ai',
@@ -90,10 +96,16 @@ export const SKILLS: Record<Language, Skill[]> = {
       tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('AI agents', 'mcp')],
     },
     {
+      id: 'languages',
+      cat: 'Programming languages',
+      featured: false,
+      tags: [tag('TypeScript', 'ts'), tag('Go', 'green'), tag('C#', 'csharp'), tag('Python', 'green')],
+    },
+    {
       id: 'services',
       cat: 'Back-end',
       featured: false,
-      tags: [tag('Go', 'green'), tag('MQTT', 'mqtt'), tag('REST API', 'apirest')],
+      tags: [tag('MQTT', 'mqtt'), tag('REST API', 'apirest'), tag('Socket.IO', 'socketio')],
     },
     {
       id: 'quality',
@@ -105,7 +117,7 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'design',
       cat: 'Design & 3D',
       featured: false,
-      tags: [tag('Figma', 'figma'), tag('Unity 3D', 'unity'), tag('C#', 'csharp')],
+      tags: [tag('Figma', 'figma'), tag('Unity 3D', 'unity')],
     },
   ],
 }
