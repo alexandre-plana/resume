@@ -249,7 +249,7 @@ const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
       { l: 'gitlab ci', k: 'gitlabci' },
     ],
     36: [d.web, d.uiux, { l: 'figma', k: 'figma' }, { l: 'react', k: 'react' }, { l: 'shadcn', k: 'green' }, { l: 'npm', k: 'green' }],
-    35: [d.ai, { l: 'claude', k: 'mcp' }, { l: 'codex', k: 'mcp' }, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }],
+    35: [d.ai, { l: 'claude', k: 'mcp' }, { l: 'codex', k: 'mcp' }, { l: 'jev', k: 'mcp' }, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }],
     11: [d.web, d.vue, { l: 'typescript', k: 'ts' }, { l: 'single-spa', k: 'spa' }, { l: 'pinia', k: 'green' }, { l: 'vitest', k: 'vitest' }, { l: 'sonarqube', k: 'sonarqube' }],
     12: [d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'ar', k: 'ar' }, { l: 'mobile', k: 'mobile' }, { l: 'offline', k: 'offline' }],
     // Oreka projects, one card each.

@@ -55,7 +55,7 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'ai',
       cat: 'IA',
       featured: true,
-      tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('agents IA', 'mcp')],
+      tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('Jev', 'mcp'), tag('agents IA', 'mcp')],
     },
     {
       id: 'languages',
@@ -93,7 +93,7 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'ai',
       cat: 'AI',
       featured: true,
-      tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('AI agents', 'mcp')],
+      tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('Jev', 'mcp'), tag('AI agents', 'mcp')],
     },
     {
       id: 'languages',
@@ -183,7 +183,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     35: {
       title: 'Workflow de développement par agents IA',
       badge: 'Conception & orchestration d’agents IA',
-      desc: 'Workflow de développement assisté par agents IA, inspiré de la méthode BMAD et utilisé sur Xistar. Claude et Codex y travaillent en tandem : l’un produit, l’autre relit.',
+      desc: 'Workflow de développement assisté par agents IA, inspiré de la méthode BMAD et utilisé sur Xistar. Plusieurs fournisseurs d’IA y sont combinés (Claude, Codex et Jev) : l’un produit, un autre relit.',
       tasks: [
         'Agents spécialisés par domaine et orchestrateur qui leur répartit le travail.',
         'Agents dédiés à la non-régression, appuyés sur des parcours utilisateurs et un design system strictement défini.',
@@ -191,7 +191,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
         'Outil de suivi en #react et #typescript alimenté par les hooks des agents.',
         'Rapports de session analysés pour corriger les consignes des agents et le workflow.',
       ],
-      tags: ['claude', 'codex', 'bmad', 'docker', 'gitlab ci', 'react', 'typescript'],
+      tags: ['claude', 'codex', 'jev', 'bmad', 'docker', 'gitlab ci', 'react', 'typescript'],
     },
     36: {
       title: 'Design system de X-PERT',
@@ -268,7 +268,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     35: {
       title: 'AI-agent development workflow',
       badge: 'AI agent design & orchestration',
-      desc: 'An AI-assisted development workflow inspired by the BMAD method and used on Xistar. Claude and Codex work in tandem: one produces, the other reviews.',
+      desc: 'An AI-assisted development workflow inspired by the BMAD method and used on Xistar. Several AI providers are combined (Claude, Codex and Jev): one produces, another reviews.',
       tasks: [
         'Domain-specific agents and an orchestrator that dispatches work to them.',
         'Non-regression agents built on user journeys and a strictly defined design system.',
@@ -276,7 +276,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
         'A #react and #typescript tracking tool fed by agent hooks.',
         'Session reports analyzed to correct agent instructions and the workflow.',
       ],
-      tags: ['claude', 'codex', 'bmad', 'docker', 'gitlab ci', 'react', 'typescript'],
+      tags: ['claude', 'codex', 'jev', 'bmad', 'docker', 'gitlab ci', 'react', 'typescript'],
     },
     36: {
       title: 'X-PERT design system',
