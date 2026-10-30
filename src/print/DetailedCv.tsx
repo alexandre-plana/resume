@@ -1,5 +1,4 @@
 import { useEffect, useRef, type ReactNode } from 'react'
-import qrCode from '../assets/resume-qr.svg'
 import { Avatar } from '../components/Avatar'
 import { InlineTechText } from '../components/InlineTechText'
 import { TechBadge } from '../components/TechBadge'
@@ -237,13 +236,6 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
             </div>
           </div>
 
-          <div className="dcv-online">
-            <img className="dcv-qr" src={qrCode} alt={labels.online} />
-            <div>
-              <div className="dcv-label">{labels.online}</div>
-              <div className="dcv-online-url">{model.url.replace('https://', '')}</div>
-            </div>
-          </div>
         </aside>
 
         <main className="dcv-cover-main">

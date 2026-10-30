@@ -13,7 +13,6 @@ import {
   type ProjectRow,
 } from './detailedContent'
 import { IECA_DETAILS, type IecaDetails } from './iecaDetails'
-import { RESUME_URL } from './onePage'
 
 // Texts keep their #tech tags: the page renders them as inline tags, like the online resume.
 
@@ -33,7 +32,6 @@ export interface DetailedLabels {
   coreSkills: string
   interests: string
   openToWork: string
-  online: string
   tasks: string
 }
 
@@ -89,7 +87,6 @@ export interface DetailedModel {
   location: string
   email: string
   phone: string
-  url: string
   bio: string
   overview: OverviewCompany[]
   skills: Skill[]
@@ -125,7 +122,6 @@ const LABELS: Record<Language, OwnLabels> = {
     orekaProjects: 'Projets',
     personalProjects: '🛠️ Projets personnels',
     education: '🎓 Formations',
-    online: 'CV en ligne',
     tasks: 'Réalisations',
   },
   en: {
@@ -139,7 +135,6 @@ const LABELS: Record<Language, OwnLabels> = {
     orekaProjects: 'Projects',
     personalProjects: '🛠️ Personal projects',
     education: '🎓 Education',
-    online: 'Online resume',
     tasks: 'Key contributions',
   },
 }
@@ -297,7 +292,7 @@ const buildOverview = (language: Language): OverviewCompany[] => [
 const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery']
 
 // Applies French typography to every printed string except identifiers, addresses and chip keys.
-const TYPOGRAPHY_SKIP = new Set(['name', 'repo', 'url', 'email', 'phone', 'k', 'language'])
+const TYPOGRAPHY_SKIP = new Set(['name', 'repo', 'email', 'phone', 'k', 'language'])
 
 const withFrenchTypography = <T>(value: T, key = ''): T => {
   if (typeof value === 'string') return (TYPOGRAPHY_SKIP.has(key) ? value : frenchTypography(value)) as T
@@ -351,7 +346,6 @@ const buildModel = (language: Language): DetailedModel => {
     location: 'Le Cannet (06)',
     email: mockProfile.email,
     phone: mockProfile.phone,
-    url: RESUME_URL,
     overview: buildOverview(language),
     skills: SKILLS[language],
     interests: locale.profile.interests.map((interest) => (language === 'fr' ? INTERESTS_FR[interest] ?? interest : interest)),

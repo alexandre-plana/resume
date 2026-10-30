@@ -245,33 +245,9 @@
   height: 5px;
 }
 
-.dcv-online {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-}
 
-.dcv-online .dcv-label {
-  margin-bottom: 2px;
-}
 
-.dcv-qr {
-  width: 17mm;
-  height: 17mm;
-  flex-shrink: 0;
-}
 
-.dcv-online-url {
-  font-family: var(--font-mono);
-  font-size: 0.68em;
-  color: var(--link);
-  overflow-wrap: anywhere;
-}
 
 /* Main column (App.module.css: MAIN) */
 

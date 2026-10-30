@@ -61,7 +61,7 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'languages',
       cat: 'Langages',
       featured: false,
-      tags: [tag('TypeScript', 'ts'), tag('Go', 'green'), tag('C#', 'csharp'), tag('Python', 'green')],
+      tags: [tag('TypeScript', 'ts'), tag('C#', 'csharp'), tag('Python', 'green')],
     },
     {
       id: 'services',
@@ -99,7 +99,7 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'languages',
       cat: 'Programming languages',
       featured: false,
-      tags: [tag('TypeScript', 'ts'), tag('Go', 'green'), tag('C#', 'csharp'), tag('Python', 'green')],
+      tags: [tag('TypeScript', 'ts'), tag('C#', 'csharp'), tag('Python', 'green')],
     },
     {
       id: 'services',
