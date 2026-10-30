@@ -121,9 +121,15 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
         blocks: [
           {
             repo: 'schneider-electric/ieca-ip-sprint',
-            title: 'IP Sprints · 2024',
-            text: 'Gestion des données d’IECA sur mobile (Capacitor puis Quasar, Android et iOS) ; relais des alertes vers une application d’astreinte sous forme de notifications push.',
+            title: 'IP Sprint · données sur mobile · 2024',
+            text: 'Gestion des données d’IECA sur mobile, avec Capacitor puis Quasar pour Android et iOS.',
             tags: ['vue3', 'capacitor', 'mobile'],
+          },
+          {
+            repo: 'schneider-electric/ieca-ip-sprint',
+            title: 'IP Sprint · notifications d’astreinte',
+            text: 'Alertes d’IECA relayées vers une application mobile dédiée, sous forme de notifications push pour les opérateurs d’astreinte.',
+            tags: ['mobile'],
           },
         ],
       },
@@ -230,9 +236,15 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
         blocks: [
           {
             repo: 'schneider-electric/ieca-ip-sprint',
-            title: 'IP Sprints · 2024',
-            text: 'IECA data management on mobile (Capacitor then Quasar, Android and iOS); IECA alerts relayed to an on-call app as push notifications.',
+            title: 'IP Sprint · data on mobile · 2024',
+            text: 'IECA data management on mobile, with Capacitor then Quasar for Android and iOS.',
             tags: ['vue3', 'capacitor', 'mobile'],
+          },
+          {
+            repo: 'schneider-electric/ieca-ip-sprint',
+            title: 'IP Sprint · on-call notifications',
+            text: 'IECA alerts relayed to a dedicated mobile app as push notifications for on-call operators.',
+            tags: ['mobile'],
           },
         ],
       },

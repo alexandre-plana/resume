@@ -48,7 +48,9 @@ describe('buildDetailedModel', () => {
 
       expect(repos).toContain('ieca-connectivity-ui')
       expect(repos).not.toContain('ieca-data-publication-ui')
-      expect(details.groups.flatMap((group) => group.blocks).every((block) => block.tags?.[0] === 'vue3')).toBe(true)
+      const microFrontends = details.groups.filter((group) => group.title !== 'Prototypes').flatMap((group) => group.blocks)
+      expect(microFrontends.every((block) => block.tags?.[0] === 'vue3')).toBe(true)
+      expect(details.groups.at(-1)?.blocks).toHaveLength(2)
     }
   })
 

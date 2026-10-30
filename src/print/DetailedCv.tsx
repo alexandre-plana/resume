@@ -126,7 +126,7 @@ function RepoList({ groups, icon }: { groups: { title?: string; blocks: ProjectR
         <div className="dcv-repo-group" key={group.title ?? 'all'}>
           {group.title && <div className="dcv-repo-group-head">{group.title}</div>}
           {group.blocks.map((block) => (
-            <div className="dcv-repo-row" key={block.repo}>
+            <div className="dcv-repo-row" key={`${block.repo}-${block.title}`}>
               <div className="dcv-repo-id">
                 <span className="dcv-repo-name">
                   <span aria-hidden="true">{icon} </span>
