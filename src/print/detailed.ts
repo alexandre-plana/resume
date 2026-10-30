@@ -1,10 +1,19 @@
 import { getMockDataLocale } from '../api/mockDataLocales'
-import { localizeFormations, localizeSkills } from '../api/localizeData'
-import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile, mockSkills } from '../api/mockData'
+import { localizeFormations } from '../api/localizeData'
+import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile } from '../api/mockData'
 import { getTranslations, type Language } from '../locales'
 import type { Formation, Skill } from '../types'
+import {
+  frenchTypography,
+  HEADS,
+  MISSIONS,
+  OREKA_PROJECTS,
+  PROFILE,
+  SKILLS,
+  type ProjectRow,
+} from './detailedContent'
 import { IECA_DETAILS, type IecaDetails } from './iecaDetails'
-import { RESUME_URL, shortTitle } from './onePage'
+import { RESUME_URL } from './onePage'
 
 // Texts keep their #tech tags: the page renders them as inline tags, like the online resume.
 
@@ -17,8 +26,7 @@ export interface DetailedLabels {
   webXpert: string
   industrialAr: string
   oreka: string
-  keyProjects: string
-  otherProjects: string
+  orekaProjects: string
   personalProjects: string
   education: string
   languages: string
@@ -46,6 +54,8 @@ export interface MissionView {
   tasks: string[]
   tags: string[]
   featured: boolean
+  team?: string
+  extra?: string
 }
 
 export interface Chip {
@@ -58,9 +68,9 @@ export interface OverviewEntry {
   title: string
   badge: string
   period: string
+  note?: string
   chips: Chip[]
   featured: boolean
-  projects: { name: string; title: string; shortTitle: string; period: string; key: boolean }[]
 }
 
 export interface OverviewCompany {
@@ -72,10 +82,9 @@ export interface DetailedModel {
   language: Language
   labels: DetailedLabels
   name: string
-  handle: string
   title: string
   subtitle: string
-  company: string
+  github: string
   location: string
   email: string
   phone: string
@@ -84,18 +93,12 @@ export interface DetailedModel {
   overview: OverviewCompany[]
   skills: Skill[]
   interests: string[]
-  formations: { id: string; kind: Formation['kind']; label: string; title: string; sub: string; meta: string }[]
+  formations: { id: string; kind: Formation['kind']; title: string; sub: string }[]
   languages: { label: string; level: string }[]
   schneiderWeb: { head: CompanyHead; mission: MissionView; details: IecaDetails }
-  xpert: {
-    head: CompanyHead
-    xistar: MissionView
-    xistarFocus: { title: string; text: string }[]
-    companionTools: MissionView[]
-    missions: MissionView[]
-  }
+  xpert: { head: CompanyHead; missions: MissionView[] }
   schneiderAr: { head: CompanyHead; mission: MissionView }
-  oreka: { head: CompanyHead; overview: MissionView; keyProjects: MissionView[]; otherProjects: MissionView[] }
+  oreka: { head: CompanyHead; overview: MissionView; projects: ProjectRow[] }
   personalProjects: {
     name: string
     kind: string
@@ -107,7 +110,7 @@ export interface DetailedModel {
   }[]
 }
 
-type OwnLabels = Omit<DetailedLabels, 'about' | 'languages' | 'coreSkills' | 'interests' | 'openToWork' | 'tasks'>
+type OwnLabels = Omit<DetailedLabels, 'about' | 'languages' | 'coreSkills' | 'interests' | 'openToWork'>
 
 const LABELS: Record<Language, OwnLabels> = {
   fr: {
@@ -118,11 +121,11 @@ const LABELS: Record<Language, OwnLabels> = {
     webXpert: '📌 Développement web — X-PERT',
     industrialAr: '📌 Application AR industrielle — Schneider Electric',
     oreka: '📌 Serious games & simulation — Oreka Ingénierie',
-    keyProjects: 'Projets phares',
-    otherProjects: 'Autres réalisations',
-    personalProjects: '🛠️ Projets persos',
+    orekaProjects: 'Projets',
+    personalProjects: '🛠️ Projets personnels',
     education: '🎓 Formations',
     online: 'CV en ligne',
+    tasks: 'Réalisations',
   },
   en: {
     document: 'Detailed resume',
@@ -131,12 +134,12 @@ const LABELS: Record<Language, OwnLabels> = {
     iecaComponents: 'IECA micro-frontends I worked on',
     webXpert: '📌 Web development — X-PERT',
     industrialAr: '📌 Industrial AR application — Schneider Electric',
-    oreka: '📌 Serious games & simulation — Oreka Engineering',
-    keyProjects: 'Key projects',
-    otherProjects: 'Other projects',
+    oreka: '📌 Serious games & simulation — Oreka Ingénierie',
+    orekaProjects: 'Projects',
     personalProjects: '🛠️ Personal projects',
     education: '🎓 Education',
     online: 'Online resume',
+    tasks: 'Key contributions',
   },
 }
 
@@ -146,13 +149,14 @@ const findExperience = (id: number) => {
   return experience
 }
 
-const companyHead = (language: Language, experienceId: number, current = false): CompanyHead => {
+// Detail sections pass the mission period, so a section reads as the time spent on that work.
+const companyHead = (language: Language, experienceId: number, current = false, period?: string): CompanyHead => {
   const experience = findExperience(experienceId)
-  const locale = getMockDataLocale(language).experiences[experienceId.toString()]
+  const head = HEADS[language][experienceId]
   return {
-    company: locale?.company || experience.company,
-    employer: locale?.employer || experience.employer,
-    period: experience.period,
+    company: head?.company ?? experience.company,
+    employer: head?.employer ?? experience.employer,
+    period: period ?? experience.period,
     current,
   }
 }
@@ -161,17 +165,20 @@ const missionView = (language: Language, experienceId: number, missionId: number
   const mission = findExperience(experienceId).missions.find((candidate) => candidate.id === missionId)
   if (!mission) throw new Error(`Unknown mission ${missionId}`)
   const locale = getMockDataLocale(language).experiences[experienceId.toString()]?.missions[missionId.toString()]
+  const override = MISSIONS[language][missionId] ?? {}
 
   return {
     name: mission.name,
-    title: locale?.context || mission.context,
-    badge: locale?.badge || mission.badge,
-    period: mission.period,
-    desc: locale?.desc || mission.desc,
+    title: override.title ?? (locale?.context || mission.context),
+    badge: override.badge ?? (locale?.badge || mission.badge),
+    period: override.period ?? mission.period,
+    desc: override.desc ?? (locale?.desc || mission.desc),
     brief: locale?.cardSummary || mission.cardSummary || mission.desc,
-    tasks: locale?.tasks || mission.tasks || [],
-    tags: mission.tags,
+    tasks: override.tasks ?? (locale?.tasks || mission.tasks || []),
+    tags: override.tags ?? mission.tags,
     featured: mission.featured,
+    team: override.team,
+    extra: override.extra,
   }
 }
 
@@ -241,8 +248,8 @@ const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
       { l: 'gitlab ci', k: 'gitlabci' },
     ],
     36: [d.web, d.uiux, { l: 'figma', k: 'figma' }, { l: 'react', k: 'react' }, { l: 'shadcn', k: 'green' }, { l: 'npm', k: 'green' }],
-    35: [d.ai, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }, { l: 'react', k: 'react' }],
-    11: [d.web, d.vue, { l: 'typescript', k: 'ts' }, { l: 'single-spa', k: 'spa' }, { l: 'pinia', k: 'green' }, { l: 'jest', k: 'jest' }, { l: 'sonarqube', k: 'sonarqube' }],
+    35: [d.ai, { l: 'claude', k: 'mcp' }, { l: 'codex', k: 'mcp' }, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }],
+    11: [d.web, d.vue, { l: 'typescript', k: 'ts' }, { l: 'single-spa', k: 'spa' }, { l: 'pinia', k: 'green' }, { l: 'vitest', k: 'vitest' }, { l: 'sonarqube', k: 'sonarqube' }],
     12: [d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'ar', k: 'ar' }, { l: 'mobile', k: 'mobile' }, { l: 'offline', k: 'offline' }],
     // Oreka projects, one card each.
     26: [d.seriousGame, d.radiation, d.nuclear, unity, csharp],
@@ -257,32 +264,16 @@ const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
 // Web, Vue and AI missions get the featured card style.
 const OVERVIEW_FEATURED = new Set([31, 11, 35])
 
-// Projects listed under an entry; those in keyProjectIds are emphasized.
-const overviewEntry = (
-  language: Language,
-  experienceId: number,
-  missionId: number,
-  projectIds: number[] = [],
-  keyProjectIds: number[] = [],
-): OverviewEntry => {
+const overviewEntry = (language: Language, experienceId: number, missionId: number): OverviewEntry => {
   const mission = missionView(language, experienceId, missionId)
   return {
     name: mission.name,
     title: mission.title,
     badge: mission.badge,
     period: mission.period,
+    note: MISSIONS[language][missionId]?.note,
     chips: OVERVIEW_CHIPS(language)[missionId] ?? [],
     featured: OVERVIEW_FEATURED.has(missionId),
-    projects: projectIds.map((id) => {
-      const project = missionView(language, experienceId, id)
-      return {
-        name: project.name,
-        title: project.title,
-        shortTitle: shortTitle(project.title),
-        period: project.period,
-        key: keyProjectIds.includes(id),
-      }
-    }),
   }
 }
 
@@ -301,36 +292,31 @@ const buildOverview = (language: Language): OverviewCompany[] => [
   },
 ]
 
-// Xistar highlights: multi-screen operation (from the mission and wall-emulator data) and delivery.
-const XISTAR_FOCUS: Record<Language, { title: string; text: string }[]> = {
-  fr: [
-    {
-      title: 'Multi-écran & temps réel',
-      text: 'Application multi-écran pilotée depuis un poste maître : ensembles d’écrans, tableau de mission et envoi de vues à distance, avec une gestion centralisée et en temps réel de ce que chaque écran affiche. Les situations, alertes et positions arrivent en continu par #mqtt et #socketio, et le rejeu temporel permet de revoir une opération pour l’analyse et les débriefings.',
-    },
-    {
-      title: 'Conteneurs & pipelines',
-      text: 'Interface et services #go conteneurisés avec #docker, workflow de développement et pipelines #gitlab-ci pour construire et livrer les images.',
-    },
-  ],
-  en: [
-    {
-      title: 'Multi-screen & real time',
-      text: 'Multi-screen application driven from a master station: screen sets, a mission board and remote view sending, with centralized, real-time control of what each screen displays. Situation, alert and position updates stream in through #mqtt and #socketio, and time-based replay lets operators review an operation for analysis and debriefing.',
-    },
-    {
-      title: 'Containers & pipelines',
-      text: 'Interface and #go services containerized with #docker, with a development workflow and #gitlab-ci pipelines that build and ship the images.',
-    },
-  ],
+// Personal projects that are not finished web applications stay off this web-oriented resume.
+const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery']
+
+// Applies French typography to every printed string except identifiers, addresses and chip keys.
+const TYPOGRAPHY_SKIP = new Set(['name', 'repo', 'url', 'email', 'phone', 'github', 'k', 'language'])
+
+const withFrenchTypography = <T>(value: T, key = ''): T => {
+  if (typeof value === 'string') return (TYPOGRAPHY_SKIP.has(key) ? value : frenchTypography(value)) as T
+  if (Array.isArray(value)) return value.map((item) => withFrenchTypography(item, key)) as T
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value).map(([entryKey, entry]) => [entryKey, withFrenchTypography(entry, entryKey)]),
+    ) as T
+  }
+  return value
 }
 
-const withTags = (mission: MissionView, tags: string[]): MissionView => ({ ...mission, tags: [...mission.tags, ...tags] })
-
-// Personal projects that are not web applications stay off this web-oriented resume.
-const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery', 'kin']
+const INTERESTS_FR: Record<string, string> = { '🥾 Rando': '🥾 Randonnée' }
 
 export const buildDetailedModel = (language: Language): DetailedModel => {
+  const model = buildModel(language)
+  return language === 'fr' ? withFrenchTypography(model) : model
+}
+
+const buildModel = (language: Language): DetailedModel => {
   const locale = getMockDataLocale(language)
   const t = getTranslations(language)
 
@@ -358,49 +344,33 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
       coreSkills: t.common.coreSkills,
       interests: t.sidebar.interests,
       openToWork: t.common.openToWork,
-      tasks: t.mission.tasksPreviewTitle,
     },
     name: mockProfile.name,
-    handle: mockProfile.handle,
-    title: locale.profile.title,
-    subtitle: locale.profile.subtitle,
-    company: locale.profile.company,
+    ...PROFILE[language],
+    github: `github.com/${mockProfile.handle}`,
     location: mockProfile.location,
     email: mockProfile.email,
     phone: mockProfile.phone,
     url: RESUME_URL,
-    bio: locale.profile.bio,
     overview: buildOverview(language),
-    // Same sidebar sections as the online resume.
-    skills: localizeSkills(mockSkills, locale.skills),
-    interests: locale.profile.interests,
-    formations: localizeFormations(mockFormation, locale.formation).map(({ id, kind, label, title, sub, meta }) => ({
-      id,
-      kind,
-      label,
-      title,
-      sub,
-      meta,
-    })),
+    skills: SKILLS[language],
+    interests: locale.profile.interests.map((interest) => (language === 'fr' ? INTERESTS_FR[interest] ?? interest : interest)),
+    formations: localizeFormations(mockFormation, locale.formation).map(({ id, kind, title, sub }) => ({ id, kind, title, sub })),
     languages: locale.profile.langs,
     schneiderWeb: {
-      head: companyHead(language, 1),
+      head: companyHead(language, 1, false, '2023 – 2026'),
       mission: missionView(language, 1, 11),
       details: IECA_DETAILS[language],
     },
     xpert: {
       head: companyHead(language, 3, true),
-      xistar: withTags(missionView(language, 3, 31), ['docker', 'gitlab ci']),
-      xistarFocus: XISTAR_FOCUS[language],
-      companionTools: [32, 33, 34].map((id) => missionView(language, 3, id)),
-      missions: [36, 35].map((id) => missionView(language, 3, id)),
+      missions: [31, 35, 36].map((id) => missionView(language, 3, id)),
     },
-    schneiderAr: { head: companyHead(language, 1), mission: missionView(language, 1, 12) },
+    schneiderAr: { head: companyHead(language, 1, false, '2017 – 2023'), mission: missionView(language, 1, 12) },
     oreka: {
       head: companyHead(language, 2),
       overview: missionView(language, 2, 21),
-      keyProjects: [23, 26, 22].map((id) => missionView(language, 2, id)),
-      otherProjects: [28, 24, 25, 27].map((id) => missionView(language, 2, id)),
+      projects: OREKA_PROJECTS[language],
     },
     personalProjects,
   }

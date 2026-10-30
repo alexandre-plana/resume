@@ -98,6 +98,8 @@
 .dcv-flow {
   width: 210mm;
   padding: 0 10mm;
+  /* Detail pages read at a larger size than the dense cover. */
+  font-size: 1.1rem;
 }
 
 /* Block flow (not flex) so Chromium can keep headers with what follows across page breaks. */
@@ -114,8 +116,8 @@
 }
 
 .dcv-avatar img {
-  width: 38mm !important;
-  height: 38mm !important;
+  width: 32mm !important;
+  height: 32mm !important;
 }
 
 .dcv-profile-name {
@@ -123,13 +125,6 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 4px;
-}
-
-.dcv-profile-handle {
-  font-family: var(--font-mono);
-  font-size: 1em;
-  color: var(--text-2);
-  margin-bottom: 6px;
 }
 
 .dcv-profile-title {
@@ -320,7 +315,6 @@
   margin-bottom: -45mm;
 }
 
-
 .dcv-tl-company {
   display: flex;
   align-items: flex-start;
@@ -393,7 +387,6 @@
 /* Mission cards */
 
 .dcv-mission,
-.dcv-project,
 .dcv-card {
   background: var(--bg-2);
   border: 1px solid var(--border);
@@ -401,10 +394,6 @@
   padding: 12px;
   display: flex;
   flex-direction: column;
-}
-
-.dcv-mission {
-  break-inside: avoid;
 }
 
 .dcv-mission-featured {
@@ -428,71 +417,6 @@
   margin-bottom: 5px;
 }
 
-.dcv-overview-projects {
-  list-style: none;
-  display: grid;
-  gap: 5px;
-  margin: 2px 0 8px;
-  padding: 6px 0 0 4px;
-  border-top: 1px dashed var(--border);
-}
-
-.dcv-overview-project-head {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  font-size: 0.85em;
-}
-
-.dcv-overview-project-name {
-  font-family: var(--font-mono);
-  font-size: 0.85em;
-  font-weight: 600;
-  color: var(--link);
-}
-
-.dcv-overview-project-period {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: 0.78em;
-  color: var(--text-3);
-  white-space: nowrap;
-}
-
-.dcv-overview-project-title {
-  padding-left: 1.6em;
-  font-size: 0.7em;
-  color: var(--text-2);
-}
-
-.dcv-overview-others {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px 12px;
-  margin: 0 0 8px;
-  padding: 6px 0 0 4px;
-  border-top: 1px dashed var(--border);
-}
-
-.dcv-overview-projects + .dcv-overview-others {
-  border-top: none;
-  padding-top: 0;
-}
-
-.dcv-overview-others li {
-  display: flex;
-  align-items: flex-start;
-  gap: 5px;
-  min-width: 0;
-  font-size: 0.7em;
-  color: var(--text-3);
-}
-
-.dcv-overview-other-title {
-  min-width: 0;
-}
-
 /* Career timeline on the cover: one rail runs along all companies. */
 .dcv-overview-section {
   flex: 1;
@@ -506,7 +430,7 @@
 }
 
 .dcv-overview-body > .dcv-timeline + .dcv-timeline {
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 /* Tighter rhythm on the cover so every entry fits: company, period and role share one line. */
@@ -550,12 +474,6 @@
   content: none;
 }
 
-.dcv-project {
-  background: var(--bg);
-  padding: 10px 12px;
-  break-inside: avoid;
-}
-
 .dcv-card {
   break-inside: avoid;
 }
@@ -589,31 +507,27 @@
 
 .dcv-mission-context {
   font-size: 0.75em;
-  color: var(--text-3);
+  color: var(--text-2);
   margin-bottom: 5px;
+}
+
+.dcv-mission-team {
+  font-size: 0.72em;
+  color: var(--text-2);
+  margin-bottom: 5px;
+}
+
+.dcv-mission-extra {
+  margin-top: 8px;
+  font-size: 0.75em;
+  color: var(--text-2);
+  line-height: 1.5;
 }
 
 .dcv-mission-desc {
   font-size: 0.78em;
   color: var(--text-2);
   line-height: 1.6;
-}
-
-.dcv-mission > .dcv-grid {
-  margin-top: 10px;
-}
-
-.dcv-card-title {
-  font-size: 0.87em;
-  font-weight: 600;
-  color: var(--link);
-  margin-bottom: 3px;
-}
-
-.dcv-card-text {
-  font-size: 0.75em;
-  color: var(--text-2);
-  line-height: 1.55;
 }
 
 .dcv-tasks {
@@ -660,30 +574,11 @@
 }
 
 .dcv-mission .dcv-chips,
-.dcv-project .dcv-chips,
 .dcv-card .dcv-chips {
   margin-top: 8px;
 }
 
-/* Highlighted block inside a mission card */
-
-.dcv-focus {
-  margin-top: 10px;
-  padding: 8px 10px;
-  background: var(--bg);
-  border: 1px solid var(--featured-border);
-  border-left: 3px solid var(--blue);
-  border-radius: var(--radius);
-}
-
-.dcv-focus-title {
-  font-size: 0.8em;
-  font-weight: 600;
-  color: var(--blue);
-  margin-bottom: 3px;
-}
-
-/* Micro-frontend listing (GitHub repository list style) */
+/* Repository listing (GitHub style): IECA micro-frontends and Oreka projects */
 
 .dcv-repo-list {
   border: 1px solid var(--border);
@@ -746,16 +641,25 @@
   margin-top: 5px;
 }
 
-/* Grids */
+/* Education: one line per entry */
 
-.dcv-grid {
+.dcv-education {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 6px 16px;
 }
 
-.dcv-grid-3 {
-  grid-template-columns: repeat(3, 1fr);
+.dcv-education li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.dcv-education .dcv-form-title {
+  margin: 0;
 }
 
 .dcv-stack > * + * {

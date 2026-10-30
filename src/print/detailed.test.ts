@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { buildDetailedModel } from './detailed'
+import { frenchTypography } from './detailedContent'
 
 describe('buildDetailedModel', () => {
   it.each(['fr', 'en'] as const)('builds a complete model in %s', (language) => {
@@ -7,50 +8,68 @@ describe('buildDetailedModel', () => {
 
     expect(model.overview.map((company) => company.entries.length)).toEqual([3, 2, 6])
     expect(model.schneiderWeb.mission.tasks.length).toBeGreaterThan(0)
-    expect(model.xpert.companionTools).toHaveLength(3)
-    expect(model.oreka.keyProjects.every((mission) => mission.tasks.length > 0)).toBe(true)
-    expect(model.formations.length).toBeGreaterThan(0)
+    expect(model.xpert.missions.map((mission) => mission.name)).toEqual([
+      'x-pert/xistar',
+      'x-pert/ai-workflow',
+      'x-pert/xpert-design-system',
+    ])
+    expect(model.oreka.projects).toHaveLength(7)
+    expect(model.skills[0].featured).toBe(true)
+  })
+
+  it('names the employer first and the client second in both languages', () => {
+    for (const language of ['fr', 'en'] as const) {
+      const heads = buildDetailedModel(language).overview.map((company) => company.head.company)
+      expect(heads).toEqual(['Datacorp', 'Datacorp', 'Oreka Ingénierie'])
+    }
+  })
+
+  it('dates detail sections with the mission period', () => {
+    const model = buildDetailedModel('fr')
+
+    expect(model.schneiderWeb.head.period).toBe('2023 – 2026')
+    expect(model.schneiderAr.head.period).toBe('2017 – 2023')
   })
 
   it('opens on the Vue.js mission at Schneider Electric, with its tech tags kept for inline rendering', () => {
     const { mission } = buildDetailedModel('fr').schneiderWeb
 
     expect(mission.name).toBe('schneider-electric/iiot-edge-ieca')
-    expect(mission.desc).toContain('#vue3')
+    expect(mission.tasks[0]).toContain('#vue3')
+    expect(mission.team).toContain('Scrum')
   })
 
-  it('describes every IECA front-end component in both languages', () => {
+  it('lists every IECA micro-frontend in both languages', () => {
     for (const language of ['fr', 'en'] as const) {
       const { details } = buildDetailedModel(language).schneiderWeb
-
       const repos = details.groups.flatMap((group) => group.blocks.map((block) => block.repo))
-      expect(details.groups).toHaveLength(5)
+
       expect(repos).toContain('ieca-connectivity-ui')
-      expect(repos).toContain('ieca-platform-configuration-ui')
+      expect(repos).not.toContain('ieca-data-publication-ui')
+      expect(details.groups.flatMap((group) => group.blocks).every((block) => block.tags?.[0] === 'vue3')).toBe(true)
     }
   })
 
-  it('lists the Oreka projects in the cover timeline and highlights web, Vue and AI', () => {
+  it('highlights web, Vue and AI in the cover timeline', () => {
     const [xpert, schneider, oreka] = buildDetailedModel('fr').overview
 
-    expect(oreka.entries.map((entry) => entry.name).slice(0, 2)).toEqual(['suez/radioprotection', 'simulhom'])
-    expect(oreka.entries).toHaveLength(6)
-    expect(schneider.entries[0].chips.map((chip) => chip.l)).toContain('vue 3')
     expect(xpert.entries.filter((entry) => entry.featured).map((entry) => entry.name)).toEqual([
       'x-pert/xistar',
       'x-pert/ai-workflow',
     ])
+    expect(schneider.entries[0].chips.map((chip) => chip.l)).toContain('vue 3')
+    expect(oreka.entries.map((entry) => entry.name)).not.toContain('oreka/dosicase')
   })
 
-  it('details Dosicase, the radiation-safety serious game and Simulhom', () => {
-    const names = buildDetailedModel('fr').oreka.keyProjects.map((mission) => mission.name)
-
-    expect(names).toEqual(['oreka/dosicase', 'suez/radioprotection', 'simulhom'])
-  })
-
-  it('keeps only web personal projects', () => {
+  it('keeps only finished web personal projects', () => {
     const names = buildDetailedModel('en').personalProjects.map((project) => project.name)
 
-    expect(names).toEqual(['iasit', 'vorrery', 'kin'])
+    expect(names).toEqual(['iasit', 'vorrery'])
+  })
+})
+
+describe('frenchTypography', () => {
+  it('adds narrow no-break spaces before high punctuation and curls apostrophes', () => {
+    expect(frenchTypography("l'équipe : test ; ok ?")).toBe('l’équipe : test ; ok ?')
   })
 })

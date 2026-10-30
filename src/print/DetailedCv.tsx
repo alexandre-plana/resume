@@ -4,7 +4,7 @@ import { Avatar } from '../components/Avatar'
 import { InlineTechText } from '../components/InlineTechText'
 import { TechBadge } from '../components/TechBadge'
 import type { CompanyHead, DetailedLabels, DetailedModel, MissionView, OverviewEntry } from './detailed'
-import type { DetailGroup } from './iecaDetails'
+import type { ProjectRow } from './detailedContent'
 import './detailed.css'
 
 // Same building blocks as the online resume: TechBadge chips, inline #tech tags,
@@ -81,11 +81,17 @@ function MissionCard({
       <div className="dcv-mission-context">
         {mission.title} · {mission.period}
       </div>
+      {mission.team && <div className="dcv-mission-team">👥 {mission.team}</div>}
       <p className="dcv-mission-desc">
         <InlineTechText text={full ? mission.desc : mission.brief} />
       </p>
       {children}
       {full && <Tasks tasks={mission.tasks} label={labels.tasks} />}
+      {full && mission.extra && (
+        <p className="dcv-mission-extra">
+          <InlineTechText text={mission.extra} />
+        </p>
+      )}
       {full && chips && <Chips tags={mission.tags} />}
     </article>
   )
@@ -93,9 +99,6 @@ function MissionCard({
 
 // Cover timeline entry: what, role, when and the domain/technology chips; details follow on the next pages.
 function OverviewCard({ entry }: { entry: OverviewEntry }) {
-  const keyProjects = entry.projects.filter((project) => project.key)
-  const otherProjects = entry.projects.filter((project) => !project.key)
-
   return (
     <article className={entry.featured ? 'dcv-overview dcv-mission-featured' : 'dcv-overview'}>
       <div className="dcv-mission-top">
@@ -106,31 +109,7 @@ function OverviewCard({ entry }: { entry: OverviewEntry }) {
       <div className="dcv-mission-context">
         {entry.title} · {entry.period}
       </div>
-      {keyProjects.length > 0 && (
-        <ul className="dcv-overview-projects">
-          {keyProjects.map((project) => (
-            <li key={project.name}>
-              <div className="dcv-overview-project-head">
-                <span>🗂️</span>
-                <span className="dcv-overview-project-name">{project.name}</span>
-                <span className="dcv-overview-project-period">{project.period}</span>
-              </div>
-              <div className="dcv-overview-project-title">{project.title}</div>
-            </li>
-          ))}
-        </ul>
-      )}
-      {otherProjects.length > 0 && (
-        <ul className="dcv-overview-others">
-          {otherProjects.map((project) => (
-            <li key={project.name}>
-              <span>🗂️</span>
-              <span className="dcv-overview-other-title">{project.shortTitle}</span>
-              <span className="dcv-overview-project-period">{project.period}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      {entry.note && <div className="dcv-mission-team">👥 {entry.note}</div>}
       <div className="dcv-chips">
         {entry.chips.map((chip) => (
           <TechBadge key={chip.l} label={chip.l} kind={chip.k} />
@@ -140,35 +119,18 @@ function OverviewCard({ entry }: { entry: OverviewEntry }) {
   )
 }
 
-function ProjectCard({ mission }: { mission: MissionView }) {
-  return (
-    <article className="dcv-project">
-      <div className="dcv-mission-top">
-        <span>🗂️</span>
-        <span className="dcv-mission-name">{mission.name}</span>
-      </div>
-      <div className="dcv-mission-context">
-        {mission.title} · {mission.period}
-      </div>
-      <p className="dcv-mission-desc">
-        <InlineTechText text={mission.brief} />
-      </p>
-    </article>
-  )
-}
-
-// Micro-frontends as a GitHub-style repository listing: one row per repository, grouped by area.
-function MicroFrontendList({ groups }: { groups: DetailGroup[] }) {
+// GitHub-style repository listing: one row per repository, optionally grouped by area.
+function RepoList({ groups, icon }: { groups: { title?: string; blocks: ProjectRow[] }[]; icon: string }) {
   return (
     <div className="dcv-repo-list">
       {groups.map((group) => (
-        <div className="dcv-repo-group" key={group.title}>
-          <div className="dcv-repo-group-head">{group.title}</div>
+        <div className="dcv-repo-group" key={group.title ?? 'all'}>
+          {group.title && <div className="dcv-repo-group-head">{group.title}</div>}
           {group.blocks.map((block) => (
             <div className="dcv-repo-row" key={block.repo}>
               <div className="dcv-repo-id">
                 <span className="dcv-repo-name">
-                  <span aria-hidden="true">🧩 </span>
+                  <span aria-hidden="true">{icon} </span>
                   {block.repo}
                 </span>
                 <span className="dcv-repo-title">{block.title}</span>
@@ -216,7 +178,6 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
           </div>
 
           <div className="dcv-profile-name">{model.name}</div>
-          <div className="dcv-profile-handle">@{model.handle}</div>
           <div className="dcv-profile-title">{model.title}</div>
           <div className="dcv-profile-subtitle">{model.subtitle}</div>
 
@@ -227,8 +188,8 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
 
           <ul className="dcv-meta">
             <li>
-              <span className="dcv-icon">🏢</span>
-              {model.company}
+              <span className="dcv-icon">🔗</span>
+              {model.github}
             </li>
             <li>
               <span className="dcv-icon">📍</span>
@@ -318,27 +279,12 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
                 <InlineTechText text={model.schneiderWeb.details.intro} />
               </p>
             </div>
-            <MicroFrontendList groups={model.schneiderWeb.details.groups} />
+            <RepoList groups={model.schneiderWeb.details.groups} icon="🧩" />
           </Timeline>
         </section>
 
         <section>
           <Timeline title={labels.webXpert} head={model.xpert.head}>
-            <MissionCard mission={model.xpert.xistar} labels={labels}>
-              {model.xpert.xistarFocus.map((focus) => (
-                <div className="dcv-focus" key={focus.title}>
-                  <div className="dcv-focus-title">{focus.title}</div>
-                  <p className="dcv-mission-desc">
-                    <InlineTechText text={focus.text} />
-                  </p>
-                </div>
-              ))}
-              <div className="dcv-grid dcv-grid-3">
-                {model.xpert.companionTools.map((mission) => (
-                  <ProjectCard mission={mission} key={mission.name} />
-                ))}
-              </div>
-            </MissionCard>
             {model.xpert.missions.map((mission) => (
               <MissionCard mission={mission} labels={labels} key={mission.name} />
             ))}
@@ -354,16 +300,8 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
         <section>
           <Timeline title={labels.oreka} head={model.oreka.head}>
             <MissionCard mission={model.oreka.overview} labels={labels} />
-            <div className="dcv-subhead">{labels.keyProjects}</div>
-            {model.oreka.keyProjects.map((mission) => (
-              <MissionCard mission={mission} labels={labels} key={mission.name} />
-            ))}
-            <div className="dcv-subhead">{labels.otherProjects}</div>
-            <div className="dcv-grid">
-              {model.oreka.otherProjects.map((mission) => (
-                <ProjectCard mission={mission} key={mission.name} />
-              ))}
-            </div>
+            <div className="dcv-subhead">{labels.orekaProjects}</div>
+            <RepoList groups={[{ blocks: model.oreka.projects }]} icon="🗂️" />
           </Timeline>
         </section>
 
@@ -392,19 +330,15 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
 
         <section>
           <div className="dcv-section-header">{labels.education}</div>
-          <div className="dcv-grid dcv-grid-3">
+          <ul className="dcv-education">
             {model.formations.map((formation) => (
-              <article className="dcv-card" key={formation.id}>
-                <div className="dcv-form-label">
-                  <span>{formation.kind === 'degree' ? '🎓' : '📚'}</span>
-                  {formation.label.replace(/^📌\s*/, '')}
-                </div>
-                <div className="dcv-form-title">{formation.title}</div>
-                <div className="dcv-form-subtitle">{formation.sub}</div>
-                <div className="dcv-form-meta">{formation.meta}</div>
-              </article>
+              <li key={formation.id}>
+                <span aria-hidden="true">{formation.kind === 'degree' ? '🎓' : '📚'}</span>
+                <span className="dcv-form-title">{formation.title}</span>
+                <span className="dcv-form-meta">{formation.sub}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       </div>
     </div>
