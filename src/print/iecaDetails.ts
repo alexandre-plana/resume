@@ -122,9 +122,15 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
         blocks: [
           {
             repo: 'alexandre-plana/ip-sprint-*',
-            title: 'IP Sprint — prototypes mobiles (2024)',
+            title: 'IP Sprint — données sur mobile (2024)',
             text: 'Version mobile de la gestion des données d’IECA, avec Capacitor pour #android et iOS puis Quasar, et expérimentation d’un shell mobile capable de charger des micro-frontends #single-spa.',
             tags: ['vue3', 'capacitor', 'quasar', 'mobile'],
+          },
+          {
+            repo: 'ip-sprint · notifications',
+            title: 'IP Sprint — notifications d’astreinte',
+            text: 'Prototype qui fait sortir les alertes d’IECA de la plateforme : elles alimentent un flux dédié au mobile et deviennent des notifications push, reçues sur une application mobile conçue pour l’occasion, par exemple par un opérateur d’astreinte.',
+            tags: ['mobile', 'notifications push'],
           },
         ],
       },
@@ -231,9 +237,15 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
         blocks: [
           {
             repo: 'alexandre-plana/ip-sprint-*',
-            title: 'IP Sprint — mobile prototypes (2024)',
+            title: 'IP Sprint — data on mobile (2024)',
             text: 'A mobile version of IECA data management, using Capacitor for #android and iOS and then Quasar, and an experimental mobile shell able to load #single-spa micro-frontends.',
             tags: ['vue3', 'capacitor', 'quasar', 'mobile'],
+          },
+          {
+            repo: 'ip-sprint · notifications',
+            title: 'IP Sprint — on-call notifications',
+            text: 'A prototype that takes IECA alerts beyond the platform: they feed a mobile-oriented stream and become push notifications on a dedicated mobile app, for example for an on-call operator.',
+            tags: ['mobile', 'push notifications'],
           },
         ],
       },
