@@ -6,7 +6,9 @@ describe('buildDetailedModel', () => {
   it.each(['fr', 'en'] as const)('builds a complete model in %s', (language) => {
     const model = buildDetailedModel(language)
 
-    expect(model.overview.map((company) => company.entries.length)).toEqual([3, 2, 6])
+    expect(model.overview.map((company) => company.entries.length)).toEqual([3, 2, 5])
+    expect(model.overview[2].more).toBeTruthy()
+    expect(model.overview[0].head.period).toMatch(/2026/)
     expect(model.schneiderWeb.mission.tasks.length).toBeGreaterThan(0)
     expect(model.xpert.missions.map((mission) => mission.name)).toEqual([
       'x-pert/xistar',
@@ -59,6 +61,7 @@ describe('buildDetailedModel', () => {
     ])
     expect(schneider.entries[0].chips.map((chip) => chip.l)).toContain('vue 3')
     expect(oreka.entries.map((entry) => entry.name)).not.toContain('oreka/dosicase')
+    expect(oreka.entries.map((entry) => entry.name)).not.toContain('edf/aeroball')
   })
 
   it('keeps only finished web personal projects', () => {

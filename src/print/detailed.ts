@@ -76,6 +76,8 @@ export interface OverviewEntry {
 export interface OverviewCompany {
   head: CompanyHead
   entries: OverviewEntry[]
+  // Shown as a thin "…" line: more projects than the cover lists.
+  more?: string
 }
 
 export interface DetailedModel {
@@ -156,7 +158,7 @@ const companyHead = (language: Language, experienceId: number, current = false, 
   return {
     company: head?.company ?? experience.company,
     employer: head?.employer ?? experience.employer,
-    period: period ?? experience.period,
+    period: period ?? head?.period ?? experience.period,
     current,
   }
 }
@@ -256,7 +258,6 @@ const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
     22: [d.uiux, d.ergonomics, d.simulation, unity, csharp],
     28: [d.simulation, d.radiation, d.medical, unity, csharp],
     24: [d.simulation, d.nuclear, unity, csharp, { l: 'wpf', k: 'wpf' }],
-    25: [d.seriousGame, d.nuclear, unity, csharp],
     27: [d.seriousGame, d.nuclear, unity, csharp],
   }
 }
@@ -288,7 +289,8 @@ const buildOverview = (language: Language): OverviewCompany[] => [
   },
   {
     head: companyHead(language, 2),
-    entries: [26, 22, 28, 24, 25, 27].map((id) => overviewEntry(language, 2, id)),
+    entries: [26, 22, 28, 24, 27].map((id) => overviewEntry(language, 2, id)),
+    more: language === 'fr' ? 'et d’autres serious games et simulateurs' : 'and more serious games and simulators',
   },
 ]
 
@@ -348,7 +350,7 @@ const buildModel = (language: Language): DetailedModel => {
     name: mockProfile.name,
     ...PROFILE[language],
     github: `github.com/${mockProfile.handle}`,
-    location: mockProfile.location,
+    location: 'Le Cannet (06)',
     email: mockProfile.email,
     phone: mockProfile.phone,
     url: RESUME_URL,

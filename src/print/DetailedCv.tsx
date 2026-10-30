@@ -135,12 +135,9 @@ function RepoList({ groups, icon }: { groups: { title?: string; blocks: ProjectR
                 </span>
                 <span className="dcv-repo-title">{block.title}</span>
               </div>
-              <div className="dcv-repo-body">
-                <p className="dcv-mission-desc">
-                  <InlineTechText text={block.text} />
-                </p>
-                {block.tags && <Chips tags={block.tags} />}
-              </div>
+              <p className="dcv-mission-desc">
+                <InlineTechText text={block.text} />
+              </p>
             </div>
           ))}
         </div>
@@ -262,6 +259,7 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
                   {company.entries.map((entry) => (
                     <OverviewCard entry={entry} key={entry.name} />
                   ))}
+                  {company.more && <div className="dcv-overview-more">… {company.more}</div>}
                 </Timeline>
               ))}
             </div>

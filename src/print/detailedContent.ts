@@ -31,12 +31,12 @@ export const PROFILE: Record<Language, { title: string; subtitle: string; bio: s
   fr: {
     title: 'Développeur front-end / full-stack — Vue 3 · React · TypeScript',
     subtitle: 'Applications industrielles · Micro-frontends · IA',
-    bio: 'Treize ans d’applications industrielles, de la 3D temps réel au web. Chez Schneider Electric, j’ai créé la plupart des micro-frontends Vue 3 de la plateforme IIoT IECA et tenu un rôle transverse sur les composants partagés et la revue de code. Sur Xistar, je couvre la conception, le front-end, une partie du back-end en Go et la livraison, avec des agents IA que je conçois et orchestre.',
+    bio: 'Treize ans d’applications industrielles, de la 3D temps réel au web. Chez Schneider Electric, j’ai créé plusieurs micro-frontends Vue 3 de la plateforme IIoT IECA, dont le gabarit commun, et tenu un rôle transverse sur les composants partagés et la revue de code. Sur Xistar, je couvre la conception, le front-end, une partie du back-end en Go et la livraison, avec des agents IA que je conçois et orchestre.',
   },
   en: {
     title: 'Front-end / full-stack developer — Vue 3 · React · TypeScript',
     subtitle: 'Industrial applications · Micro-frontends · AI',
-    bio: 'Thirteen years of industrial applications, from real-time 3D to the web. At Schneider Electric, I built most of the Vue 3 micro-frontends of the IECA IIoT platform and held a cross-team role on shared components and code review. On Xistar, I cover design, front-end, part of the Go back end and delivery, working with AI agents I design and orchestrate.',
+    bio: 'Thirteen years of industrial applications, from real-time 3D to the web. At Schneider Electric, I built several Vue 3 micro-frontends of the IECA IIoT platform, including the shared template, and held a cross-team role on shared components and code review. On Xistar, I cover design, front-end, part of the Go back end and delivery, working with AI agents I design and orchestrate.',
   },
 }
 
@@ -49,31 +49,31 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'frontend',
       cat: 'Front-end',
       featured: true,
-      tags: [tag('Vue 3', 'vue3'), tag('Pinia', 'green'), tag('single-spa', 'spa'), tag('React', 'react'), tag('TypeScript', 'ts'), tag('Tailwind', 'tailwind'), tag('Dockview', 'desktop'), tag('MapLibre', 'maplibre'), tag('deck.gl', 'deck.gl')],
+      tags: [tag('Vue 3', 'vue3'), tag('Pinia', 'green'), tag('React', 'react'), tag('TypeScript', 'ts'), tag('single-spa', 'spa'), tag('Tailwind', 'tailwind')],
     },
     {
       id: 'ai',
       cat: 'IA',
       featured: true,
-      tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('agents IA', 'mcp'), tag('orchestration', 'mcp'), tag('BMAD', 'green')],
+      tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('agents IA', 'mcp')],
     },
     {
       id: 'services',
-      cat: 'Back-end & interopérabilité',
+      cat: 'Back-end',
       featured: false,
-      tags: [tag('Go', 'green'), tag('Python', 'green'), tag('API REST', 'apirest'), tag('MQTT', 'mqtt'), tag('Socket.IO', 'socketio'), tag('AIS · NMEA · CoT · MAVLink', 'green')],
+      tags: [tag('Go', 'green'), tag('MQTT', 'mqtt'), tag('API REST', 'apirest')],
     },
     {
       id: 'quality',
       cat: 'Qualité & livraison',
       featured: false,
-      tags: [tag('Vitest', 'vitest'), tag('Jest', 'jest'), tag('SonarQube', 'sonarqube'), tag('Docker', 'docker'), tag('GitLab CI', 'gitlabci'), tag('Git', 'git'), tag('Jira', 'jira')],
+      tags: [tag('Vitest', 'vitest'), tag('SonarQube', 'sonarqube'), tag('Docker', 'docker'), tag('GitLab CI', 'gitlabci')],
     },
     {
       id: 'design',
       cat: 'Design & 3D',
       featured: false,
-      tags: [tag('Figma', 'figma'), tag('UX/UI', 'uiux'), tag('Unity 3D', 'unity'), tag('C#', 'csharp')],
+      tags: [tag('Figma', 'figma'), tag('Unity 3D', 'unity'), tag('C#', 'csharp')],
     },
   ],
   en: [
@@ -81,44 +81,44 @@ export const SKILLS: Record<Language, Skill[]> = {
       id: 'frontend',
       cat: 'Front-end',
       featured: true,
-      tags: [tag('Vue 3', 'vue3'), tag('Pinia', 'green'), tag('single-spa', 'spa'), tag('React', 'react'), tag('TypeScript', 'ts'), tag('Tailwind', 'tailwind'), tag('Dockview', 'desktop'), tag('MapLibre', 'maplibre'), tag('deck.gl', 'deck.gl')],
+      tags: [tag('Vue 3', 'vue3'), tag('Pinia', 'green'), tag('React', 'react'), tag('TypeScript', 'ts'), tag('single-spa', 'spa'), tag('Tailwind', 'tailwind')],
     },
     {
       id: 'ai',
       cat: 'AI',
       featured: true,
-      tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('AI agents', 'mcp'), tag('orchestration', 'mcp'), tag('BMAD', 'green')],
+      tags: [tag('Claude', 'mcp'), tag('Codex', 'mcp'), tag('AI agents', 'mcp')],
     },
     {
       id: 'services',
-      cat: 'Back end & interoperability',
+      cat: 'Back-end',
       featured: false,
-      tags: [tag('Go', 'green'), tag('Python', 'green'), tag('REST API', 'apirest'), tag('MQTT', 'mqtt'), tag('Socket.IO', 'socketio'), tag('AIS · NMEA · CoT · MAVLink', 'green')],
+      tags: [tag('Go', 'green'), tag('MQTT', 'mqtt'), tag('REST API', 'apirest')],
     },
     {
       id: 'quality',
       cat: 'Quality & delivery',
       featured: false,
-      tags: [tag('Vitest', 'vitest'), tag('Jest', 'jest'), tag('SonarQube', 'sonarqube'), tag('Docker', 'docker'), tag('GitLab CI', 'gitlabci'), tag('Git', 'git'), tag('Jira', 'jira')],
+      tags: [tag('Vitest', 'vitest'), tag('SonarQube', 'sonarqube'), tag('Docker', 'docker'), tag('GitLab CI', 'gitlabci')],
     },
     {
       id: 'design',
       cat: 'Design & 3D',
       featured: false,
-      tags: [tag('Figma', 'figma'), tag('UX/UI', 'uiux'), tag('Unity 3D', 'unity'), tag('C#', 'csharp')],
+      tags: [tag('Figma', 'figma'), tag('Unity 3D', 'unity'), tag('C#', 'csharp')],
     },
   ],
 }
 
 // Employer first, client second, in both languages.
-export const HEADS: Record<Language, Record<number, { company: string; employer: string }>> = {
+export const HEADS: Record<Language, Record<number, { company: string; employer: string; period?: string }>> = {
   fr: {
-    3: { company: 'Datacorp', employer: 'Consultant R&D — client X-PERT' },
+    3: { company: 'Datacorp', employer: 'Consultant R&D — client X-PERT', period: 'mars 2026 – aujourd’hui' },
     1: { company: 'Datacorp', employer: 'Consultant R&D — client Schneider Electric' },
     2: { company: 'Oreka Ingénierie', employer: 'Développeur C# / Unity 3D' },
   },
   en: {
-    3: { company: 'Datacorp', employer: 'R&D Consultant — client X-PERT' },
+    3: { company: 'Datacorp', employer: 'R&D Consultant — client X-PERT', period: 'Mar 2026 – present' },
     1: { company: 'Datacorp', employer: 'R&D Consultant — client Schneider Electric' },
     2: { company: 'Oreka Ingénierie', employer: 'C# / Unity 3D Developer' },
   },
@@ -130,9 +130,9 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
       badge: 'Développeur front-end',
       team: '4 équipes Scrum d’une dizaine de personnes, environ 80 personnes avec la validation et les tests automatisés',
       note: '4 équipes Scrum · ~80 personnes · rôle transverse',
-      desc: 'IECA est la plateforme IIoT Edge de Schneider Electric : une quinzaine de micro-frontends Vue 3 chargés par single-spa, adossés à des services Go. J’ai créé la plupart de ces micro-frontends et participé au développement et à l’évolution de chacun de ceux listés ci-dessous.',
+      desc: 'IECA est la plateforme IIoT Edge de Schneider Electric : une quinzaine de micro-frontends Vue 3 chargés par single-spa, adossés à des services Go. J’en ai créé cinq ou six ainsi que le gabarit commun, et participé au développement et à l’évolution de chacun de ceux listés ci-dessous.',
       tasks: [
-        'Création et évolution des micro-frontends en #vue3, #typescript et #pinia : connectivité, calculs, conditions, alertes, scripting, données et administration.',
+        'Création de cinq ou six micro-frontends et du gabarit commun, puis évolution de l’ensemble en #vue3, #typescript et #pinia : connectivité, calculs, conditions, alertes, scripting, données et administration.',
         'Rôle transverse entre les équipes : composants partagés de la bibliothèque commune (table configurable, sélecteur de propriétés, socle de routage) et revues de code, y compris sur les pull requests des autres équipes.',
         'Exigence de qualité : tests unitaires #vitest et #jest des composants, stores et utilitaires, analyse #sonarqube ; une base de code tenue propre et très peu d’anomalies remontées.',
         'Extensions ponctuelles du back-end pour les besoins des évolutions front-end.',
@@ -215,9 +215,9 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
       badge: 'Front-end developer',
       team: '4 Scrum teams of about ten people, around 80 people including validation and test automation',
       note: '4 Scrum teams · ~80 people · cross-team role',
-      desc: 'IECA is Schneider Electric’s IIoT Edge platform: some fifteen Vue 3 micro-frontends loaded by single-spa, backed by Go services. I built most of these micro-frontends and took part in developing and evolving each one listed below.',
+      desc: 'IECA is Schneider Electric’s IIoT Edge platform: some fifteen Vue 3 micro-frontends loaded by single-spa, backed by Go services. I built five or six of them plus the shared template, and took part in developing and evolving each one listed below.',
       tasks: [
-        'Built and evolved micro-frontends in #vue3, #typescript and #pinia: connectivity, computations, conditions, alerts, scripting, data and administration.',
+        'Built five or six micro-frontends and the shared template, then evolved them all in #vue3, #typescript and #pinia: connectivity, computations, conditions, alerts, scripting, data and administration.',
         'Cross-team role: shared components in the common library (configurable table, property selector, routing foundation) and code reviews, including pull requests from other teams.',
         'Quality focus: #vitest and #jest unit tests for components, stores and utilities, #sonarqube analysis; a clean codebase with very few reported defects.',
         'Occasional back-end extensions needed by front-end changes.',
