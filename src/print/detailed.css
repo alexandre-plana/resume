@@ -99,7 +99,7 @@
   width: 210mm;
   padding: 0 10mm;
   /* Detail pages read at a larger size than the dense cover. */
-  font-size: 1.1rem;
+  font-size: 1.07rem;
 }
 
 /* Block flow (not flex) so Chromium can keep headers with what follows across page breaks. */

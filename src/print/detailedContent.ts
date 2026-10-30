@@ -140,11 +140,11 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
   fr: {
     11: {
       badge: 'Développeur front-end',
-      team: '4 équipes Scrum d’une dizaine de personnes, environ 80 personnes avec la validation et les tests automatisés',
+      team: '4 équipes Scrum d’une dizaine de personnes ; environ 80 personnes au total avec le management, la validation, les tests automatisés, la cybersécurité et les architectes solution',
       note: '4 équipes Scrum · ~80 personnes · rôle transverse',
-      desc: 'IECA est la plateforme IIoT Edge de Schneider Electric : une quinzaine de micro-frontends Vue 3 chargés par single-spa, adossés à des services Go. J’en ai créé cinq ou six ainsi que le gabarit commun, et participé au développement et à l’évolution de chacun de ceux listés ci-dessous.',
+      desc: 'IECA est la plateforme IIoT Edge de Schneider Electric : une quinzaine de micro-frontends Vue 3 chargés par single-spa, adossés à des services Go. J’en ai créé plus de cinq ainsi que le gabarit commun, et participé au développement et à l’évolution de chacun de ceux listés ci-dessous.',
       tasks: [
-        'Création de cinq ou six micro-frontends et du gabarit commun, puis évolution de l’ensemble en #vue3, #typescript et #pinia : connectivité, calculs, conditions, alertes, scripting, données et administration.',
+        'Création de plus de cinq micro-frontends et du gabarit commun, puis évolution de l’ensemble en #vue3, #typescript et #pinia : connectivité, calculs, conditions, alertes, scripting, données et administration.',
         'Rôle transverse entre les équipes : composants partagés de la bibliothèque commune (table configurable, sélecteur de propriétés, socle de routage) et revues de code, y compris sur les pull requests des autres équipes.',
         'Exigence de qualité : tests unitaires #vitest et #jest des composants, stores et utilitaires, analyse #sonarqube ; une base de code tenue propre et très peu d’anomalies remontées.',
         'Extensions ponctuelles du back-end pour les besoins des évolutions front-end.',
@@ -152,16 +152,17 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
       tags: ['vue3', 'typescript', 'single-spa', 'pinia', 'vitest', 'jest', 'sonarqube', 'docker', 'figma', 'jira'],
     },
     12: {
-      badge: 'Front-end puis lead dev',
-      team: '3 équipes Scrum (7, 5 et 4 personnes) ; entré comme développeur front-end, parti lead développeur',
-      note: '3 équipes Scrum · front-end puis lead dev',
-      desc: 'Application de réalité augmentée pour opérateurs industriels, en C# sous Unity, sur Android, iOS et Windows. J’étais en charge du design, des maquettes, de l’architecture front-end, du développement, des livraisons et des développements spécifiques clients.',
+      badge: 'Front-end puis main dev',
+      team: '3 équipes Scrum (7, 5 et 4 personnes) ; évolution de développeur front-end à main dev, jusqu’à l’arrêt du projet',
+      note: '3 équipes Scrum · évolution front-end → main dev',
+      desc: 'Solution de réalité augmentée pour opérateurs industriels, composée de trois modules : une application web, une application mobile multiplateforme (Android, iOS, Windows) en C# sous Unity et un runtime. J’étais en charge du design, des maquettes, de l’architecture front-end, du développement, des livraisons et des développements spécifiques clients.',
       tasks: [
         'Design, maquettes et architecture front-end d’une interface adaptée aux trois plateformes, en portrait et en paysage.',
         'Fonctionnement hors ligne et synchronisation #http, contributions au serveur de projets en #python.',
         'Rétrocompatibilité des projets : lecture des anciens formats et migration au chargement.',
         'Système de styles externalisé et développements spécifiques pour les clients #oem.',
         'Livraisons sur les différents stores et outil de tests unitaires intégré aux étapes de build #unity.',
+        'Maintenance en fin de vie du projet : mises à jour de cybersécurité, demandes de modification clients (PCR) et nouvelles livraisons.',
       ],
       tags: ['unity', 'c#', 'ar', 'android', 'ios', 'windows', 'python', 'figma', 'jira'],
     },
@@ -225,11 +226,11 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
   en: {
     11: {
       badge: 'Front-end developer',
-      team: '4 Scrum teams of about ten people, around 80 people including validation and test automation',
+      team: '4 Scrum teams of about ten people; around 80 people in total including management, validation, test automation, cybersecurity and solution architects',
       note: '4 Scrum teams · ~80 people · cross-team role',
-      desc: 'IECA is Schneider Electric’s IIoT Edge platform: some fifteen Vue 3 micro-frontends loaded by single-spa, backed by Go services. I built five or six of them plus the shared template, and took part in developing and evolving each one listed below.',
+      desc: 'IECA is Schneider Electric’s IIoT Edge platform: some fifteen Vue 3 micro-frontends loaded by single-spa, backed by Go services. I built more than five of them plus the shared template, and took part in developing and evolving each one listed below.',
       tasks: [
-        'Built five or six micro-frontends and the shared template, then evolved them all in #vue3, #typescript and #pinia: connectivity, computations, conditions, alerts, scripting, data and administration.',
+        'Built more than five micro-frontends and the shared template, then evolved them all in #vue3, #typescript and #pinia: connectivity, computations, conditions, alerts, scripting, data and administration.',
         'Cross-team role: shared components in the common library (configurable table, property selector, routing foundation) and code reviews, including pull requests from other teams.',
         'Quality focus: #vitest and #jest unit tests for components, stores and utilities, #sonarqube analysis; a clean codebase with very few reported defects.',
         'Occasional back-end extensions needed by front-end changes.',
@@ -237,16 +238,17 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
       tags: ['vue3', 'typescript', 'single-spa', 'pinia', 'vitest', 'jest', 'sonarqube', 'docker', 'figma', 'jira'],
     },
     12: {
-      badge: 'Front-end, then lead dev',
-      team: '3 Scrum teams (7, 5 and 4 people); joined as front-end developer, left as lead developer',
-      note: '3 Scrum teams · front-end, then lead dev',
-      desc: 'Augmented-reality application for industrial operators, in C# with Unity, on Android, iOS and Windows. I was responsible for design, mockups, front-end architecture, development, releases and client-specific development.',
+      badge: 'Front-end, then main dev',
+      team: '3 Scrum teams (7, 5 and 4 people); grew from front-end developer to main developer, until the project ended',
+      note: '3 Scrum teams · grew from front-end to main dev',
+      desc: 'Augmented-reality solution for industrial operators, made of three modules: a web application, a cross-platform mobile app (Android, iOS, Windows) in C# with Unity, and a runtime. I was responsible for design, mockups, front-end architecture, development, releases and client-specific development.',
       tasks: [
         'Designed the interface, mockups and front-end architecture for three platforms, in portrait and landscape.',
         'Developed offline operation and #http synchronization, and contributed to the #python project server.',
         'Kept projects backward compatible by reading legacy formats and migrating them on load.',
         'Built an externalized style system and client-specific features for #oem customers.',
         'Shipped releases to each store and built a unit-testing tool wired into #unity build steps.',
+        'Maintained the product at end of life: cybersecurity updates, client change requests (PCRs) and new releases.',
       ],
       tags: ['unity', 'c#', 'ar', 'android', 'ios', 'windows', 'python', 'figma', 'jira'],
     },

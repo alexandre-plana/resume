@@ -288,6 +288,9 @@ const buildOverview = (language: Language): OverviewCompany[] => [
   },
 ]
 
+// Keeps the first sentence (with its #tech tags) so personal projects stay short.
+const leadSentence = (text: string): string => text.match(/^.*?[.!?](?=\s|$)/su)?.[0] ?? text
+
 // Personal projects that are not finished web applications stay off this web-oriented resume.
 const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery']
 
@@ -326,7 +329,7 @@ const buildModel = (language: Language): DetailedModel => {
         status: projectLocale?.status || project.status || '',
         period: project.period,
         role: projectLocale?.role || project.role,
-        desc: projectLocale?.desc || project.desc,
+        desc: leadSentence(projectLocale?.desc || project.desc),
         stack: project.stack,
       }
     })
