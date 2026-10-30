@@ -5,7 +5,7 @@ describe('buildDetailedModel', () => {
   it.each(['fr', 'en'] as const)('builds a complete model in %s', (language) => {
     const model = buildDetailedModel(language)
 
-    expect(model.overview.map((company) => company.entries.length)).toEqual([3, 2, 7])
+    expect(model.overview.map((company) => company.entries.length)).toEqual([3, 2, 6])
     expect(model.schneiderWeb.mission.tasks.length).toBeGreaterThan(0)
     expect(model.xpert.companionTools).toHaveLength(3)
     expect(model.oreka.keyProjects.every((mission) => mission.tasks.length > 0)).toBe(true)
@@ -33,12 +33,8 @@ describe('buildDetailedModel', () => {
   it('lists the Oreka projects in the cover timeline and highlights web, Vue and AI', () => {
     const [xpert, schneider, oreka] = buildDetailedModel('fr').overview
 
-    expect(oreka.entries.map((entry) => entry.name).slice(0, 3)).toEqual([
-      'oreka/dosicase',
-      'suez/serious-game-radioprotection',
-      'simulhom',
-    ])
-    expect(oreka.entries).toHaveLength(7)
+    expect(oreka.entries.map((entry) => entry.name).slice(0, 2)).toEqual(['suez/radioprotection', 'simulhom'])
+    expect(oreka.entries).toHaveLength(6)
     expect(schneider.entries[0].chips.map((chip) => chip.l)).toContain('vue 3')
     expect(xpert.entries.filter((entry) => entry.featured).map((entry) => entry.name)).toEqual([
       'x-pert/xistar',
@@ -49,7 +45,7 @@ describe('buildDetailedModel', () => {
   it('details Dosicase, the radiation-safety serious game and Simulhom', () => {
     const names = buildDetailedModel('fr').oreka.keyProjects.map((mission) => mission.name)
 
-    expect(names).toEqual(['oreka/dosicase', 'suez/serious-game-radioprotection', 'simulhom'])
+    expect(names).toEqual(['oreka/dosicase', 'suez/radioprotection', 'simulhom'])
   })
 
   it('keeps only web personal projects', () => {

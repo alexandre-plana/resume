@@ -336,7 +336,7 @@ export const mockExperiences: Experience[] = [
         {
           id: 26,
           featured: false,
-          name: 'suez/serious-game-radioprotection',
+          name: 'suez/radioprotection',
           badge: 'Développeur C# / Simulation de formation',
           period: '2014 – 2015',
           context: 'Formation en Radioprotection — Nuclear Safety Training',

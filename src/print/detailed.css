@@ -506,7 +506,7 @@
 }
 
 .dcv-overview-body > .dcv-timeline + .dcv-timeline {
-  margin-top: 8px;
+  margin-top: 14px;
 }
 
 /* Tighter rhythm on the cover so every entry fits: company, period and role share one line. */
@@ -521,11 +521,11 @@
 }
 
 .dcv-overview-body .dcv-tl-missions > * + * {
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 .dcv-overview-body .dcv-overview {
-  padding: 6px 10px;
+  padding: 7px 10px;
 }
 
 .dcv-overview-body .dcv-mission-top {

@@ -245,7 +245,6 @@ const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
     11: [d.web, d.vue, { l: 'typescript', k: 'ts' }, { l: 'single-spa', k: 'spa' }, { l: 'pinia', k: 'green' }, { l: 'jest', k: 'jest' }, { l: 'sonarqube', k: 'sonarqube' }],
     12: [d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'ar', k: 'ar' }, { l: 'mobile', k: 'mobile' }, { l: 'offline', k: 'offline' }],
     // Oreka projects, one card each.
-    23: [d.uiux, d.radiation, d.simulation, unity, csharp, { l: 'figma', k: 'figma' }],
     26: [d.seriousGame, d.radiation, d.nuclear, unity, csharp],
     22: [d.uiux, d.ergonomics, d.simulation, unity, csharp],
     28: [d.simulation, d.radiation, d.medical, unity, csharp],
@@ -298,7 +297,7 @@ const buildOverview = (language: Language): OverviewCompany[] => [
   },
   {
     head: companyHead(language, 2),
-    entries: [23, 26, 22, 28, 24, 25, 27].map((id) => overviewEntry(language, 2, id)),
+    entries: [26, 22, 28, 24, 25, 27].map((id) => overviewEntry(language, 2, id)),
   },
 ]
 
