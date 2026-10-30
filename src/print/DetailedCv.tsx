@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import avatar from '../Avatar.png'
 import qrCode from '../assets/resume-qr.svg'
 import type { CompanyHead, DetailedModel, MissionView } from './detailed'
+import type { DetailBlock } from './iecaDetails'
 import './detailed.css'
 
 function Stack({ items }: { items: string[] }) {
@@ -52,6 +53,19 @@ function Mission({ mission, achievements }: { mission: MissionView; achievements
       )}
       <Stack items={mission.stack} />
     </article>
+  )
+}
+
+function DetailGrid({ blocks }: { blocks: DetailBlock[] }) {
+  return (
+    <div className="dcv-grid">
+      {blocks.map((block) => (
+        <article className="dcv-card" key={block.title}>
+          <h3>{block.title}</h3>
+          <p>{block.text}</p>
+        </article>
+      ))}
+    </div>
   )
 }
 
@@ -165,6 +179,27 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
 
       <div className="dcv-flow">
         <section>
+          <h2>{labels.iecaDetails}</h2>
+          <p className="dcv-intro">{model.schneiderWeb.details.intro}</p>
+          <h4 className="dcv-subhead">{labels.iecaModules}</h4>
+          <DetailGrid blocks={model.schneiderWeb.details.modules} />
+          <h4 className="dcv-subhead">{labels.iecaFoundation}</h4>
+          <DetailGrid blocks={model.schneiderWeb.details.foundation} />
+          <div className="dcv-grid">
+            <article className="dcv-card">
+              <h3>{labels.iecaQuality}</h3>
+              <p>{model.schneiderWeb.details.quality}</p>
+              <Stack items={model.schneiderWeb.details.qualityStack} />
+            </article>
+            <article className="dcv-card">
+              <h3>{labels.ipSprint}</h3>
+              <p>{model.schneiderWeb.details.ipSprint}</p>
+              <Stack items={model.schneiderWeb.details.ipSprintStack} />
+            </article>
+          </div>
+        </section>
+
+        <section>
           <h2>{labels.webXpert}</h2>
           <Company head={model.xpert.head} />
           <Mission mission={model.xpert.xistar} achievements={labels.achievements} />
@@ -203,7 +238,7 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
 
         <section>
           <h2>{labels.personalProjects}</h2>
-          <div className="dcv-grid">
+          <div className="dcv-grid dcv-grid-3">
             {model.personalProjects.map((project) => (
               <article className="dcv-card" key={project.name}>
                 <div className="dcv-mission-head">

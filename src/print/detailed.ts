@@ -3,6 +3,7 @@ import { localizeFormations, localizeSkills } from '../api/localizeData'
 import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile, mockSkills } from '../api/mockData'
 import type { Language } from '../locales'
 import { normalizeTechTag } from '../utils/techTokens'
+import { IECA_DETAILS, type IecaDetails } from './iecaDetails'
 import { firstSentence, RESUME_URL, shortTitle, toPlainText } from './onePage'
 
 export interface DetailedLabels {
@@ -10,6 +11,11 @@ export interface DetailedLabels {
   profile: string
   highlights: string
   vueFocus: string
+  iecaDetails: string
+  iecaModules: string
+  iecaFoundation: string
+  iecaQuality: string
+  ipSprint: string
   webXpert: string
   companionTools: string
   industrialAr: string
@@ -55,7 +61,7 @@ export interface DetailedModel {
   skills: { cat: string; items: string[] }[]
   formations: { title: string; sub: string }[]
   languages: { label: string; level: string }[]
-  schneiderWeb: { head: CompanyHead; mission: MissionView }
+  schneiderWeb: { head: CompanyHead; mission: MissionView; details: IecaDetails }
   xpert: { head: CompanyHead; xistar: MissionView; companionTools: MissionView[]; missions: MissionView[] }
   schneiderAr: { head: CompanyHead; mission: MissionView }
   oreka: { head: CompanyHead; overview: MissionView; keyProjects: MissionView[]; otherProjects: MissionView[] }
@@ -68,6 +74,11 @@ const LABELS: Record<Language, DetailedLabels> = {
     profile: 'Profil',
     highlights: 'Expertise web en bref',
     vueFocus: 'Vue.js · micro-frontend — Schneider Electric',
+    iecaDetails: 'IECA — détail technique',
+    iecaModules: 'Domaines fonctionnels',
+    iecaFoundation: 'Socle partagé',
+    iecaQuality: 'Qualité & industrialisation',
+    ipSprint: 'IP Sprint — prototypes mobiles',
     webXpert: 'Développement web — X-PERT',
     companionTools: 'Outils associés à Xistar',
     industrialAr: 'Application AR industrielle — Schneider Electric',
@@ -86,6 +97,11 @@ const LABELS: Record<Language, DetailedLabels> = {
     profile: 'Profile',
     highlights: 'Web expertise at a glance',
     vueFocus: 'Vue.js · micro-frontend — Schneider Electric',
+    iecaDetails: 'IECA — technical deep dive',
+    iecaModules: 'Functional areas',
+    iecaFoundation: 'Shared foundation',
+    iecaQuality: 'Quality & delivery',
+    ipSprint: 'IP Sprint — mobile prototypes',
     webXpert: 'Web development — X-PERT',
     companionTools: 'Xistar companion tools',
     industrialAr: 'Industrial AR application — Schneider Electric',
@@ -144,11 +160,11 @@ const HIGHLIGHTS: Record<Language, { title: string; text: string }[]> = {
 const WEB_SKILLS: Record<Language, { cat: string; items: string[] }> = {
   fr: {
     cat: 'Écosystème web',
-    items: ['Vue 3', 'Pinia', 'single-spa', 'React', 'Vite', 'Dockview', 'shadcn', 'MapLibre', 'deck.gl', 'Socket.IO', 'HTML / CSS', 'WebGL'],
+    items: ['Vue 3', 'Pinia', 'single-spa', 'React', 'Vite', 'Dockview', 'shadcn', 'MapLibre', 'deck.gl', 'Socket.IO', 'Tailwind', 'HTML / CSS', 'WebGL'],
   },
   en: {
     cat: 'Web ecosystem',
-    items: ['Vue 3', 'Pinia', 'single-spa', 'React', 'Vite', 'Dockview', 'shadcn', 'MapLibre', 'deck.gl', 'Socket.IO', 'HTML / CSS', 'WebGL'],
+    items: ['Vue 3', 'Pinia', 'single-spa', 'React', 'Vite', 'Dockview', 'shadcn', 'MapLibre', 'deck.gl', 'Socket.IO', 'Tailwind', 'HTML / CSS', 'WebGL'],
   },
 }
 
@@ -281,7 +297,7 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
     skills: [WEB_SKILLS[language], ...skills, XR_SKILLS[language]],
     formations: localizeFormations(mockFormation, locale.formation).map(({ title, sub }) => ({ title, sub })),
     languages: locale.profile.langs,
-    schneiderWeb: { head: companyHead(language, 1), mission: missionView(language, 1, 11) },
+    schneiderWeb: { head: companyHead(language, 1), mission: missionView(language, 1, 11), details: IECA_DETAILS[language] },
     xpert: {
       head: companyHead(language, 3),
       xistar: missionView(language, 3, 31),

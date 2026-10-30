@@ -26,6 +26,16 @@ describe('buildDetailedModel', () => {
     expect(mission.summary).not.toContain('#')
   })
 
+  it('adds the IECA technical deep dive in both languages', () => {
+    for (const language of ['fr', 'en'] as const) {
+      const { details } = buildDetailedModel(language).schneiderWeb
+
+      expect(details.modules).toHaveLength(4)
+      expect(details.foundation.map((block) => block.title).length).toBe(4)
+      expect(details.qualityStack).toContain('SonarQube')
+    }
+  })
+
   it('details Dosicase, the radiation-safety serious game and Simulhom', () => {
     const titles = buildDetailedModel('fr').oreka.keyProjects.map((mission) => mission.shortTitle)
 
