@@ -493,8 +493,7 @@
   min-width: 0;
 }
 
-/* The career timeline fills the cover height: leftover space goes between companies,
-   and a single rail runs along all of them. */
+/* Career timeline on the cover: one rail runs along all companies. */
 .dcv-overview-section {
   flex: 1;
   display: flex;
@@ -504,9 +503,37 @@
 .dcv-overview-body {
   flex: 1;
   position: relative;
+}
+
+.dcv-overview-body > .dcv-timeline + .dcv-timeline {
+  margin-top: 8px;
+}
+
+/* Tighter rhythm on the cover so every entry fits: company, period and role share one line. */
+.dcv-overview-body .dcv-tl-company {
+  margin-bottom: 6px;
+}
+
+.dcv-overview-body .dcv-tl-company > div {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.dcv-overview-body .dcv-tl-missions > * + * {
+  margin-top: 5px;
+}
+
+.dcv-overview-body .dcv-overview {
+  padding: 6px 10px;
+}
+
+.dcv-overview-body .dcv-mission-top {
+  margin-bottom: 1px;
+}
+
+.dcv-overview-body .dcv-overview .dcv-mission-context {
+  margin-bottom: 3px;
 }
 
 .dcv-overview-body::before {

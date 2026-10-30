@@ -177,7 +177,22 @@ const missionView = (language: Language, experienceId: number, missionId: number
 
 // Cover timeline: domain chips first (web, Vue, AI stand out), then the main technologies.
 // Kinds pick colors from the online tech-tag themes.
-const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux' | 'seriousGame' | 'multiScreen' | 'realTime', Chip>> = {
+const DOMAIN_CHIPS: Record<Language, Record<
+    | 'web'
+    | 'vue'
+    | 'ai'
+    | 'xr'
+    | 'uiux'
+    | 'seriousGame'
+    | 'multiScreen'
+    | 'realTime'
+    | 'radiation'
+    | 'nuclear'
+    | 'medical'
+    | 'ergonomics'
+    | 'simulation',
+    Chip
+  >> = {
   fr: {
     web: { l: 'web', k: 'ts' },
     vue: { l: 'vue 3', k: 'vue3' },
@@ -187,6 +202,11 @@ const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux'
     seriousGame: { l: 'serious game', k: 'ar' },
     multiScreen: { l: 'multi-écran', k: 'desktop' },
     realTime: { l: 'temps réel', k: 'mqtt' },
+    radiation: { l: 'radioprotection', k: 'html' },
+    nuclear: { l: 'nucléaire', k: '3d' },
+    medical: { l: 'médical', k: 'mobile' },
+    ergonomics: { l: 'ergonomie', k: 'agile' },
+    simulation: { l: 'simulation 3d', k: '3d-temps-réel' },
   },
   en: {
     web: { l: 'web', k: 'ts' },
@@ -197,11 +217,18 @@ const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux'
     seriousGame: { l: 'serious game', k: 'ar' },
     multiScreen: { l: 'multi-screen', k: 'desktop' },
     realTime: { l: 'real-time', k: 'mqtt' },
+    radiation: { l: 'radiation safety', k: 'html' },
+    nuclear: { l: 'nuclear', k: '3d' },
+    medical: { l: 'medical', k: 'mobile' },
+    ergonomics: { l: 'ergonomics', k: 'agile' },
+    simulation: { l: '3d simulation', k: '3d-temps-réel' },
   },
 }
 
 const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
   const d = DOMAIN_CHIPS[language]
+  const unity = { l: 'unity', k: 'unity' }
+  const csharp = { l: 'c#', k: 'csharp' }
   return {
     31: [
       d.web,
@@ -217,7 +244,14 @@ const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
     35: [d.ai, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }, { l: 'react', k: 'react' }],
     11: [d.web, d.vue, { l: 'typescript', k: 'ts' }, { l: 'single-spa', k: 'spa' }, { l: 'pinia', k: 'green' }, { l: 'jest', k: 'jest' }, { l: 'sonarqube', k: 'sonarqube' }],
     12: [d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'ar', k: 'ar' }, { l: 'mobile', k: 'mobile' }, { l: 'offline', k: 'offline' }],
-    21: [d.seriousGame, d.uiux, d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'vr', k: 'vr' }],
+    // Oreka projects, one card each.
+    23: [d.uiux, d.radiation, d.simulation, unity, csharp, { l: 'figma', k: 'figma' }],
+    26: [d.seriousGame, d.radiation, d.nuclear, unity, csharp],
+    22: [d.uiux, d.ergonomics, d.simulation, unity, csharp],
+    28: [d.simulation, d.radiation, d.medical, unity, csharp],
+    24: [d.simulation, d.nuclear, unity, csharp, { l: 'wpf', k: 'wpf' }],
+    25: [d.seriousGame, d.nuclear, unity, csharp],
+    27: [d.seriousGame, d.nuclear, unity, csharp],
   }
 }
 
@@ -256,7 +290,7 @@ const overviewEntry = (
 const buildOverview = (language: Language): OverviewCompany[] => [
   {
     head: companyHead(language, 3, true),
-    entries: [overviewEntry(language, 3, 31, [33, 34, 32]), ...[35, 36].map((id) => overviewEntry(language, 3, id))],
+    entries: [31, 35, 36].map((id) => overviewEntry(language, 3, id)),
   },
   {
     head: companyHead(language, 1),
@@ -264,7 +298,7 @@ const buildOverview = (language: Language): OverviewCompany[] => [
   },
   {
     head: companyHead(language, 2),
-    entries: [overviewEntry(language, 2, 21, [23, 26, 22, 28, 24, 25, 27], [23, 26, 22])],
+    entries: [23, 26, 22, 28, 24, 25, 27].map((id) => overviewEntry(language, 2, id)),
   },
 ]
 
