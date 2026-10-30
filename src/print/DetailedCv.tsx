@@ -61,11 +61,13 @@ function MissionCard({
   mission,
   labels,
   full = true,
+  chips = true,
   children,
 }: {
   mission: MissionView
   labels: DetailedLabels
   full?: boolean
+  chips?: boolean
   children?: ReactNode
 }) {
   return (
@@ -83,7 +85,7 @@ function MissionCard({
       </p>
       {children}
       {full && <Tasks tasks={mission.tasks} label={labels.tasks} />}
-      {full && <Chips tags={mission.tags} />}
+      {full && chips && <Chips tags={mission.tags} />}
     </article>
   )
 }
@@ -240,7 +242,7 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
 
           <section>
             <Timeline title={labels.vueFocus} head={model.schneiderWeb.head}>
-              <MissionCard mission={model.schneiderWeb.mission} labels={labels} />
+              <MissionCard mission={model.schneiderWeb.mission} labels={labels} chips={false} />
             </Timeline>
           </section>
         </main>
