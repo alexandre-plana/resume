@@ -90,7 +90,7 @@ export interface DetailedModel {
   xpert: {
     head: CompanyHead
     xistar: MissionView
-    xistarFocus: { title: string; text: string }
+    xistarFocus: { title: string; text: string }[]
     companionTools: MissionView[]
     missions: MissionView[]
   }
@@ -114,7 +114,7 @@ const LABELS: Record<Language, OwnLabels> = {
     document: 'CV détaillé',
     overview: '📌 Parcours',
     vueFocus: '📌 Vue.js · micro-frontend — Schneider Electric',
-    iecaComponents: 'Composants front-end d’IECA',
+    iecaComponents: 'Micro-frontends IECA sur lesquels j’ai travaillé',
     webXpert: '📌 Développement web — X-PERT',
     industrialAr: '📌 Application AR industrielle — Schneider Electric',
     oreka: '📌 Serious games & simulation — Oreka Ingénierie',
@@ -128,7 +128,7 @@ const LABELS: Record<Language, OwnLabels> = {
     document: 'Detailed resume',
     overview: '📌 Career overview',
     vueFocus: '📌 Vue.js · micro-frontend — Schneider Electric',
-    iecaComponents: 'IECA front-end components',
+    iecaComponents: 'IECA micro-frontends I worked on',
     webXpert: '📌 Web development — X-PERT',
     industrialAr: '📌 Industrial AR application — Schneider Electric',
     oreka: '📌 Serious games & simulation — Oreka Engineering',
@@ -203,10 +203,18 @@ const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux'
 const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
   const d = DOMAIN_CHIPS[language]
   return {
-    31: [d.web, d.multiScreen, d.realTime, { l: 'react', k: 'react' }, { l: 'typescript', k: 'ts' }, { l: 'go', k: 'green' }, { l: 'maplibre', k: 'maplibre' }],
+    31: [
+      d.web,
+      d.multiScreen,
+      d.realTime,
+      { l: 'react', k: 'react' },
+      { l: 'typescript', k: 'ts' },
+      { l: 'go', k: 'green' },
+      { l: 'docker', k: 'docker' },
+      { l: 'gitlab ci', k: 'gitlabci' },
+    ],
     36: [d.web, d.uiux, { l: 'figma', k: 'figma' }, { l: 'react', k: 'react' }, { l: 'shadcn', k: 'green' }, { l: 'npm', k: 'green' }],
     35: [d.ai, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }, { l: 'react', k: 'react' }],
-    37: [d.ai, { l: 'webgl', k: 'webgl2' }, { l: 'hyperframes', k: 'green' }],
     11: [d.web, d.vue, { l: 'typescript', k: 'ts' }, { l: 'single-spa', k: 'spa' }, { l: 'pinia', k: 'green' }, { l: 'jest', k: 'jest' }, { l: 'sonarqube', k: 'sonarqube' }],
     12: [d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'ar', k: 'ar' }, { l: 'mobile', k: 'mobile' }, { l: 'offline', k: 'offline' }],
     21: [d.seriousGame, d.uiux, d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'vr', k: 'vr' }],
@@ -248,7 +256,7 @@ const overviewEntry = (
 const buildOverview = (language: Language): OverviewCompany[] => [
   {
     head: companyHead(language, 3, true),
-    entries: [overviewEntry(language, 3, 31, [33, 34, 32]), ...[35, 36, 37].map((id) => overviewEntry(language, 3, id))],
+    entries: [overviewEntry(language, 3, 31, [33, 34, 32]), ...[35, 36].map((id) => overviewEntry(language, 3, id))],
   },
   {
     head: companyHead(language, 1),
@@ -260,17 +268,31 @@ const buildOverview = (language: Language): OverviewCompany[] => [
   },
 ]
 
-// Xistar's multi-screen operation, detailed from the mission and wall-emulator data.
-const XISTAR_MULTI_SCREEN: Record<Language, { title: string; text: string }> = {
-  fr: {
-    title: 'Multi-écran & temps réel',
-    text: 'Application multi-écran pilotée depuis un poste maître : ensembles d’écrans, tableau de mission et envoi de vues à distance, avec une gestion centralisée et en temps réel de ce que chaque écran affiche. Les situations, alertes et positions arrivent en continu par #mqtt et #socketio, et le rejeu temporel permet de revoir une opération pour l’analyse et les débriefings.',
-  },
-  en: {
-    title: 'Multi-screen & real time',
-    text: 'Multi-screen application driven from a master station: screen sets, a mission board and remote view sending, with centralized, real-time control of what each screen displays. Situation, alert and position updates stream in through #mqtt and #socketio, and time-based replay lets operators review an operation for analysis and debriefing.',
-  },
+// Xistar highlights: multi-screen operation (from the mission and wall-emulator data) and delivery.
+const XISTAR_FOCUS: Record<Language, { title: string; text: string }[]> = {
+  fr: [
+    {
+      title: 'Multi-écran & temps réel',
+      text: 'Application multi-écran pilotée depuis un poste maître : ensembles d’écrans, tableau de mission et envoi de vues à distance, avec une gestion centralisée et en temps réel de ce que chaque écran affiche. Les situations, alertes et positions arrivent en continu par #mqtt et #socketio, et le rejeu temporel permet de revoir une opération pour l’analyse et les débriefings.',
+    },
+    {
+      title: 'Conteneurs & pipelines',
+      text: 'Interface et services #go conteneurisés avec #docker, workflow de développement et pipelines #gitlab-ci pour construire et livrer les images.',
+    },
+  ],
+  en: [
+    {
+      title: 'Multi-screen & real time',
+      text: 'Multi-screen application driven from a master station: screen sets, a mission board and remote view sending, with centralized, real-time control of what each screen displays. Situation, alert and position updates stream in through #mqtt and #socketio, and time-based replay lets operators review an operation for analysis and debriefing.',
+    },
+    {
+      title: 'Containers & pipelines',
+      text: 'Interface and #go services containerized with #docker, with a development workflow and #gitlab-ci pipelines that build and ship the images.',
+    },
+  ],
 }
+
+const withTags = (mission: MissionView, tags: string[]): MissionView => ({ ...mission, tags: [...mission.tags, ...tags] })
 
 // Personal projects that are not web applications stay off this web-oriented resume.
 const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery', 'kin']
@@ -335,10 +357,10 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
     },
     xpert: {
       head: companyHead(language, 3, true),
-      xistar: missionView(language, 3, 31),
-      xistarFocus: XISTAR_MULTI_SCREEN[language],
+      xistar: withTags(missionView(language, 3, 31), ['docker', 'gitlab ci']),
+      xistarFocus: XISTAR_FOCUS[language],
       companionTools: [32, 33, 34].map((id) => missionView(language, 3, id)),
-      missions: [36, 35, 37].map((id) => missionView(language, 3, id)),
+      missions: [36, 35].map((id) => missionView(language, 3, id)),
     },
     schneiderAr: { head: companyHead(language, 1), mission: missionView(language, 1, 12) },
     oreka: {

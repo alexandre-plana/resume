@@ -325,12 +325,14 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
         <section>
           <Timeline title={labels.webXpert} head={model.xpert.head}>
             <MissionCard mission={model.xpert.xistar} labels={labels}>
-              <div className="dcv-focus">
-                <div className="dcv-focus-title">🖥️ {model.xpert.xistarFocus.title}</div>
-                <p className="dcv-mission-desc">
-                  <InlineTechText text={model.xpert.xistarFocus.text} />
-                </p>
-              </div>
+              {model.xpert.xistarFocus.map((focus) => (
+                <div className="dcv-focus" key={focus.title}>
+                  <div className="dcv-focus-title">{focus.title}</div>
+                  <p className="dcv-mission-desc">
+                    <InlineTechText text={focus.text} />
+                  </p>
+                </div>
+              ))}
               <div className="dcv-grid dcv-grid-3">
                 {model.xpert.companionTools.map((mission) => (
                   <ProjectCard mission={mission} key={mission.name} />

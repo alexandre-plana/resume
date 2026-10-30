@@ -5,7 +5,7 @@ describe('buildDetailedModel', () => {
   it.each(['fr', 'en'] as const)('builds a complete model in %s', (language) => {
     const model = buildDetailedModel(language)
 
-    expect(model.overview.map((company) => company.entries.length)).toEqual([4, 2, 1])
+    expect(model.overview.map((company) => company.entries.length)).toEqual([3, 2, 1])
     expect(model.schneiderWeb.mission.tasks.length).toBeGreaterThan(0)
     expect(model.xpert.companionTools).toHaveLength(3)
     expect(model.oreka.keyProjects.every((mission) => mission.tasks.length > 0)).toBe(true)
