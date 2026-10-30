@@ -23,7 +23,7 @@ export interface IecaDetails {
 export const IECA_DETAILS: Record<Language, IecaDetails> = {
   fr: {
     intro:
-      'Une vingtaine de dépôts front-end, chacun publié comme application #single-spa en #vue3 et #typescript, avec #pinia, Vue Router et le design system Quartz de Schneider Electric. Les applications récentes partagent la même architecture : composants container/présentation, mappers DTO → modèle typés, un store par domaine et des formulaires validés avec vee-validate et yup ou zod.',
+      'Une quinzaine de micro-frontends, chacun publié comme application #single-spa en #vue3 et #typescript, avec #pinia, Vue Router et le design system Quartz de Schneider Electric. Les applications récentes partagent la même architecture : composants container/présentation, mappers DTO → modèle typés, un store par domaine et des formulaires validés avec vee-validate et yup ou zod.',
     groups: [
       {
         title: 'Shell & socle partagé',
@@ -75,12 +75,6 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
             text: 'Éditeur arborescent du modèle de données : création et suppression de niveaux, association de propriétés via PropertiesPicker, import. Réécriture de l’ancienne application (actifs et équipements) vers la nouvelle API.',
             tags: ['vue3', 'pinia', 'tailwind'],
           },
-          {
-            repo: 'ieca-data-publication-ui',
-            title: 'Publication de données',
-            text: 'Connecteurs de publication IT avec navigation connecteurs → interfaces → groupes → propriétés et opérations de création, modification et suppression à chaque niveau.',
-            tags: ['yup', 'tailwind'],
-          },
         ],
       },
       {
@@ -128,12 +122,6 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
             tags: ['typescript', 'node-forge'],
           },
           {
-            repo: 'ieca-license-manager-ui · ieca-eula-ui',
-            title: 'Licences & EULA',
-            text: 'Tableau des licences d’applications avec détail et échéance, activation en ligne par clé ou hors ligne ; affichage du contrat de licence utilisateur.',
-            tags: ['zod', 'tailwind'],
-          },
-          {
             repo: 'ieca-overview-ui',
             title: 'Vue d’ensemble',
             text: 'Page « Applications » : cartes des applications Edge installées avec leur éditeur et leur licence.',
@@ -162,7 +150,7 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
   },
   en: {
     intro:
-      'Some twenty front-end repositories, each shipped as a #single-spa application in #vue3 and #typescript, with #pinia, Vue Router and Schneider Electric’s Quartz design system. The newer applications share one architecture: container/presentational components, typed DTO-to-model mappers, one store per domain and forms validated with vee-validate and yup or zod.',
+      'Some fifteen micro-frontends, each shipped as a #single-spa application in #vue3 and #typescript, with #pinia, Vue Router and Schneider Electric’s Quartz design system. The newer applications share one architecture: container/presentational components, typed DTO-to-model mappers, one store per domain and forms validated with vee-validate and yup or zod.',
     groups: [
       {
         title: 'Shell & shared foundation',
@@ -214,12 +202,6 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
             text: 'Tree editor for the data model: creating and deleting levels, mapping properties through PropertiesPicker, import. A rewrite of the former assets-and-devices application for the new API.',
             tags: ['vue3', 'pinia', 'tailwind'],
           },
-          {
-            repo: 'ieca-data-publication-ui',
-            title: 'Data publication',
-            text: 'IT publication connectors with connectors → interfaces → groups → properties navigation and create, edit and delete operations at each level.',
-            tags: ['yup', 'tailwind'],
-          },
         ],
       },
       {
@@ -265,12 +247,6 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
             title: 'SMTP mail',
             text: 'SMTP server configuration (host, security, credentials, certificate checked with node-forge) and a test message with connection status.',
             tags: ['typescript', 'node-forge'],
-          },
-          {
-            repo: 'ieca-license-manager-ui · ieca-eula-ui',
-            title: 'Licenses & EULA',
-            text: 'Application license table with details and expiry, online activation by key or offline activation; end-user license agreement display.',
-            tags: ['zod', 'tailwind'],
           },
           {
             repo: 'ieca-overview-ui',

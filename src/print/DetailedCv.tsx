@@ -4,7 +4,7 @@ import { Avatar } from '../components/Avatar'
 import { InlineTechText } from '../components/InlineTechText'
 import { TechBadge } from '../components/TechBadge'
 import type { CompanyHead, DetailedLabels, DetailedModel, MissionView, OverviewEntry } from './detailed'
-import type { DetailBlock } from './iecaDetails'
+import type { DetailGroup } from './iecaDetails'
 import './detailed.css'
 
 // Same building blocks as the online resume: TechBadge chips, inline #tech tags,
@@ -157,21 +157,31 @@ function ProjectCard({ mission }: { mission: MissionView }) {
   )
 }
 
-function DetailCards({ blocks }: { blocks: DetailBlock[] }) {
+// Micro-frontends as a GitHub-style repository listing: one row per repository, grouped by area.
+function MicroFrontendList({ groups }: { groups: DetailGroup[] }) {
   return (
-    <div className="dcv-grid">
-      {blocks.map((block) => (
-        <article className="dcv-project" key={block.repo}>
-          <div className="dcv-mission-top">
-            <span>📁</span>
-            <span className="dcv-mission-name">{block.repo}</span>
-          </div>
-          <div className="dcv-card-title">{block.title}</div>
-          <p className="dcv-mission-desc">
-            <InlineTechText text={block.text} />
-          </p>
-          {block.tags && <Chips tags={block.tags} />}
-        </article>
+    <div className="dcv-repo-list">
+      {groups.map((group) => (
+        <div className="dcv-repo-group" key={group.title}>
+          <div className="dcv-repo-group-head">{group.title}</div>
+          {group.blocks.map((block) => (
+            <div className="dcv-repo-row" key={block.repo}>
+              <div className="dcv-repo-id">
+                <span className="dcv-repo-name">
+                  <span aria-hidden="true">🧩 </span>
+                  {block.repo}
+                </span>
+                <span className="dcv-repo-title">{block.title}</span>
+              </div>
+              <div className="dcv-repo-body">
+                <p className="dcv-mission-desc">
+                  <InlineTechText text={block.text} />
+                </p>
+                {block.tags && <Chips tags={block.tags} />}
+              </div>
+            </div>
+          ))}
+        </div>
       ))}
     </div>
   )
@@ -308,18 +318,19 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
                 <InlineTechText text={model.schneiderWeb.details.intro} />
               </p>
             </div>
-            {model.schneiderWeb.details.groups.map((group) => (
-              <div className="dcv-detail-group" key={group.title}>
-                <div className="dcv-subhead">{group.title}</div>
-                <DetailCards blocks={group.blocks} />
-              </div>
-            ))}
+            <MicroFrontendList groups={model.schneiderWeb.details.groups} />
           </Timeline>
         </section>
 
         <section>
           <Timeline title={labels.webXpert} head={model.xpert.head}>
             <MissionCard mission={model.xpert.xistar} labels={labels}>
+              <div className="dcv-focus">
+                <div className="dcv-focus-title">🖥️ {model.xpert.xistarFocus.title}</div>
+                <p className="dcv-mission-desc">
+                  <InlineTechText text={model.xpert.xistarFocus.text} />
+                </p>
+              </div>
               <div className="dcv-grid dcv-grid-3">
                 {model.xpert.companionTools.map((mission) => (
                   <ProjectCard mission={mission} key={mission.name} />

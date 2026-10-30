@@ -87,7 +87,13 @@ export interface DetailedModel {
   formations: { id: string; kind: Formation['kind']; label: string; title: string; sub: string; meta: string }[]
   languages: { label: string; level: string }[]
   schneiderWeb: { head: CompanyHead; mission: MissionView; details: IecaDetails }
-  xpert: { head: CompanyHead; xistar: MissionView; companionTools: MissionView[]; missions: MissionView[] }
+  xpert: {
+    head: CompanyHead
+    xistar: MissionView
+    xistarFocus: { title: string; text: string }
+    companionTools: MissionView[]
+    missions: MissionView[]
+  }
   schneiderAr: { head: CompanyHead; mission: MissionView }
   oreka: { head: CompanyHead; overview: MissionView; keyProjects: MissionView[]; otherProjects: MissionView[] }
   personalProjects: {
@@ -171,7 +177,7 @@ const missionView = (language: Language, experienceId: number, missionId: number
 
 // Cover timeline: domain chips first (web, Vue, AI stand out), then the main technologies.
 // Kinds pick colors from the online tech-tag themes.
-const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux' | 'seriousGame', Chip>> = {
+const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux' | 'seriousGame' | 'multiScreen' | 'realTime', Chip>> = {
   fr: {
     web: { l: 'web', k: 'ts' },
     vue: { l: 'vue 3', k: 'vue3' },
@@ -179,6 +185,8 @@ const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux'
     xr: { l: '3d / xr', k: '3d' },
     uiux: { l: 'ux/ui', k: 'uiux' },
     seriousGame: { l: 'serious game', k: 'ar' },
+    multiScreen: { l: 'multi-écran', k: 'desktop' },
+    realTime: { l: 'temps réel', k: 'mqtt' },
   },
   en: {
     web: { l: 'web', k: 'ts' },
@@ -187,13 +195,15 @@ const DOMAIN_CHIPS: Record<Language, Record<'web' | 'vue' | 'ai' | 'xr' | 'uiux'
     xr: { l: '3d / xr', k: '3d' },
     uiux: { l: 'ux/ui', k: 'uiux' },
     seriousGame: { l: 'serious game', k: 'ar' },
+    multiScreen: { l: 'multi-screen', k: 'desktop' },
+    realTime: { l: 'real-time', k: 'mqtt' },
   },
 }
 
 const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
   const d = DOMAIN_CHIPS[language]
   return {
-    31: [d.web, { l: 'react', k: 'react' }, { l: 'typescript', k: 'ts' }, { l: 'go', k: 'green' }, { l: 'maplibre', k: 'maplibre' }, { l: 'mqtt', k: 'mqtt' }],
+    31: [d.web, d.multiScreen, d.realTime, { l: 'react', k: 'react' }, { l: 'typescript', k: 'ts' }, { l: 'go', k: 'green' }, { l: 'maplibre', k: 'maplibre' }],
     36: [d.web, d.uiux, { l: 'figma', k: 'figma' }, { l: 'react', k: 'react' }, { l: 'shadcn', k: 'green' }, { l: 'npm', k: 'green' }],
     35: [d.ai, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }, { l: 'react', k: 'react' }],
     37: [d.ai, { l: 'webgl', k: 'webgl2' }, { l: 'hyperframes', k: 'green' }],
@@ -249,6 +259,18 @@ const buildOverview = (language: Language): OverviewCompany[] => [
     entries: [overviewEntry(language, 2, 21, [23, 26, 22, 28, 24, 25, 27], [23, 26, 22])],
   },
 ]
+
+// Xistar's multi-screen operation, detailed from the mission and wall-emulator data.
+const XISTAR_MULTI_SCREEN: Record<Language, { title: string; text: string }> = {
+  fr: {
+    title: 'Multi-écran & temps réel',
+    text: 'Application multi-écran pilotée depuis un poste maître : ensembles d’écrans, tableau de mission et envoi de vues à distance, avec une gestion centralisée et en temps réel de ce que chaque écran affiche. Les situations, alertes et positions arrivent en continu par #mqtt et #socketio, et le rejeu temporel permet de revoir une opération pour l’analyse et les débriefings.',
+  },
+  en: {
+    title: 'Multi-screen & real time',
+    text: 'Multi-screen application driven from a master station: screen sets, a mission board and remote view sending, with centralized, real-time control of what each screen displays. Situation, alert and position updates stream in through #mqtt and #socketio, and time-based replay lets operators review an operation for analysis and debriefing.',
+  },
+}
 
 // Personal projects that are not web applications stay off this web-oriented resume.
 const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery', 'kin']
@@ -314,6 +336,7 @@ export const buildDetailedModel = (language: Language): DetailedModel => {
     xpert: {
       head: companyHead(language, 3, true),
       xistar: missionView(language, 3, 31),
+      xistarFocus: XISTAR_MULTI_SCREEN[language],
       companionTools: [32, 33, 34].map((id) => missionView(language, 3, id)),
       missions: [36, 35, 37].map((id) => missionView(language, 3, id)),
     },
