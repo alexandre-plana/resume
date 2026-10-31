@@ -141,11 +141,11 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     11: {
       badge: 'Développeur front-end',
       team: '4 équipes Scrum d’une dizaine de personnes ; environ 80 personnes au total avec le management, la validation, les tests automatisés, la cybersécurité et les architectes solution',
-      note: '4 équipes Scrum · ~80 personnes · rôle transverse',
+      note: '4 équipes Scrum · ~80 personnes · front-end au-delà de mon équipe',
       desc: 'IECA est la plateforme IIoT Edge de Schneider Electric : une quinzaine de micro-frontends Vue 3 chargés par single-spa, adossés à des services Go. J’en ai créé plus de cinq ainsi que le gabarit commun, et participé au développement et à l’évolution de chacun de ceux listés ci-dessous.',
       tasks: [
         'Création de plus de cinq micro-frontends et du gabarit commun, puis évolution de l’ensemble en #vue3, #typescript et #pinia : connectivité, calculs, conditions, alertes, scripting, données et administration.',
-        'Rôle transverse entre les équipes : composants partagés de la bibliothèque commune (table configurable, sélecteur de propriétés, socle de routage) et revues de code, y compris sur les pull requests des autres équipes.',
+        'Au-delà de mon équipe, toujours côté front-end : composants partagés de la bibliothèque commune (table configurable, sélecteur de propriétés, socle de routage) et revues de code, y compris sur les pull requests des autres équipes.',
         'Exigence de qualité : tests unitaires #vitest et #jest des composants, stores et utilitaires, analyse #sonarqube ; une base de code tenue propre et très peu d’anomalies remontées.',
         'Extensions ponctuelles du back-end pour les besoins des évolutions front-end.',
       ],
@@ -184,15 +184,15 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     35: {
       title: 'Workflow de développement par agents IA',
       badge: 'Conception & orchestration d’agents IA',
-      desc: 'Workflow de développement assisté par agents IA, inspiré de la méthode BMAD et utilisé sur Xistar. Plusieurs fournisseurs d’IA y sont combinés (Claude, Codex et Jev) : l’un produit, un autre relit.',
+      desc: 'Workflow de développement assisté par agents IA, inspiré de la méthode BMAD et utilisé sur Xistar et sur d’autres projets internes. Plusieurs fournisseurs d’IA y sont combinés (Claude, Codex et Jev) : l’un produit, un autre relit.',
       tasks: [
         'Agents spécialisés par domaine et orchestrateur qui leur répartit le travail.',
         'Agents dédiés à la non-régression, appuyés sur des parcours utilisateurs et un design system strictement défini.',
         'Exécution isolée dans un conteneur #docker par projet, exécutions distribuées par #gitlab-ci vers une machine dédiée.',
-        'Outil de suivi en #react et #typescript alimenté par les hooks des agents.',
+        'Outil de suivi en #vue3 et #typescript alimenté par les hooks des agents.',
         'Rapports de session analysés pour corriger les consignes des agents et le workflow.',
       ],
-      tags: ['claude', 'codex', 'jev', 'bmad', 'docker', 'gitlab ci', 'react', 'typescript'],
+      tags: ['claude', 'codex', 'jev', 'bmad', 'docker', 'gitlab ci', 'vue3', 'typescript'],
     },
     36: {
       title: 'Design system de X-PERT',
@@ -227,11 +227,11 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     11: {
       badge: 'Front-end developer',
       team: '4 Scrum teams of about ten people; around 80 people in total including management, validation, test automation, cybersecurity and solution architects',
-      note: '4 Scrum teams · ~80 people · cross-team role',
+      note: '4 Scrum teams · ~80 people · front-end beyond my own team',
       desc: 'IECA is Schneider Electric’s IIoT Edge platform: some fifteen Vue 3 micro-frontends loaded by single-spa, backed by Go services. I built more than five of them plus the shared template, and took part in developing and evolving each one listed below.',
       tasks: [
         'Built more than five micro-frontends and the shared template, then evolved them all in #vue3, #typescript and #pinia: connectivity, computations, conditions, alerts, scripting, data and administration.',
-        'Cross-team role: shared components in the common library (configurable table, property selector, routing foundation) and code reviews, including pull requests from other teams.',
+        'Beyond my own team, still on the front end: shared components in the common library (configurable table, property selector, routing foundation) and code reviews, including pull requests from other teams.',
         'Quality focus: #vitest and #jest unit tests for components, stores and utilities, #sonarqube analysis; a clean codebase with very few reported defects.',
         'Occasional back-end extensions needed by front-end changes.',
       ],
@@ -270,15 +270,15 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     35: {
       title: 'AI-agent development workflow',
       badge: 'AI agent design & orchestration',
-      desc: 'An AI-assisted development workflow inspired by the BMAD method and used on Xistar. Several AI providers are combined (Claude, Codex and Jev): one produces, another reviews.',
+      desc: 'An AI-assisted development workflow inspired by the BMAD method and used on Xistar and other internal projects. Several AI providers are combined (Claude, Codex and Jev): one produces, another reviews.',
       tasks: [
         'Domain-specific agents and an orchestrator that dispatches work to them.',
         'Non-regression agents built on user journeys and a strictly defined design system.',
         'Isolated execution in one #docker container per project, with runs dispatched by #gitlab-ci to a dedicated machine.',
-        'A #react and #typescript tracking tool fed by agent hooks.',
+        'A #vue3 and #typescript tracking tool fed by agent hooks.',
         'Session reports analyzed to correct agent instructions and the workflow.',
       ],
-      tags: ['claude', 'codex', 'jev', 'bmad', 'docker', 'gitlab ci', 'react', 'typescript'],
+      tags: ['claude', 'codex', 'jev', 'bmad', 'docker', 'gitlab ci', 'vue3', 'typescript'],
     },
     36: {
       title: 'X-PERT design system',
