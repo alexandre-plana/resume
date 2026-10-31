@@ -306,9 +306,6 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
                 <p className="dcv-form-subtitle">
                   <InlineTechText text={project.desc} />
                 </p>
-                <div className="dcv-form-meta">
-                  🗓 {project.period} · {project.role}
-                </div>
                 <Chips tags={project.stack} />
               </article>
             ))}

@@ -358,7 +358,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
   },
 }
 
-// Personal projects that only this version lists (see alexandre-plana/time-weave).
+// Personal projects that only this version lists (see alexandre-plana/time-weave and alexandre-plana/multi-screen).
 export interface PersonalProjectRow {
   name: string
   kind: string
@@ -380,6 +380,15 @@ export const EXTRA_PERSONAL_PROJECTS: Record<Language, PersonalProjectRow[]> = {
       desc: 'Bibliothèque #typescript et #react de timelines interactives et synchronisées avec l’application : lignes hiérarchiques, lecture, clés de navigation et mode Direct, sur un moteur temporel indépendant de React.',
       stack: ['react', 'typescript', 'vitest', 'playwright'],
     },
+    {
+      name: 'multi-screen',
+      kind: 'Bibliothèque de diffusion multi-écran',
+      status: 'en développement',
+      period: '2026',
+      role: 'Conception & développement',
+      desc: 'Bibliothèque #typescript qui décrit un écran comme une donnée JSON de panneaux #dockview, le route à l’exécution et le diffuse vers n’importe quel appareil, piloté à distance depuis une régie : mise à jour par patch, thème, rotation, accusés de réception.',
+      stack: ['typescript', 'dockview', 'react', 'nodejs', 'vitest'],
+    },
   ],
   en: [
     {
@@ -390,6 +399,15 @@ export const EXTRA_PERSONAL_PROJECTS: Record<Language, PersonalProjectRow[]> = {
       role: 'Design & development',
       desc: 'A #typescript and #react library for interactive timelines synchronized with the host app: hierarchical rows, playback, navigation keys and live mode, on a time engine independent of React.',
       stack: ['react', 'typescript', 'vitest', 'playwright'],
+    },
+    {
+      name: 'multi-screen',
+      kind: 'Multi-screen broadcasting library',
+      status: 'in development',
+      period: '2026',
+      role: 'Design & development',
+      desc: 'A #typescript library that describes a screen as JSON data made of #dockview panels, routes it at runtime and pushes it to any device, driven remotely from a control room: patch updates, theme, rotation, acknowledgements.',
+      stack: ['typescript', 'dockview', 'react', 'nodejs', 'vitest'],
     },
   ],
 }

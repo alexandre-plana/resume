@@ -104,7 +104,7 @@
 
 /* Block flow (not flex) so Chromium can keep headers with what follows across page breaks. */
 .dcv-flow > section + section {
-  margin-top: 1.6em;
+  margin-top: 1.2em;
 }
 
 /* Sidebar (App.module.css: SIDEBAR) */
@@ -477,6 +477,7 @@
 
 .dcv-card {
   break-inside: avoid;
+  padding: 9px 12px;
 }
 
 .dcv-mission-top {

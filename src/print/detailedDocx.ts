@@ -416,7 +416,6 @@ export const buildDetailedDocx = (model: DetailedModel, avatar: Uint8Array): Doc
           }),
           new Paragraph({ keepNext: true, children: [run(project.name, { bold: true, color: C.blue, size: pt(8.5) })] }),
           new Paragraph({ children: inline(project.desc, { color: C.text2, size: pt(7.5) }) }),
-          muted(`🗓 ${project.period} · ${project.role}`, 6.5, C.text3),
           chips(
             project.stack.map((tag) => ({ l: tag, k: tag })),
             40,
