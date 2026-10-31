@@ -10,6 +10,7 @@ import {
   OREKA_PROJECTS,
   PROFILE,
   SKILLS,
+  techChip,
   type ProjectRow,
 } from './detailedContent'
 import { IECA_DETAILS, type IecaDetails } from './iecaDetails'
@@ -178,82 +179,18 @@ const missionView = (language: Language, experienceId: number, missionId: number
   }
 }
 
-// Cover timeline: domain chips first (web, Vue, AI stand out), then the main technologies.
-// Kinds pick colors from the online tech-tag themes.
-const DOMAIN_CHIPS: Record<Language, Record<
-    | 'web'
-    | 'vue'
-    | 'ai'
-    | 'xr'
-    | 'uiux'
-    | 'seriousGame'
-    | 'multiScreen'
-    | 'realTime'
-    | 'radiation'
-    | 'nuclear'
-    | 'medical'
-    | 'ergonomics'
-    | 'simulation',
-    Chip
-  >> = {
-  fr: {
-    web: { l: 'web', k: 'ts' },
-    vue: { l: 'vue 3', k: 'vue3' },
-    ai: { l: 'ia', k: 'mcp' },
-    xr: { l: '3d / xr', k: '3d' },
-    uiux: { l: 'ux/ui', k: 'uiux' },
-    seriousGame: { l: 'serious game', k: 'ar' },
-    multiScreen: { l: 'multi-écran', k: 'desktop' },
-    realTime: { l: 'temps réel', k: 'mqtt' },
-    radiation: { l: 'radioprotection', k: 'html' },
-    nuclear: { l: 'nucléaire', k: '3d' },
-    medical: { l: 'médical', k: 'mobile' },
-    ergonomics: { l: 'ergonomie', k: 'agile' },
-    simulation: { l: 'simulation 3d', k: '3d-temps-réel' },
-  },
-  en: {
-    web: { l: 'web', k: 'ts' },
-    vue: { l: 'vue 3', k: 'vue3' },
-    ai: { l: 'ai', k: 'mcp' },
-    xr: { l: '3d / xr', k: '3d' },
-    uiux: { l: 'ux/ui', k: 'uiux' },
-    seriousGame: { l: 'serious game', k: 'ar' },
-    multiScreen: { l: 'multi-screen', k: 'desktop' },
-    realTime: { l: 'real-time', k: 'mqtt' },
-    radiation: { l: 'radiation safety', k: 'html' },
-    nuclear: { l: 'nuclear', k: '3d' },
-    medical: { l: 'medical', k: 'mobile' },
-    ergonomics: { l: 'ergonomics', k: 'agile' },
-    simulation: { l: '3d simulation', k: '3d-temps-réel' },
-  },
-}
-
-const OVERVIEW_CHIPS = (language: Language): Record<number, Chip[]> => {
-  const d = DOMAIN_CHIPS[language]
-  const unity = { l: 'unity', k: 'unity' }
-  const csharp = { l: 'c#', k: 'csharp' }
-  return {
-    31: [
-      d.web,
-      d.multiScreen,
-      d.realTime,
-      { l: 'react', k: 'react' },
-      { l: 'typescript', k: 'ts' },
-      { l: 'go', k: 'green' },
-      { l: 'docker', k: 'docker' },
-      { l: 'gitlab ci', k: 'gitlabci' },
-    ],
-    36: [d.web, d.uiux, { l: 'figma', k: 'figma' }, { l: 'react', k: 'react' }, { l: 'shadcn', k: 'green' }, { l: 'npm', k: 'green' }],
-    35: [d.ai, { l: 'claude', k: 'mcp' }, { l: 'codex', k: 'mcp' }, { l: 'jev', k: 'mcp' }, { l: 'vue 3', k: 'vue3' }, { l: 'bmad', k: 'green' }, { l: 'docker', k: 'docker' }, { l: 'gitlab ci', k: 'gitlabci' }],
-    11: [d.web, d.vue, { l: 'typescript', k: 'ts' }, { l: 'single-spa', k: 'spa' }, { l: 'pinia', k: 'green' }, { l: 'vitest', k: 'vitest' }, { l: 'sonarqube', k: 'sonarqube' }],
-    12: [d.xr, { l: 'unity', k: 'unity' }, { l: 'c#', k: 'csharp' }, { l: 'ar', k: 'ar' }, { l: 'mobile', k: 'mobile' }, { l: 'offline', k: 'offline' }],
-    // Oreka projects, one card each.
-    26: [d.seriousGame, d.radiation, d.nuclear, unity, csharp],
-    22: [d.uiux, d.ergonomics, d.simulation, unity, csharp],
-    28: [d.simulation, d.radiation, d.medical, unity, csharp],
-    24: [d.simulation, d.nuclear, unity, csharp, { l: 'wpf', k: 'wpf' }],
-    27: [d.seriousGame, d.nuclear, unity, csharp],
-  }
+// Cover timeline: technology chips only, colored like the same technologies in the sidebar.
+const OVERVIEW_TECH: Record<number, string[]> = {
+  31: ['react', 'typescript', 'go', 'maplibre', 'mqtt', 'docker', 'gitlab ci'],
+  35: ['claude', 'codex', 'jev', 'vue 3', 'bmad', 'docker', 'gitlab ci'],
+  36: ['figma', 'react', 'typescript', 'shadcn', 'npm'],
+  11: ['vue 3', 'typescript', 'single-spa', 'pinia', 'vitest', 'sonarqube'],
+  12: ['unity', 'c#', 'android', 'ios'],
+  26: ['unity', 'c#'],
+  22: ['unity', 'c#'],
+  28: ['unity', 'c#'],
+  24: ['unity', 'c#', 'wpf'],
+  27: ['unity', 'c#'],
 }
 
 // Web, Vue and AI missions get the featured card style.
@@ -267,7 +204,7 @@ const overviewEntry = (language: Language, experienceId: number, missionId: numb
     badge: mission.badge,
     period: mission.period,
     note: MISSIONS[language][missionId]?.note,
-    chips: OVERVIEW_CHIPS(language)[missionId] ?? [],
+    chips: (OVERVIEW_TECH[missionId] ?? []).map(techChip),
     featured: OVERVIEW_FEATURED.has(missionId),
   }
 }

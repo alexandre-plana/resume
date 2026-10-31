@@ -40,7 +40,46 @@ export const PROFILE: Record<Language, { title: string; subtitle: string; bio: s
   },
 }
 
-const tag = (l: string, k: string) => ({ l, k })
+// One color per technology, shared by the sidebar skills and the cover timeline chips.
+// Kinds pick colors from the online tech-tag themes (src/theme/techTagTheme.ts).
+const TECH_KINDS: Record<string, string> = {
+  'vue 3': 'vue3',
+  pinia: 'green',
+  react: 'react',
+  'single-spa': 'spa',
+  tailwind: 'tailwind',
+  typescript: 'ts',
+  'c#': 'csharp',
+  python: 'green',
+  go: 'green',
+  claude: 'mcp',
+  codex: 'mcp',
+  jev: 'mcp',
+  'agents ia': 'mcp',
+  'ai agents': 'mcp',
+  bmad: 'green',
+  mqtt: 'mqtt',
+  'api rest': 'apirest',
+  'rest api': 'apirest',
+  'socket.io': 'socketio',
+  maplibre: 'maplibre',
+  vitest: 'vitest',
+  sonarqube: 'sonarqube',
+  docker: 'docker',
+  'gitlab ci': 'gitlabci',
+  figma: 'figma',
+  shadcn: 'green',
+  npm: 'green',
+  unity: 'unity',
+  'unity 3d': 'unity',
+  wpf: 'wpf',
+  android: 'android',
+  ios: 'green',
+}
+
+export const techChip = (label: string) => ({ l: label, k: TECH_KINDS[label.toLowerCase()] ?? 'green' })
+
+const tag = (l: string, k: string) => ({ l, k: TECH_KINDS[l.toLowerCase()] ?? k })
 
 // Sidebar skills for this version: web, Vue and AI first. Kinds pick colors from the online tech-tag themes.
 export const SKILLS: Record<Language, Skill[]> = {
