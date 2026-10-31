@@ -349,9 +349,9 @@ const coverMain = (model: DetailedModel) => [
   sectionHeader(model.labels.overview),
   ...model.overview.flatMap((company) => [
     ...companyRow(company.head, true),
-    ...company.entries.flatMap((entry) => [overviewCard(entry), spacer(50)]),
+    ...company.entries.flatMap((entry) => [overviewCard(entry), spacer(30)]),
     ...(company.more ? [new Paragraph({ indent: { left: CARD_INDENT }, children: [run('…', { color: C.text3 })] })] : []),
-    spacer(120),
+    spacer(60),
   ]),
 ]
 
