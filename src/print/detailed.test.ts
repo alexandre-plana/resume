@@ -69,7 +69,7 @@ describe('buildDetailedModel', () => {
   it('keeps only finished web personal projects', () => {
     const names = buildDetailedModel('en').personalProjects.map((project) => project.name)
 
-    expect(names).toEqual(['time-weave', 'multi-screen', 'iasit', 'vorrery'])
+    expect(names).toEqual(['time-weave', 'multi-screen', 'iasit'])
   })
 })
 

@@ -232,7 +232,7 @@ const buildOverview = (language: Language): OverviewCompany[] => [
 const leadSentence = (text: string): string => text.match(/^.*?[.!?](?=\s|$)/su)?.[0] ?? text
 
 // Personal projects that are not finished web applications stay off this web-oriented resume.
-const WEB_PERSONAL_PROJECTS = ['iasit', 'vorrery']
+const WEB_PERSONAL_PROJECTS = ['iasit']
 
 // Applies French typography to every printed string except identifiers, addresses and chip keys.
 const TYPOGRAPHY_SKIP = new Set(['name', 'repo', 'email', 'phone', 'k', 'language'])
