@@ -382,7 +382,12 @@ export const buildDetailedDocx = (model: DetailedModel, avatar: Uint8Array): Doc
   const details = [
     ...timeline(labels.vueFocus, model.schneiderWeb.head, [
       missionCard(model.schneiderWeb.mission, labels.tasks),
-      subhead(labels.iecaComponents, CARD_INDENT),
+      new Paragraph({
+        keepNext: true,
+        indent: { left: CARD_INDENT },
+        spacing: { before: 140, after: 40 },
+        children: [run(labels.iecaComponents, { bold: true, size: pt(8.5) })],
+      }),
       new Paragraph({
         indent: { left: CARD_INDENT },
         spacing: { after: 80 },
@@ -409,9 +414,6 @@ export const buildDetailedDocx = (model: DetailedModel, avatar: Uint8Array): Doc
             keepNext: true,
             children: [
               run(`🛠️ ${project.kind.toUpperCase()}  `, { bold: true, color: C.text3, size: pt(6.5) }),
-              ...(project.status
-                ? [run(` ${project.status} `, { size: pt(6), color: '2980B9', shading: { type: ShadingType.CLEAR, color: 'auto', fill: 'DCEAF5' } })]
-                : []),
             ],
           }),
           new Paragraph({ keepNext: true, children: [run(project.name, { bold: true, color: C.blue, size: pt(8.5) })] }),

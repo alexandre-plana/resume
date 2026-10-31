@@ -260,8 +260,8 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
         <section>
           <Timeline title={labels.vueFocus} head={model.schneiderWeb.head}>
             <MissionCard mission={model.schneiderWeb.mission} labels={labels} />
-            <div className="dcv-subhead">{labels.iecaComponents}</div>
             <div className="dcv-about">
+              <div className="dcv-about-title">{labels.iecaComponents}</div>
               <p>
                 <InlineTechText text={model.schneiderWeb.details.intro} />
               </p>
@@ -300,7 +300,6 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
                 <div className="dcv-form-label">
                   <span>🛠️</span>
                   {project.kind}
-                  {project.status && <span className="dcv-status">{project.status}</span>}
                 </div>
                 <div className="dcv-form-title">{project.name}</div>
                 <p className="dcv-form-subtitle">

@@ -22,7 +22,7 @@ export interface IecaDetails {
 export const IECA_DETAILS: Record<Language, IecaDetails> = {
   fr: {
     intro:
-      'Tous en #vue3 et #typescript, chargés comme applications #single-spa, avec #pinia, Vue Router et le design system Quartz de Schneider Electric. Les applications récentes partagent la même architecture : composants container/présentation, mappers typés entre API et modèle, un store par domaine et des formulaires validés avec vee-validate et yup ou zod.',
+      'Tous en #vue3 et #typescript, chargés comme applications #single-spa, avec #pinia, Vue Router et le design system Quartz de Schneider Electric. Les applications récentes partagent la même architecture : composants container/présentation, mappers typés entre API et modèle, un store par domaine. Les types et les services communs (authentification, routage global, transformation des données, gestion des modales…) sont partagés depuis un micro-frontend utilitaire, ieca-web-utils.',
     groups: [
       {
         title: 'Socle partagé',
@@ -137,7 +137,7 @@ export const IECA_DETAILS: Record<Language, IecaDetails> = {
   },
   en: {
     intro:
-      'All in #vue3 and #typescript, loaded as #single-spa applications, with #pinia, Vue Router and Schneider Electric’s Quartz design system. The newer applications share one architecture: container/presentational components, typed API-to-model mappers, one store per domain and forms validated with vee-validate and yup or zod.',
+      'All in #vue3 and #typescript, loaded as #single-spa applications, with #pinia, Vue Router and Schneider Electric’s Quartz design system. The newer applications share one architecture: container/presentational components, typed API-to-model mappers, one store per domain. Common types and services (authentication, global routing, data transformation, modal handling…) are shared from a utility micro-frontend, ieca-web-utils.',
     groups: [
       {
         title: 'Shared foundation',
