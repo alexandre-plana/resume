@@ -141,7 +141,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     11: {
       badge: 'Développeur front-end',
       team: '4 équipes Scrum d’une dizaine de personnes ; environ 80 personnes au total avec le management, la validation, les tests automatisés, la cybersécurité et les architectes solution',
-      note: '4 équipes Scrum · ~80 personnes · front-end au-delà de mon équipe',
+      note: '4 équipes Scrum · ~80 personnes',
       desc: 'IECA est la plateforme IIoT Edge de Schneider Electric : une quinzaine de micro-frontends Vue 3 chargés par single-spa, adossés à des services Go. J’en ai créé plus de cinq ainsi que le gabarit commun, et participé au développement et à l’évolution de chacun de ceux listés ci-dessous.',
       tasks: [
         'Création de plus de cinq micro-frontends et du gabarit commun, puis évolution de l’ensemble en #vue3, #typescript et #pinia : connectivité, calculs, conditions, alertes, scripting, données et administration.',
@@ -154,7 +154,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     12: {
       badge: 'Front-end puis main dev',
       team: '3 équipes Scrum (7, 5 et 4 personnes) ; évolution de développeur front-end à main dev, jusqu’à l’arrêt du projet',
-      note: '3 équipes Scrum · évolution front-end → main dev',
+      note: '3 équipes Scrum',
       desc: 'Solution de réalité augmentée pour opérateurs industriels, composée de trois modules : une application web, une application mobile multiplateforme (Android, iOS, Windows) en C# sous Unity et un runtime. J’étais en charge du design, des maquettes, de l’architecture front-end, du développement, des livraisons et des développements spécifiques clients.',
       tasks: [
         'Design, maquettes et architecture front-end d’une interface adaptée aux trois plateformes, en portrait et en paysage.',
@@ -184,7 +184,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     35: {
       title: 'Workflow de développement par agents IA',
       badge: 'Conception & orchestration d’agents IA',
-      desc: 'Workflow de développement assisté par agents IA, inspiré de la méthode BMAD et utilisé sur Xistar et sur d’autres projets internes. Plusieurs fournisseurs d’IA y sont combinés (Claude, Codex et Jev) : l’un produit, un autre relit.',
+      desc: 'Workflow de développement assisté par agents IA, inspiré de la méthode BMAD et utilisé sur Xistar et sur d’autres projets. Plusieurs fournisseurs d’IA y sont combinés (Claude, Codex et Jev) : l’un produit, un autre relit.',
       tasks: [
         'Agents spécialisés par domaine et orchestrateur qui leur répartit le travail.',
         'Agents dédiés à la non-régression, appuyés sur des parcours utilisateurs et un design system strictement défini.',
@@ -227,7 +227,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     11: {
       badge: 'Front-end developer',
       team: '4 Scrum teams of about ten people; around 80 people in total including management, validation, test automation, cybersecurity and solution architects',
-      note: '4 Scrum teams · ~80 people · front-end beyond my own team',
+      note: '4 Scrum teams · ~80 people',
       desc: 'IECA is Schneider Electric’s IIoT Edge platform: some fifteen Vue 3 micro-frontends loaded by single-spa, backed by Go services. I built more than five of them plus the shared template, and took part in developing and evolving each one listed below.',
       tasks: [
         'Built more than five micro-frontends and the shared template, then evolved them all in #vue3, #typescript and #pinia: connectivity, computations, conditions, alerts, scripting, data and administration.',
@@ -240,7 +240,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     12: {
       badge: 'Front-end, then main dev',
       team: '3 Scrum teams (7, 5 and 4 people); grew from front-end developer to main developer, until the project ended',
-      note: '3 Scrum teams · grew from front-end to main dev',
+      note: '3 Scrum teams',
       desc: 'Augmented-reality solution for industrial operators, made of three modules: a web application, a cross-platform mobile app (Android, iOS, Windows) in C# with Unity, and a runtime. I was responsible for design, mockups, front-end architecture, development, releases and client-specific development.',
       tasks: [
         'Designed the interface, mockups and front-end architecture for three platforms, in portrait and landscape.',
@@ -270,7 +270,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     35: {
       title: 'AI-agent development workflow',
       badge: 'AI agent design & orchestration',
-      desc: 'An AI-assisted development workflow inspired by the BMAD method and used on Xistar and other internal projects. Several AI providers are combined (Claude, Codex and Jev): one produces, another reviews.',
+      desc: 'An AI-assisted development workflow inspired by the BMAD method and used on Xistar and other projects. Several AI providers are combined (Claude, Codex and Jev): one produces, another reviews.',
       tasks: [
         'Domain-specific agents and an orchestrator that dispatches work to them.',
         'Non-regression agents built on user journeys and a strictly defined design system.',
