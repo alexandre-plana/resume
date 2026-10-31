@@ -196,6 +196,24 @@ const overviewCard = (entry: OverviewEntry) => {
       cardTop('📁', entry.name, entry.badge, width),
       muted(`${entry.title} · ${entry.period}`),
       ...(entry.note ? [muted(`👥 ${entry.note}`, 6.5)] : []),
+      ...(entry.modules
+        ? [
+            new Paragraph({
+              spacing: { before: 30, line: 290 },
+              children: [
+                run('🧩 ', { size: pt(6.5) }),
+                ...entry.modules.flatMap((module) => [
+                  mono(`\u00A0${module.replace(/-/g, '\u2011')}\u00A0`, {
+                    size: pt(6),
+                    color: C.text2,
+                    shading: { type: ShadingType.CLEAR, color: 'auto', fill: C.bg },
+                  }),
+                  run(' ', { size: pt(6) }),
+                ]),
+              ],
+            }),
+          ]
+        : []),
       chips(entry.chips, 30),
     ],
     width,
@@ -309,7 +327,7 @@ const sidebar = (model: DetailedModel, avatar: Uint8Array) => {
     new Paragraph({
       alignment: AlignmentType.CENTER,
       spacing: { after: 100 },
-      children: [new ImageRun({ type: 'png', data: avatar, transformation: { width: 110, height: 110 } })],
+      children: [new ImageRun({ type: 'png', data: avatar, transformation: { width: 138, height: 138 } })],
     }),
     new Paragraph({ children: [run(model.name, { bold: true, size: pt(15) })] }),
     new Paragraph({ spacing: { before: 40 }, children: [run(model.title, { bold: true, color: C.blue, size: pt(8) })] }),

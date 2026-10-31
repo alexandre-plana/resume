@@ -68,6 +68,8 @@ export interface OverviewEntry {
   badge: string
   period: string
   note?: string
+  // Short names of the components worked on, shown as small mono labels.
+  modules?: string[]
   chips: Chip[]
   featured: boolean
 }
@@ -193,6 +195,20 @@ const OVERVIEW_TECH: Record<number, string[]> = {
   27: ['unity', 'c#'],
 }
 
+// IECA micro-frontends for the cover, with the repository prefix and suffix dropped.
+const iecaModuleNames = (language: Language): string[] =>
+  IECA_DETAILS[language].groups
+    .filter((group) => group.title !== 'Prototypes')
+    .flatMap((group) => group.blocks.map((block) => block.repo))
+    .map((repo) =>
+      repo
+        .replace(/^@ieca\/ieca-/, '')
+        .replace(/^ieca-vue3-ui-/, '')
+        .replace(/^ieca-/, '')
+        .replace(/-ui$/, '')
+        .replace('platform-configuration', 'platform-config'),
+    )
+
 // Web, Vue and AI missions get the featured card style.
 const OVERVIEW_FEATURED = new Set([31, 11, 35])
 
@@ -204,6 +220,7 @@ const overviewEntry = (language: Language, experienceId: number, missionId: numb
     badge: mission.badge,
     period: mission.period,
     note: MISSIONS[language][missionId]?.note,
+    modules: missionId === 11 ? iecaModuleNames(language) : undefined,
     chips: (OVERVIEW_TECH[missionId] ?? []).map(techChip),
     featured: OVERVIEW_FEATURED.has(missionId),
   }

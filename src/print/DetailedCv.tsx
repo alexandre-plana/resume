@@ -109,6 +109,16 @@ function OverviewCard({ entry }: { entry: OverviewEntry }) {
         {entry.title} · {entry.period}
       </div>
       {entry.note && <div className="dcv-mission-team">👥 {entry.note}</div>}
+      {entry.modules && (
+        <div className="dcv-overview-modules">
+          <span aria-hidden="true">🧩</span>
+          {entry.modules.map((module) => (
+            <span className="dcv-module" key={module}>
+              {module}
+            </span>
+          ))}
+        </div>
+      )}
       <div className="dcv-chips">
         {entry.chips.map((chip) => (
           <TechBadge key={chip.l} label={chip.l} kind={chip.k} />

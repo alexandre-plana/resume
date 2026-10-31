@@ -116,8 +116,8 @@
 }
 
 .dcv-avatar img {
-  width: 32mm !important;
-  height: 32mm !important;
+  width: 40mm !important;
+  height: 40mm !important;
 }
 
 .dcv-profile-name {
@@ -386,6 +386,26 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 8px 10px;
+}
+
+.dcv-overview-modules {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+  margin: 2px 0 5px;
+  font-size: 0.75em;
+}
+
+/* Grey mono label: a component name, not a technology chip. */
+.dcv-module {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--text-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 5px;
 }
 
 .dcv-overview-more {
