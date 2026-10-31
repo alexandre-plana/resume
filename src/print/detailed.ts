@@ -4,6 +4,7 @@ import { mockExperiences, mockFormation, mockPersonalProjects, mockProfile } fro
 import { getTranslations, type Language } from '../locales'
 import type { Formation, Skill } from '../types'
 import {
+  EXTRA_PERSONAL_PROJECTS,
   frenchTypography,
   HEADS,
   MISSIONS,
@@ -308,6 +309,6 @@ const buildModel = (language: Language): DetailedModel => {
       overview: missionView(language, 2, 21),
       projects: OREKA_PROJECTS[language],
     },
-    personalProjects,
+    personalProjects: [...EXTRA_PERSONAL_PROJECTS[language], ...personalProjects],
   }
 }

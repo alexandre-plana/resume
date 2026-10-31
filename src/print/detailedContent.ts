@@ -358,6 +358,42 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
   },
 }
 
+// Personal projects that only this version lists (see alexandre-plana/time-weave).
+export interface PersonalProjectRow {
+  name: string
+  kind: string
+  status: string
+  period: string
+  role: string
+  desc: string
+  stack: string[]
+}
+
+export const EXTRA_PERSONAL_PROJECTS: Record<Language, PersonalProjectRow[]> = {
+  fr: [
+    {
+      name: 'time-weave',
+      kind: 'Bibliothèque de timelines React',
+      status: 'en développement',
+      period: '2026',
+      role: 'Conception & développement',
+      desc: 'Bibliothèque #typescript et #react de timelines interactives et synchronisées avec l’application : lignes hiérarchiques, lecture, clés de navigation et mode Direct, sur un moteur temporel indépendant de React.',
+      stack: ['react', 'typescript', 'vitest', 'playwright'],
+    },
+  ],
+  en: [
+    {
+      name: 'time-weave',
+      kind: 'React timeline library',
+      status: 'in development',
+      period: '2026',
+      role: 'Design & development',
+      desc: 'A #typescript and #react library for interactive timelines synchronized with the host app: hierarchical rows, playback, navigation keys and live mode, on a time engine independent of React.',
+      stack: ['react', 'typescript', 'vitest', 'playwright'],
+    },
+  ],
+}
+
 // Oreka projects in the detail pages: one line each, key projects first.
 export const OREKA_PROJECTS: Record<Language, ProjectRow[]> = {
   fr: [
