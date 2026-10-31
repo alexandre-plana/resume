@@ -196,23 +196,8 @@ const overviewCard = (entry: OverviewEntry) => {
       cardTop('📁', entry.name, entry.badge, width),
       muted(`${entry.title} · ${entry.period}`),
       ...(entry.note ? [muted(`👥 ${entry.note}`, 6.5)] : []),
-      ...(entry.modules
-        ? [
-            new Paragraph({
-              spacing: { before: 30, line: 290 },
-              children: [
-                run('🧩 ', { size: pt(6.5) }),
-                ...entry.modules.flatMap((module) => [
-                  mono(`\u00A0${module.replace(/-/g, '\u2011')}\u00A0`, {
-                    size: pt(6),
-                    color: C.text2,
-                    shading: { type: ShadingType.CLEAR, color: 'auto', fill: C.bg },
-                  }),
-                  run(' ', { size: pt(6) }),
-                ]),
-              ],
-            }),
-          ]
+      ...(entry.summary
+        ? [new Paragraph({ spacing: { before: 20, after: 40 }, children: [run(entry.summary, { size: pt(7), color: C.text2 })] })]
         : []),
       chips(entry.chips, 30),
     ],

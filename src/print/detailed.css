@@ -388,24 +388,11 @@
   padding: 8px 10px;
 }
 
-.dcv-overview-modules {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 3px;
-  margin: 2px 0 5px;
-  font-size: 0.75em;
-}
-
-/* Grey mono label: a component name, not a technology chip. */
-.dcv-module {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
+.dcv-overview-summary {
+  margin: 1px 0 5px;
+  font-size: 0.74em;
+  line-height: 1.5;
   color: var(--text-2);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0 5px;
 }
 
 .dcv-overview-more {

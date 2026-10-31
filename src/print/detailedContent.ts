@@ -16,6 +16,8 @@ export interface MissionOverride {
   team?: string
   // Short team/role line for the cover timeline.
   note?: string
+  // One or two sentences for the cover timeline card.
+  summary?: string
   // Extra paragraph inside the card (e.g. companion tools).
   extra?: string
 }
@@ -181,6 +183,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
       badge: 'Développeur front-end',
       team: '4 équipes Scrum d’une dizaine de personnes ; environ 80 personnes au total avec le management, la validation, les tests automatisés, la cybersécurité et les architectes solution',
       note: '4 équipes Scrum · ~80 personnes',
+      summary: 'Plateforme IIoT Edge découpée en micro-frontends Vue 3. J’en ai créé plus de cinq ainsi que le gabarit commun, contribué à la bibliothèque de composants partagés et relu le code des autres équipes.',
       desc: 'IECA est la plateforme IIoT Edge de Schneider Electric : une quinzaine de micro-frontends Vue 3 chargés par single-spa, adossés à des services Go. J’en ai créé plus de cinq ainsi que le gabarit commun, et participé au développement et à l’évolution de chacun de ceux listés ci-dessous.',
       tasks: [
         'Création de plus de cinq micro-frontends et du gabarit commun, puis évolution de l’ensemble en #vue3, #typescript et #pinia : connectivité, calculs, conditions, alertes, scripting, données et administration.',
@@ -210,6 +213,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
       title: 'Xistar — poste de commandement tactique maritime',
       team: 'Équipe de 3 développeurs épaulés par des agents IA, rôles pluridisciplinaires',
       note: '3 développeurs + agents IA · de la conception à la livraison',
+      summary: 'Application web pour les opérateurs : cartographie tactique, alertes, pilotage multi-écran en temps réel et rejeu. Je couvre la conception, l’interface React, une partie des services Go et la livraison.',
       desc: 'Poste de commandement accessible depuis le navigateur : situation tactique, conduite de missions et de drones, alertes, pilotage multi-écran et rejeu. J’interviens de la conception fonctionnelle à la livraison, surtout côté front-end.',
       tasks: [
         'Conception fonctionnelle, maquettes, design et décisions d’architecture (ADR) à partir des besoins opérationnels.',
@@ -268,6 +272,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
       badge: 'Front-end developer',
       team: '4 Scrum teams of about ten people; around 80 people in total including management, validation, test automation, cybersecurity and solution architects',
       note: '4 Scrum teams · ~80 people',
+      summary: 'An IIoT Edge platform split into Vue 3 micro-frontends. I built more than five of them plus the shared template, contributed to the shared component library and reviewed other teams’ code.',
       desc: 'IECA is Schneider Electric’s IIoT Edge platform: some fifteen Vue 3 micro-frontends loaded by single-spa, backed by Go services. I built more than five of them plus the shared template, and took part in developing and evolving each one listed below.',
       tasks: [
         'Built more than five micro-frontends and the shared template, then evolved them all in #vue3, #typescript and #pinia: connectivity, computations, conditions, alerts, scripting, data and administration.',
@@ -297,6 +302,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
       title: 'Xistar — maritime tactical command center',
       team: 'Team of 3 developers working with AI agents, multidisciplinary roles',
       note: '3 developers + AI agents · from design to delivery',
+      summary: 'A web app for operators: tactical mapping, alerts, real-time multi-screen control and replay. I cover design, the React interface, part of the Go services and delivery.',
       desc: 'A browser-based command center: tactical situation, mission and drone control, alerts, multi-screen operation and replay. I work from functional design to delivery, mostly on the front end.',
       tasks: [
         'Functional design, mockups, visual design and architecture decision records (ADRs) from operational requirements.',
