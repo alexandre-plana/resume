@@ -104,7 +104,8 @@ const noBorders = {
 const line = (color: string) => ({ style: BorderStyle.SINGLE, size: 6, color })
 
 // A bordered, shaded box: mission cards, cover timeline cards, project cards.
-const card = (children: (Paragraph | Table)[], width: number, featured = false, indent = CARD_INDENT) =>
+// keepWhole moves a card to the next page rather than splitting it; long mission cards may split.
+const card = (children: (Paragraph | Table)[], width: number, featured = false, indent = CARD_INDENT, keepWhole = true) =>
   new Table({
     width: { size: width, type: WidthType.DXA },
     columnWidths: [width],
@@ -112,8 +113,7 @@ const card = (children: (Paragraph | Table)[], width: number, featured = false, 
     borders: noBorders,
     rows: [
       new TableRow({
-        // A card moves to the next page whole rather than splitting.
-        cantSplit: true,
+        cantSplit: keepWhole,
         children: [
           new TableCell({
             width: { size: width, type: WidthType.DXA },
@@ -135,7 +135,7 @@ const card = (children: (Paragraph | Table)[], width: number, featured = false, 
 const spacer = (after = 80) => new Paragraph({ spacing: { after }, children: [] })
 
 const sectionHeader = (text: string) =>
-  new Paragraph({ keepNext: true, spacing: { before: 200, after: 100 }, children: [run(text, { bold: true, size: pt(9) })] })
+  new Paragraph({ keepNext: true, spacing: { before: 120, after: 80 }, children: [run(text, { bold: true, size: pt(9) })] })
 
 const subhead = (text: string, indent = 0) =>
   new Paragraph({
@@ -239,6 +239,8 @@ const missionCard = (mission: MissionView, tasksLabel: string) => {
     ],
     width,
     mission.featured,
+    CARD_INDENT,
+    false,
   )
 }
 
