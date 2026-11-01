@@ -100,7 +100,7 @@ Des outils d'assistance par IA ont été utilisés pour certaines phases de dév
 
 ## Export PDF
 
-La barre d'outils propose le CV en une page A4, généré par `npm run export:pdf` (français et anglais, fichiers dans `public/pdf/`). La page source est `print.html`, construite à partir des mêmes données que le CV en ligne. La commande exige Edge ou Chrome (variable `CHROME_PATH` pour un autre chemin) et échoue si le contenu dépasse une page. Il faut régénérer et commiter les PDF après toute modification des données.
+La barre d'outils propose deux PDF : le CV en une page A4, qui suit le CV en ligne, et le CV détaillé (voir plus bas). Le CV en une page est généré par `npm run export:pdf` (français et anglais, fichiers dans `public/pdf/`). La page source est `print.html`, construite à partir des mêmes données que le CV en ligne. La commande exige Edge ou Chrome (variable `CHROME_PATH` pour un autre chemin) et échoue si le contenu dépasse une page. Il faut régénérer et commiter les PDF après toute modification des données.
 
 ### CV détaillé (plusieurs pages)
 

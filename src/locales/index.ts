@@ -33,6 +33,7 @@ export interface Translations {
   toolbar: {
     print: string
     exportPdf: string
+    exportDetailedPdf: string
   }
   queryErrors: {
     profile: string
@@ -109,7 +110,8 @@ export const translations: Record<Language, Translations> = {
     },
     toolbar: {
       print: 'Imprimer',
-      exportPdf: 'Exporter PDF',
+      exportPdf: 'CV une page',
+      exportDetailedPdf: 'CV détaillé',
     },
     queryErrors: {
       profile: 'Impossible de charger le profil.',
@@ -184,7 +186,8 @@ export const translations: Record<Language, Translations> = {
     },
     toolbar: {
       print: 'Print',
-      exportPdf: 'Export PDF',
+      exportPdf: 'One-page CV',
+      exportDetailedPdf: 'Detailed CV',
     },
     queryErrors: {
       profile: 'Unable to load profile data.',

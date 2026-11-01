@@ -109,6 +109,12 @@
   .printBtn,
   .exportBtn {
     padding-inline: 8px;
+    white-space: nowrap;
+  }
+
+  /* Two PDF buttons plus print: the icons go so every label stays on one line. */
+  .icon {
+    display: none;
   }
 }
 

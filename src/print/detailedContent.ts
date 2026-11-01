@@ -31,13 +31,13 @@ export interface ProjectRow {
 
 export const PROFILE: Record<Language, { title: string; subtitle: string; bio: string }> = {
   fr: {
-    title: 'Développeur front-end / full-stack — Vue 3 · React · TypeScript',
-    subtitle: 'Applications industrielles · Micro-frontends · IA',
+    title: 'Développeur front-end — Vue 3 · TypeScript',
+    subtitle: 'Applications industrielles · Micro-frontends',
     bio: 'Développeur spécialisé dans les applications industrielles, j’ai construit une expertise front-end et UI/UX. Chez Schneider Electric, j’ai développé en Vue 3 plusieurs micro-frontends de la plateforme IIoT IECA ainsi que des composants partagés entre les équipes. Sur Xistar, j’interviens de l’interface opérateur aux services qui intègrent et diffusent les données opérationnelles. J’aborde le développement en reliant usages métier, architecture et contraintes techniques, avec une attention portée à la cohérence du produit, de la maquette au code livré.',
   },
   en: {
-    title: 'Front-end / full-stack developer — Vue 3 · React · TypeScript',
-    subtitle: 'Industrial applications · Micro-frontends · AI',
+    title: 'Front-end developer — Vue 3 · TypeScript',
+    subtitle: 'Industrial applications · Micro-frontends',
     bio: 'I develop industrial applications, drawing on a strong front-end and UI/UX background. At Schneider Electric, I built several Vue 3 micro-frontends of the IECA IIoT platform, along with components shared across teams. On Xistar, I work from the operator interface through to the services that ingest and distribute operational data. My approach connects user needs, architecture and technical constraints, with close attention to product consistency from the initial design to delivered code.',
   },
 }
