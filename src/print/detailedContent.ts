@@ -195,7 +195,7 @@ export const MISSIONS: Record<Language, Record<number, MissionOverride>> = {
     },
     12: {
       badge: 'Développeur front-end',
-      team: '3 équipes Scrum (7, 5 et 4 personnes) ; évolution de développeur front-end à main dev, jusqu’à l’arrêt du projet',
+      team: '3 équipes Scrum (7, 5 et 4 personnes) ; évolution de développeur front-end à développeur principal, jusqu’à l’arrêt du projet',
       note: '3 équipes Scrum',
       desc: 'Solution de réalité augmentée pour opérateurs industriels, composée de trois modules : une application web, une application mobile multiplateforme (Android, iOS, Windows) en C# sous Unity et un runtime. J’étais en charge du design, des maquettes, de l’architecture front-end, du développement, des livraisons et des développements spécifiques clients.',
       tasks: [

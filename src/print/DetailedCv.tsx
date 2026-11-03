@@ -258,6 +258,14 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
 
       <div className="dcv-flow">
         <section>
+          <Timeline title={labels.webXpert} head={model.xpert.head}>
+            {model.xpert.missions.map((mission) => (
+              <MissionCard mission={mission} labels={labels} key={mission.name} />
+            ))}
+          </Timeline>
+        </section>
+
+        <section>
           <Timeline title={labels.vueFocus} head={model.schneiderWeb.head}>
             <MissionCard mission={model.schneiderWeb.mission} labels={labels} />
             <div className="dcv-about">
@@ -267,14 +275,6 @@ export function DetailedCv({ model }: { model: DetailedModel }) {
               </p>
             </div>
             <RepoList groups={model.schneiderWeb.details.groups} icon="🧩" />
-          </Timeline>
-        </section>
-
-        <section>
-          <Timeline title={labels.webXpert} head={model.xpert.head}>
-            {model.xpert.missions.map((mission) => (
-              <MissionCard mission={mission} labels={labels} key={mission.name} />
-            ))}
           </Timeline>
         </section>
 

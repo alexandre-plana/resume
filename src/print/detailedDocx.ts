@@ -382,6 +382,11 @@ export const buildDetailedDocx = (model: DetailedModel, avatar: Uint8Array): Doc
   ]
 
   const details = [
+    ...timeline(
+      labels.webXpert,
+      model.xpert.head,
+      model.xpert.missions.flatMap((mission) => [missionCard(mission, labels.tasks), spacer(60)]),
+    ),
     ...timeline(labels.vueFocus, model.schneiderWeb.head, [
       missionCard(model.schneiderWeb.mission, labels.tasks),
       new Paragraph({
@@ -397,11 +402,6 @@ export const buildDetailedDocx = (model: DetailedModel, avatar: Uint8Array): Doc
       }),
       repoList(model.schneiderWeb.details.groups, '🧩'),
     ]),
-    ...timeline(
-      labels.webXpert,
-      model.xpert.head,
-      model.xpert.missions.flatMap((mission) => [missionCard(mission, labels.tasks), spacer(60)]),
-    ),
     ...timeline(labels.industrialAr, model.schneiderAr.head, [missionCard(model.schneiderAr.mission, labels.tasks)]),
     ...timeline(labels.oreka, model.oreka.head, [
       missionCard(model.oreka.overview, labels.tasks),
